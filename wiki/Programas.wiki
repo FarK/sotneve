@@ -2,7 +2,7 @@
 
 = Lista de programas necesarios o útiles =
 
-=DIA=
+==DIA==
 Para ver/editar los diagramas de la base de datos.
 
   * *Linux*: _Repositorios_
