@@ -1,5 +1,3 @@
-#Lista de programas necesarios
-
 = Lista de programas necesarios o útiles =
 
 ==DIA==
