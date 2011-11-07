@@ -1,5 +1,5 @@
 body {
-	background-color:#808000;
+	background-color:#acacc1;
 }
 
 fieldset {
@@ -32,7 +32,11 @@ input {
 	padding:6px;
 }
 
-h1 {text-align:center}
+h1 {
+	color:#bbbbbb;
+	text-shadow: 0px 0px 2px #FFFFFF;
+	text-align:center
+}
 
 #Send {
 	font-weight:bold;
