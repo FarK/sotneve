@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.7
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-11-2011 a las 21:45:25
+-- Tiempo de generación: 07-11-2011 a las 16:15:25
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -168,6 +168,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `alias` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
   `codPostal` int(5) NOT NULL,
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
