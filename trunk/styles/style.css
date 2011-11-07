@@ -2,30 +2,39 @@ body {
 	background-color:#808000;
 }
 
-form {
-	/*border:3px dotted;*/
+fieldset {
+	border-width:0px;
 	border-radius:1em;
 	position:absolute;
-	width:170px;
+/*	width:170px;
 	height:80px;
-	top:40%;
-	left:50%;
+*/
+	top:10%;
+	right:10%;
+/*
 	margin-top:-40px;
 	margin-left:-85px;
+*/
 	box-shadow: 0px 0px 10px #FFFFFF;
 }
+
+legend { display:none; }
+
+label { display:none; }
 
 input {
 	/*height:30px;*/
 	margin-top:5px;
+	box-shadow: 0px 0px 5px #FFFFFF;
 	margin-left:5px;
-	border:3px dotted;
-	border-radius:1em;
-}
-
-input.btn {
-	position:relative;
-	left:28%;
+	border:0px;
+	border-radius:10px;
+	padding:6px;
 }
 
 h1 {text-align:center}
+
+#Send {
+	font-weight:bold;
+	/*background-color:*/
+}
