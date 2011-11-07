@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2011 a las 16:15:25
+-- Tiempo de generación: 07-11-2011 a las 16:46:17
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -166,13 +166,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `sexo` tinyint(1) NOT NULL,
   `email` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `pass` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` char(64) COLLATE utf8_spanish_ci NOT NULL,
   `codPostal` int(5) NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `codPostal`) VALUES
+(1, '1990-10-19', 1, 'rafaespillaque@gmail', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 41500);
 
 -- --------------------------------------------------------
 
