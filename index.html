@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//ES" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>Sotneve - Login</title>
@@ -6,14 +6,16 @@
 	</head>
 	<body>
 
-		<h1>BIENVENIDO A SOTNEVE</h1>
 
 		<form id="login_form" method="post" action="logueado.php"> 
-			<input id="User" name="User" type="text" placeholder="Nombre de usuario" autofocus>
-			</br>
-			<input id="Pass" name="Pass" type="password" placeholder="Contraseña">
-			</br>
-			<input id="Send" class="btn" name="Send" type="submit" value="Entrar">
+			<fieldset><legend>Login</legend> 
+				<h1>BIENVENIDO A SOTNEVE</h1>
+				<label for="User" class="User"> Usuario: </label>
+				<input id="User" name="User" type="text" placeholder="Nombre de usuario" autofocus>
+				<label for="Pass" class="Pass"> Contrase&ntildea: </label>
+				<input id="Pass" name="Pass" type="password" placeholder="Contraseña">
+				<input id="Send" class="btn" name="Send" type="submit" value="Entrar">
+			</fileldset>
 		</form>
 
 	</body>
