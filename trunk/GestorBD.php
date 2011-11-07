@@ -9,7 +9,7 @@
 		{
 			$this->conn = mysql_connect('localhost', 'root', '');
 			if (!$this->conn) {
-				die('No se pudo conectar: ' . mysql_error());
+				//die('No se pudo conectar: ' . mysql_error());
 				return false;
 			}else{
 				mysql_select_db("sotneve", $this->conn);
@@ -23,9 +23,14 @@
 	
 		}
 		
+		public function escapeString($str)
+		{
+			return mysql_real_escape_string($str, $this->conn);
+		}
+		
 		public function consulta($query)      //CUIDAOOOOOOOOO! SQL Injection !!
 		{
-			mysql_query($query, $this->conn) or die(mysql_error());
+			return mysql_query($query, $this->conn);
 		}
 		
 
@@ -36,16 +41,14 @@
 			
 		}
 		
-		
-		public function emailYaRegistrado($user)
+		public function passCorrecta($email, $pass)
 		{
-			$u = mysql_real_escape_string($user, $this->conn);
-			$result = mysql_query("SELECT idUsuario FROM USERS WHERE email = '".$u."'", $this->conn);
-			if(mysql_num_rows($result)>0)
-			{
-				return true;
-			}else
-			{
+			$query = sprintf("SELECT * FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
+			$result = $this->consulta($query);
+			if(mysql_num_rows($result) > 0){
+				$row = mysql_fetch_assoc($result);
+				return $row;
+			}else{
 				return false;
 			}
 		}

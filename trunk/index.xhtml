@@ -10,15 +10,16 @@
 	<body>
 
 
-		<form id="login_form" method="post" action="logueado.php"> 
+		<form id="login_form" method="post" action="login.php"> 
 			<fieldset>
 				<legend>Login</legend> 
 				<h1>BIENVENIDO A SOTNEVE</h1>
-				<label for="User" class="User"> Usuario: </label>
-				<input id="User" name="User" type="text" placeholder="Nombre de usuario"/>
-				<label for="Pass" class="Pass"> Contrase&ntilde;a: </label>
-				<input id="Pass" name="Pass" type="password" placeholder="Contrase&ntilde;a"/>
-				<input id="Send" class="btn" name="Send" type="submit" value="Entrar"/>
+				<!--Se puede usar : o debe usar codigo ascii? -->
+				<label for="email" class="Email"> Correo electr&oacute;nico& </label>
+				<input id="email" name="email" type="text" placeholder="Correo electr&oacute;nico"/>
+				<label for="pass" class="Pass"> Contrase&ntilde;a: </label>
+				<input id="pass" name="pass" type="password" placeholder="Contrase&ntilde;a"/>
+				<input id="send" class="btn" name="Send" type="submit" value="Entrar"/>
 			</fieldset>
 		</form>
 

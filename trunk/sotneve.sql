@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2011 a las 16:46:17
+-- Tiempo de generación: 07-11-2011 a las 18:26:50
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `fechaNac` date NOT NULL,
   `sexo` tinyint(1) NOT NULL,
-  `email` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `pass` char(64) COLLATE utf8_spanish_ci NOT NULL,
   `codPostal` int(5) NOT NULL,
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `codPostal`) VALUES
-(1, '1990-10-19', 1, 'rafaespillaque@gmail', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 41500);
+(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 41500);
 
 -- --------------------------------------------------------
 
