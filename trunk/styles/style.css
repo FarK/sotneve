@@ -3,7 +3,7 @@ body {
 }
 
 fieldset {
-	border-width:0px;
+	border-width:5px;
 	border-radius:1em;
 	position:absolute;
 /*	width:170px;
@@ -20,7 +20,7 @@ fieldset {
 
 legend { display:none; }
 
-label { display:none; }
+label { }
 
 input {
 	/*height:30px;*/
@@ -33,7 +33,7 @@ input {
 }
 
 h1 {
-	color:#bbbbbb;
+	color:#992222;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align:center
 }
