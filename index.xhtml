@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Login</title>
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<script src="index.js" type="type/javascript" />
 	</head>
 	<body>
 
@@ -16,7 +17,7 @@
 				<h1>BIENVENIDO A SOTNEVE</h1>
 				<!--Se puede usar : o debe usar codigo ascii? -->
 				<label for="email" class="Email"> Correo electr&oacute;nico </label>
-				<input id="email" name="email" type="text" placeholder="Correo electr&oacute;nico"/>
+				<input id="email" name="email" type="text" placeholder="Correo electr&oacute;nico" onchange="validaEmail()"/>
 				<label for="pass" class="Pass"> Contrase&ntilde;a: </label>
 				<input id="pass" name="pass" type="password" placeholder="Contrase&ntilde;a"/>
 				<input id="send" class="btn" name="Send" type="submit" value="Entrar"/>
