@@ -1,0 +1,64 @@
+body {
+	background: #D0E8F7;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 76%;
+	color: #418eb6;
+}
+form {
+}
+h1 {
+	margin: 10px 0 40px 0;
+	font-size: 3.5em;
+}
+hr {
+	visibility: hidden;
+}
+fieldset {
+
+	margin: auto auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
+	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
+	width: 800px;
+	border-style: dotted;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+}
+div {
+
+	display: table-row;
+}
+input, select {
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6;
+	color: #418eb6;
+}
+label {
+	display: table-cell;
+}
+label.labelleft {
+	width: 120px;
+}
+label.labelright {
+	padding: 0 0 20px 120px;
+	width: 140px;
+}
+select {
+	width: 155px;
+	color: #418eb6;
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6
+}
+#registrate {
+	background-color: #418eb6;
+	color: #eaf3fa;
+	height: 40px;
+	margin: 10px 0 0 -100px;
+	width: 200px;
+	border-radius: 10px 10px;
+	position: absolute;
+	left: 50%;
+}
+
