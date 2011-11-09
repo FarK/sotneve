@@ -1,14 +1,20 @@
+#errores{
+visibility: hidden;
+color:red;
+}
+
 body {
 	background: #D0E8F7;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 76%;
-	color: #418eb6;
+	
 }
 form {
 }
 h1 {
 	margin: 10px 0 40px 0;
 	font-size: 3.5em;
+	color: #418eb6;
 }
 hr {
 	visibility: hidden;
@@ -35,6 +41,7 @@ input, select {
 }
 label {
 	display: table-cell;
+	color: #418eb6;
 }
 label.labelleft {
 	width: 120px;
@@ -43,6 +50,8 @@ label.labelright {
 	padding: 0 0 20px 120px;
 	width: 140px;
 }
+
+
 select {
 	width: 155px;
 	color: #418eb6;
