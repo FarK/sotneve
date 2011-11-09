@@ -26,6 +26,7 @@ label.error {
 }
 
 label.normal { display:none; }
+label.errorserv{color:red;}
 
 input {
 	/*height:30px;*/
