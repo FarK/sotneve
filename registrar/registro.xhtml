@@ -8,9 +8,11 @@
 		<script type="text/javascript" src="registro.js"/>
 	</head>
 	<body>
-		<form method="post" onsubmit="return esFormularioValido()">
+		<form name="form" method="post" onsubmit="return esFormularioValido()">
 			<fieldset>
 				<h1>¡Únete a nosotros!</h1>
+				<label id="errores">Corrige los campos en rojo, todos son obligatorios.</label>
+			
 				<hr />
 				<div class="div1">
 					<label id="idalias" for="alias" class="labelleft">Alias:</label>
@@ -22,20 +24,20 @@
 					</select>
 				</div>
 				<div class="div2">
-					<label id="idnombre" for="nombre" class="labelleft">Nombre:</label>
-					<input type="text" name="nombre" id="nombre" class="inputleft"/>
+					<label id="idnombre" for="nombre" class="labelleft" >Nombre:</label>
+					<input type="text" name="nombre" id="nombre" class="inputleft" onblur="esCampoNoVacio(this.id)"/>
 					<label class="labelright" for="apellidos">Apellidos:</label>
-					<input type="text" name="apellidos" id="apellidos" class="inputright" />
+					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" />
 				</div>
 				<div class="div3">
-					<label class="labelleft" for="contraseña">Contraseña:</label>
-					<input type="password" name="contraseña" id="contraseña" />
-					<label class="labelright" for="recontraseña">Repite contraseña:</label>
-					<input type="password" name="recontraseña" id="recontraseña" />
+					<label class="labelleft" for="contrasena">Contraseña:</label>
+					<input type="password" name="contrasena" id="contrasena" />
+					<label class="labelright" for="recontrasena">Repite contraseña:</label>
+					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="div4">
 					<label class="labelleft" for="email">Email:</label>
-					<input type="text" name="email" id="email" />
+					<input type="text" name="email" id="email" onblur="esEmailValido()" />
 					<label class="labelright" for="cp">Código postal:</label>
 					<input type="text" name="cp" id="cp" />
 				</div>
