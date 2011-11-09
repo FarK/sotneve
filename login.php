@@ -1,10 +1,6 @@
 <?php
 	include_once('GestorBD.php');
-	
-	//Variables para errores
-	$err_bd = false;
-	$err_pass = false;
-	
+	//Validar POST                                         TODO
 	//Iniciar sesion
 	session_start();
 	//Crear objeto gestor bd
@@ -19,20 +15,23 @@
 			if($row = $bd->passCorrecta($email, $pass)){
 				//Es correcta
 					//Meter en la variable session que ha conectado
+					$_SESSION['logged'] = true;
 					$_SESSION['idUsuario'] = $row['idUsuario'];
 			}else{
 				//Es incorrecta
 					//Variable error a true para el html
-					$err_pass = true;
+					$_SESSION['err_pass'] = true;
+					//Redireccionar
+					header('Location:index.php');
 			}
 			//Desconectar de la bd
 		$bd->desconectar();
 	}else{
 	//No puedo conectar
 		//Variable error para el html
-		$err_bd = true;
+		$_SESSION['err_bd'] = true;
+		//Redirecconar
+		header('Location:index.php');
 	}
 	
-	echo 'Id de conectado ' . $_SESSION['idUsuario'] . '<br>';
-	if($err_pass) echo 'err_pass ' . '<br>';
-	if($err_bd) echo 'err_bd ' . '<br>';
+	echo 'Logueado, tu id es: ' . $_SESSION['idUsuario'] . '<br>';
