@@ -1,0 +1,28 @@
+body {
+	background-color:#CEF6F5;
+	font-family: 'Franklin Gothic Medium', sans-serif;
+}
+
+div{
+
+}
+
+fieldset{
+
+display:inline;
+border-width:0px;
+top: 10%;
+left: 25%;
+position: fixed;
+
+
+}
+fieldset.cont{
+
+top:20%;
+}
+fieldset.cab{
+top:1%;}
+select{
+font-family: 'Franklin Gothic Medium', sans-serif;
+}
