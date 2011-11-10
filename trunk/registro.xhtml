@@ -4,11 +4,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>sotneve - Únete</title>
-		<link rel="stylesheet" type="text/css" href="styles/registro.css" />
+		<link rel="stylesheet" type="text/css" href="registro.css" />
 		<script type="text/javascript" src="registro.js"/>
 	</head>
 	<body>
-		<form name="form" method="post" onsubmit="return esFormularioValido()">
+		<form name="form" method="post" action="registro.php" onsubmit="return esFormularioValido()">
 			<fieldset>
 				<h1>¡Únete a nosotros!</h1>
 				<label id="errores">Corrige los campos en rojo, todos son obligatorios.</label>
@@ -46,6 +46,10 @@
 					<input type="text" name="provincia" id="provincia" />
 					<label class="labelright" for="comautonoma">Comunidad Autónoma:</label>
 					<input type="text" name="comautonoma" id="comautonoma"/>
+				</div>
+				<div>
+					<label class="labelleft">Fecha de nacimiento:</label>
+					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
 				</div>
 				<button type="submit" id="registrate">
 					¡Registrate!
