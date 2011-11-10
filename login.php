@@ -1,6 +1,5 @@
 <?php
 	include_once('BD/GestorBD.php');
-	//Validar POST                                         TODO
 	//Iniciar sesion
 	session_start();
 	//Crear objeto gestor bd
