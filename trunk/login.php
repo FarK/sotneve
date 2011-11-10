@@ -1,5 +1,5 @@
 <?php
-	include_once('GestorBD.php');
+	include_once('BD/GestorBD.php');
 	//Validar POST                                         TODO
 	//Iniciar sesion
 	session_start();

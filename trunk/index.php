@@ -15,7 +15,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Login</title>
 		<link rel="stylesheet" type="text/css" href="styles/index.css" />
-		<script type="text/javascript" src="index.js"></script>
+		<script type="text/javascript" src="scripts/index.js"></script>
 	</head>
 	<body>
 		<form id="login_form" method="post" action="login.php" onsubmit="return validaForm()"> 
