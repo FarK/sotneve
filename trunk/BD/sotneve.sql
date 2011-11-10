@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2011 a las 18:26:50
+-- Tiempo de generación: 10-11-2011 a las 16:31:45
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -77,12 +77,14 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `idLocalidad` int(11) DEFAULT NULL,
   `codPostal` int(5) DEFAULT NULL,
   `lugar` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `propietario` int(11) NOT NULL,
   PRIMARY KEY (`idEvento`),
   KEY `idSubtipo` (`idSubtipo`),
   KEY `idComAutonoma` (`idComAutonoma`),
   KEY `idProvincia` (`idProvincia`),
   KEY `idLocalidad` (`idLocalidad`),
-  KEY `codPostal` (`codPostal`)
+  KEY `codPostal` (`codPostal`),
+  KEY `propietario` (`propietario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -216,11 +218,12 @@ ALTER TABLE `codpostales`
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_6` FOREIGN KEY (`propietario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`idComAutonoma`) REFERENCES `comautonomas` (`idComAutonoma`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincias`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_3` FOREIGN KEY (`idLocalidad`) REFERENCES `localidades` (`idLocalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `eventos_ibfk_4` FOREIGN KEY (`codPostal`) REFERENCES `codpostales` (`codPostal`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `eventos_ibfk_4` FOREIGN KEY (`codPostal`) REFERENCES `codpostales` (`codPostal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `favoritos`
