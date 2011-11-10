@@ -26,7 +26,7 @@
 	}else{
 	//No puedo conectar
 		//Redirecconar con GET a error
-		header('Location:index.php=err_bd');
+		header('Location:index.php?err_bd');
 	}
 	
 	echo 'Logueado, tu id es: ' . $_SESSION['idUsuario'] . '<br>';
