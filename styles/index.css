@@ -20,13 +20,13 @@ fieldset {
 
 legend { display:none; }
 
-label.error {
+span.error {
 	display:none;
 	color:red;
 }
 
-label.normal { display:none; }
-label.errorserv{color:red;}
+label{ display:none; }
+span.errorserv{color:red;}
 
 input {
 	/*height:30px;*/

@@ -22,14 +22,14 @@
 			<fieldset>
 				<legend>Login</legend> 
 				<h1>BIENVENIDO A SOTNEVE</h1>
-				<label class="error">Inserte un correo electr&oacute;nico v&aacute;lido</label>
-				<label class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</label>
+				<span class="error">Inserte un correo electr&oacute;nico v&aacute;lido</span>
+				<span class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</span>
 				<?php
 				if(isset($_GET['err_pass'])){
-					echo "<label class='errorserv' >Usuario o contrase&ntilde;a incorrecto</label>";
+					echo "<span class='errorserv' >Usuario o contrase&ntilde;a incorrecto</span>";
 				}
 				if(isset($_GET['err_bd']))
-					echo "<label class='errorserv'>No se pudo conectar a la base de datos.</label></label>";
+					echo "<span class='errorserv'>No se pudo conectar a la base de datos.</span>";
 				?>
 				<br/>
 				<!--Se puede usar : o debe usar codigo ascii? -->
