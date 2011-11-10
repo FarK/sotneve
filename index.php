@@ -29,7 +29,7 @@
 					echo "<label class='errorserv' >Usuario o contrase&ntilde;a incorrecto</label>";
 				}
 				if(isset($_SESSION['err_bd']) && $_SESSION['err_bd'])
-					echo "<label class='errorserv'>El campo contrase&ntilde;a no puede estar vac&iacute;o</label>";
+					echo "<label class='errorserv'>No se pudo conectar a la base de datos.</label></label>";
 				?>
 				<br/>
 				<!--Se puede usar : o debe usar codigo ascii? -->
