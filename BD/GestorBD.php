@@ -45,22 +45,18 @@
 		{
 			$query = sprintf("SELECT * FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
 			$result = $this->consulta($query);
-			if(mysql_num_rows($result) > 0){
-				$row = mysql_fetch_assoc($result);
+			if(mysql_num_rows($result) == 1){
+				$row = mysql_fetch_assoc(FALSE);
 				return $row;
 			}else{
 				return false;
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		public function getUsuario($idUsuario){
+			$query = sprintf("SELECT * FROM usuarios WHERE idUsuario = '%s'", $idUsuario);
+			return mysql_fetch_assoc($this->consulta($query));
+		}
 	}
 
 
