@@ -25,10 +25,10 @@
 				<label class="error">Inserte un correo electr&oacute;nico v&aacute;lido</label>
 				<label class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</label>
 				<?php
-				if(isset($_SESSION['err_pass']) && $_SESSION['err_pass']){
+				if(isset($_GET['err_pass'])){
 					echo "<label class='errorserv' >Usuario o contrase&ntilde;a incorrecto</label>";
 				}
-				if(isset($_SESSION['err_bd']) && $_SESSION['err_bd'])
+				if(isset($_GET['err_bd']))
 					echo "<label class='errorserv'>No se pudo conectar a la base de datos.</label></label>";
 				?>
 				<br/>
