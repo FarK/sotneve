@@ -3,6 +3,10 @@ visibility: hidden;
 color:red;
 }
 
+#erroremail{
+	color:red;
+}
+
 body {
 	background: #D0E8F7;
 	font-family: Arial, Helvetica, sans-serif;

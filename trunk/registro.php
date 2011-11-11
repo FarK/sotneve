@@ -1,60 +1,71 @@
-<?php 
-include_once('../GestorBD.php');
-
-$bd = new GestorBD();
-
-	if($bd->conectar()){
-		
-			$fechanac = $bd->escapeString($_POST['fechanac']);
-			$sexo = $bd->escapeString($_POST['sexo']);
-			$email = $bd->escapeString($_POST['email']);
-			$alias = $bd->escapeString($_POST['alias']);
-			$contrasena = $bd->escapeString($_POST['contrasena']);
-			$cp = $bd->escapeString($_POST['cp']);
-			$nombre = $bd->escapeString($_POST['nombre']);
-			$apellidos = $bd->escapeString($_POST['apellidos']);
-			
-			$provincia = $bd->escapeString($_POST['provincia']);
-			$comautonoma = $bd->escapeString($_POST['comautonoma']);
-			$recontrasena = $bd->escapeString($_POST['recontrasena']);
-						
-			$fechanac=dmaToamd($fechanac); //Convertimos la fecha a AAAA-MM-DD para poder meterla en la BD
-				
-			$sexo=sexoToInt($sexo); //pasa Hombre a 1 y Mujer a 0
-			
-			if($sexo=='Hombre'){
-				$sexo=1;
-			}elseif($sexo=='Mujer'){
-				$sexo=0;
-			}
-			
-			
-			$string = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, codPostal, nombre, apellidos) 
-			VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $cp, $nombre, $apellidos);
-			$bd->consulta($string);
-			
-			
-		
-	}
-	
-	function dmaToamd($fecha){
-			 $dia = substr($fecha, 0,2); 
-			 $mes = substr($fecha, 3,2);
-			 $ano = substr($fecha,6,9);
-			 
-			 $fecha=$ano."-".$mes."-".$dia;
-		
-			return $fecha;
-	}
-	
-	function sexoToInt($sexo){
-			if($sexo=='Hombre'){
-				$sexo=1;
-				return $sexo;
-			}elseif($sexo=='Mujer'){
-				$sexo=0;
-				return $sexo;
-			}
-	}
-	
-?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>sotneve - Únete</title>
+		<link rel="stylesheet" type="text/css" href="styles/registro.css" />
+		<script type="text/javascript" src="scripts/registro.js"></script>
+	</head>
+	<body>
+		<form name="form" method="post" action="insertarusuario.php" onsubmit="return esFormularioValido()">
+			<fieldset>
+				<h1>¡Únete a nosotros!</h1>
+				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
+				<?php
+				if(isset($_GET['err_email'])){
+					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
+				}
+				if(isset($_GET['err_contrasena'])){
+					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+				}
+				if(isset($_GET['err_campos'])){
+					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
+				}
+				?>
+				<hr />
+				<div class="div1">
+					<label id="idalias" for="alias" class="labelleft" onblur="esCampoNoVacio(this.id)">Alias:</label>
+					<input type="text" name="alias" id="alias" class="inputleft"/>
+					<label for="sexo" class="labelright">Sexo:</label>
+					<select name="sexo" id="sexo" class="inputright">
+						<option>Selecciona</option>
+						<option>Hombre</option>
+						<option>Mujer</option>
+					</select>
+				</div>
+				<div class="div2">
+					<label id="idnombre" for="nombre" class="labelleft" >Nombre:</label>
+					<input type="text" name="nombre" id="nombre" class="inputleft" onblur="esCampoNoVacio(this.id)"/>
+					<label class="labelright" for="apellidos">Apellidos:</label>
+					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" />
+				</div>
+				<div class="div3">
+					<label class="labelleft" for="contrasena">Contraseña:</label>
+					<input type="password" name="contrasena" id="contrasena" />
+					<label class="labelright" for="recontrasena">Repite contraseña:</label>
+					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
+				</div>
+				<div class="div4">
+					<label class="labelleft" for="email">Email:</label>
+					<input type="text" name="email" id="email" onblur="esEmailValido()" />
+					<label class="labelright" for="cp">Código postal:</label>
+					<input type="text" name="cp" id="cp" />
+				</div>
+				<div class="div5">
+					<label class="labelleft" for="provincia">Provincia:</label>
+					<input type="text" name="provincia" id="provincia" />
+					<label class="labelright" for="comautonoma">Comunidad Autónoma:</label>
+					<input type="text" name="comautonoma" id="comautonoma"/>
+				</div>
+				<div>
+					<label class="labelleft">Fecha de nacimiento:</label>
+					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
+				</div>
+				<button type="submit" id="registrate">
+					¡Registrate!
+				</button>
+			</fieldset>
+		</form>
+	</body>
+</html>
