@@ -26,7 +26,7 @@ if ($bd -> conectar()) {
 
 	if ($valido) {
 		$string = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos) 
-			VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
 		$bd -> consulta($string);
 	}
 
@@ -65,8 +65,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 
 	//Nombre y apellidos, validados como campos no vacios
 	
-	if ($sexo == 'Hombre' || $sexo == 'Mujer') {
-	}else{
+	if ($sexo != 'Hombre' && $sexo != 'Mujer') {
 		$valido = false;
 	}
 	$dia = substr($fechanac, 0, 2);
