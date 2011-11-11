@@ -9,41 +9,47 @@ function esFormularioValido() {
 	var apellidos = document.getElementById("apellidos").value;
 	var contrasena = document.getElementById("contrasena").value;
 	var recontrasena = document.getElementById("recontrasena").value;
+	var fechaNac = document.getElementById("fechanac").value;
 	
-	var res="Error "
+	var res="No se ha podido completar el registro:\n"
 	var valido=true;
 
 	if(alias == "") {
-		res=res+", el alias no puede ser vacio";
+		res=res+"- El campo alias no puede ser vacío\n";
 		valido=false;
 	}
 	if(nombre == "") {
-		res=res+", el nombre no puede ser vacio";
+		res=res+"- El campo nombre no puede ser vacío\n";
 		valido=false;
 	}
 	if (apellidos == "") {
-		res=res+", los apellidos no pueden ser vacio";
+		res=res+"- El campo apellidos no puede ser vacío\n";
 		valido=false;		
 	}
 	
 	if (contrasena!=recontrasena || contrasena.length<6 || contrasena.length>15){
-		res=res+", las contraseñas no coinciden o bien son inferior a 6 caracteres o superior a 15";
+		res=res+"- Las contraseñas no coinciden o bien son inferior a 6 caracteres o superior a 15\n";
 		valido=false;
 	}
 	
-	var patronEmail=/^(.+)@(.+)$/;
+	var patronEmail=/(\w)+@(\w)+\.((\w)+|.(\w)+)+$/;
 	if (!patronEmail.test(email)){
-		res=res+", el email no es correcto";
+		res=res+"- El email no es correcto\n";
+		valido=false;
 	}
 	
-	if(sexo!="Hombre" || sexo!="Mujer"){
-		res=res+", selecciona un sexo";
+	if(sexo!="Hombre" && sexo!="Mujer"){
+		res=res+"- Selecciona un sexo\n";
+		valido=false;
 	}
 	
+	var patronFecha= /(0[1-9]|1[0-9]|2[0-9]|30|31)\/((0[1-9])|1[0-2])\/((19|20)[0-9]{2})/
+	if(patronFecha="" || !(patronFecha.test(fechaNac))){
+		res=res+"- La fecha de nacimiento no es correcta";
+		valido=false;
 	
 	
-	
-	
+	}
 	
 	if(valido){
 		return true;
