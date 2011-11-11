@@ -1,7 +1,9 @@
 body {
 	background-color:#acacc1;
 }
-
+#registrarse{
+	color: RED;
+}
 fieldset {
 	border-width:5px;
 	border-radius:1em;
