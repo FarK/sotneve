@@ -28,10 +28,10 @@
 					<label id="idalias" for="alias" class="labelleft" onblur="esCampoNoVacio(this.id)">Alias:</label>
 					<input type="text" name="alias" id="alias" class="inputleft"/>
 					<label for="sexo" class="labelright">Sexo:</label>
-					<select name="sexo" id="sexo" class="inputright">
-						<option>Selecciona</option>
-						<option>Hombre</option>
-						<option>Mujer</option>
+					<select  name="sexo" id="sexo" class="inputright">
+						<option> </option>
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
 					</select>
 				</div>
 				<div class="div2">
