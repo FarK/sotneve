@@ -24,8 +24,8 @@ if ($bd -> conectar()) {
 	$sexo = sexoToInt($sexo);
 	//pasa Hombre a 1 y Mujer a 0
 
-	if ($valido) {
-		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
+	if ($valido){ 
+		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
 	}
 
 }
@@ -97,7 +97,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 		echo("fecha2");
 		$valido = false;
 	}
-	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 6)) {//OK
+	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
 		echo("alias");
 		$valido = false;
 	}

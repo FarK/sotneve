@@ -14,15 +14,15 @@ function esFormularioValido() {
 	var res="No se ha podido completar el registro:\n"
 	var valido=true;
 
-	if(alias == "") {
-		res=res+"- El campo alias no puede ser vacío\n";
+	if(alias == "" || alias.length<3) {
+		res=res+"- El campo alias no puede ser vacío o menor de 3 caracteres\n";
 		valido=false;
 	}
 	if(nombre == "") {
 		res=res+"- El campo nombre no puede ser vacío\n";
 		valido=false;
 	}
-	if (apellidos == "") {
+	if (apellidos == "" ) {
 		res=res+"- El campo apellidos no puede ser vacío\n";
 		valido=false;		
 	}

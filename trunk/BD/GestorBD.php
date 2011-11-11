@@ -58,10 +58,11 @@
 			return mysql_fetch_assoc($this->consulta($query));
 		}
 		
-		public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos){
-			$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos) 
-			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
-			$this->consulta($query);			
+		public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos,$provincia){
+			$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia) 
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
+			$res = $this->consulta($query);
+					
 		}
 		
 		public function usuariosCon($campo,$elemento){
