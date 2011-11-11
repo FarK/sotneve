@@ -33,8 +33,8 @@ if ($bd -> conectar()) {
 function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias) {
 	$valido = true;
 	
-	$resultadoEmail = $bd -> usuariosCon($email);
-	$resultadoAlias = $bd -> usuariosCon($alias);
+	$resultadoEmail = $bd -> usuariosCon('email',$email);
+	$resultadoAlias = $bd -> usuariosCon('alias',$alias);
 	
 	$res = sprintf("Location:registro.php?");
 	echo("empezamos");
