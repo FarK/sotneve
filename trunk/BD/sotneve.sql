@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-11-2011 a las 14:58:11
+-- Tiempo de generación: 11-11-2011 a las 16:31:41
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -36,18 +36,6 @@ CREATE TABLE IF NOT EXISTS `afiliaciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comautonomas`
---
-
-CREATE TABLE IF NOT EXISTS `comautonomas` (
-  `idComAutonoma` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`idComAutonoma`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `eventos`
 --
 
@@ -59,16 +47,21 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `fechaCreacion` datetime NOT NULL,
   `descripcion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fechaEvento` datetime DEFAULT NULL,
-  `idComAutonoma` int(11) DEFAULT NULL,
   `idProvincia` int(11) DEFAULT NULL,
-  `idLocalidad` int(11) DEFAULT NULL,
   `lugar` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `propietario` int(11) NOT NULL,
   PRIMARY KEY (`idEvento`),
   KEY `idSubtipo` (`idSubtipo`),
-  KEY `idComAutonoma` (`idComAutonoma`),
   KEY `idProvincia` (`idProvincia`),
-  KEY `idLocalidad` (`idLocalidad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+  KEY `propietario` (`propietario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`idEvento`, `idSubtipo`, `titulo`, `maxPersonas`, `fechaCreacion`, `descripcion`, `fechaEvento`, `idProvincia`, `lugar`, `propietario`) VALUES
+(7, 1, 'Furbito a las 7', 6, '2011-11-11 12:12:35', 'Tol mundo en el campo. Hay que pagar 3 pavos', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -86,29 +79,13 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `localidades`
---
-
-CREATE TABLE IF NOT EXISTS `localidades` (
-  `idLocalidad` int(11) NOT NULL AUTO_INCREMENT,
-  `idProvincia` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`idLocalidad`),
-  KEY `idProvincia` (`idProvincia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `provincias`
 --
 
 CREATE TABLE IF NOT EXISTS `provincias` (
   `idProvincias` int(11) NOT NULL AUTO_INCREMENT,
-  `idComAutonoma` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`idProvincias`),
-  KEY `idComAutonoma` (`idComAutonoma`)
+  PRIMARY KEY (`idProvincias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -124,7 +101,14 @@ CREATE TABLE IF NOT EXISTS `subtipos` (
   `externo` tinyint(1) NOT NULL,
   PRIMARY KEY (`idSubTipo`),
   KEY `idTipo` (`idTipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `subtipos`
+--
+
+INSERT INTO `subtipos` (`idSubTipo`, `idTipo`, `nombre`, `externo`) VALUES
+(1, 1, 'Futbito', 0);
 
 -- --------------------------------------------------------
 
@@ -139,6 +123,13 @@ CREATE TABLE IF NOT EXISTS `tipos` (
   PRIMARY KEY (`idTipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipos`
+--
+
+INSERT INTO `tipos` (`idTipo`, `nombre`, `externo`) VALUES
+(1, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -149,14 +140,19 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `fechaNac` date NOT NULL,
   `sexo` tinyint(1) NOT NULL,
-  `email` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `pass` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` char(64) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`) VALUES
+(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6');
 
 -- --------------------------------------------------------
 
@@ -182,17 +178,16 @@ CREATE TABLE IF NOT EXISTS `valoraciones` (
 -- Filtros para la tabla `afiliaciones`
 --
 ALTER TABLE `afiliaciones`
-  ADD CONSTRAINT `afiliaciones_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `afiliaciones_ibfk_2` FOREIGN KEY (`idEvento`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `afiliaciones_ibfk_2` FOREIGN KEY (`idEvento`) REFERENCES `eventos` (`idEvento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `afiliaciones_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`idComAutonoma`) REFERENCES `comautonomas` (`idComAutonoma`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincias`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `eventos_ibfk_3` FOREIGN KEY (`idLocalidad`) REFERENCES `localidades` (`idLocalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_6` FOREIGN KEY (`propietario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `favoritos`
@@ -200,18 +195,6 @@ ALTER TABLE `eventos`
 ALTER TABLE `favoritos`
   ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`idUsuario1`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`idUsuario2`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `localidades`
---
-ALTER TABLE `localidades`
-  ADD CONSTRAINT `localidades_ibfk_1` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincias`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `provincias`
---
-ALTER TABLE `provincias`
-  ADD CONSTRAINT `provincias_ibfk_1` FOREIGN KEY (`idComAutonoma`) REFERENCES `comautonomas` (`idComAutonoma`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `subtipos`
