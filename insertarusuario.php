@@ -70,7 +70,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 	$mes = substr($fechanac, 3, 2);
 	$ano = substr($fechanac, 6, 9);
 
-	$diamax;
+	$diamax=0;
 	//No contemplamos visiestos ni los años
 
 	if ($mes > 0 && $mes < 13 && strlen($fechanac)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
