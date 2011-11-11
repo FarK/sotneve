@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-11-2011 a las 16:31:41
+-- Tiempo de generación: 11-11-2011 a las 17:17:19
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -143,16 +143,20 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `alias` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `pass` char(64) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `provincia` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`) VALUES
-(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6');
+INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `provincia`) VALUES
+(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', '', '', ''),
+(2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 'Sevilla');
 
 -- --------------------------------------------------------
 
