@@ -49,19 +49,14 @@
 				<div class="div4">
 					<label class="labelleft" for="email">Email:</label>
 					<input type="text" name="email" id="email" onblur="esEmailValido()" />
-					<label class="labelright" for="cp">Código postal:</label>
-					<input type="text" name="cp" id="cp" />
+					<label class="labelright">Fecha de nacimiento:</label>
+					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
 				</div>
 				<div class="div5">
 					<label class="labelleft" for="provincia">Provincia:</label>
 					<input type="text" name="provincia" id="provincia" />
-					<label class="labelright" for="comautonoma">Comunidad Autónoma:</label>
-					<input type="text" name="comautonoma" id="comautonoma"/>
 				</div>
-				<div>
-					<label class="labelleft">Fecha de nacimiento:</label>
-					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
-				</div>
+
 				<button type="submit" id="registrate">
 					¡Registrate!
 				</button>
