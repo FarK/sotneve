@@ -64,9 +64,9 @@
 			$this->consulta($query);			
 		}
 		
-		public function usuariosCon($elemento){
-			$query= sprintf("SELECT * FROM usuarios WHERE email = '%s'", $elemento);
-			$this->consulta($query);
+		public function usuariosCon($campo,$elemento){
+			$query= sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
+			return $this->consulta($query);
 		}
 	
 	}
