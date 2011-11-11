@@ -57,6 +57,18 @@
 			$query = sprintf("SELECT * FROM usuarios WHERE idUsuario = '%s'", $idUsuario);
 			return mysql_fetch_assoc($this->consulta($query));
 		}
+		
+		public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos){
+			$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos) 
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
+			$this->consulta($query);			
+		}
+		
+		public function usuariosCon($elemento){
+			$query= sprintf("SELECT * FROM usuarios WHERE email = '%s'", $elemento);
+			$this->consulta($query);
+		}
+	
 	}
 
 

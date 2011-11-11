@@ -25,19 +25,17 @@ if ($bd -> conectar()) {
 	//pasa Hombre a 1 y Mujer a 0
 
 	if ($valido) {
-		$string = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos) 
-			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
-		$bd -> consulta($string);
+		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos);
 	}
 
 }
 
 function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias) {
 	$valido = true;
-	$row = sprintf("SELECT * FROM usuarios WHERE email = '%s'", $email);
-	$resultadoEmail = $bd -> consulta($row);
-	$row = sprintf("SELECT * FROM usuarios WHERE alias = '%s'", $alias);
-	$resultadoAlias = $bd -> consulta($row);
+	
+	$resultadoEmail = $bd -> usuariosCon($email);
+	$resultadoAlias = $bd -> usuariosCon($alias);
+	
 	$res = sprintf("Location:registro.php?");
 	echo("empezamos");
 	//Hay error si...
