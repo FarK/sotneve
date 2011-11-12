@@ -7,6 +7,12 @@
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
+DROP DATABASE IF EXISTS sotneve;
+CREATE DATABASE IF NOT EXISTS sotneve
+	COLLATE utf8_spanish_ci;
+
+USE sotneve;
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
