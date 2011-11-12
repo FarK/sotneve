@@ -1,10 +1,16 @@
 <?php
 	include_once('BD/GestorBD.php');
+	include_once('BD/usuario.php');
 	session_start();
 	if(!isset($_SESSION['logged']))
 		header('Location:index.php');
 		
-	$usuarioActual = $_SESSION['idUsuario'];
+	echo $_SESSION['idUsuario'];
+	$usuarioActual = new Usuario($_SESSION['idUsuario']);
+	
+	if($usuarioActual->error() != 0)
+		header('Location:errores.php?error="usernotfound"');
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -27,23 +33,7 @@
 			<div id="favoritos"> 
 				<p><strong>Tus favoritos</strong></p>
 				<?php
-				$bd = new GestorBD();
-				if ($bd->conectar()) {
-					$query = sprintf("SELECT * FROM favoritos WHERE idUsuario1= '%s'", $usuarioActual);
-					$favoritos = $bd -> consulta($query);
-					while ($fila = mysql_fetch_assoc($favoritos)) {
-						$idUsuario2 = $fila['idUsuario2'];
-
-						$usuarios = $bd->usuariosCon('idUsuario', $idUsuario2);
-			
-						while ($fila = mysql_fetch_assoc($usuarios)) {
-							$alias = $fila['alias'];
-							$p= sprintf("<span><a href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $idUsuario2,$alias);
-							echo $p;
-						}
-					}
-					$bd->desconectar();
-				}
+				
 				?>
 			</div> 
 			

@@ -80,9 +80,10 @@ class Usuario{
 					//Si no existe el usuario (o ha fallado la consulta)
 					if(!$query)
 						$this->error = -1;
-					$alias2 = $bd->consulta($query);
+					$aliasRes = $bd->consulta($query);
+					$alias2 = mysql_fetch_assoc($aliasRes);
 
-					$this->favoritos[] = array(idUsuario => $idUsuario2 , alias => $alias2);
+					$this->favoritos[] = array('idUsuario' => $idUsuario2 , 'alias' => $alias2['alias']);
 				}
 			}
 			else	//Conexión fallida
@@ -132,15 +133,17 @@ class Usuario{
 					//Si no existe el usuario (o ha fallado la consulta)
 					if(!$query)
 						$this->error = -1;
-					$alias2 = $bd->consulta($query);
+					$aliasRes = $bd->consulta($query);
+					$alias2 = mysql_fetch_assoc($aliasRes);
 
-					$this->favoritos[] = array(idUsuario => $idUsuario2 , alias => $alias2);
+					$this->favoritos[] = array('idUsuario' => $idUsuario2 , 'alias' => $alias2['alias']);
 				}
 			}
 			else	//Conexión fallida
 				$this->error = -2;
 
 		}
+		return $this->favoritos;
 	}
 }
 ?>
