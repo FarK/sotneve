@@ -1,21 +1,23 @@
-body {
-	font: 76% arial, sans-serif;
-	text-align: center;
-	background-color: black;
-}
+/*body {
+ font: 76% arial, sans-serif;
+ text-align: center;
+
+ }*/
 div#contenedor {
-	margin: 0 auto auto auto;
 	width: 700px;
 	background-color: #333366;
 	height: 80px;
 	border-radius: 10px 10px;
 }
 div#logo {
+	text-align: center;
+	background: #333366;
+	border-radius: 10px 10px;
 	float: left;
 	color: #418eb6;
 	width: 400px;
 	height: 80px;
-	border-right: solid 1px;	
+	border-right: solid 1px;
 }
 div#usuario {
 	color: white;
@@ -23,17 +25,10 @@ div#usuario {
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
-div#links{
-	margin-top: 20px;
-}
-a#linkperfil{
-	margin-bottom: 10px;
-}
 a {
 	text-decoration: none;
 	color: #418eb6;
-	margin-top: 100px;
-	height: 200px;
+	height: 5px;
 }
 span {
 	font: 120% "Arial";
