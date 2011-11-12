@@ -1,0 +1,31 @@
+body {
+	background: #D0E8F7;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 76%;
+	
+}
+
+
+h1 {
+	margin: 10px 0 40px 0;
+	font-size: 3.5em;
+	color: #418eb6;
+}
+
+span{
+	display:block;
+	text-align: center;
+	color: #418eb6;	
+}
+
+#listafavoritos{
+	width:700px;
+	margin: 0px auto;
+	
+	margin: 10% auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
+	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
+	width: 800px;
+	border-style: dotted;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+}
