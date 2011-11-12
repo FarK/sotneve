@@ -7,7 +7,6 @@ $conectado = $bd -> conectar();
 function generaOption($bd, $campo, $tabla) {
 
 	$query = sprintf("SELECT %s FROM %s", $campo, $tabla);
-	echo($query);
 	$campos = $bd -> consulta($query);
 
 	while ($fila = mysql_fetch_assoc($campos)) {
