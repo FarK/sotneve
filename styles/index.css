@@ -1,8 +1,13 @@
 body {
-	background-color:#acacc1;
+	background-color: #D0E8F7;
 }
 #registrarse{
 	color: RED;
+	color: #418eb6;
+	font-style: oblique;
+	text-decoration:none;
+	display: block;
+	text-align: right;
 }
 fieldset {
 	border-width:5px;
@@ -38,10 +43,11 @@ input {
 	border:0px;
 	border-radius:10px;
 	padding:6px;
+	color: #418eb6;
 }
 
 h1 {
-	color:#992222;
+	color:#418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align:center
 }
