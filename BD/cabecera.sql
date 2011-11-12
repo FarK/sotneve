@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS sotneve;
+CREATE DATABASE IF NOT EXISTS sotneve
+	COLLATE utf8_spanish_ci;
+
+USE sotneve;
