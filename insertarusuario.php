@@ -27,7 +27,7 @@ if ($bd -> conectar()) {
 	if ($valido){ 
 		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
 	}
-
+	 $bd->desconectar();
 }
 
 function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias) {
