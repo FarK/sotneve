@@ -52,11 +52,6 @@
 				return false;
 			}
 		}
-
-		public function getUsuario($idUsuario){
-			$query = sprintf("SELECT * FROM usuarios WHERE idUsuario = '%s'", $idUsuario);
-			return mysql_fetch_assoc($this->consulta($query));
-		}
 		
 		public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos,$provincia){
 			$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia) 
