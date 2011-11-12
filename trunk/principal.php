@@ -34,7 +34,7 @@
 					while ($fila = mysql_fetch_assoc($favoritos)) {
 						$idUsuario2 = $fila['idUsuario2'];
 
-						$usuarios = $bd->usuarioCon('idUsuario', $idUsuario2);
+						$usuarios = $bd->usuariosCon('idUsuario', $idUsuario2);
 			
 						while ($fila = mysql_fetch_assoc($usuarios)) {
 							$alias = $fila['alias'];
