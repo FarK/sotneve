@@ -16,6 +16,7 @@
 					//Meter en la variable session que ha conectado
 					$_SESSION['logged'] = true;
 					$_SESSION['idUsuario'] = $row['idUsuario'];
+					header('Location:principal.php');
 			}else{
 				//Es incorrecta
 					//Redireccionar con GET a error
