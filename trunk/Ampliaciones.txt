@@ -30,3 +30,4 @@ EVENTO
 PERFIL
 ---------------------
 -Numero telefono en perfil?
+-Cuando tu ves el perfil de alguien mostrar la edad calculada
