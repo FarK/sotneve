@@ -1,0 +1,46 @@
+p{
+margin:0 10px 10px;
+}
+
+
+div#pie span
+{
+margin:0;
+padding:5px 10px;
+}
+ 
+div#cabecera{
+position:relative;
+}
+
+div#contenedor
+{
+width:700px;
+margin:0 auto;
+}
+div#wrapper
+{
+float:left;
+width:100%;
+}
+div#eventos
+{
+margin: 0 150px;
+}
+div#favoritos
+{
+float:left;
+width:150px;
+margin-left:-700px;
+}
+div#eventosUsuario
+{
+float:left;
+width:150px;
+margin-left:-150px;
+}
+div#pie
+{
+clear:left;
+width:100%;
+}
