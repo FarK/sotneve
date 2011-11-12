@@ -25,7 +25,7 @@ hr {
 }
 fieldset {
 
-	margin: auto auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
+	margin: 10% auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
 	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
 	width: 800px;
 	border-style: dotted;
@@ -37,6 +37,7 @@ div {
 	display: table-row;
 }
 input, select {
+	width: 170px;
 	border-radius: 4px 4px;
 	border-style: solid;
 	border-width: 1px;
@@ -57,7 +58,7 @@ label.labelright {
 
 
 select {
-	width: 155px;
+	background-color: white;
 	color: #418eb6;
 	border-radius: 4px 4px;
 	border-style: solid;
