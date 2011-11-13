@@ -1,13 +1,10 @@
 <?php
+	include ("includes/testSession.php");
 	include_once('BD/GestorBD.php');
 	include_once('BD/usuario.php');
-	session_start();
-	if(!isset($_SESSION['logged']))
-		header('Location:index.php');
-		
-	echo $_SESSION['idUsuario'];
+
+	//Creamos un objeto usuario con el usuario logeado
 	$usuarioActual = new Usuario($_SESSION['idUsuario']);
-	
 	if($usuarioActual->error() != 0)
 		header('Location:errores.php?error="usernotfound"');
 	
