@@ -1,4 +1,5 @@
 <?php
+	include ("includes/testSession.php");
 	include_once('BD/usuario.php');
 
 	//Crear objeto usuario

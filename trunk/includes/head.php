@@ -1,5 +1,4 @@
 <?php
-	include ("includes/testSession.php");
 	include_once("BD/usuario.php");
 
 	//Creamos el objeto usuario del usuario conectado
