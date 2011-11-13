@@ -1,9 +1,4 @@
 <?php
-	session_start();
-	if(!isset($_SESSION['logged'])){
-		//header('Location:index.php');
-	}		
-
 	include_once('BD/usuario.php');
 
 	//Crear objeto usuario
@@ -18,18 +13,19 @@
 
 ?>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- IMPORTANTE ESA LÍNEA DE AHÍ ARRIBA Y LA DE ABAJO!!!  -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - <?php echo $usuario->getCampo("alias"); ?></title>
 		<link rel="stylesheet" type="text/css" href="styles/index.css" />
-		<script type="text/javascript" src="scripts/index.js"></script>
 	</head>
 	<body>
+		<!-- Incluimos la cabecera -->
+		<?php include ("includes/head.php"); ?>
+
 		<h1><?php echo $usuario->getCampo("alias")?></h1>
 		
 		<div class="info_usuario">

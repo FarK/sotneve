@@ -20,6 +20,9 @@
 		<link rel="stylesheet" type="text/css" href="styles/principal.css" />
 	</head>
 	<body>
+		<!-- Incluimos la cabecera -->
+		<?php include ("includes/head.php"); ?>
+
 		<div id="contenedor"> 
 			<div id="cabecera">
 				<h1>Cabecera</h1>
