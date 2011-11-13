@@ -1,17 +1,16 @@
--- phpMyAdmin SQL Dump
--- version 3.4.5
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
--- Tiempo de generación: 11-11-2011 a las 17:17:19
--- Versión del servidor: 5.5.16
--- Versión de PHP: 5.3.8
-
 DROP DATABASE IF EXISTS sotneve;
 CREATE DATABASE IF NOT EXISTS sotneve
 	COLLATE utf8_spanish_ci;
 
 USE sotneve;
+-- phpMyAdmin SQL Dump
+-- version 3.4.7
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 13-11-2011 a las 01:41:34
+-- Versión del servidor: 5.5.16
+-- Versión de PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -81,6 +80,13 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
   PRIMARY KEY (`idUsuario1`,`idUsuario2`),
   KEY `idUsuario2` (`idUsuario2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `favoritos`
+--
+
+INSERT INTO `favoritos` (`idUsuario1`, `idUsuario2`) VALUES
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -152,6 +158,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `provincia` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `visibilidad` binary(2) NOT NULL COMMENT 'fechaNac, sexo, email, nombre, apellidos',
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
@@ -160,9 +167,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `provincia`) VALUES
-(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', '', '', ''),
-(2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 'Sevilla');
+INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `provincia`, `visibilidad`) VALUES
+(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'Rafael', 'Espillaque Espinosa', 'Sevilla', '11'),
+(2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 'Sevilla', '11');
 
 -- --------------------------------------------------------
 
