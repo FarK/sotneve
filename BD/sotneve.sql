@@ -1,9 +1,14 @@
+DROP DATABASE IF EXISTS sotneve;
+CREATE DATABASE IF NOT EXISTS sotneve
+	COLLATE utf8_spanish_ci;
+
+USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.7
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-11-2011 a las 18:00:20
+-- Tiempo de generación: 13-11-2011 a las 01:41:34
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -93,15 +98,7 @@ CREATE TABLE IF NOT EXISTS `provincias` (
   `idProvincias` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idProvincias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
-
---
--- Volcado de datos para la tabla `provincias`
---
-
-INSERT INTO `provincias` (`idProvincias`, `nombre`) VALUES
-(1, 'Sevilla'),
-(2, 'Huelva');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -110,21 +107,20 @@ INSERT INTO `provincias` (`idProvincias`, `nombre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `subtipos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `relacion` int(11) NOT NULL,
-  `opcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `idSubTipo` int(11) NOT NULL AUTO_INCREMENT,
+  `idTipo` int(11) NOT NULL,
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `externo` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idTipo` (`relacion`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+  PRIMARY KEY (`idSubTipo`),
+  KEY `idTipo` (`idTipo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `subtipos`
 --
 
-INSERT INTO `subtipos` (`id`, `relacion`, `opcion`, `externo`) VALUES
-(2, 1, 'Futobol', 0),
-(3, 2, 'Ir al teatro', 0);
+INSERT INTO `subtipos` (`idSubTipo`, `idTipo`, `nombre`, `externo`) VALUES
+(1, 1, 'Futbito', 0);
 
 -- --------------------------------------------------------
 
@@ -133,19 +129,18 @@ INSERT INTO `subtipos` (`id`, `relacion`, `opcion`, `externo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `opcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `idTipo` int(11) NOT NULL,
+  `nombre` int(11) NOT NULL,
   `externo` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`idTipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipos`
 --
 
-INSERT INTO `tipos` (`id`, `opcion`, `externo`) VALUES
-(1, 'Deportes', 0),
-(2, 'Espectaculos', 0);
+INSERT INTO `tipos` (`idTipo`, `nombre`, `externo`) VALUES
+(1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -208,6 +203,7 @@ ALTER TABLE `afiliaciones`
 --
 ALTER TABLE `eventos`
   ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincias`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_6` FOREIGN KEY (`propietario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -221,7 +217,7 @@ ALTER TABLE `favoritos`
 -- Filtros para la tabla `subtipos`
 --
 ALTER TABLE `subtipos`
-  ADD CONSTRAINT `subtipos_ibfk_1` FOREIGN KEY (`relacion`) REFERENCES `tipos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `subtipos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `valoraciones`
