@@ -46,6 +46,13 @@ if ($usuarioActual -> error() != 0)
 				<p>
 					<strong>Tus eventos</strong>
 				</p>
+								<?php
+				$eventos = $usuarioActual -> getEventos();
+				foreach ($eventos as $fav) {
+					$span = sprintf("<span><a href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
+					echo $span;
+				}
+				?>
 			</div>
 			<div id="pie">
 				<span>Pie</span>
