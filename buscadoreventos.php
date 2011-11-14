@@ -1,9 +1,9 @@
 <?php
-	include_once ('BD/GestorBD.php');
+include_once ('BD/GestorBD.php');
 
-	$bd = new GestorBD();
-	$conectado=$bd -> conectar();
-	
+$bd = new GestorBD();
+$conectado = $bd -> conectar();
+
 function generaOption($bd, $campo, $tabla) {
 
 	$query = sprintf("SELECT %s FROM %s", $campo, $tabla);
@@ -20,9 +20,7 @@ function generaOption($bd, $campo, $tabla) {
 
 function generaTipos() {
 
-
 	$consulta = mysql_query("SELECT id, opcion FROM tipos");
-
 
 	// Voy imprimiendo el primer select compuesto por los tipos
 	echo "<select name='tipos' id='tipos' onChange='cargaContenido(this.id)'>";
@@ -53,16 +51,19 @@ function generaTipos() {
 					?>
 				</select>
 			</div>
-
 			<div id="demoIzq">
-				<?php generaTipos();
-				$bd->desconectar();?>
+				<?php
+				if ($conectado) {
+					generaTipos();
+				}
+				$bd -> desconectar();
+				?>
+				$conectado=false;
 			</div>
-						<div id="demoDer">
+			<div id="demoDer">
 				<select disabled="disabled" name="subtipos" id="subtipos">
 					<option value="0">Selecciona opci&oacute;n...</option>
 				</select>
-				
 			</div>
 			<input id="buscareventos" class="btn" name="buscareventos" type="submit" value="Buscar eventos"/>
 		</div>
