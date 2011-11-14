@@ -18,7 +18,8 @@
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
-		<?php include ("includes/head.php"); ?>
+		<?php include ("includes/head.php"); 
+		include ("buscadoreventos.php")?>
 
 		<div id="contenedor"> 
 			<div id="cabecera">

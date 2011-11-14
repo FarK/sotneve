@@ -4,7 +4,7 @@
 
 select { width:220px; }
 */
-div.demo{
-	display:block;
+div{
+	display: inline;
 	
 }
