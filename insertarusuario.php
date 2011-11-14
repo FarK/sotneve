@@ -26,6 +26,7 @@ if ($bd -> conectar()) {
 
 	if ($valido){ 
 		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
+		header("Location:principal.php?");
 	}
 	 $bd->desconectar();
 }
