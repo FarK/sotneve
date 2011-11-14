@@ -1,56 +1,82 @@
+/*#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#EAEAEA; text-align:center; }
+
+#demoDer { float:right; }
+
+select { width:220px; }
+*/
+div{
+	display: inline;
+	
+}
 <?php
-	include ("includes/testSession.php");
-	include_once("BD/usuario.php");
-	include_once ('BD/GestorBD.php');
+include_once ('BD/GestorBD.php');
 
-	$bd = new GestorBD();
-	$conectado = $bd -> conectar();
+$bd = new GestorBD();
+$conectado = $bd -> conectar();
 
-	function generaOption($bd, $campo, $tabla) {
+function generaOption($bd, $campo, $tabla) {
 
-		$query = sprintf("SELECT %s FROM %s", $campo, $tabla);
-		$campos = $bd -> consulta($query);
+	$query = sprintf("SELECT %s FROM %s", $campo, $tabla);
+	echo $query;
+	$campos = $bd -> consulta($query);
 
-		while ($fila = mysql_fetch_assoc($campos)) {
-			$campoAux = $fila[$campo];
-			$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux, $campoAux);
-			echo $option;
-		}
-
+	while ($fila = mysql_fetch_assoc($campos)) {
+		$campoAux = $fila[$campo];
+		$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux, $campoAux);
+		echo $option;
 	}
-	//Incluimos la cabecera
-	include ("includes/head.php");
+
+}
+
+function generaTipos() {
+
+	$consulta = mysql_query("SELECT id, opcion FROM tipos");
+
+	// Voy imprimiendo el primer select compuesto por los tipos
+	echo "<select name='tipos' id='tipos' onChange='cargaContenido(this.id)'>";
+	echo "<option value='0'>Elige</option>";
+	while ($registro = mysql_fetch_row($consulta)) {
+		echo "<option value='" . $registro[0] . "'>" . $registro[1] . "</option>";
+	}
+	echo "</select>";
+}
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="es">
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles/favoritos.css" />
-		<title>Sotneve - Buscar evento </title>
-		
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Buscador</title>
+		<link rel="stylesheet" type="text/css" href="styles/buscarevento.css">
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
-		<select  name="provincia" id="provincia">
-		<?php
-			if ($conectado) {
-				generaOption($bd, 'nombre', 'provincias');
-			}
-		?>
-		</select>
-		<select  name="tipo" id="tipo">
-		<?php
-			if ($conectado) {
-				generaOption($bd, 'nombre', 'tipos');
-			}
-		?>
-		</select>
-		<select  name="subtipo" id="subtipo">
-		<?php
-			if ($conectado) {//condicionar los tipos
-				generaOption($bd, 'nombre', 'subtipos');
-			}
-		?>
-		</select>
+		<div id="demo" style="width:600px;">
+			<div id="demoIzq">
+				<select  name="provincia" id="provincia">
+					<?php
+					if ($conectado) {
+						generaOption($bd, 'nombre', 'provincias');
+					}
+					?>
+				</select>
+			</div>
+			<div id="demoIzq">
+				<?php
+				if ($conectado) {
+					generaTipos();
+				}
+				$bd -> desconectar();
+				
+				$conectado=false;
+				?>
+			</div>
+			<div id="demoDer">
+				<select disabled="disabled" name="subtipos" id="subtipos">
+					<option value="0">Selecciona opci&oacute;n...</option>
+				</select>
+			</div>
+			<input id="buscareventos" class="btn" name="buscareventos" type="submit" value="Buscar eventos"/>
+		</div>
 	</body>
 </html>
