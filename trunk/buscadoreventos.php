@@ -53,6 +53,7 @@ function generaTipos() {
 					?>
 				</select>
 			</div>
+
 			<div id="demoIzq">
 				<?php generaTipos();
 				$bd->desconectar();?>
@@ -61,7 +62,9 @@ function generaTipos() {
 				<select disabled="disabled" name="subtipos" id="subtipos">
 					<option value="0">Selecciona opci&oacute;n...</option>
 				</select>
+				
 			</div>
+			<input id="buscareventos" class="btn" name="buscareventos" type="submit" value="Buscar eventos"/>
 		</div>
 	</body>
 </html>
