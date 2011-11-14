@@ -20,7 +20,7 @@ function validaOpcion($opcionSeleccionada)
 	else return false;
 }
 
-$selectDestino=$_GET["select"]; $opcionSeleccionada=$_GET["opcion"];
+$selectDestino=$_GET["select"]; $opcionSeleccionada=$_GET["nombre"];
 
 if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada))
 {
@@ -29,7 +29,7 @@ include_once ('BD/GestorBD.php');
 
 $bd = new GestorBD();
 $bd->conectar();
-	$consulta=mysql_query("SELECT id, opcion FROM $tabla WHERE relacion='$opcionSeleccionada'") or die(mysql_error());
+	$consulta=mysql_query("SELECT idSubTipo, nombre FROM $tabla WHERE idTipo='$opcionSeleccionada'") or die(mysql_error());
 	$bd->desconectar();
 	
 	// Comienzo a imprimir el select

@@ -20,7 +20,7 @@ function generaOption($bd, $campo, $tabla) {
 
 function generaTipos() {
 
-	$consulta = mysql_query("SELECT id, opcion FROM tipos");
+	$consulta = mysql_query("SELECT idTipo, nombre FROM tipos");
 
 	// Voy imprimiendo el primer select compuesto por los tipos
 	echo "<select name='tipos' id='tipos' onChange='cargaContenido(this.id)'>";
