@@ -11,6 +11,7 @@ class Usuario{
 	private $idUsuario = NULL;
 	private $usuario = NULL;
 	private $favoritos = NULL;
+	private $eventosafiliados=NULL;
 
 	private $error = 0;
 
@@ -52,6 +53,44 @@ class Usuario{
 
 	public function esVisible($campo){
 		return ($this->usuario["visibilidad"] & $campo);
+	}
+	//Devuelve un array de arrays del tipo "idEvento => idEvento, titulo=> titulo"
+		public function getEventos(){
+			$fecha = time (); 
+			$actual =  date ( "Y-m-d h:i:s" , $fecha );
+			
+		//Si no ha sido inicializado antes hacemos la consulta
+		if(is_null($this->eventosafiliados)){
+			//Crear objeto gestor bd
+			$bd = new GestorBD();	
+			//inicializamos el array
+			$this->eventosafiliados = array();
+
+			if ($bd->conectar()){	//Se ha podido conectar
+				$query = sprintf("SELECT idEvento FROM afiliaciones WHERE idUsuario= '%s'", $this->idUsuario);
+				$tuplas = $bd->consulta($query);
+				//Si no existe el usuario (o ha fallado la consulta)
+				if(!$tuplas)
+					$this->error = -1;
+
+				while ($fila = mysql_fetch_assoc($tuplas)) {
+					//Obtenemos el idEvento y el titulo del evento
+					$idEvento2 = $fila['idEvento'];
+					$query = sprintf("SELECT titulo FROM eventos WHERE idEvento= '%s' AND fechaEvento>='%s'", $idEvento2, $actual);
+					//Si no existe el usuario (o ha fallado la consulta)
+					if(!$query)
+						$this->error = -1;
+					$aliasRes = $bd->consulta($query);
+					$titulo2 = mysql_fetch_assoc($aliasRes);
+
+					$this->eventosafiliados[] = array('idEvento' => $idEvento2 , 'titulo' => $titulo2['titulo']);
+				}
+			}
+			else	//Conexión fallida
+				$this->error = -2;
+
+		}
+		return $this->eventosafiliados;
 	}
 
 	//Devuelve un array de arrays del tipo "idUsuario => idUsuario, alias => alias"
