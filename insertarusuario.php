@@ -25,9 +25,16 @@ if ($bd -> conectar()) {
 	//pasa Hombre a 1 y Mujer a 0
 
 	if ($valido){ 
-		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
+		if($ok=$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia)){
+			header("Location:principal.php?");
+		}else{
+			header("Location:errores.php?");
+		}
+		
 	}
 	 $bd->desconectar();
+}else{
+	header("Location:errores.php?");
 }
 
 function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias) {

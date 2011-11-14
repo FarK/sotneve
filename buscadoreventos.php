@@ -57,8 +57,9 @@ function generaTipos() {
 					generaTipos();
 				}
 				$bd -> desconectar();
-				?>
+				
 				$conectado=false;
+				?>
 			</div>
 			<div id="demoDer">
 				<select disabled="disabled" name="subtipos" id="subtipos">
