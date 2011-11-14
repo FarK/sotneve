@@ -17,4 +17,6 @@
 	<a id="linkperfil" href="evento.css">Mi perfil</a>
 	<a href="formulario.xhtml">Logout</a>
 	</div>
+
+	<?php include ("buscarevento.php"); ?>
 </div>

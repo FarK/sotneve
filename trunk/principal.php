@@ -17,9 +17,7 @@ if ($usuarioActual -> error() != 0)
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
-		<?php include ("includes/head.php");
-include ("buscarevento.php")
-		?>
+		<?php include ("includes/head.php"); 
 
 		<div id="contenedor">
 			<div id="cabecera">
