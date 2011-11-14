@@ -1,13 +1,3 @@
-/*#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#EAEAEA; text-align:center; }
-
-#demoDer { float:right; }
-
-select { width:220px; }
-*/
-div{
-	display: inline;
-	
-}
 <?php
 include_once ('BD/GestorBD.php');
 
