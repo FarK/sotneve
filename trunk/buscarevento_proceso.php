@@ -34,7 +34,7 @@ $bd->conectar();
 	
 	// Comienzo a imprimir el select
 	echo "<select name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
-	echo "<option value='0'>Elige</option>";
+	echo "<option value='0'>Todos</option>";
 	while($registro=mysql_fetch_row($consulta))
 	{
 		// Convierto los caracteres conflictivos a sus entidades HTML correspondientes para su correcta visualizacion

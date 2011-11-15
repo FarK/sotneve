@@ -9,7 +9,7 @@ include_once ('BD/GestorBD.php');
 
 $bd = new GestorBD();
 
-if ($provincia == NULL || $subtipos == NULL) {
+if ($provincia == NULL || $subtipos == NULL) {//Valido los datos que me llegan por get parte1 de 2
 	header('Location:errores.php?error="Busqueda no valida"');
 }
 ?>
@@ -36,19 +36,27 @@ if ($provincia == NULL || $subtipos == NULL) {
 		if ($conectado) {
 
 			$provinciaString = $bd -> getNombreElementoCon('provincias', 'idProvincia', $provincia);
-
 			$subtipoString = $bd -> getNombreElementoCon('subtipos', 'idSubTipo', $subtipos);
+			
+			if($subtipos==0){
+				$subtipoString="'Todos'";
+			}
 
-			if ($provinciaString == NULL || $subtipoString == NULL) {
+			if ($provinciaString == NULL || $subtipoString == NULL) {//Valido los datos que me llegan por get parte2 de 2
 				header('Location:errores.php?error="los valores de busqueda no existen en la base de datos"');
 			}
 			$aux = sprintf("En %s buscando la actividad %s", $provinciaString, $subtipoString);
+			
 			echo($aux);
 		}
 		?></h1>
 		<?php
 		if ($conectado) {
-			$tuplas = $bd -> getEventosConProvinciaYSubtipoNoCaducados($provincia, $subtipos);
+			if($subtipos==0){//Si es 0 se muestran todos
+				$tuplas = $bd -> getTodosEventosConProvinciaNoCaducados($provincia, $subtipos);
+			}else{
+				$tuplas = $bd -> getEventosConProvinciaYSubtipoNoCaducados($provincia, $subtipos);
+				}
 			$bd -> desconectar();
 		}
 
