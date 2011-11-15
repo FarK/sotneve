@@ -61,5 +61,10 @@ function generaTipos() {
 		</select>
 	
 
-	<input id="buscareventos" class="btn" name="buscareventos" type="submit" value="Buscar eventos"/>
+	<?php
+		//hacer que $idProvincia y $idSubTipo de la linea siguiente, valga el id correspondiente con la palabra seleccionada en el momento, para poder generar bien el link de busqueda
+		$linea=sprintf("<input id='buscareventos' class='btn' name='buscareventos' value='Buscar eventos' href='resultadobusqueda.php&idProvincia=%s&idSubTipo=%s'/>", $idProvincia,$idSubTipo);
+		echo ($linea);
+	?>
+	
 </div>
