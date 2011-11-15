@@ -5,6 +5,7 @@ class Evento {
 
 	private $idEvento = NULL;
 	private $evento = NULL;
+	private $asistentes = NULL;
 
 	private $error = 0;
 
@@ -28,16 +29,54 @@ class Evento {
 		}
 
 	}
-	
-	public function error(){
-		return $this->error;
+
+	public function error() {
+		return $this -> error;
 	}
-	
-	public function getCampo($campo){
-		return $this->evento[$campo];
+
+	public function getCampo($campo) {
+		return $this -> evento[$campo];
 	}
-	
-	
+
+	public function getAsistentes() {
+		if (is_null($this -> asistentes)) {
+			$this -> asistentes = array();
+			$bd = new GestorBD();
+			if ($bd -> conectar()) {
+				$query = sprintf("SELECT alias,afiliaciones.idUsuario FROM usuarios, afiliaciones 
+				WHERE usuarios.idUsuario=afiliaciones.idUsuario AND afiliaciones.idEvento='%s'", $this -> idEvento);
+
+				$tuplas = $bd -> consulta($query);
+
+				if (!$tuplas) {
+					$this -> error = -1;
+				} else {
+					while ($fila = mysql_fetch_assoc($tuplas)) {
+						//Obtenemos los idUsuario y sus alias
+						$idUsuario = $fila['idUsuario'];
+						$aliasAns = $fila['alias'];
+						$this -> asistentes[] = array('idUsuario' => $idUsuario, 'alias' => $aliasAns);
+					}
+
+				}
+			} else//Conexión fallida
+				$this -> error = -2;
+
+		}
+		return $this -> asistentes;
+	}
+
+	public function getNumAsistentes() {
+		$bd = new GestorBD();
+		if ($bd -> conectar()) {
+			$query = sprintf("SELECT idUsuario FROM afiliaciones WHERE afiliaciones.idEvento = '%s'", $this -> idEvento);
+			$tupla = $bd -> consulta($query);
+			$numAsistentes = mysql_num_rows($tupla);
+		} else//Conexión fallida
+			$this -> error = -2;
+		return $numAsistentes;
+
+	}
 
 }
 ?>
