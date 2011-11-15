@@ -81,6 +81,8 @@ class GestorBD {
 			$tuplas = $this -> consulta($query);
 		return $tuplas;
 	}
+		
+
 
 }
 ?>

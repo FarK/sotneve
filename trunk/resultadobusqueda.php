@@ -66,8 +66,9 @@ if ($provincia == NULL || $subtipos == NULL) {//Valido los datos que me llegan p
 			$titulo = $evento -> getCampo('titulo');
 			$maxpersonas = $evento -> getCampo('maxPersonas');
 			$lugar = $evento -> getCampo('lugar');
-
-			$linea = sprintf("<span><a href='infoEvento.php?&idEvento=%s'>Evento: %s , numero de personas %s, lugar %s %s</a></span>", $idEvento2, $titulo, $maxpersonas, $lugar, $provincia);
+			$personasActuales=$evento -> getNumAsistentes();
+			
+			$linea = sprintf("<span><a href='infoEvento.php?&idEvento=%s'>Evento: %s , numero de personas %s de %s, lugar %s</a></span>", $idEvento2, $titulo, $personasActuales,$maxpersonas, $lugar);
 			echo($linea);
 		}
 		?>
