@@ -32,8 +32,9 @@ function generaTipos() {
 }
 ?>
 
-<div id="demo" style="width:600px;">
-	<div id="demoIzq">
+
+<div id="buscador" name="buscador" style="width:600px;">
+	
 		<select  name="provincia" id="provincia">
 			<?php
 			if ($conectado) {
@@ -41,9 +42,9 @@ function generaTipos() {
 			}
 			?>
 		</select>
-	</div>
 
-	<div id="demoIzq">
+
+	
 		<?php
 		if ($conectado) {
 			generaTipos();
@@ -52,13 +53,13 @@ function generaTipos() {
 		
 		$conectado=false;
 		?>
-	</div>
+	
 
-	<div id="demoDer">
+	
 		<select disabled="disabled" name="subtipos" id="subtipos">
 			<option value="0">Selecciona opci&oacute;n...</option>
 		</select>
-	</div>
+	
 
 	<input id="buscareventos" class="btn" name="buscareventos" type="submit" value="Buscar eventos"/>
 </div>
