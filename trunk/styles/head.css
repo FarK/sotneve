@@ -7,6 +7,7 @@
 	background-color: #418eb6;
 	width:700px;
 	margin: auto;
+	border-radius: 10px 10px;
 	/*color: #eaf3fa;*/
  }
 div#hcontenedor {
@@ -15,15 +16,36 @@ div#hcontenedor {
 	height: 80px;
 	border-radius: 10px 10px;
 }
+div#hbotones{
+
+}
+a#hinicio,#hfavoritos{
+	
+}
+
+
+
+
+div#hlugarbuscador{
+	margin-top: 400px;
+	display :block;
+	display: table-row;
+	width:650px;
+	
+}
+
+
 div#hlogo {
 	text-align: center;
-	background: #333366;
+	background: #eaf3fa;
 	border-radius: 10px 10px;
 	float: left;
 	color: #418eb6;
 	width: 400px;
 	height: 80px;
 	border-right: solid 1px;
+	
+	
 }
 div#husuario {
 	color: white;
