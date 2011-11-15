@@ -17,7 +17,7 @@ class Evento {
 			$query = sprintf("SELECT * FROM eventos WHERE idEvento = '%s'", $idEvento);
 			$this -> evento = mysql_fetch_assoc($bd -> consulta($query));
 			//Si no existe el usuario (o ha fallado la consulta)
-			if (!$this -> usuario)
+			if (!$this -> evento)
 				$this -> error = -1;
 
 			//Desconectar de la bd
