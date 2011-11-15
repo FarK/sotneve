@@ -22,6 +22,9 @@ if ($provincia == NULL || $subtipos == NULL) {
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="styles/resultadobusqueda.css" />
+		
+		<link rel="stylesheet" type="text/css" href="styles/buscarevento.css">
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
