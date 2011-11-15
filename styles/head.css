@@ -3,13 +3,19 @@
  text-align: center;
 
  }*/
-div#contenedor {
+ div#hcabecera{
+	background-color: #418eb6;
+	width:700px;
+	margin: auto;
+	/*color: #eaf3fa;*/
+ }
+div#hcontenedor {
 	width: 700px;
 	background-color: #333366;
 	height: 80px;
 	border-radius: 10px 10px;
 }
-div#logo {
+div#hlogo {
 	text-align: center;
 	background: #333366;
 	border-radius: 10px 10px;
@@ -19,18 +25,11 @@ div#logo {
 	height: 80px;
 	border-right: solid 1px;
 }
-div#usuario {
+div#husuario {
 	color: white;
 	float: right;
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
-a {
-	text-decoration: none;
-	color: #418eb6;
-	height: 5px;
-}
-span {
-	font: 120% "Arial";
-}
+
 
