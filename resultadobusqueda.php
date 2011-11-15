@@ -22,25 +22,24 @@ if ($provincia == NULL || $subtipos == NULL) {
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="styles/resultadobusqueda.css" />
-		
 		<link rel="stylesheet" type="text/css" href="styles/buscarevento.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
 		<?php
-			include ("includes/head.php");
+		include ("includes/head.php");
 		?>
 
 		<h1><?php
-		$conectado=$bd -> conectar();
+		$conectado = $bd -> conectar();
 		if ($conectado) {
 
-			$provinciaString=$bd-> getNombreElementoCon('provincias','idProvincia',$provincia);
-			
-			$subtipoString=$bd-> getNombreElementoCon('subtipos','idSubTipo',$subtipos);
-			
-			if($provinciaString==NULL || $subtipoString==NULL){
+			$provinciaString = $bd -> getNombreElementoCon('provincias', 'idProvincia', $provincia);
+
+			$subtipoString = $bd -> getNombreElementoCon('subtipos', 'idSubTipo', $subtipos);
+
+			if ($provinciaString == NULL || $subtipoString == NULL) {
 				header('Location:errores.php?error="los valores de busqueda no existen en la base de datos"');
 			}
 			$aux = sprintf("En %s buscando la actividad %s", $provinciaString, $subtipoString);
@@ -48,22 +47,21 @@ if ($provincia == NULL || $subtipos == NULL) {
 		}
 		?></h1>
 		<?php
-			if($conectado){		
-			$tuplas=$bd->getEventosConProvinciaYSubtipoNoCaducados($provincia,$subtipos);
+		if ($conectado) {
+			$tuplas = $bd -> getEventosConProvinciaYSubtipoNoCaducados($provincia, $subtipos);
 			$bd -> desconectar();
-			}
-			
-			while ($fila = mysql_fetch_assoc($tuplas)) {
-				$idEvento2 = $fila['idEvento'];
-				$evento = new Evento($idEvento2);
-				$titulo=$evento -> getCampo('titulo');
-				$maxpersonas=$evento -> getCampo('maxPersonas');
-				$lugar=$evento -> getCampo('lugar');
-				
-				$linea=sprintf("<span><a href='infoEvento.php?&idEvento=%s'>Evento: %s , numero de personas %s, lugar %s %s</a></span>", $idEvento2, $titulo, $maxpersonas, $lugar, $provincia);
-				echo ($linea);
-			}
-		
+		}
+
+		while ($fila = mysql_fetch_assoc($tuplas)) {
+			$idEvento2 = $fila['idEvento'];
+			$evento = new Evento($idEvento2);
+			$titulo = $evento -> getCampo('titulo');
+			$maxpersonas = $evento -> getCampo('maxPersonas');
+			$lugar = $evento -> getCampo('lugar');
+
+			$linea = sprintf("<span><a href='infoEvento.php?&idEvento=%s'>Evento: %s , numero de personas %s, lugar %s %s</a></span>", $idEvento2, $titulo, $maxpersonas, $lugar, $provincia);
+			echo($linea);
+		}
 		?>
 	</body>
 </html>
