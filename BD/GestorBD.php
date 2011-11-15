@@ -74,6 +74,13 @@ class GestorBD {
 			$tuplas = $this -> consulta($query);
 		return $tuplas;
 	}
+		public  function getTodosEventosConProvinciaNoCaducados($provincia,$subtipo){
+			$fecha = time (); 
+			$actual =  date ( "Y-m-d h:i:s" , $fecha );
+			$query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND fechaEvento>='%s'", $provincia, $actual);
+			$tuplas = $this -> consulta($query);
+		return $tuplas;
+	}
 
 }
 ?>
