@@ -3,13 +3,13 @@ include ("includes/testSession.php");
 include_once ('BD/evento.php');
 
 $provincia = $_GET["provincia"];
-$subtipo = $_GET["subtipo"];
+$subtipos = $_GET["subtipos"];
 //Comprobar si ha habido errores
 include_once ('BD/GestorBD.php');
 
 $bd = new GestorBD();
 
-if ($provincia == NULL || $subtipo == NULL) {
+if ($provincia == NULL || $subtipos == NULL) {
 	header('Location:errores.php?error="Busqueda no valida"');
 }
 ?>
@@ -35,7 +35,7 @@ if ($provincia == NULL || $subtipo == NULL) {
 
 			$provinciaString=$bd-> getNombreElementoCon('provincias','idProvincia',$provincia);
 			
-			$subtipoString=$bd-> getNombreElementoCon('subtipos','idSubTipo',$subtipo);
+			$subtipoString=$bd-> getNombreElementoCon('subtipos','idSubTipo',$subtipos);
 			
 			if($provinciaString==NULL || $subtipoString==NULL){
 				header('Location:errores.php?error="los valores de busqueda no existen en la base de datos"');
@@ -46,7 +46,7 @@ if ($provincia == NULL || $subtipo == NULL) {
 		?></h1>
 		<?php
 			if($conectado){		
-			$tuplas=$bd->getEventosConProvinciaYSubtipoNoCaducados($provincia,$subtipo);
+			$tuplas=$bd->getEventosConProvinciaYSubtipoNoCaducados($provincia,$subtipos);
 			$bd -> desconectar();
 			}
 			
