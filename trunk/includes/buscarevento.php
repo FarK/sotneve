@@ -4,15 +4,15 @@ include_once ('BD/GestorBD.php');
 $bd = new GestorBD();
 $conectado = $bd -> conectar();
 
-function generaOption($bd, $campo, $tabla) {
+function generaOption($bd, $campo, $tabla) { //el metodo ya no es generico
 
-	$query = sprintf("SELECT %s FROM %s", $campo, $tabla);
-	echo $query;
+	$query = sprintf("SELECT %s,idProvincia FROM %s", $campo, $tabla);
 	$campos = $bd -> consulta($query);
-
+	
 	while ($fila = mysql_fetch_assoc($campos)) {
 		$campoAux = $fila[$campo];
-		$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux, $campoAux);
+		$campoAux2 =$fila['idProvincia'];
+		$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux2, $campoAux);
 		echo $option;
 	}
 
@@ -32,9 +32,10 @@ function generaTipos() {
 }
 ?>
 
+<form name="form" method="get" action="generabusqueda.php">
 
 <div id="buscador" name="buscador" style="width:600px;">
-	
+	<div id="bus">
 		<select  name="provincia" id="provincia">
 			<?php
 			if ($conectado) {
@@ -43,7 +44,8 @@ function generaTipos() {
 			?>
 		</select>
 
-
+	</div>
+	<div id="bus">
 	
 		<?php
 		if ($conectado) {
@@ -54,17 +56,20 @@ function generaTipos() {
 		$conectado=false;
 		?>
 	
-
-	
+</div>
+	<div id="bus">
 		<select disabled="disabled" name="subtipos" id="subtipos">
 			<option value="0">Selecciona opci&oacute;n...</option>
 		</select>
-	
+	</div>
 
-	<?php
-		//hacer que $idProvincia y $idSubTipo de la linea siguiente, valga el id correspondiente con la palabra seleccionada en el momento, para poder generar bien el link de busqueda
-		$linea=sprintf("<input id='buscareventos' class='btn' name='buscareventos' value='Buscar eventos' href='resultadobusqueda.php&idProvincia=%s&idSubTipo=%s'/>", $idProvincia,$idSubTipo);
-		echo ($linea);
-	?>
+
 	
 </div>
+<button type="submit" id="buscar">
+					¡Buscar!
+</button>
+
+</form>
+
+
