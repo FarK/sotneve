@@ -48,7 +48,7 @@ class GestorBD {
 
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
 		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
-			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia,0);
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		$res = $this -> consulta($query);
 		var_dump($query);
 
@@ -57,6 +57,22 @@ class GestorBD {
 	public function usuariosCon($campo, $elemento) {
 		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
 		return $this -> consulta($query);
+	}
+
+	public function getNombreElementoCon($tabla,$elemento,$id) {
+		$aux = sprintf("SELECT nombre FROM %s WHERE %s=%s", $tabla,$elemento, $id);
+		$provinciaAux = $this -> consulta($aux);
+		while ($fila = mysql_fetch_assoc($provinciaAux)) {
+			return $provinciaString = $fila['nombre'];
+		}
+	}
+	
+	public  function getEventosConProvinciaYSubtipoNoCaducados($provincia,$subtipo){
+			$fecha = time (); 
+			$actual =  date ( "Y-m-d h:i:s" , $fecha );
+			$query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND idSubTipo='%s' AND fechaEvento>='%s'", $provincia, $subtipo, $actual);
+			$tuplas = $this -> consulta($query);
+		return $tuplas;
 	}
 
 }
