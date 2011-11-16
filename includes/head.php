@@ -11,7 +11,7 @@ if ($usuario -> error() == -2)//No pudo conectar
 
 <div id="hcabecera">
 	<div id="hlogo">
-		<h1>logo</h1>
+		<IMG SRC="images/logo.jpg" ALT="Inicio">
 	</div>
 	<div id="husuario">
 		<span>hola, <?php echo $usuario -> getCampo("nombre") . " " . $usuario -> getCampo("apellidos");?>;</span>

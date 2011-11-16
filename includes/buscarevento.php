@@ -4,14 +4,14 @@ include_once ('BD/GestorBD.php');
 $bd = new GestorBD();
 $conectado = $bd -> conectar();
 
-function generaOption($bd, $campo, $tabla) { //el metodo ya no es generico
+function generaOption($bd, $campo, $tabla) {//el metodo ya no es generico
 
 	$query = sprintf("SELECT %s,idProvincia FROM %s", $campo, $tabla);
 	$campos = $bd -> consulta($query);
-	
+
 	while ($fila = mysql_fetch_assoc($campos)) {
 		$campoAux = $fila[$campo];
-		$campoAux2 =$fila['idProvincia'];
+		$campoAux2 = $fila['idProvincia'];
 		$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux2, $campoAux);
 		echo $option;
 	}
@@ -33,38 +33,35 @@ function generaTipos() {
 ?>
 
 <form name="form" method="get" action="generabusqueda.php">
-
-<div id="buscador" name="buscador" style="width:600px;">
-
-		<select  name="provincia" id="provincia">
+	<div id="buscador" name="buscador" style="width:600px;">
+		<div>
+			<select  name="provincia" id="provincia">
+				<?php
+				if ($conectado) {
+					generaOption($bd, 'nombre', 'provincias');
+				}
+				?>
+			</select>
+		</div>
+		<div>
 			<?php
 			if ($conectado) {
-				generaOption($bd, 'nombre', 'provincias');
+				generaTipos();
 			}
+			$bd -> desconectar();
+
+			$conectado = false;
 			?>
-		</select>
-
-
-		<?php
-		if ($conectado) {
-			generaTipos();
-		}
-		$bd -> desconectar();
-		
-		$conectado=false;
-		?>
-	
-
-		<select disabled="disabled" name="subtipos" id="subtipos">
-			<option value="0">Selecciona opci&oacute;n...</option>
-		</select>
-	
-
-
-	<button type="submit" id="btnbuscar">
-					¡Buscar!
-</button>
-</div>
+		</div>
+		<div>
+			<select disabled="disabled" name="subtipos" id="subtipos">
+				<option value="0">Selecciona opci&oacute;n...</option>
+			</select>
+		</div>
+		<div>
+			<button type="submit" id="btnbuscar">
+				¡Buscar!
+			</button>
+		</div>
+	</div>
 </form>
-
-

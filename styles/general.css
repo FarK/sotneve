@@ -71,6 +71,10 @@ div #buscador{/*No es de estas lineas el problema de que el buscador desapararez
 	
 }
 
+img{
+	border-top-left-radius: 5px 5px;
+}
+
 
 
 
