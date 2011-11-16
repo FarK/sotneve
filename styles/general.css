@@ -5,7 +5,7 @@
  }*/
  div#hcabecera{
 	background-color: #418eb6;
-	width:700px;
+	width:900px;
 	margin: auto;
 	border-radius: 10px 10px;
 	/*color: #eaf3fa;*/
@@ -16,25 +16,36 @@ div#hcontenedor {
 	height: 80px;
 	border-radius: 10px 10px;
 }
+div#husuario{
+	
+	
+}
 div#hbotones{
 
-}
-a#hinicio,#hfavoritos{
 	
 }
 
-
-
-
-div#hlugarbuscador{
-	margin-top: 400px;
-	display :block;
-	display: table-row;
-	width:650px;
+select {
+	
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6;
+	color: #418eb6;
+}
+a{
+	margin-top:5px;
+	/*box-shadow: 0px 0px 5px #FFFFFF; efecto de difuminado del borde*/
+	margin-left:5px;
+	border:0px;
+	border-radius:10px;
+	padding:6px;
+	color: #418eb6;
+	font-weight:bold;
+	background-color: #D0E8F7;
+	text-decoration: none;
 	
 }
-
-
 div#hlogo {
 	text-align: center;
 	background: #eaf3fa;
@@ -53,8 +64,69 @@ div#husuario {
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
-div #buscador{
+div #buscador{/*No es de estas lineas el problema de que el buscador desapararezca*/
 	
-	width:650px;
+	margin: 10px 50% 0 250px;
+	display: inline-block;
 	
 }
+
+
+
+
+
+
+
+
+
+body {
+	background-color: #D0E8F7;
+}
+
+fieldset {
+	border-width:5px;
+	border-radius:1em;
+	position:absolute;
+/*	width:170px;
+	height:80px;
+*/
+	top:10%;
+	right:10%;
+/*
+	margin-top:-40px;
+	margin-left:-85px;
+*/
+	box-shadow: 0px 0px 10px #FFFFFF;
+}
+
+legend { display:none; }
+
+
+label{ display:none; }
+span.errorserv{color:red;}
+
+input {
+	/*height:30px;*/
+	margin-top:5px;
+	box-shadow: 0px 0px 5px #FFFFFF;
+	margin-left:5px;
+	border:0px;
+	border-radius:10px;
+	padding:6px;
+	color: #418eb6;
+}
+
+h1 {
+	color:#418eb6;
+	text-shadow: 0px 0px 2px #FFFFFF;
+	text-align:center
+}
+
+#btnbuscar {
+	background-color: #eaf3fa;
+	color: #418eb6;
+	border-radius: 10px 10px;
+	position: absolute;
+	
+}
+

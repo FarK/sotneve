@@ -15,16 +15,16 @@ if ($usuario -> error() == -2)//No pudo conectar
 	</div>
 	<div id="husuario">
 		<span>hola, <?php echo $usuario -> getCampo("nombre") . " " . $usuario -> getCampo("apellidos");?>;</span>
-		<a id="hlinkperfil" href="evento.css">Mi perfil</a>
-		<a href="formulario.xhtml">Logout</a>
 	</div>
 	<div id="hbotones">
 		<a id="hinicio" href="principal.php">Inicio</a>
 		<a id="hfavoritos" href="favoritos.php">Favoritos</a>
+		<a id="hlinkperfil" href="evento.css">Mi perfil</a>
+		<a href="formulario.xhtml">Logout</a>
 	</div>
-	<div id="hlugarbuscador">
+
 		<?php
 		include ("buscarevento.php");
 		?>
-	</div>
+
 </div>

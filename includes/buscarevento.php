@@ -35,7 +35,7 @@ function generaTipos() {
 <form name="form" method="get" action="generabusqueda.php">
 
 <div id="buscador" name="buscador" style="width:600px;">
-	<div id="bus">
+
 		<select  name="provincia" id="provincia">
 			<?php
 			if ($conectado) {
@@ -44,9 +44,7 @@ function generaTipos() {
 			?>
 		</select>
 
-	</div>
-	<div id="bus">
-	
+
 		<?php
 		if ($conectado) {
 			generaTipos();
@@ -56,20 +54,17 @@ function generaTipos() {
 		$conectado=false;
 		?>
 	
-</div>
-	<div id="bus">
+
 		<select disabled="disabled" name="subtipos" id="subtipos">
 			<option value="0">Selecciona opci&oacute;n...</option>
 		</select>
-	</div>
-
-
 	
-</div>
-<button type="submit" id="buscar">
+
+
+	<button type="submit" id="btnbuscar">
 					¡Buscar!
 </button>
-
+</div>
 </form>
 
 
