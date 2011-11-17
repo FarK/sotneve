@@ -5,7 +5,12 @@
 		//header('Location:TOOOOOOODOOOOOOOOOO');
 		session_unset();
 		session_destroy();
-	}		
+	}
+	
+	if(isset($_GET['mens'])){
+		$mensaje=sprintf("<span class='mens'>%s</span>",$_GET['mens']);
+		echo $mensaje;
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- IMPORTANTE ESA LÍNEA DE AHÍ ARRIBA Y LA DE ABAJO!!!  -->
