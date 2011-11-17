@@ -24,9 +24,13 @@ if ($bd -> conectar()) {
 	$sexo = sexoToInt($sexo);
 	//pasa Hombre a 1 y Mujer a 0
 
-	if ($valido){ 
+	if ($valido){
+		
+		
+		 
 		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
-		header("Location:principal.php?");
+		$aux=sprintf("Location:index.php?mens=Registrado con exito. %s",$provincia);
+		header($aux);
 	}
 	 $bd->desconectar();
 }
@@ -101,6 +105,24 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
 		echo("alias");
 		$valido = false;
+	}
+	
+	if($provincia==0){
+			$res = $res . '&err_campos';
+		$valido=false;
+	}elseif(!$camposvacios){
+		
+		$query=sprintf("SELECT idProvincia FROM provincias WHERE idProvincia=%s",$provincia);
+		$tuplas=$bd->consulta($query);
+		
+		while ($fila = mysql_fetch_assoc($tuplas)  && mysql_num_rows($fila)<=1 && mysql_num_rows($fila)>0) { 
+			$prov=$fila['idProvincia'];
+			if($prov==""){
+				$res = $res . '&err_campos';
+				$valido=false;
+			}	
+		}
+		
 	}
 
 	if ($valido) {

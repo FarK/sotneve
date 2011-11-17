@@ -54,7 +54,30 @@
 				</div>
 				<div class="div5">
 					<label class="labelleft" for="provincia">Provincia:</label>
-					<input type="text" name="provincia" id="provincia" />
+					<select  name="provincia" id="provincia">
+						<option value="0"></option>
+						<?php
+						
+						include_once 'BD/GestorBD.php';
+						//Crear objeto gestor bd
+						$bd = new GestorBD();
+						//Conectar a la bd
+						if ($bd -> conectar()) {
+						$query=sprintf("SELECT idProvincia, nombre FROM provincias");
+						$tuplas=$bd->consulta($query);
+						while ($fila = mysql_fetch_assoc($tuplas)) {
+							$idProvincia = $fila['idProvincia'];
+							$nombre=$fila['nombre'];
+							$option=sprintf('<option value="%s">%s</option>',$idProvincia,$nombre);
+							echo $option;
+						}
+						$bd->desconectar();
+						}else{
+							//Error aqui cuando aclaremos que vamos hacer con ellos
+						}
+							
+						?>
+					</select>
 				</div>
 
 				<button type="submit" id="registrate">
