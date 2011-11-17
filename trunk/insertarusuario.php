@@ -21,7 +21,7 @@ if ($bd -> conectar()) {
 	$fechanac = dmaToamd($fechanac);
 	//Convertimos la fecha a AAAA-MM-DD para poder meterla en la BD
 
-	$sexo = sexoToInt($sexo);
+	//$sexo = sexoToInt($sexo);
 	//pasa Hombre a 1 y Mujer a 0
 
 	if ($valido){
@@ -68,7 +68,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 
 	//Nombre y apellidos, validados como campos no vacios
 	
-	if ($sexo != 'Hombre' && $sexo != 'Mujer') {
+	if ($sexo != '1' && $sexo != '0') {
 		$valido = false;
 	}
 	$dia = substr($fechanac, 0, 2);
@@ -150,7 +150,7 @@ function dmaToamd($fecha) {
 	return $fecha;
 }
 
-function sexoToInt($sexo) {
+function sexoToInt($sexo) {// no se usa ya, lo borraremos cuando estemos 100% seguro
 	if ($sexo == 'Hombre') {
 		$sexo = 1;
 		return $sexo;

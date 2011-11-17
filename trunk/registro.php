@@ -30,8 +30,8 @@
 					<label for="sexo" class="labelright">Sexo:</label>
 					<select  name="sexo" id="sexo" class="inputright">
 						<option> </option>
-						<option value="Hombre">Hombre</option>
-						<option value="Mujer">Mujer</option>
+						<option value="1">Hombre</option>
+						<option value="0">Mujer</option>
 					</select>
 				</div>
 				<div class="div2">

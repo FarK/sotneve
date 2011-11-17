@@ -38,7 +38,7 @@ function esFormularioValido() {
 		valido=false;
 	}
 	
-	if(sexo!="Hombre" && sexo!="Mujer"){
+	if(sexo!="1" && sexo!="0"){
 		res=res+"- Selecciona un sexo\n";
 		valido=false;
 	}
