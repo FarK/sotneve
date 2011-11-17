@@ -21,7 +21,7 @@
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - <?php echo $usuarioVisitado->getCampo("alias"); ?></title>
-		<link rel="stylesheet" type="text/css" href="styles/index.css" />
+		<link rel="stylesheet" type="text/css" href="styles/general.css">
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
