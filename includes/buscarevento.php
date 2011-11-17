@@ -23,7 +23,7 @@ function generaTipos() {
 	$consulta = mysql_query("SELECT idTipo, nombre FROM tipos");
 
 	// Voy imprimiendo el primer select compuesto por los tipos
-	echo "<select name='tipos' id='tipos' onChange='cargaContenido(this.id)'>";
+	echo "<select class='selbusc' name='tipos' id='tipos' onChange='cargaContenido(this.id)'>";
 	echo "<option value='0'>Elige</option>";
 	while ($registro = mysql_fetch_row($consulta)) {
 		echo "<option value='" . $registro[0] . "'>" . $registro[1] . "</option>";
@@ -34,8 +34,8 @@ function generaTipos() {
 
 <form name="form" method="get" action="generabusqueda.php">
 	<div id="buscador" name="buscador" style="width:600px;">
-		<div>
-			<select  name="provincia" id="provincia">
+		<div class="elembusqueda">
+			<select class="selbusc" name="provincia" id="provincia">
 				<?php
 				if ($conectado) {
 					generaOption($bd, 'nombre', 'provincias');
@@ -43,7 +43,7 @@ function generaTipos() {
 				?>
 			</select>
 		</div>
-		<div>
+		<div class="elembusqueda">
 			<?php
 			if ($conectado) {
 				generaTipos();
@@ -53,12 +53,12 @@ function generaTipos() {
 			$conectado = false;
 			?>
 		</div>
-		<div>
-			<select disabled="disabled" name="subtipos" id="subtipos">
+		<div class="elembusqueda">
+			<select class="selbusc" disabled="disabled" name="subtipos" id="subtipos">
 				<option value="0">Selecciona opci&oacute;n...</option>
 			</select>
 		</div>
-		<div>
+		<div class="elembusqueda">
 			<button type="submit" id="btnbuscar">
 				¡Buscar!
 			</button>
