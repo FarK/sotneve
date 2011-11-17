@@ -46,18 +46,28 @@
 						<span>Fecha: <?php echo $evento -> getCampo('fechaEvento');?></span>
 						<br />
 						<span>Quedan <?php echo $evento->getCampo('maxPersonas')-$evento->getNumAsistentes()
-							?> plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?> participantes</span>
+							?>plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?>participantes</span>
 						<br />
 						<span>Descripci&oacute;n: <?php echo $evento -> getCampo('descripcion');?></span>
 						<br />
-						<span>Creado por: <?php echo $evento -> getCampo('propietario');?></span>
+						<span>Creado por: <?php
+						if ($bd -> conectar()) {
+							$query = sprintf("SELECT alias FROM usuarios WHERE idUsuario=%s", $evento -> getCampo('propietario'));
+							$tuplas = $bd -> consulta($query);
+							while ($fila = mysql_fetch_assoc($tuplas)) {
+
+								echo $idEvento2 = $fila['alias'];
+							}
+							$bd -> desconectar();
+						}
+							?></span>
 						<br />
 				</div>
 			</div>
 			<div id="navigation">
 				<p>
 					<strong> Van estas <?php echo $evento->getNumAsistentes()
-					?> personas:
+					?>personas:
 					<br />
 					</strong>
 					<?php
