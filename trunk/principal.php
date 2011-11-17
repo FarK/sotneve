@@ -18,24 +18,44 @@ if ($usuarioActual -> error() != 0)
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
-		<!-- Incluimos la cabecera -->
-		<?php include ("includes/head.php"); ?>
-
 		<div id="contenedor">
 			<div id="cabecera">
-				<h1>Cabecera</h1>
+				<?php include ("includes/head.php"); ?>
 			</div>
 			<div id="wrapper">
 				<div id="eventos">
 					<p>
-						<strong>Eventos en [Sevilla(TODO)]</strong>
+						<strong id="eventsin">Eventos en [Sevilla(TODO)]</strong>
 					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p><span>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</span>
+					
 				</div>
 			</div>
 			<div id="favoritos">
 				<p>
 					<strong>Tus favoritos</strong>
 				</p>
+				<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
 				<?php
 				$favoritos = $usuarioActual -> getFavoritos();
 				foreach ($favoritos as $fav) {
@@ -48,6 +68,16 @@ if ($usuarioActual -> error() != 0)
 				<p>
 					<strong>Tus eventos</strong>
 				</p>
+				<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
 								<?php
 				$eventos = $usuarioActual -> getEventos();
 				foreach ($eventos as $fav) {

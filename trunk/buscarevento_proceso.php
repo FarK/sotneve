@@ -33,7 +33,7 @@ $bd->conectar();
 	$bd->desconectar();
 	
 	// Comienzo a imprimir el select
-	echo "<select name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
+	echo "<select class='selbusc' name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
 	echo "<option value='0'>Todos</option>";
 	while($registro=mysql_fetch_row($consulta))
 	{

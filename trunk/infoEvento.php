@@ -46,7 +46,7 @@
 						<span>Fecha: <?php echo $evento -> getCampo('fechaEvento');?></span>
 						<br />
 						<span>Quedan <?php echo $evento->getCampo('maxPersonas')-$evento->getNumAsistentes()
-							?>plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?>participantes</span>
+							?> plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?> participantes</span>
 						<br />
 						<span>Descripci&oacute;n: <?php echo $evento -> getCampo('descripcion');?></span>
 						<br />
@@ -57,7 +57,7 @@
 			<div id="navigation">
 				<p>
 					<strong> Van estas <?php echo $evento->getNumAsistentes()
-					?>personas:
+					?> personas:
 					<br />
 					</strong>
 					<?php

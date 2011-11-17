@@ -3,6 +3,15 @@
  text-align: center;
 
  }*/
+div.elembusqueda{
+	display: inline-block;
+
+}
+
+select.selbusc{
+	width: 130px;
+}
+
  div#hcabecera{
 	background-color: #418eb6;
 	width:900px;
@@ -11,7 +20,7 @@
 	/*color: #eaf3fa;*/
  }
 div#hcontenedor {
-	width: 700px;
+	width: 900px;
 	background-color: #333366;
 	height: 80px;
 	border-radius: 10px 10px;
@@ -66,7 +75,7 @@ div#husuario {
 }
 div #buscador{/*No es de estas lineas el problema de que el buscador desapararezca*/
 	
-	margin: 10px 50% 0 250px;
+	margin: 10px 50% 0 100px;
 	display: inline-block;
 	
 }
@@ -74,11 +83,6 @@ div #buscador{/*No es de estas lineas el problema de que el buscador desapararez
 img{
 	border-top-left-radius: 5px 5px;
 }
-
-
-
-
-
 
 
 

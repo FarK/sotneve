@@ -1,46 +1,130 @@
-p{
-margin:0 10px 10px;
+/*html, body {
+ margin: 0;
+ padding: 0
+ }
+ body {
+ font: 76% arial, sans-serif;
+ text-align: center
+ }
+ p {
+ margin: 0 10px 10px
+ }
+ a {
+ display: block;
+ color: #981793;
+ padding: 10px
+ }
+ div#header h1 {
+ height: 80px;
+ line-height: 80px;
+ margin: 0;
+ padding-left: 10px;
+ background: #EEE;
+ color: #79B30B
+ }
+ div#container {
+ text-align: left
+ }
+ div#content p {
+ line-height: 1.4
+ }
+ div#navigation {
+ background: #B9CAFF
+ }
+ div#extra {
+ background: #FF8539
+ }
+ div#footer {
+ background: #333;
+ color: #FFF
+ }
+ div#footer p {
+ margin: 0;
+ padding: 5px 10px
+ }
+ div#container {
+ width: 700px;
+ margin: 0 auto
+ }
+ div#wrapper {
+ float: left;
+ width: 100%
+ }
+ div#content {
+ margin: 0 150px
+ }
+ div#navigation { //favoritos
+ float: left;
+ width: 150px;
+ margin-left: -700px
+ }
+ div#extra {
+ float: left;
+ width: 150px;
+ margin-left: -150px
+ }
+ div#footer {
+ clear: left;
+ width: 100%
+ }*/
+p {
+	margin: 0 10px 10px;
+}
+div#pie span {
+	margin: 0;
+	padding: 5px 10px;
+}
+div#cabecera {
+	position: relative;
+}
+div#contenedor {
+	width: 900px;
+	margin: 0 auto;
+}
+div#wrapper {
+	float: left;
+	width: 100%;
+}
+div#eventos {
+	margin: 10px 300px 0 150px;
+	
 }
 
+div#favoritos {
+	margin:10px 0 10px -900px;
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+div#eventosUsuario {
+	float: left;
+	width: 300px;
+	margin:10px 0 10px -300px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+	border-radius: 7px 7px;
+}
+div#pie {
+	clear: left;
+	width: 100%;
+	background: #333;
+	color: #FFF;
+	text-align: left;
+	height: 30px;
+	border-radius: 5px 5px;
+	
+}
+div#eventos p {
+ line-height: 1.4
+ }
+div#pie span{
+	vertical-align: -8px;
+}
 
-div#pie span
-{
-margin:0;
-padding:5px 10px;
-}
- 
-div#cabecera{
-position:relative;
-}
-
-div#contenedor
-{
-width:700px;
-margin:0 auto;
-}
-div#wrapper
-{
-float:left;
-width:100%;
-}
-div#eventos
-{
-margin: 0 150px;
-}
-div#favoritos
-{
-float:left;
-width:150px;
-margin-left:-700px;
-}
-div#eventosUsuario
-{
-float:left;
-width:150px;
-margin-left:-150px;
-}
-div#pie
-{
-clear:left;
-width:100%;
+body {
+	font: 76% arial, sans-serif;
+	text-align: center;
+	background: #D0E8F7;
 }
