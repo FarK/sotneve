@@ -18,7 +18,11 @@ if ($usuario -> error() == -2)//No pudo conectar
 	</div>
 	<div id="hbotones">
 		<a id="hinicio" href="principal.php">Inicio</a>
-		<a id="hfavoritos" href="favoritos.php">Favoritos</a>
+		
+		<?php 
+		$id=$_SESSION['idUsuario'];
+		$enlace=sprintf("'favoritos.php?idUsuario=%s'",$id);?>
+		<a id="hfavoritos" href=<?php echo $enlace ?>>Favoritos</a>
 		<a id="hlinkperfil" href="evento.css">Mi perfil</a>
 		<a href="formulario.xhtml">Logout</a>
 	</div>

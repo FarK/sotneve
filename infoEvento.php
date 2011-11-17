@@ -22,7 +22,7 @@
 	<head>
 		<title>Sotneve - <?php echo $evento -> getCampo("titulo");?></title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
-		<link rel="stylesheet" type="text/css" href="evento.css" />
+		<link rel="stylesheet" type="text/css" href="styles/general.css">
 	</head>
 	<body>
 		<div id="container">

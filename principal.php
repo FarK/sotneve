@@ -87,7 +87,7 @@ if ($usuarioActual -> error() != 0)
 				?>
 			</div>
 			<div id="pie">
-				<span>Pie</span>
+				<span>Copyright Sotneve 2011 &copy;</span>
 			</div>
 		</div>
 	</body>
