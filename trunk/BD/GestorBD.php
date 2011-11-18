@@ -29,12 +29,6 @@ class GestorBD {
 		return mysql_query($query, $this -> conn);
 	}
 
-	public function numeroUsuarios() {
-		$res = mysql_query("SELECT idUsuario FROM usuarios", $this -> conn);
-		return mysql_num_rows($res);
-
-	}
-
 	public function passCorrecta($email, $pass) {
 		$query = sprintf("SELECT * FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
 		$result = $this -> consulta($query);
