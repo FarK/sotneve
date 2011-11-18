@@ -8,74 +8,49 @@ $NOMBRE = 2;
 $APELLIDOS = 1;
 
 class Usuario {
-	private $idUsuario;
-	private $consultas;	//Consultas a realizar
-	private $resultados;	//Resultados de las consultas ($campo=>$valor)
-	//$campos tiene en la primera posición un array de campos con las claves primarias de la tabla
-	private $campos;	//Campos a consultar de cada tabla ($tabla=>$campos)
+	private $usuario = new array();
+	private $usuarioID = new array();
+	private $idUsuario = NULL;
+	private $usuario = NULL;
+	private $favoritos = NULL;
+	private $eventosafiliados = NULL;
 
-	//Usuario() o Usuario($idUsuario)
-	public function Usuario(){
-		$this->consultas = array();
-		$this->resultados = array();
-		$this->campos = array();
-		//Inicializamos los nombres de los campos que forman la clave primaria de cada tabla
-		$this->campos = array('usuarios' => array(array('idUsuario')));
+	private $error = 0;
 
-		if($args = func_get_args()){
-			$this->idUsuario = $args[0];
-		}
-	}
-
-	public function consultar() {
-		$this->getCampos();
-
+	public function Usuario($idUsuario) {
+		$this -> idUsuario = $idUsuario;
 		//Crear objeto gestor bd
 		$bd = new GestorBD();
-
 		//Conectar a la bd
-		$bd -> conectar();
-			foreach($this->consultas as $consulta){
-				$resource = $bd -> consulta($consulta);
-				while($fetch_array = mysql_fetch_assoc($resource))
-					foreach($fetch_array as $campo => $valor)
-						$this->resultados[$campo] = $valor;
-			}
+		if ($bd -> conectar()) {//Pudo conectar
+			//Consulta usuario
+			$query = sprintf("SELECT * FROM usuarios WHERE idUsuario = '%s'", $idUsuario);
+			$this -> usuario = mysql_fetch_assoc($bd -> consulta($query));
 
-		//Desconectar de la bd
-		$bd -> desconectar();
+			//Si no existe el usuario (o ha fallado la consulta)
+			if (!$this -> usuario)
+				$this -> error = -1;
 
-		//Borramos los campos seleccionados de las tablas
-		$this->campos= array();
-
-		return $this->resultados;
-	}
-
-	private function getCampos(){
-		foreach($this->campos as $tabla=>$campos){
-			//Unimos todos los campos de la clave primaria en un string
-			if($ids= func_get_args()){	//Si se han pasado ids
-				$arrayPrim = current($campos);
-				$camposPrim = current($arrayPrim) . " = " . current($ids);
-				while(($campo = next($arrayPrim)) || ($id = next($ids)))
-					$camposPrim = $camposPrim . " AND " . $campo . " = " . $id;
-			}
-			else
-				$camposPrim = $this->campos[$tabla][0][0] . " = " . $this->idUsuario;
-			
-			//Unimos todos los campos de la consulta en un string
-			$camposStr = next($campos);
-			while($campo = next($campos))
-				$camposStr = $camposStr . ", " . $campo;
-
-			//Añadimos la consulta
-			$this->consultas[] = sprintf("SELECT %s FROM %s WHERE %s", $camposStr, $tabla, $camposPrim);
+			//Desconectar de la bd
+			$bd -> desconectar();
+		} else {
+			//No puedo conectar
+			$this -> error = -2;
 		}
 	}
 
-	public function getCampo($campo){
-		$this->campos['usuarios'][] = $campo;
+	public function error() {
+		return $this -> error;
 	}
+
+	public function getCampo($campo) {
+		return $this -> usuario[$campo];
+	}
+
+	/* TODO
+	 public function setCampo($nuevoValor, $campo){
+	 }
+	 */
 
 	public function esVisible($campo) {
 		return ($this -> usuario["visibilidad"] & $campo);
@@ -103,12 +78,12 @@ class Usuario {
 				while ($fila = mysql_fetch_assoc($tuplas)) {
 					//Obtenemos el idEvento y el titulo del evento
 					$idEvento2 = $fila['idEvento'];
-
-
-
-
-
-
+					
+					
+					
+					
+					
+					
 					$query = sprintf("SELECT titulo FROM eventos WHERE idEvento= '%s' AND fechaEvento>='%s'", $idEvento2, $actual);
 					//Si no existe el usuario (o ha fallado la consulta)
 					if (!$query)
