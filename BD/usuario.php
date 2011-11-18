@@ -8,6 +8,8 @@ $NOMBRE = 2;
 $APELLIDOS = 1;
 
 class Usuario {
+	private $usuario = new array();
+	private $usuarioID = new array();
 	private $idUsuario = NULL;
 	private $usuario = NULL;
 	private $favoritos = NULL;
