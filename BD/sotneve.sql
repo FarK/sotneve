@@ -4,11 +4,11 @@ CREATE DATABASE IF NOT EXISTS sotneve
 
 USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.7
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 17-11-2011 a las 18:30:33
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 18-11-2011 a las 10:54:27
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -182,17 +182,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `pass` char(64) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `provincia` int(11) NOT NULL,
+  `idProvincia` int(11) NOT NULL,
   `visibilidad` int(2) NOT NULL COMMENT 'fechaNac, sexo, email, nombre, apellidos',
   PRIMARY KEY (`idUsuario`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  KEY `idProvincia` (`idProvincia`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `provincia`, `visibilidad`) VALUES
+INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `idProvincia`, `visibilidad`) VALUES
 (1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'Rafael', 'Espillaque Espinosa', 2, 1),
 (2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 2, 31),
 (3, '1990-02-11', 1, 'xusty_alex@hotmail.com', 'alexmacan', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Ale', 'Molina', 1, 0),
@@ -255,6 +256,12 @@ ALTER TABLE `favoritos`
 --
 ALTER TABLE `subtipos`
   ADD CONSTRAINT `subtipos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `valoraciones`
