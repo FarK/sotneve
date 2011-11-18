@@ -67,7 +67,7 @@ function creaCheckBox($usuario,$campo){
 				<div class="div4">
 					<label class="labelleft" for="email">Email:</label>
 					<input type="text" name="email" id="email" onblur="esEmailValido()" />
-					<?php echo $EMAIL; creaCheckBox($usuario,$EMAIL);?>
+					<?php creaCheckBox($usuario,$EMAIL);?>
 					<label class="labelright">Fecha de nacimiento:</label>
 					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
 					<?php creaCheckBox($usuario,$FECHA_NAC);?>
