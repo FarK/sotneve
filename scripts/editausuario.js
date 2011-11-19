@@ -1,9 +1,10 @@
 function esFormularioValido() {
 
- alert("En construccion");
- return false;
+	alert("En Construccion");
+	return false;
 
 }
+
 
 function esCampoNoVacio(id){
 		
@@ -29,7 +30,7 @@ function esMismaContrasena(){
 		ctrlContrasena.style.borderColor="red";
 		ctrlRecontrasena.style.borderColor="red";
 		ctrlErrores.style.visibility="visible";	
-		//alert("Las contrase\u00f1as no coinciden, le recomendamos que vuelva a escribir ambos campos");
+		alert("Las contrase\u00f1as no coinciden, le recomendamos que vuelva a escribir ambos campos");
 	}else{
 		ctrlContrasena.style.borderColor="#418eb6";
 		ctrlRecontrasena.style.borderColor="#418eb6";
