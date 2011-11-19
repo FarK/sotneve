@@ -53,7 +53,8 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 		echo("campos");
 		$valido=false;
 	}
-
+	//TODO Validar el email con expresiones regulares.
+	
 	if (!$camposvacios && (mysql_num_rows($resultadoEmail) > 0 || strlen($email) > 60)) {//OK
 		$res = $res . '&err_email';
 	echo("email");
