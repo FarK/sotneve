@@ -3,57 +3,48 @@
  text-align: center;
 
  }*/
-div.elembusqueda{
+div.elembusqueda {
 	display: inline-block;
-
 }
-
-select.selbusc{
+select.selbusc {
 	width: 130px;
 }
-
- div#hcabecera{
+div#hcabecera {
 	background-color: #418eb6;
-	width:900px;
+	width: 900px;
 	margin: auto;
 	border-radius: 10px 10px;
 	/*color: #eaf3fa;*/
- }
+}
 div#hcontenedor {
 	width: 900px;
 	background-color: #333366;
 	height: 80px;
 	border-radius: 10px 10px;
 }
-div#husuario{
-	
-	
+div#husuario {
 }
-div#hbotones{
-
-	
+div#hbotones {
 }
-
 select {
-	
+
 	border-radius: 4px 4px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #418eb6;
 	color: #418eb6;
 }
-a{
-	margin-top:5px;
+a {
+	margin-top: 5px;
 	/*box-shadow: 0px 0px 5px #FFFFFF; efecto de difuminado del borde*/
-	margin-left:5px;
-	border:0px;
-	border-radius:10px;
-	padding:6px;
+	margin-left: 5px;
+	border: 0px;
+	border-radius: 10px;
+	padding: 6px;
 	color: #418eb6;
-	font-weight:bold;
+	font-weight: bold;
 	background-color: #D0E8F7;
 	text-decoration: none;
-	
 }
 div#hlogo {
 	text-align: center;
@@ -64,8 +55,6 @@ div#hlogo {
 	width: 400px;
 	height: 80px;
 	border-right: solid 1px;
-	
-	
 }
 div#husuario {
 	color: white;
@@ -73,68 +62,65 @@ div#husuario {
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
-div #buscador{/*No es de estas lineas el problema de que el buscador desapararezca*/
-	
+div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
+
 	margin: 10px 50% 0 100px;
 	display: inline-block;
-	
 }
-
-img{
+img {
 	border-top-left-radius: 5px 5px;
 }
-
-
-
-
 body {
 	background-color: #D0E8F7;
 }
-
 fieldset {
-	border-width:5px;
-	border-radius:1em;
-	position:absolute;
-/*	width:170px;
-	height:80px;
-*/
-	top:10%;
-	right:10%;
-/*
-	margin-top:-40px;
-	margin-left:-85px;
-*/
+	border-width: 5px;
+	border-radius: 1em;
+	position: absolute;
+	/*	width:170px;
+	 height:80px;
+	 */
+	top: 10%;
+	right: 10%;
+	/*
+	 margin-top:-40px;
+	 margin-left:-85px;
+	 */
 	box-shadow: 0px 0px 10px #FFFFFF;
 }
-
-legend { display:none; }
-
-
-label{ display:none; }
-span.errorserv{color:red;}
-
+legend {
+	display: none;
+}
+div.horizontal {
+	width: 900px;
+	margin: auto;//centra en pantalla
+}
+label {
+	font: 76% arial, sans-serif;
+}
+span.errorserv {
+	color: red;
+}
 input {
 	/*height:30px;*/
-	margin-top:5px;
+	margin-top: 5px;
 	box-shadow: 0px 0px 5px #FFFFFF;
-	margin-left:5px;
-	border:0px;
-	border-radius:10px;
-	padding:6px;
+	margin-left: 5px;
+	border: 0px;
+	border-radius: 10px;
+	padding: 6px;
 	color: #418eb6;
+	
 }
-
 h1 {
-	color:#418eb6;
+	color: #418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
-	text-align:center
+	text-align: center
 }
-
 #btnbuscar {
 	background-color: #eaf3fa;
 	color: #418eb6;
 	border-radius: 10px 10px;
 	position: absolute;
-	
 }
 
