@@ -3,17 +3,50 @@ include ("includes/testSession.php");
 include_once ('BD/GestorBD.php');
 include_once ('BD/usuario.php');
 
+$bd = new GestorBD();
+
 //Creamos un objeto usuario con el usuario logeado
 $usuario= new Usuario($_SESSION['idUsuario']);
 if ($usuario -> error() != 0){
 		header('Location:errores.php?error="usernotfound"');
+}
+function fechaNac($usuario){
+		
+	
+	$fechanac=$usuario->getCampo('fechaNac');	
+	$ano = substr($fechanac, 0, 4);
+	$mes = substr($fechanac, 5,2);
+	$dia = substr($fechanac, 8, 9);
+	
+	echo $dia."/".$mes."/".$ano;
+}
+
+function provinciaActual($bd,$usuario){
+	$valor=$usuario->getCampo('provincia');
+	$query=sprintf("SELECT nombre FROM provincias WHERE idProvincia=%s",$valor);
+	$tuplas=$bd->consulta($query);
+		
+	while ($fila = mysql_fetch_assoc($tuplas)) { 
+			$valor=$fila['nombre'];
+
+		}
+
+	$linea=sprintf(" Actualmente %s",$valor);
+	echo $linea;
+}
+
+function creaPlaceHolder($usuario,$campo){
+	
+	$valor=$usuario->getCampo($campo);
+	$linea=sprintf("placeholder='%s'",$valor);
+	echo $linea;
 }
 
 function creaCheckBox($usuario,$campo){
 	$visibilidad=$usuario->esVisible($campo);
 	$visible="";
 	$check="check";
-	if($visibilidad){ // TODO para carlos, es visible se llama abajo
+	if($visibilidad){ 
 		$visible="checked=''";
 	}
 	$linea=sprintf("<input type='checkbox' id='%s%s' value='%s%s' %s>" ,$check,$campo,$check,$campo,$visible);
@@ -26,7 +59,9 @@ function creaCheckBox($usuario,$campo){
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>sotneve - Únete</title>
-		<script type="text/javascript" src="scripts/registro.js"></script>
+		<script type="text/javascript" src="scripts/editausuario.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<?php include ("includes/head.php"); ?>
 	</head>
 	<body>
 		<form name="form" method="post" action="insertarcambiosperfil.php" onsubmit="return esFormularioValido()">
@@ -51,36 +86,39 @@ function creaCheckBox($usuario,$campo){
 				</div>
 				<div class="div2">
 					<label id="idnombre" for="nombre" class="labelleft" >Nombre:</label>
-					<input type="text" name="nombre" id="nombre" class="inputleft" onblur="esCampoNoVacio(this.id)"/>
+					<input type="text" name="nombre" id="nombre" class="inputleft" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'nombre')?>/>
 					
 					<?php creaCheckBox($usuario,$NOMBRE);?>
 					<label class="labelright" for="apellidos">Apellidos:</label>
-					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" />
+					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'apellidos')?> />
 					<?php creaCheckBox($usuario,$APELLIDOS);?>
 				</div>
 				<div class="div3">
-					<label class="labelleft" for="contrasena">Contraseña:</label>
+					<label class="labelleft" for="contrasenaactual">Contraseña Actual:</label>
+					<input type="password" name="contrasenaactual" id="contrasena" />
+					<label class="labelleft" for="contrasena">Cambiar contraseña:</label>
 					<input type="password" name="contrasena" id="contrasena" />
 					<label class="labelright" for="recontrasena">Repite contraseña:</label>
 					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="div4">
 					<label class="labelleft" for="email">Email:</label>
-					<input type="text" name="email" id="email" onblur="esEmailValido()" />
+					<input type="text" name="email" id="email" onblur="esEmailValido()"  <?php creaPlaceHolder($usuario, 'email')?>/>
 					<?php creaCheckBox($usuario,$EMAIL);?>
 					<label class="labelright">Fecha de nacimiento:</label>
-					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
+					<input type="text" name="fechanac" id="fechanac"  placeholder="<?php fechaNac($usuario)?>"/>
 					<?php creaCheckBox($usuario,$FECHA_NAC);?>
 				</div>
 				<div class="div5">
 					<label class="labelleft" for="provincia">Provincia:</label>
 					<select  name="provincia" id="provincia">
-						<option value="0"></option>
+						<option value="0"><?php 
+						if ($bd -> conectar()) {
+							provinciaActual($bd,$usuario);
+							$bd->desconectar();} ?></option>
 						<?php
 						
-						include_once 'BD/GestorBD.php';
-						//Crear objeto gestor bd
-						$bd = new GestorBD();
+
 						//Conectar a la bd
 						if ($bd -> conectar()) {
 						$query=sprintf("SELECT idProvincia, nombre FROM provincias");
