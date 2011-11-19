@@ -47,6 +47,14 @@ class GestorBD {
 		var_dump($query);
 
 	}
+	
+	
+	public function insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
+		$query = sprintf("INSERT INTO eventos (fechaEvento, titulo, numpersonas, provincia, descripcion,lugar) 
+			VALUES ('%s', '%s', '%s', '%s', '%s', '%s' )", $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
+		$res = $this -> consulta($query);
+		var_dump($query);
+	}
 
 	public function usuariosCon($campo, $elemento) {
 		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);

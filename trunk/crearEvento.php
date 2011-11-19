@@ -1,5 +1,13 @@
 <?php
 include ("includes/testSession.php");
+include_once ('BD/GestorBD.php');
+include_once ('BD/usuario.php');
+
+$usuario= new Usuario($_SESSION['idUsuario']);
+if ($usuario -> error() != 0){
+		header('Location:errores.php?error="usernotfound"');
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -85,7 +93,7 @@ include ("includes/testSession.php");
 								<option value="11">Noviembre</option>
 								<option value="12">Diciembre</option>
 							</select>
-							<select name="año" id="año">
+							<select name="ano" id="ano">
 								<option value="2010">2010</option>
 								<option value="2011">2011</option>
 								<option value="2012">2012</option>
