@@ -1,28 +1,27 @@
-body {
-	background-color:#CEF6F5;
-	font-family: 'Franklin Gothic Medium', sans-serif;
+input {
+	width: 170px;
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6;
+	color: #418eb6;
+}
+input#descripcion {
+	height: 200px;
+	width: 400px;
+	line-height: 1.2px; 
+	font-size: 1em;
+	
 }
 
-div{
-
+div.filaform {
+	display: table-row;
+	
 }
 
-fieldset{
-
-display:inline;
-border-width:0px;
-top: 10%;
-left: 25%;
-position: fixed;
-
-
+label {
+	display: table-cell;
+	width:150px;
 }
-fieldset.cont{
 
-top:20%;
-}
-fieldset.cab{
-top:1%;}
-select{
-font-family: 'Franklin Gothic Medium', sans-serif;
-}
+

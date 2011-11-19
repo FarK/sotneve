@@ -1,5 +1,7 @@
-<?php include ("includes/testSession.php"); ?>
-	
+<?php
+include ("includes/testSession.php");
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- IMPORTANTE ESA L�NEA DE AH� ARRIBA Y LA DE ABAJO!!!  -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
@@ -8,37 +10,35 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
+		<link rel="stylesheet" type="text/css" href="styles/general.css" />
+		<script type="text/javascript" src="scripts/crearEvento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
-		<?php include ("includes/head.php"); ?>
-	
-		<div class="cabecera">
-				<fieldset class="cab">
-				</fieldset>
+		<?php
+			include ("includes/head.php");
+		?>
+
+		
+		<div class="contenido">
+			<div class="horizontal">			
+					<h2>Crear Evento</h2>
+					</hr>
 			
-			</div>
-			<div class="contenido">
-			<div name="titulo">
-				<fieldset class="contitu">
-				<h2>Crear Evento</h2>
-				<hr noshade="noshade"></hr>
-				</fieldset>
-			</div>
 			<div class="form">
 				<form name="fval" onsubmit="return valida()">
-						<fieldset     class="cont">
-					<div class="diva">
-						<label for="nomevento"> Título</label>
-						<input type="text" id="nomevento" name="nomevento" />
-					</div>
-					<div class="divb">
-						<label id="nump" for="numpersonas">Número de personas</label>
-						<input type="text" id="numpersonas" /><br/>
-					</div>
-					<div class="dive">
-						<label for="fechaevento">Fecha del Evento</label>
-						<select name="dia" id="dia">
+						<div class="filaform">
+							<label for="nomevento"> Título</label>
+							<input type="text" id="nomevento" name="nomevento" />
+						</div>
+						<div class="filaform">
+							<label id="nump" for="numpersonas">Número de personas</label>
+							<input type="text" id="numpersonas" />
+							<br/>
+						</div>
+						<div class="filaform">
+							<label for="fechaevento">Fecha del Evento</label>
+							<select name="dia" id="dia">
 								<option value="01">1</option>
 								<option value="02">2</option>
 								<option value="03">3</option>
@@ -70,8 +70,8 @@
 								<option value="29">29</option>
 								<option value="30">30</option>
 								<option value="31">31</option>
-						</select>
-						<select name="mes" id="mes">
+							</select>
+							<select name="mes" id="mes">
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>
@@ -84,41 +84,38 @@
 								<option value="10">Octubre</option>
 								<option value="11">Noviembre</option>
 								<option value="12">Diciembre</option>
-						</select>
-						<select name="año" id="año">
+							</select>
+							<select name="año" id="año">
 								<option value="2010">2010</option>
 								<option value="2011">2011</option>
 								<option value="2012">2012</option>
 								<option value="2013">2013</option>
 								<option value="2014">2014</option>
-						</select>
-					</div>
-					<div class="divc">
-						<label for="provincia"> Provincia</label>
-						<input type="text" id="provincia"/><br/>
-					</div>
-					<div class="divi">
-						<label for="lugar">Lugar</label>
-						<input type="text" id="lugar"/><br/>
-					</div>
-					<div class="divh">
-						<label for="descripcion" >Descripción</label>
-						<input type="text" id="Descripcion" size="1000"/><br/>
-					</div>
-						<button type="submit" id="crea">Crear Evento
-						</button>					
-						</fieldset>
-				</form>
-			</div></div>
-			<div class="barraiz">
-			</div>
-			<div class="barrader">
-		
-			</div>
-		
-		
-		
-		
+							</select>
+						</div>
+						<div class="filaform">
+							<label for="provincia"> Provincia</label>
+							<input type="text" id="provincia"/>
+							<br/>
+						</div>
+						<div class="filaform">
+							<label for="lugar">Lugar</label>
+							<input type="text" id="lugar"/>
+							<br/>
+						</div>
+						<div class="filaform">
+							<label for="descripcion" >Descripción</label>
+							<input type="text" id="descripcion" />
+							<br/>
+						</div>
+						<button type="submit" id="crea">
+							Crear Evento
+						</button>
 
+				</form>
+			</div>
+			</div>
+		</div>
+		
 	</body>
 </html>
