@@ -1,8 +1,9 @@
-/*body {
- font: 76% arial, sans-serif;
- text-align: center;
-
- }*/
+body {
+	/*font: 76% arial, sans-serif;
+	text-align: center;*/
+	margin: auto;
+	width: 900px;
+}
 div.elembusqueda {
 	display: inline-block;
 }
@@ -110,7 +111,6 @@ input {
 	border-radius: 10px;
 	padding: 6px;
 	color: #418eb6;
-	
 }
 h1 {
 	color: #418eb6;
@@ -124,3 +124,7 @@ h1 {
 	position: absolute;
 }
 
+div.contenido{
+	margin-left:150px;
+	
+}
