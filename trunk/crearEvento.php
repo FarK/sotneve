@@ -17,8 +17,8 @@ if ($usuario -> error() != 0){
 		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
-		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
 		<link rel="stylesheet" type="text/css" href="styles/general.css" />
+		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
 		<script type="text/javascript" src="scripts/crearEvento.js"></script>
 	</head>
 	<body>
@@ -29,9 +29,9 @@ if ($usuario -> error() != 0){
 
 		
 		<div class="contenido">
-			<div class="horizontal">			
+			
 					<h2>Crear Evento</h2>
-					</hr>
+					
 			
 			<div class="form">
 				<form name="fval" onsubmit="return valida()">
@@ -121,7 +121,6 @@ if ($usuario -> error() != 0){
 						</button>
 
 				</form>
-			</div>
 			</div>
 		</div>
 		

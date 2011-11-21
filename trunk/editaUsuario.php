@@ -48,7 +48,7 @@ function creaCheckBox($usuario, $campo) {
 	if ($visibilidad) {
 		$visible = "checked=''";
 	}
-	$linea = sprintf("<input type='checkbox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
+	$linea = sprintf("<input type='checkbox' class='visibilitybox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
 	echo $linea;
 }
 ?>
@@ -60,13 +60,18 @@ function creaCheckBox($usuario, $campo) {
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="scripts/editausuario.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<link rel="stylesheet" type="text/css" href="styles/editaUsuario.css">
+		
+	</head>
+	<body>
+	<!--<div class="contenedorgeneral"> -->
 		<?php
 			include ("includes/head.php");
 		?>
-	</head>
-	<body>
+		<h1>Edita tu perfil</h1>
+				<span id="errores">Errores.</span>
 		<form name="form" method="post" action="insertarcambiosperfil.php" onsubmit="return esFormularioValido()">
-			<fieldset>
+			
 				<?php
 				if (isset($_GET['err_email'])) {
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
@@ -78,12 +83,10 @@ function creaCheckBox($usuario, $campo) {
 					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
 				}
 				?>
-				<h1>Edita tu perfil</h1>
-				<span id="errores">Errores.</span>
-				<hr />
-				<div class="div1">
-					<label for="sexo" class="labelright">Sexo:</label>
-					<select  name="sexo" id="sexo" class="inputright">
+				
+				<div class="divf">
+					<label for="sexo" class="labelleft">Sexo:</label>
+					<select  name="sexo" id="sexo" class="inputvalor">
 						<?php $sexo = $usuario -> getCampo('sexo');
 						if ($sexo == 1) {
 							echo "<option value='1'>Hombre</option>
@@ -96,33 +99,41 @@ function creaCheckBox($usuario, $campo) {
 					</select>
 					<?php creaCheckBox($usuario, $SEXO);?>
 				</div>
-				<div class="div2">
+				<div class="divf">
 					<label id="idnombre" for="nombre" class="labelleft" >Nombre:</label>
-					<input type="text" name="nombre" id="nombre" class="inputleft" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'nombre')?>/>
+					<input type="text" name="nombre" id="nombre" class="inputvalor" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'nombre')?>/>
 					<?php creaCheckBox($usuario, $NOMBRE);?>
-					<label class="labelright" for="apellidos">Apellidos:</label>
-					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'apellidos')?> />
+					</div>
+					<div class="divf">
+					<label class="labelleft" for="apellidos">Apellidos:</label>
+					<input type="text" name="apellidos" id="apellidos" class="inputvalor" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'apellidos')?> />
 					<?php creaCheckBox($usuario, $APELLIDOS);?>
 				</div>
-				<div class="div3">
+				<div class="divf">
 					<label class="labelleft" for="contrasenaactual">Contraseña Actual:</label>
-					<input type="password" name="contrasenaactual" id="contrasena" />
+					<input type="password" class="inputvalor" name="contrasenaactual" id="contrasena" />
+					</div>
+					<div class="divf">
 					<label class="labelleft" for="contrasena">Cambiar contraseña:</label>
-					<input type="password" name="contrasena" id="contrasena" />
-					<label class="labelright" for="recontrasena">Repite contraseña:</label>
-					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
+					<input type="password" class="inputvalor" name="contrasena" id="contrasena" />
+					</div>
+					<div class="divf">
+					<label class="labelleft" for="recontrasena">Repite contraseña:</label>
+					<input type="password" class="inputvalor" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
-				<div class="div4">
+				<div class="divf">
 					<label class="labelleft" for="email">Email:</label>
-					<input type="text" name="email" id="email" onblur="esEmailValido()"  <?php creaPlaceHolder($usuario, 'email')?>/>
+					<input type="text" class="inputvalor" name="email" id="email" onblur="esEmailValido()"  <?php creaPlaceHolder($usuario, 'email')?>/>
 					<?php creaCheckBox($usuario, $EMAIL);?>
-					<label class="labelright">Fecha de nacimiento:</label>
-					<input type="text" name="fechanac" id="fechanac"  placeholder="<?php fechaNac($usuario)?>"/>
+					</div>
+					<div class="divf">
+					<label class="labelleft">Fecha de nacimiento:</label>
+					<input type="text" class="inputvalor" name="fechanac" id="fechanac"  placeholder="<?php fechaNac($usuario)?>"/>
 					<?php creaCheckBox($usuario, $FECHA_NAC);?>
 				</div>
-				<div class="div5">
+				<div class="divf">
 					<label class="labelleft" for="provincia">Provincia:</label>
-					<select  name="provincia" id="provincia">
+					<select  class="inputvalor" name="provincia" id="provincia">
 						<option value="0"><?php
 						if ($bd -> conectar()) {
 							provinciaActual($bd, $usuario);
@@ -151,7 +162,7 @@ function creaCheckBox($usuario, $campo) {
 				<button type="submit" id="registrate">
 					Guardar
 				</button>
-			</fieldset>
 		</form>
+		<!-- </div> -->
 	</body>
 </html>
