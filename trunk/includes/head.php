@@ -7,6 +7,9 @@ $usuario = new Usuario($_SESSION['idUsuario']);
 if ($usuario -> error() == -2)//No pudo conectar
 	header('Location:index.php?err_bd');
 //Redirecconar con GET a error
+
+$id=$_SESSION['idUsuario'];
+$enlace=sprintf("'favoritos.php?idUsuario=%s'",$id);
 ?>
 
 <div id="hcabecera">
@@ -17,14 +20,10 @@ if ($usuario -> error() == -2)//No pudo conectar
 		<span>hola, <?php echo $usuario -> getCampo("nombre") . " " . $usuario -> getCampo("apellidos");?></span>
 	</div>
 	<div id="hbotones">
-		<a id="hinicio" href="principal.php">Inicio</a>
-		
-		<?php 
-		$id=$_SESSION['idUsuario'];
-		$enlace=sprintf("'favoritos.php?idUsuario=%s'",$id);?>
-		<a id="hfavoritos" href=<?php echo $enlace ?>>Favoritos</a>
-		<a id="hlinkperfil" href="evento.css">Mi perfil</a>
-		<a href="formulario.xhtml">Logout</a>
+		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
+		<a class="boton" href=<?php echo $enlace ?>>Favoritos</a>
+		<a class="boton" href="evento.css">Mi perfil</a>
+		<a class="boton" href="formulario.xhtml">Logout</a>
 	</div>
 
 		<?php
