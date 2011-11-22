@@ -1,15 +1,38 @@
 body {
-	/*font: 76% arial, sans-serif;
+	/*font: 76% arial, sans-serif
 	text-align: center;*/
+	background-color: #D0E8F7;
 	margin: auto;
 	width: 900px;
 }
-div.elembusqueda {
-	display: inline-block;
+
+input {
+	/*height:30px;*/
+	margin-top:5px;
+	margin-left:5px;
+	border:0px;
+	border-radius:10px;
+	padding:6px;
+	color: #418eb6;
 }
-select.selbusc {
+
+select.selbusc{
+	display: inline-block;
 	width: 130px;
 }
+
+input.boton{
+	font-weight:bold;
+}
+
+input:hover, .boton:hover, select:hover {
+	box-shadow: 0px 0px 5px #FFFFFF;
+}
+
+input:focus, .boton:focus, select:focus {
+	box-shadow: 0px 0px 5px #FFFFFF;
+}
+
 div#hcabecera {
 	background-color: #418eb6;
 	width: 900px;
@@ -98,19 +121,9 @@ div.horizontal {
 }
 label {
 	font: 76% arial, sans-serif;
-}
+
 span.errorserv {
 	color: red;
-}
-input {
-	/*height:30px;*/
-	margin-top: 5px;
-	box-shadow: 0px 0px 5px #FFFFFF;
-	margin-left: 5px;
-	border: 0px;
-	border-radius: 10px;
-	padding: 6px;
-	color: #418eb6;
 }
 h1 {
 	color: #418eb6;
@@ -120,7 +133,7 @@ h1 {
 #btnbuscar {
 	background-color: #eaf3fa;
 	color: #418eb6;
-	border-radius: 10px 10px;
+	/*border-radius: 10px 10px;*/
 	position: absolute;
 }
 

@@ -42,8 +42,7 @@
 				<input id="email" name="email" type="text" placeholder="Correo electr&oacute;nico" onchange="validaEmail()"/>
 				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
 				<input id="pass" name="pass" type="password" placeholder="Contrase&ntilde;a" onblur="validaPass()"/>
-				<input id="send" class="btn" name="Send" type="submit" value="Entrar"/>
-				
+				<input id="send" class="boton" name="Send" type="submit" value="Entrar"/>
 				<a id="registrarse" href="registro.php">Registrarse</a>
 				
 			</fieldset>
