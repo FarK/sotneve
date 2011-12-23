@@ -22,6 +22,7 @@
 	<head>
 		<title>Sotneve - <?php echo $evento -> getCampo("titulo");?></title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+		<link rel="stylesheet" type="text/css" href="styles/info_evento.css">
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
 	</head>
 	<body>
@@ -81,9 +82,9 @@ $asistentes = $evento->getAsistentes();
 if($evento->error() == -2) //No pudo conectar
 header('Location:index.php?err_bd');	//Redirecconar con GET a error
 else if($evento->error() == -1)//no existe el usuario (o ha fallado la consulta)
-echo '<span> Actualmente no hay asistentes</span>';
+echo '<span> Actualmente no hay asistentes </span>';
 foreach($asistentes as $asist){
-$span= sprintf("<span><a href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $asist['idUsuario'],$asist['alias']);
+$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $asist['idUsuario'],$asist['alias']);
 echo $span;
 }
 					?>
@@ -96,7 +97,7 @@ echo $span;
 					</strong> very text make long column make filler fill make column column silly filler text silly column fill silly fill column text filler make text silly filler make filler very silly make text very very text make long filler very make column make silly column fill silly column long make silly filler column filler silly long long column fill silly column very
 				</p>
 			</div>
-			<div id="footer">
+			<div id="pie">
 				<p>
 					Sotneve 2011 &copy;
 				</p>
