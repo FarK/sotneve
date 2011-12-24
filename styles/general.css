@@ -89,7 +89,6 @@ h1 {
 	text-align: center
 }
 
-
 /************/
 /* CABECERA */
 /* **********/
@@ -133,7 +132,6 @@ div#husuario {
 }
 
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
-	margin: 10px 50% 0 100px;
 	display: inline-block;
 }
 
@@ -168,3 +166,4 @@ div#pie span {
 	padding: 5px 10px;
 	vertical-align: -8px;
 }
+
