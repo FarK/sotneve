@@ -36,36 +36,7 @@
 					?></span>
 			</div>
 			<div id="wrapper">
-				<div id="content">
-					<h1><?php echo $evento -> getCampo("titulo");?></h1>
-					<p>
-						<strong>1) Informaci&oacute;n del evento:
-						<br />
-						</strong>
-						<span>Lugar: <?php echo $evento -> getCampo('lugar');?></span>
-						<br />
-						<span>Fecha: <?php echo $evento -> getCampo('fechaEvento');?></span>
-						<br />
-						<span>Quedan <?php echo $evento->getCampo('maxPersonas')-$evento->getNumAsistentes()
-							?> plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?> participantes</span>
-						<br />
-						<span>Descripci&oacute;n: <?php echo $evento -> getCampo('descripcion');?></span>
-						<br />
-						<span>Creado por: <?php
-						if ($bd -> conectar()) {
-							$query = sprintf("SELECT alias FROM usuarios WHERE idUsuario=%s", $evento -> getCampo('propietario'));
-							$tuplas = $bd -> consulta($query);
-							while ($fila = mysql_fetch_assoc($tuplas)) {
-
-								echo $idEvento2 = $fila['alias'];
-							}
-							$bd -> desconectar();
-						}
-							?></span>
-						<br />
-				</div>
-			</div>
-			<div class='lista_usuarios' id="asistentes">
+				<div class='lista_usuarios' id="asistentes">
 				<p>
 					<strong> Van estas <?php echo $evento->getNumAsistentes()
 					?> personas:
@@ -90,7 +61,36 @@ echo $span;
 					?>
 				</p>
 			</div>
-			<div id="extra">
+				<div id="informacion">
+					<h1><?php echo $evento -> getCampo("titulo");?></h1>
+					<p>
+						<strong>Informaci&oacute;n del evento:
+						<br />
+						</strong>
+						<span class='info'>Lugar: <?php echo $evento -> getCampo('lugar');?></span>
+						<br />
+						<span class='info'>Fecha: <?php echo $evento -> getCampo('fechaEvento');?></span>
+						<br />
+						<span class='info'>Quedan <?php echo $evento->getCampo('maxPersonas')-$evento->getNumAsistentes()
+							?> plazas restantes de <?php echo $evento -> getCampo('maxPersonas');?> participantes</span>
+						<br />
+						<span class='info'>Descripci&oacute;n: <?php echo $evento -> getCampo('descripcion');?></span>
+						<br />
+						<span class='info'>Creado por: <?php
+						if ($bd -> conectar()) {
+							$query = sprintf("SELECT alias FROM usuarios WHERE idUsuario=%s", $evento -> getCampo('propietario'));
+							$tuplas = $bd -> consulta($query);
+							while ($fila = mysql_fetch_assoc($tuplas)) {
+
+								echo $idEvento2 = $fila['alias'];
+							}
+							$bd -> desconectar();
+						}
+							?></span>
+						<br />
+				</div>
+			</div>
+			<div id="comentarios">
 				<p>
 					<strong>Comentarios (no sabemos si implementarlo)
 					<br />
