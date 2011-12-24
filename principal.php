@@ -42,7 +42,7 @@ if ($usuarioActual -> error() != 0)
 					
 				</div>
 			</div>
-			<div id="favoritos">
+			<div class='lista_usuarios' id="favoritos">
 				<p>
 					<strong>Tus favoritos</strong>
 				</p>
@@ -59,7 +59,7 @@ if ($usuarioActual -> error() != 0)
 				<?php
 				$favoritos = $usuarioActual -> getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<span><a href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario'], $fav['alias']);
+					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario'], $fav['alias']);
 					echo $span;
 				}
 				?>

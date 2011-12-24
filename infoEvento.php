@@ -65,7 +65,7 @@
 						<br />
 				</div>
 			</div>
-			<div id="navigation">
+			<div class='lista_usuarios' id="asistentes">
 				<p>
 					<strong> Van estas <?php echo $evento->getNumAsistentes()
 					?> personas:
@@ -99,7 +99,7 @@ echo $span;
 			</div>
 			<div id="pie">
 				<p>
-					Sotneve 2011 &copy;
+					<span>Copyright Sotneve 2011 &copy;</span>
 				</p>
 			</div>
 		</div>
