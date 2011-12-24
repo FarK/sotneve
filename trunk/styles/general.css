@@ -1,9 +1,9 @@
 body {
-	/*font: 76% arial, sans-serif
-	text-align: center;*/
 	background-color: #D0E8F7;
 	margin: auto;
 	width: 900px;
+	font: 76% arial, sans-serif;
+	text-align: center;
 }
 
 input {
@@ -89,6 +89,7 @@ h1 {
 	text-align: center
 }
 
+
 /************/
 /* CABECERA */
 /* **********/
@@ -147,4 +148,23 @@ div #buscador {/*No es de estas lineas el problema de que el buscador desaparare
 div.contenido{
 	margin-left:150px;
 	
+}
+
+/*******************
+ * ***   PIE   *** *
+ *******************/
+div#pie {
+	clear: left;
+	width: 100%;
+	background: #333;
+	color: #FFF;
+	text-align: left;
+	height: 30px;
+	border-radius: 5px 5px;
+	
+}
+div#pie span {
+	margin: 0;
+	padding: 5px 10px;
+	vertical-align: -8px;
 }
