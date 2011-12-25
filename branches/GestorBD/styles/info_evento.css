@@ -1,0 +1,12 @@
+div.lista_usuarios{
+	/*margin:10px 0 10px -900px;*/
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+
+strong{
+	font-size: 120%; 
+}

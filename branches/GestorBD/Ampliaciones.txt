@@ -1,0 +1,33 @@
+GENERAL
+---------------------
+-Cabecera y pie común, en un archivo externo, reutilizable y que no se recargue entre transiciones
+-Crear y añadir logo cutre en photoshop.
+
+
+LOGIN
+---------------------
+- Apariencia parecida a tuenti, con título y descripción a la izquierda y login y regístrate a la derecha, y un pie con contáctanos y sobre nosotros.
+
+
+REGISTRO
+---------------------
+
+
+
+PRINCIPAL
+---------------------
+-Cabecera y pie importados.
+-En el centro lista de eventos de tu provincia, a la izquierda lista de amigos preferidos y a la derecha eventos a los que voy
+
+
+EVENTO
+---------------------
+-Comentarios de usuarios bajo la descripción, se necesitaría en la BD: comentarios(idEvento, idUsuario, fechahora)
+-Integración Google Maps
+-Geolocalización HTML5?
+
+
+PERFIL
+---------------------
+-Numero telefono en perfil?
+-Cuando tu ves el perfil de alguien mostrar la edad calculada

@@ -1,0 +1,40 @@
+p {
+	margin: 0 10px 10px;
+}
+
+div#cabecera {
+	position: relative;
+}
+div#contenedor {
+	width: 900px;
+	margin: 0 auto;
+}
+div#wrapper {
+	float: left;
+	width: 100%;
+}
+div#eventos {
+	margin: 10px 300px 0 150px;
+	
+}
+div#eventosUsuario {
+	float: left;
+	width: 300px;
+	margin:10px 0 10px -300px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+	border-radius: 7px 7px;
+}
+div.lista_usuarios {
+	margin:10px 0 10px -900px;
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+
+div#eventos p {
+ line-height: 1.4
+ }
+
