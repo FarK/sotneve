@@ -38,7 +38,7 @@
 			<div id="wrapper">
 				<div class='lista_usuarios' id="asistentes">
 				<p>
-					<strong> Van estas <?php echo $evento->getNumAsistentes()
+					<strong class="num_usuarios"> Van estas <?php echo $evento->getNumAsistentes()
 					?> personas:
 					<br />
 					</strong>

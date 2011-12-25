@@ -1,5 +1,5 @@
 div.lista_usuarios{
-	/*margin:10px 0 10px -900px;*/
+	margin: 0px 0 10px 0;
 	border-radius: 7px 7px;
 	float: left;
 	width: 150px;
@@ -7,6 +7,33 @@ div.lista_usuarios{
 	min-height: 450px;
 }
 
+a.usuario{
+	margin: 3px 5px 3px 5px;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+	background-color: #D0E8F7;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+div#informacion{
+	min-height: 300px;
+}
+
+div#comentarios{
+	min-height: 140px;
+	padding: 10px 5px 0 5px;
+	margin: 0 0 0 160px;
+	background-color: #418eb6;
+	border-radius: 10px;
+}
+
 strong{
 	font-size: 120%; 
+	margin: 20px;
+}
+
+strong.num_usuarios{
+	font-size: 105%;
 }
