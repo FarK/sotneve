@@ -1,0 +1,24 @@
+div.lista_usuarios{
+	margin: 0px 0 10px 0;
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+
+a.usuario{
+	margin: 3px 5px 3px 5px;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+	background-color: #D0E8F7;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+span.l_usuario{
+	font-size: 120%; 
+	margin: 20px;
+}
+
