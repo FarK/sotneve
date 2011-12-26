@@ -22,10 +22,38 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sotneve - <?php echo $usuarioVisitado->getCampo("alias"); ?></title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css">
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
 		<?php include ("includes/head.php"); ?>
+
+		<div class='lista_usuarios' id="amigos">
+				<p>
+					<strong class="num_usuarios"> Amigos de  <?php echo $usuarioVisitado->getCampo("nombre")
+					?>:
+					<br />
+					</strong>
+					<?php
+//include_once ('BD/evento.php');
+
+
+$amigos = $usuarioVisitado->getFavoritos();
+
+//Comprobar si ha habido errores
+
+if($usuario->error() == -2) //No pudo conectar
+header('Location:index.php?err_bd');	//Redirecconar con GET a error
+else if($usuario->error() == -1)//no existe el usuario (o ha fallado la consulta)
+echo '<span> Actualmente no hay amigos </span>';
+foreach($amigos as $am){
+$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $am['idUsuario'],$am['alias']);
+echo $span;
+}
+					?>
+				</p>
+			</div>
+
 
 		<h1><?php echo $usuarioVisitado->getCampo("alias")?></h1>
 		
@@ -83,7 +111,7 @@
 				echo $nombre;
 				?>
 			</span>
-			
+			<br />
 			<span class="l_usuario"> 
 				Apellidos:
 			</span>
@@ -92,7 +120,7 @@
 				echo $apellidos;
 				?>
 			</span>
-			
+			<br />
 			<span class="l_usuario"> 
 				Sexo:
 			</span>
@@ -101,7 +129,7 @@
 				echo $sexo;
 				?>
 			</span>
-			
+			<br />
 			<span class="l_usuario"> 
 				Fecha de Nacimiento:
 			</span>
@@ -110,7 +138,7 @@
 				echo $fechaNac;
 				?>
 			</span>
-			
+			<br />
 			<span class="l_usuario"> 
 				Email:
 			</span>
@@ -119,7 +147,7 @@
 				echo $email;
 				?>
 			</span>
-			
+			<br />
 			<span class="l_usuario"> 
 				Provincia:
 			</span>
@@ -128,7 +156,9 @@
 				echo $provincia;
 				?>
 			</span>
-			
+			<div id="pie">
+				<span>Copyright Sotneve 2011 &copy;</span>
+			</div>
 		</div>
 	</body>
 </html>
