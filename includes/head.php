@@ -24,7 +24,7 @@ $enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 		<a class="boton"  id ="creaEvento" href="crearEvento.php">Crear Evento</a>
 		<a class="boton" href=<?php echo $enlaceFavorito ?>>Favoritos</a>
 		<a class="boton" href="editaUsuario.php">Mi perfil</a>
-		<a class="boton" href="formulario.xhtml">Logout</a>
+		<a class="boton" href="logout.php">Logout</a>
 		
 	</div>
 
