@@ -55,7 +55,7 @@ function generaTipos() {
 				<option value="0">Selecciona opci&oacute;n...</option>
 			</select>
 			<button type="submit" class="boton">
-				¡Buscar!
+				&iexcl;Buscar!
 			</button>
 	</div>
 </form>
