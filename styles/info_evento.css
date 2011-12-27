@@ -8,13 +8,14 @@ div.lista_usuarios{
 }
 
 a.usuario{
-	margin: 3px 5px 3px 5px;
+	margin: 3px 3px;
 	border-radius: 10px;
-	padding: 6px;
+	padding: 4px 6px;
 	color: #418eb6;
 	background-color: #D0E8F7;
 	font-weight: bold;
 	text-decoration: none;
+	display:inline-block;
 } 
 
 div#informacion{
@@ -30,10 +31,12 @@ div#comentarios{
 }
 
 strong{
-	font-size: 120%; 
-	margin: 20px;
+	font-size: 110%; 
+	margin: 1%;
 }
 
 strong.num_usuarios{
+	display:inline-block;
+	margin-bottom: 10px;
 	font-size: 105%;
 }
