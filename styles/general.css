@@ -41,6 +41,7 @@ input:focus, .boton:focus, select:focus {
 }
 
 img {
+	width: 85px;
 	border-top-left-radius: 5px 5px;
 }
 
