@@ -41,6 +41,9 @@
 		}else if ($err == 'internalError') {
 			echo "Error en la conexión a la base de datos";
 		
+		}else if ($err == 'searchError') {
+			echo "Error en la busqueda, compruebe los campos o intentelo de nuevo mas tarde";
+		 
 		} else {
 			echo "Hemos tenido un problema, intentelo de nuevo mas tarde";
 		}
