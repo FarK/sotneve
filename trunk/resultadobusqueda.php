@@ -19,7 +19,7 @@ if ($provincia == NULL || $subtipos == NULL) {//Valido los datos que me llegan p
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset=utf-8" />
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="styles/resultadobusqueda.css" />
 		<link rel="stylesheet" type="text/css" href="styles/buscarevento.css">

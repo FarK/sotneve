@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset=utf-8" />
 		<title>Sotneve - <?php echo $usuarioVisitado->getCampo("alias"); ?></title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css">
@@ -30,7 +30,7 @@
 
 		<div class='lista_usuarios' id="amigos">
 				<p>
-					<strong class="num_usuarios"> Amigos de  <?php echo $usuarioVisitado->getCampo("nombre")
+					<strong class="num_usuarios"> Amigos de  <?php echo $usuarioVisitado->getCampo("nombre");
 					?>:
 					<br />
 					</strong>
