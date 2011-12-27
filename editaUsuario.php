@@ -79,7 +79,7 @@ function creaCheckBox($usuario, $campo) {
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
 				}
 				if (isset($_GET['err_contrasena'])) {
-					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+					echo '<span id="errorcontrasena">Contrase&ntildea incorrecta, ambas contrase&ntildea deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
 				}
 				if (isset($_GET['err_campos'])) {
 					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
@@ -112,15 +112,15 @@ function creaCheckBox($usuario, $campo) {
 					<?php creaCheckBox($usuario, $APELLIDOS);?>
 				</div>
 				<div class="divf">
-					<label class="labelleft" for="contrasenaactual">Contraseña Actual:</label>
+					<label class="labelleft" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
 					<input type="password" class="inputvalor" name="contrasenaactual" id="contrasena" />
 					</div>
 					<div class="divf">
-					<label class="labelleft" for="contrasena">Cambiar contraseña:</label>
+					<label class="labelleft" for="contrasena">Cambiar contrase&ntilde;a:</label>
 					<input type="password" class="inputvalor" name="contrasena" id="contrasena" />
 					</div>
 					<div class="divf">
-					<label class="labelleft" for="recontrasena">Repite contraseña:</label>
+					<label class="labelleft" for="recontrasena">Repite contrase&ntilde;a</label>
 					<input type="password" class="inputvalor" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="divf">
