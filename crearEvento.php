@@ -15,7 +15,7 @@ if ($usuario -> error() != 0){
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css" />
 		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />

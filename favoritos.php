@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="styles/favoritos.css" />
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
