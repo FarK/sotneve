@@ -1,34 +1,31 @@
 <?php
 class GestorBD {
+	private $PDO;
+	private $DB_HOST = 'localhost';
+	private $DB_USERNAME = 'root';
+	private $DB_PASS = '';
 	private $conn;
 
-	//public GestorBD(){}
-
-	public function conectar() {
-		$this -> conn = mysql_connect('localhost', 'root', '');
-		if (!$this -> conn) {
-			//die('No se pudo conectar: ' . mysql_error());
-			return false;
-		} else {
-			mysql_select_db("sotneve", $this -> conn);
-			return true;
+	public GestorBD(){
+		try{
+			$this->PDO = new PDO("mysql:host=$this->DB_HOSTNAME;dbname=$this->DB_NAME",
+				$this->USERNAME, $this->DB_PASS);
+			$this->PDO->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		}
+		catch(PDOException $exp){
+			//TODO: Redirigir a página de error
+			echo "ERROR AL CONECTARSE CON LA BD </br>";
+			echo $exp;
 		}
 	}
 
 	public function desconectar() {
-		mysql_close($this -> conn);
-
+		$this->PDO = null;
 	}
 
-	public function escapeString($str) {
-		return mysql_real_escape_string($str, $this -> conn);
-	}
-
-	public function consulta($query)//CUIDAOOOOOOOOO! SQL Injection !!
-	{
-		return mysql_query($query, $this -> conn);
-	}
-
+/**************************************************************************************************************************************************************************************/
+/* TODO: Mover estas consultas a sus clases correspondientes                                                                                                                          */
+/**************************************************************************************************************************************************************************************/
 	public function passCorrecta($email, $pass) {
 		$query = sprintf("SELECT * FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
 		$result = $this -> consulta($query);
@@ -83,8 +80,5 @@ class GestorBD {
 			$tuplas = $this -> consulta($query);
 		return $tuplas;
 	}
-		
-
-
 }
 ?>
