@@ -13,13 +13,13 @@
 				<h1>¡Únete a nosotros!</h1>
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
 				<?php
-				if(isset($_GET['err_email'])){
+				if(isset($_SESSION['err_email']) && $_SESSION['err_email']){
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
 				}
-				if(isset($_GET['err_contrasena'])){
+				if(isset($_SESSION['err_contrasena']) && $_SESSION['err_contrasena']){
 					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
 				}
-				if(isset($_GET['err_campos'])){
+				if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
 					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
 				}
 				?>
@@ -81,7 +81,7 @@
 				</div>
 
 				<button type="submit" id="registrate">
-					¡Registrate!
+					¡Reg&iacute;strate!
 				</button>
 			</fieldset>
 		</form>
