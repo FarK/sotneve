@@ -21,16 +21,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>Sotneve - <?php echo $evento -> getCampo("titulo");?></title>
-		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" type="text/css" href="styles/info_evento.css">
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<!-- 	<div id="logo">
-				<h1>Logo</h1>
-				</div> -->
 				<span><?php
 				include 'includes/head.php';
 					?></span>
@@ -38,7 +36,7 @@
 			<div id="wrapper">
 				<div class='lista_usuarios' id="asistentes">
 				<p>
-					<strong class="num_usuarios"> Van estas <?php echo $evento->getNumAsistentes()
+					<strong class="num_usuarios">Van estas <?php echo $evento->getNumAsistentes()
 					?> personas:
 					<br />
 					</strong>
@@ -92,16 +90,13 @@ echo $span;
 			</div>
 			<div id="comentarios">
 				<p>
-					<strong>Comentarios (no sabemos si implementarlo)
+					<strong>Comentarios (no sabemos si implementarlo):
 					<br />
 					</strong> very text make long column make filler fill make column column silly filler text silly column fill silly fill column text filler make text silly filler make filler very silly make text very very text make long filler very make column make silly column fill silly column long make silly filler column filler silly long long column fill silly column very
 				</p>
 			</div>
-			<div id="pie">
-				<p>
-					<span>Copyright Sotneve 2011 &copy;</span>
-				</p>
-			</div>
+
+				 <?php include 'includes/footer.php';?>
 		</div>
 	</body>
 </html>
