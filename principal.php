@@ -84,9 +84,7 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 				}
 				?>
 			</div>
-			<div id="pie">
-				<span>Copyright Sotneve 2011 &copy;</span>
-			</div>
+			<?php include("includes/footer.php"); ?>
 		</div>
 	</body>
 </html>
