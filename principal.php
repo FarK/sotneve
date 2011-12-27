@@ -5,6 +5,9 @@ include_once ('BD/usuario.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $usuarioActual = new Usuario($_SESSION['idUsuario']);
+if(!isset($_SESSION['idUsuario'])){
+	header('Location:index.php');
+}
 if ($usuarioActual -> error() != 0)
 	header('Location:errores.php?error="usernotfound"');
 ?>
@@ -44,7 +47,7 @@ if ($usuarioActual -> error() != 0)
 			</div>
 			<div class='lista_usuarios' id="favoritos">
 				<p>
-					<strong>Mis favoritos:</strong>
+					<strong>Tus favoritos</strong>
 				</p>
 				<p>
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
@@ -66,7 +69,7 @@ if ($usuarioActual -> error() != 0)
 			</div>
 			<div id="eventosUsuario">
 				<p>
-					<strong>Mis eventos:</strong>
+					<strong>Tus eventos</strong>
 				</p>
 				<p>
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
