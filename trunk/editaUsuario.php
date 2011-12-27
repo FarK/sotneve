@@ -59,8 +59,10 @@ function creaCheckBox($usuario, $campo) {
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="scripts/editausuario.js"></script>
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<link rel="stylesheet" type="text/css" href="styles/editaUsuario.css">
+		
 		
 	</head>
 	<body>
