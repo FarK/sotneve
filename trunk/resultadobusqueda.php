@@ -73,5 +73,6 @@ if ($provincia == NULL || $subtipos == NULL) {//Valido los datos que me llegan p
 			echo($linea);
 		}
 		?>
+			<?php include("includes/footer.php"); ?>
 	</body>
 </html>
