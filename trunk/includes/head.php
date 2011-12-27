@@ -1,4 +1,4 @@
-<?php
+	<?php
 include_once ("BD/usuario.php");
 
 //Creamos el objeto usuario del usuario conectado
@@ -9,7 +9,7 @@ if ($usuario -> error() == -2)//No pudo conectar
 //Redirecconar con GET a error
 
 $id=$_SESSION['idUsuario'];
-$enlace=sprintf("'favoritos.php?idUsuario=%s'",$id);
+$enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 ?>
 
 <div id="hcabecera">
@@ -21,8 +21,8 @@ $enlace=sprintf("'favoritos.php?idUsuario=%s'",$id);
 	</div>
 	<div id="hbotones">
 		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
-		<a class="boton" href=<?php echo $enlace ?>>Favoritos</a>
-		<a class="boton" href="evento.css">Mi perfil</a>
+		<a class="boton" href=<?php echo $enlaceFavorito ?>>Favoritos</a>
+		<a class="boton" href="editaUsuario.php">Mi perfil</a>
 		<a class="boton" href="formulario.xhtml">Logout</a>
 	</div>
 
