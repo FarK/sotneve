@@ -165,6 +165,7 @@ function creaCheckBox($usuario, $campo) {
 					Guardar
 				</button>
 		</form>
+			<?php include("includes/footer.php"); ?>
 		<!-- </div> -->
 	</body>
 </html>
