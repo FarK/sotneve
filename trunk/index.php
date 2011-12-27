@@ -11,14 +11,14 @@ if(isset($_SESSION['idUsuario'])){
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"></meta>
 		<title>Sotneve - Login</title>
 		<link rel="stylesheet" type="text/css" href="styles/index.css" />
 		<script type="text/javascript" src="scripts/index.js"></script>
 	</head>
 	<body>
 		<div id="logoprincipal">
-			<IMG ID="logop" SRC="images/logo.jpg" ALT="Inicio">
+			<img id="logop" src="images/logo.jpg" alt="Inicio"></img>
 		</div>
 		<form id="login_form" method="post" action="login.php" onsubmit="return validaForm()">
 			<fieldset>
@@ -41,7 +41,7 @@ if(isset($_SESSION['idUsuario'])){
 				<br/>
 				<!--Se puede usar : o debe usar codigo ascii? -->
 				<label for="email" class="normal"> Correo electr&oacute;nico </label>
-				<input id="email" name="email" type="text" placeholder="Correo electr&oacute;nico" onchange="validaEmail()"/>
+				<input id="email" name="email" type="text" placeholder='Correo electr&oacute;nico' onchange="validaEmail()"/>
 				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
 				<input id="pass" name="pass" type="password" placeholder="Contrase&ntilde;a" onblur="validaPass()"/>
 				<input id="send" class="boton" name="Send" type="submit" value="Entrar"/>
