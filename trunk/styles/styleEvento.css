@@ -7,7 +7,11 @@
 	color: #418eb6;
 }*/
 
-
+.error{
+display: block;
+//visibility: hidden;
+color:red;
+}
 
 
 input#descripcion {
