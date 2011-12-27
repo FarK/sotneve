@@ -22,7 +22,8 @@
 		<meta charset=utf-8" />
 		<title>Sotneve - <?php echo $usuarioVisitado->getCampo("alias"); ?></title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
-		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css">
+		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css">	
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->

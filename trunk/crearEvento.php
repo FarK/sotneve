@@ -19,6 +19,8 @@ if ($usuario -> error() != 0){
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css" />
 		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+
 		<script type="text/javascript" src="scripts/crearEvento.js"></script>
 	</head>
 	<body>
@@ -128,6 +130,7 @@ if ($usuario -> error() != 0){
 				</form>
 			</div>
 		</div>
+			<?php include("includes/footer.php"); ?>
 		
 	</body>
 </html>
