@@ -40,11 +40,11 @@ if ($usuario -> error() != 0){
 			<div class="form">
 				<form name="fval" onsubmit="return valida()">
 						<div class="filaform">
-							<label for="nomevento"> Título</label>
+							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />
 						</div>
 						<div class="filaform">
-							<label id="nump" for="numpersonas">Número de personas</label>
+							<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
 							<input type="text" id="numpersonas" />
 							<br/>
 						</div>
@@ -117,7 +117,7 @@ if ($usuario -> error() != 0){
 							<br/>
 						</div>
 						<div class="filaform">
-							<label for="descripcion" >Descripción</label>
+							<label for="descripcion" >Descripci&oacute;n</label>
 							<input type="text" id="descripcion" />
 							<br/>
 						</div>
