@@ -25,9 +25,6 @@ if ($bd -> conectar()) {
 	//pasa Hombre a 1 y Mujer a 0
 
 	if ($valido){
-		
-		
-		 
 		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
 		$aux=sprintf("Location:index.php?mens=Registrado con exito. %s",$provincia);
 		header($aux);
@@ -41,29 +38,24 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 	$resultadoEmail = $bd -> usuariosCon('email',$email);
 	$resultadoAlias = $bd -> usuariosCon('alias',$alias);
 	
-	$res = sprintf("Location:registro.php?");
-	echo("empezamos");
 	//Hay error si...
 	$camposvacios = false;
 	//En algunos if se podria hacer que si ya hay alguno que no es valido lo comprobara, todos no porque algunos tienen que añadir el error indicado
 
 	if ($email == "" || $contrasena == "" || $nombre == "" || $apellidos == "") {//OK
 		$camposvacios = true;
-		$res = $res . '&err_campos';
-		echo("campos");
+		$_SESSION['err_campos'] = true;
 		$valido=false;
 	}
 	//TODO Validar el email con expresiones regulares.
 	
 	if (!$camposvacios && (mysql_num_rows($resultadoEmail) > 0 || strlen($email) > 60)) {//OK
-		$res = $res . '&err_email';
-	echo("email");
+		$_SESSION['err_email'] = true;
 		$valido = false;
 	}
 
 	if (!$camposvacios && ($contrasena != $recontrasena || strlen($contrasena) < 6 || strlen($contrasena) > 15)) {//No entra en el if
-		$res = $res . '&err_contrasena';
-	echo("contrasena");
+		$_SESSION['err_contrasena'] = true;
 		$valido = false;
 	}
 
@@ -77,7 +69,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 	$ano = substr($fechanac, 6, 9);
 
 	$diamax=0;
-	//No contemplamos visiestos ni los años
+	//No contemplamos bisiestos ni los años
 
 	if ($mes > 0 && $mes < 13 && strlen($fechanac)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
 		switch ($mes) {
@@ -95,21 +87,18 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 				break;
 		}
 		if ($dia < 1 && $dia > $diamax) {
-			echo("fecha");
 			$valido = false;
 		}
 
 	} else {
-		echo("fecha2");
 		$valido = false;
 	}
 	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
-		echo("alias");
 		$valido = false;
 	}
 	
 	if($provincia==0){
-			$res = $res . '&err_campos';
+		$_SESSION['err_campos'] = true;
 		$valido=false;
 	}elseif(!$camposvacios){
 		
@@ -119,7 +108,7 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 		while ($fila = mysql_fetch_assoc($tuplas)  && mysql_num_rows($fila)<=1 && mysql_num_rows($fila)>0) { 
 			$prov=$fila['idProvincia'];
 			if($prov==""){
-				$res = $res . '&err_campos';
+				$_SESSION['err_campos'] = true;
 				$valido=false;
 			}	
 		}
@@ -127,10 +116,9 @@ function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, 
 	}
 
 	if ($valido) {
-		echo("terminamos");
 		return true;
 	} else {
-		header($res);
+		header("Location:registro.php");
 	}
 	// while($fila = mysql_fetch_assoc($resultado)){
 	// $existe=$fila['idUsuario'];
