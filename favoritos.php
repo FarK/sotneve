@@ -6,6 +6,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles/favoritos.css" />
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 		<title>Sotneve - Tus favoritos</title>
 		
 	</head>
