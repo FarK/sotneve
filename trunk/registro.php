@@ -6,14 +6,14 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<meta charset=utf-8" />
-		<title>sotneve - Únete</title>
+		<title>sotneve - &Uacute;nete</title>
 		<link rel="stylesheet" type="text/css" href="styles/registro.css" />
 		<script type="text/javascript" src="scripts/registro.js"></script>
 	</head>
 	<body>
 		<form name="form" method="post" action="insertarusuario.php" onsubmit="return esFormularioValido()">
 			<fieldset>
-				<h1>¡Únete a nosotros!</h1>
+				<h1>&iexcl;&Uacute;nete a nosotros!</h1>
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
 				<?php
 				if(isset($_SESSION['err_email']) && $_SESSION['err_email']){
@@ -44,9 +44,9 @@ session_start();
 					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" />
 				</div>
 				<div class="div3">
-					<label class="labelleft" for="contrasena">Contraseña:</label>
+					<label class="labelleft" for="contrasena">Contrase&ntilde;a:</label>
 					<input type="password" name="contrasena" id="contrasena" />
-					<label class="labelright" for="recontrasena">Repite contraseña:</label>
+					<label class="labelright" for="recontrasena">Repite contrase&ntilde;a:</label>
 					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="div4">
