@@ -44,7 +44,7 @@ if ($usuarioActual -> error() != 0)
 			</div>
 			<div class='lista_usuarios' id="favoritos">
 				<p>
-					<strong>Tus favoritos</strong>
+					<strong>Mis favoritos:</strong>
 				</p>
 				<p>
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
@@ -66,7 +66,7 @@ if ($usuarioActual -> error() != 0)
 			</div>
 			<div id="eventosUsuario">
 				<p>
-					<strong>Tus eventos</strong>
+					<strong>Mis eventos:</strong>
 				</p>
 				<p>
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
