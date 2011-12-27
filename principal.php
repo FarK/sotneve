@@ -6,12 +6,12 @@ include_once ('BD/usuario.php');
 //Creamos un objeto usuario con el usuario logeado
 $usuarioActual = new Usuario($_SESSION['idUsuario']);
 ?>
-
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<title>Sotneve</title>
-		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"></meta>
+		<meta content="text/xhtml; charset=UTF-8"></meta>
 		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
 		<link rel="stylesheet" type="text/css" href="styles/general.css"></link>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>

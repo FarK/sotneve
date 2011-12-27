@@ -14,7 +14,7 @@ $enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 
 <div id="hcabecera">
 	<div id="hlogo">
-		<IMG SRC="images/logo.jpg" ALT="Inicio">
+		<img src="images/logo.jpg" alt="Inicio"></img>
 	</div>
 	<div id="husuario">
 		<span>Hola, <?php echo $usuario -> getCampo("nombre");?></span>
