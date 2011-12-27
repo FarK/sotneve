@@ -30,9 +30,13 @@ if ($usuario -> error() != 0){
 		
 		<div class="contenido">
 			
-					<h2>Crear Evento</h2>
-					
-			
+		<h2>Crear Evento</h2>
+		<?php
+			if(isset($_SESSION['err_campos']) && $_SESSION['err_pass']){
+				echo "<span class='error'>Debe rellenar todos los campos.</span>";
+				$_SESSION['err_campos'] = false;
+			}
+		?>
 			<div class="form">
 				<form name="fval" onsubmit="return valida()">
 						<div class="filaform">
@@ -103,6 +107,7 @@ if ($usuario -> error() != 0){
 						</div>
 						<div class="filaform">
 							<label for="provincia"> Provincia</label>
+							<!--TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODODOODODODOTOOOODOOOOO-->
 							<input type="text" id="provincia"/>
 							<br/>
 						</div>
