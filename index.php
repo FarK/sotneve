@@ -1,16 +1,12 @@
 <?php
 	session_start();
-	if(isset($_SESSION['logged'])){
+	if(isset($_SESSION['idUsuario'])){
 		echo 'Ya estas logueado, cerrando sesion';
 		//header('Location:TOOOOOOODOOOOOOOOOO');
 		session_unset();
 		session_destroy();
 	}
 	
-	if(isset($_GET['mens'])){
-		$mensaje=sprintf("<span class='mens'>%s</span>",$_GET['mens']);
-		echo $mensaje;
-	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- IMPORTANTE ESA LÍNEA DE AHÍ ARRIBA Y LA DE ABAJO!!!  -->
@@ -30,11 +26,14 @@
 				<span class="error">Inserte un correo electr&oacute;nico v&aacute;lido</span>
 				<span class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</span>
 				<?php
-				if(isset($_GET['err_pass'])){
+				if(isset($_SESSION['err_pass']) && $_SESSION['err_pass']){
 					echo "<span class='errorserv' >Usuario o contrase&ntilde;a incorrecto</span>";
+					$_SESSION['err_pass'] = false;
 				}
-				if(isset($_GET['err_bd']))
+				if(isset($_GET['err_bd']) && $_SESSION['err_bd']){
 					echo "<span class='errorserv'>No se pudo conectar a la base de datos.</span>";
+					$_SESSION['err_bd'] = false;
+				}
 				?>
 				<br/>
 				<!--Se puede usar : o debe usar codigo ascii? -->

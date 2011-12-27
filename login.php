@@ -14,20 +14,20 @@
 			if($row = $bd->passCorrecta($email, $pass)){
 				//Es correcta
 					//Meter en la variable session que ha conectado
-					$_SESSION['logged'] = true;
 					$_SESSION['idUsuario'] = $row['idUsuario'];
 					header('Location:principal.php');
 			}else{
 				//Es incorrecta
-					//Redireccionar con GET a error
-					header('Location:index.php?err_pass');
+					//Redireccionar a index con error en SESSION
+					$_SESSION['err_pass'] = true;
+					header('Location:index.php');
 			}
 			//Desconectar de la bd
 		$bd->desconectar();
 	}else{
 	//No puedo conectar
-		//Redirecconar con GET a error
-		header('Location:index.php?err_bd');
+		//Redirecconar a index con error en SESSION
+		$_SESSION['err_bd'] = true;
+		header('Location:index.php');
 	}
-	
-	echo 'Logueado, tu id es: ' . $_SESSION['idUsuario'] . '<br>';
+?>
