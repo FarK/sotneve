@@ -34,14 +34,16 @@ function generaTipos() {
 
 <form name="form" method="get" action="generabusqueda.php">
 	<div id="buscador" name="buscador" style="width:600px;">
-			<select class="selbusc" name="provincia" id="provincia">
+		<div class='opcion'>
+			<select  name="provincia" id="provincia">
 				<?php
 				if ($conectado) {
 					generaOption($bd, 'nombre', 'provincias');
 				}
 				?>
 			</select>
-
+		</div>
+		<div class='opcion'>
 			<?php
 			if ($conectado) {
 				generaTipos();
@@ -50,12 +52,16 @@ function generaTipos() {
 
 			$conectado = false;
 			?>
-
-			<select class="selbusc" disabled="disabled" name="subtipos" id="subtipos">
+		</div>
+		<div class='opcion'>
+			<select disabled="disabled" name="subtipos" id="subtipos">
 				<option value="0">Selecciona opci&oacute;n...</option>
 			</select>
-			<button type="submit" class="boton">
+		</div>
+		<div class='opcion'>
+			<button type="submit" id="btnbuscar">
 				&iexcl;Buscar!
 			</button>
+		</div>
 	</div>
 </form>

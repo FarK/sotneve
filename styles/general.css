@@ -133,16 +133,17 @@ div#husuario {
 	text-align: right;
 }
 
+div.opcion{
+	display:inline-block;
+}
+
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
 	display: inline-block;
 }
-
-
 #btnbuscar {
 	background-color: #eaf3fa;
 	color: #418eb6;
-	/*border-radius: 10px 10px;*/
-	position: absolute;
+	border-radius: 10px 10px;
 }
 
 div.contenido{
