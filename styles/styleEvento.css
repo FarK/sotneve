@@ -7,6 +7,9 @@
 	color: #418eb6;
 }*/
 
+
+
+
 input#descripcion {
 	height: 200px;
 	width: 400px;
@@ -14,6 +17,12 @@ input#descripcion {
 	font-size: 1em;
 	
 }
+
+div.contenido{
+	font: 126% arial, sans-serif;
+	
+}
+
 
 div.filaform {
 	display: table-row;
