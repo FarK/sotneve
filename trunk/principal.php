@@ -87,7 +87,7 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 				}
 				?>
 			</div>
-			include("")
+			<?php include("includes/footer.php"); ?>
 		</div>
 	</body>
 </html>
