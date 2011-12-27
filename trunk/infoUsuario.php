@@ -30,8 +30,7 @@
 
 		<div class='lista_usuarios' id="amigos">
 				<p>
-					<strong class="num_usuarios"> Amigos de  <?php echo $usuarioVisitado->getCampo("nombre");
-					?>:
+					<strong class="num_usuarios">Amigos de  <?php echo $usuarioVisitado->getCampo("alias")?>:
 					<br />
 					</strong>
 					<?php
