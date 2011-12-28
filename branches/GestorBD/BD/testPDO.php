@@ -7,9 +7,11 @@ $conexion = new conexion();
 $usuario = new Usuario($conexion, 1);
 
 $usuario->prepCampo('nombre');
-$usuario->consultar();
+$usuario->prepCampo('apellidos');
+$arr = $usuario->consultarCampos();
 
-echo $usuario->resultados['nombre'];
+echo $arr['nombre'] . "</br>";
+echo $arr['apellidos'];
  /*
 class A {
 	var $atributo = 'valor inicial';

@@ -6,7 +6,6 @@ class Conexion{
 	private $DB_USERNAME;
 	private $DB_PASS;
 	private $DB_NAME;
-	private $conn;
 
 	public function __construct(){
 		//Inicializamos los atributos
@@ -16,7 +15,6 @@ class Conexion{
 		$this->DB_USERNAME = 'root';
 		$this->DB_PASS = '';
 		$this->DB_NAME = 'sotneve';
-		$this->conn = NULL;
 
 		try{
 			$this->PDO = new PDO("mysql:host=$this->DB_HOST;dbname=$this->DB_NAME",
@@ -33,6 +31,17 @@ class Conexion{
 	//TODO: Intentar hacer esto en el destructor
 	public function desconectar(){
 		$this->PDO = null;
+	}
+
+	public function consultar($consulta){
+		try{
+			return $this->PDO->query($consulta);
+		}
+		catch(PDOException $exp){
+			//TODO: Redirigir a página de error
+			echo "ERROR AL HACER LA CONSULTA</br>";
+			echo $exp;
+		}
 	}
 
 	public function prepare($consulta){

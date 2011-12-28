@@ -9,10 +9,8 @@ abstract class Tabla{
 
 	var $consultas;			//Consultas a realizar
 	var $consultasPreparadas;	//Consulta preparadas
-	var $resultados;		//Resultados de las consultas ($campo=>$valor)
 
 	var $campos;			//Campos a consultar de la tabla
-	var $stmtCampos;		//Statament de preparar la consulta de los campos
 
 	public function __construct($conexion){
 		//Inicializamos los atributos
@@ -21,31 +19,24 @@ abstract class Tabla{
 		$this->consultasPreparadas = array();
 		$this->resultados = array();
 		$this->campos = array();
-		$this->stmtCampos = $this->conexion->prepare("SELECT :campos FROM " . $this->nomTabla . " WHERE " . $this->pksToString());
 	}
 	
 	//Realiza las consultas y guarda el resultado en $this->resultados
-	public function consultar() {
-		//Ejecutamos la consulta de los campos
-		$this->conexion->bindParam($this->stmtCampos, ':campos', $this->camposToString());
-		$this->conexion->ejecutarPreparada($this->stmtCampos);
-		foreach($this->stmtCampos as $row){
-			foreach($this->campos as $campo)
-				$this->resultados[$campo] = $row[$campo];
-			var_dump($row);
-		}
+	public function consultarCampos() {
+		$stmt = null;
 
-		/*
-		foreach($this->consultas as $consulta){
-			$resource = $bd -> consulta($consulta);
-			while($fetch_array = mysql_fetch_assoc($resource))
-				foreach($fetch_array as $campo => $valor)
-					$this->resultados[$campo] = $valor;
+		//Si se han preparado campos hacemos la consulta
+		$campos = $this->camposToString();
+		if(!empty($campos)){
+			$query = "SELECT " . $campos . " FROM " . $this->nomTabla . " WHERE " . $this->pksToString();
+			$stmt = $this->conexion->consultar($query);
 		}
-		 */
 
 		//Borramos los campos seleccionados de las tablas
-		$this->campos= array();
+		$this->campos = array();
+
+		//Devolvemos el array
+		return $stmt->fetch();
 	}
 
 	//Guarda el campo a consular
