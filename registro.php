@@ -84,7 +84,7 @@ session_start();
 				</div>
 
 				<button type="submit" id="registrate">
-					¡Reg&iacute;strate!
+					&iecl;Reg&iacute;strate!
 				</button>
 			</fieldset>
 		</form>
