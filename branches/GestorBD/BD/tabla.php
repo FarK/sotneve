@@ -8,8 +8,7 @@ abstract class Tabla{
 	var $pks = array();		//Las claves primarias de la tabla ($nomCampo=>$valor)
 
 	var $consultas;			//Consultas a realizar
-	var $consultasPreparadas;	//Consulta preparadas
-
+	var $consultasPreparada;	//Consultas preparadas a realizar
 	var $campos;			//Campos a consultar de la tabla
 
 	public function __construct($conexion){
@@ -44,8 +43,37 @@ abstract class Tabla{
 		$this->campos[] = $campo;
 	}
 
-	private function preparar($consulta){
-		$this->consultasPreparadas[] = $this->conexion->prepare($consulta);
+	protected function preparar($nombre, $consulta){
+		$this->consultasPreparadas[$nombre] = $this->conexion->prepare($consulta);
+	}
+
+	protected function consultarPreparada($preparada, $parametros){
+		//Hacemos bind a todos los parámetros
+		foreach($parametros as $key=>&$value){
+			$this->conexion->bindParam($preparada, $key, $value);
+		}
+
+		//Ejecutamos las consultas
+		$this->conexion->ejecutarPreparada($preparada);
+
+		//Pasamos todas las columnas a un array
+		$ret = array();
+		foreach($preparada as $row)
+			$ret[] = $row;
+
+		return $ret;
+	}
+
+	protected function consultar($query){
+		//Hacemos la consulta
+		$stmt = $this->conexion->consultar($query);
+
+		//Pasamos todas las columnas a un array
+		$ret = array();
+		foreach($stmt as $row)
+			$ret[] = $row;
+
+		return $ret;
 	}
 
 	private function camposToString(){
@@ -60,7 +88,7 @@ abstract class Tabla{
 		return $campos;
 	}
 
-	private function pksToString(){
+	protected function pksToString(){
 		//Sacamos el primer par $nombreCampo=>$valor
 		reset($this->pks);
 		$par = each($this->pks);

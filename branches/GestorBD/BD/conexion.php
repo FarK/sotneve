@@ -49,7 +49,11 @@ class Conexion{
 	}
 
 	public function bindParam($stmt, $param, $value){
-		$stmt->bindParam($param, $value);
+		if(!$stmt->bindParam($param, $value)){
+			//TODO: Redirigir a página de error
+			echo "ERROR AL HACER BIND</br>";
+		}
+
 	}
 
 	//Ejecuta todas las consultas preparadas
