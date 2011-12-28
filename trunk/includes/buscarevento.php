@@ -6,7 +6,7 @@ $conectado = $bd -> conectar();
 
 function generaOption($bd, $campo, $tabla) {//el metodo ya no es generico
 
-	$query = sprintf("SELECT %s,idProvincia FROM %s", $campo, $tabla);
+	$query = sprintf("SELECT %s,idProvincia FROM %s ORDER BY `nombre`", $campo, $tabla);
 	$campos = $bd -> consulta($query);
 
 	while ($fila = mysql_fetch_assoc($campos)) {
