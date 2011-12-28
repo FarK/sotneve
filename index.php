@@ -41,9 +41,9 @@ if(isset($_SESSION['idUsuario'])){
 				<br/>
 				<!--Se puede usar : o debe usar codigo ascii? -->
 				<label for="email" class="normal"> Correo electr&oacute;nico </label>
-				<input id="email" name="email" type="text" placeholder='Correo electr&oacute;nico' onchange="validaEmail()"/>
+				<input id="email" name="email" type="text"  onchange="validaEmail()"/>
 				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
-				<input id="pass" name="pass" type="password" placeholder="Contrase&ntilde;a" onblur="validaPass()"/>
+				<input id="pass" name="pass" type="password"  onblur="validaPass()"/>
 				<input id="send" class="boton" name="Send" type="submit" value="Entrar"/>
 				<a id="registrarse" href="registro.php">Registrarse</a>
 			</fieldset>
