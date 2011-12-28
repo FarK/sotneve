@@ -108,7 +108,7 @@ if ($usuario -> error() != 0){
 							</select>
 						</div>
 						<div class="filaform">
-							<label for="provincia"> Provincia</label>
+							<label for="provincia">Provincia</label>
 							<!--TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODODOODODODOTOOOODOOOOO-->
 							<input type="text" id="provincia"/>
 							<br/>
