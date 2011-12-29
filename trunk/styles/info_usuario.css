@@ -1,13 +1,19 @@
-div.lista_usuarios{
-	margin: 0px 0 10px 0;
+
+/*** LISTA USUARIOS ***/
+
+div.lista_usuarios {
+	margin: 10px 0 10px 0;
 	border-radius: 7px 7px;
 	float: left;
 	width: 150px;
 	background-color: #B9CAFF;
 	min-height: 450px;
 }
-
-a.usuario{
+strong.num_usuarios {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+a.usuario {
 	margin: 3px 3px;
 	border-radius: 10px;
 	padding: 4px 6px;
@@ -15,18 +21,25 @@ a.usuario{
 	background-color: #D0E8F7;
 	font-weight: bold;
 	text-decoration: none;
-	display:inline-block;
-} 
-
-span.l_usuario{
-	font-size: 120%; 
-	margin: 5px 5px;
 	display: inline-block;
+}
+
+/*** INFO USUARIO ***/
+
+div.info_usuario {
+	margin-left: 35%;
+}
+div.data_row {
+	display : table-row;
+}
+span.l_usuario {
+	font-size: 120%;
 	font-weight: bold;
+	display: table-cell;
+	text-align: right;
+	padding: 10px 0;
 }
-
-strong.num_usuarios{
-	display:inline-block;
-	margin-bottom: 10px;
+span.c_usuario {
+	text-align: left;
+	margin: 0 5px;
 }
-
