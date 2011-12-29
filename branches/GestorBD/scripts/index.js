@@ -32,3 +32,13 @@
 		return emailOK && passOK();
 	}
 	
+	function onClickEmail(){
+	//Hace que el email desaparezca al hacer click
+	document.getElementById('email').value="";			
+	}
+
+	function onClickPass(){
+	//Hace que el email desaparezca al hacer click
+	document.getElementById('pass').value="";			
+	}
+	

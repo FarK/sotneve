@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['logged'])){
-		header('Location:index.php');
+	if(!isset($_SESSION['idUsuario'])){
+		header("Location:index.php");
 	}		
 ?>

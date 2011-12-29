@@ -15,10 +15,12 @@ if ($usuario -> error() != 0){
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css" />
 		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+
 		<script type="text/javascript" src="scripts/crearEvento.js"></script>
 	</head>
 	<body>
@@ -30,17 +32,21 @@ if ($usuario -> error() != 0){
 		
 		<div class="contenido">
 			
-					<h2>Crear Evento</h2>
-					
-			
+		<h2>Crear Evento</h2>
+		<?php
+			if(isset($_SESSION['err_campos']) && $_SESSION['err_pass']){
+				echo "<span class='error'>Debe rellenar todos los campos.</span>";
+				$_SESSION['err_campos'] = false;
+			}
+		?>
 			<div class="form">
 				<form name="fval" onsubmit="return valida()">
 						<div class="filaform">
-							<label for="nomevento"> Título</label>
+							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />
 						</div>
 						<div class="filaform">
-							<label id="nump" for="numpersonas">Número de personas</label>
+							<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
 							<input type="text" id="numpersonas" />
 							<br/>
 						</div>
@@ -102,7 +108,8 @@ if ($usuario -> error() != 0){
 							</select>
 						</div>
 						<div class="filaform">
-							<label for="provincia"> Provincia</label>
+							<label for="provincia">Provincia</label>
+							<!--TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODODOODODODOTOOOODOOOOO-->
 							<input type="text" id="provincia"/>
 							<br/>
 						</div>
@@ -112,7 +119,7 @@ if ($usuario -> error() != 0){
 							<br/>
 						</div>
 						<div class="filaform">
-							<label for="descripcion" >Descripción</label>
+							<label for="descripcion" >Descripci&oacute;n</label>
 							<input type="text" id="descripcion" />
 							<br/>
 						</div>
@@ -123,6 +130,7 @@ if ($usuario -> error() != 0){
 				</form>
 			</div>
 		</div>
+			<?php include("includes/footer.php"); ?>
 		
 	</body>
 </html>

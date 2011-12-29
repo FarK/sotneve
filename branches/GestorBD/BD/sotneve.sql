@@ -4,11 +4,11 @@ CREATE DATABASE IF NOT EXISTS sotneve
 
 USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.7
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2011 a las 10:54:27
+-- Servidor: localhost
+-- Tiempo de generación: 27-12-2011 a las 17:09:26
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -43,9 +43,16 @@ CREATE TABLE IF NOT EXISTS `afiliaciones` (
 --
 
 INSERT INTO `afiliaciones` (`idUsuario`, `idEvento`) VALUES
-(3, 8),
-(1, 11),
-(2, 11);
+(1, 1),
+(2, 1),
+(3, 1),
+(7, 1),
+(2, 3),
+(3, 3),
+(4, 3),
+(6, 3),
+(7, 3),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -75,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 --
 
 INSERT INTO `eventos` (`idEvento`, `idSubtipo`, `titulo`, `maxPersonas`, `fechaCreacion`, `descripcion`, `fechaEvento`, `idProvincia`, `lugar`, `propietario`) VALUES
-(8, 2, 'Evento de prueba', 2, '2011-11-13 00:00:00', 'Probando', '2011-11-30 00:00:00', 1, 'Calle de prueba', 3),
-(9, 2, 'Evento caducado', 3, '2011-11-03 00:00:00', 'No debe salir', '2011-11-04 00:00:00', 1, 'calle prueba2', 3),
-(10, 30, 'jugar al padel', 4, '2011-11-14 00:00:00', 'valido no está caducado', '2011-11-30 00:00:00', 1, 'asd', 3),
-(11, 3, 'padel  los de la facultad', 4, '2011-11-15 00:00:00', 'deberian salir 2 apuntados y un maximo de 4', '2011-11-30 00:00:00', 1, 'Reina Mercedes', 1);
+(1, 2, 'Partido de padel', 4, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 16, 'Polideportivo SADUS', 1),
+(2, 3, 'Partido de padel', 4, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 16, 'Polideportivo SADUS', 2),
+(3, 2, 'Huelga plaza españa', 20000, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 3, 'Polideportivo SADUS', 3),
+(4, 4, 'Fiesta Universitaria', 200, '2011-12-02 00:00:00', 'Queremos un cubata', '2011-12-17 00:00:00', 3, 'Puente triana', 2);
 
 -- --------------------------------------------------------
 
@@ -98,8 +105,16 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
 --
 
 INSERT INTO `favoritos` (`idUsuario1`, `idUsuario2`) VALUES
-(3, 1),
-(3, 2);
+(2, 1),
+(1, 2),
+(3, 2),
+(1, 3),
+(2, 3),
+(1, 4),
+(2, 4),
+(3, 4),
+(1, 5),
+(1, 6);
 
 -- --------------------------------------------------------
 
@@ -111,16 +126,65 @@ CREATE TABLE IF NOT EXISTS `provincias` (
   `idProvincia` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idProvincia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=53 ;
 
 --
 -- Volcado de datos para la tabla `provincias`
 --
 
 INSERT INTO `provincias` (`idProvincia`, `nombre`) VALUES
-(1, 'Sevilla'),
-(2, 'Huelva'),
-(30, 'Madrid');
+(1, 'Alava'),
+(2, 'Albacete'),
+(3, 'Alicante'),
+(4, 'Almería'),
+(5, 'Avila'),
+(6, 'Badajoz'),
+(7, 'Illes Baleares'),
+(8, 'Barcelona'),
+(9, 'Burgos'),
+(10, 'Cáceres'),
+(11, 'Cádiz'),
+(12, 'Cástellón'),
+(13, 'Ciudad Real'),
+(14, 'Córdoba'),
+(15, 'Coruña, A'),
+(16, 'Cuenca'),
+(17, 'Girona'),
+(18, 'Granada'),
+(19, 'Guadalajara'),
+(20, 'Guipuzcoa'),
+(21, 'Huelve'),
+(22, 'Huesca'),
+(23, 'Jaén'),
+(24, 'León'),
+(25, 'Lleida'),
+(26, 'Rioja, La'),
+(27, 'Lugo'),
+(28, 'Madrid'),
+(29, 'Málaga'),
+(30, 'Murcia'),
+(31, 'Navarra'),
+(32, 'Ourense'),
+(33, 'Asturias'),
+(34, 'Palencia'),
+(35, 'Palmas, Las'),
+(36, 'Pontevedra'),
+(37, 'Salamanca'),
+(38, 'Santa Cruz de Tenerife'),
+(39, 'Cantabria'),
+(40, 'Segovia'),
+(41, 'Sevilla'),
+(42, 'Soria'),
+(43, 'Tarragona'),
+(44, 'Teruel'),
+(45, 'Toledo'),
+(46, 'Valencia'),
+(47, 'Valladolid'),
+(48, 'Vizcaya'),
+(49, 'Zamora'),
+(50, 'Zaragoza'),
+(51, 'Ceuta'),
+(52, 'Melilla');
 
 -- --------------------------------------------------------
 
@@ -144,7 +208,11 @@ CREATE TABLE IF NOT EXISTS `subtipos` (
 INSERT INTO `subtipos` (`idSubTipo`, `idTipo`, `nombre`, `externo`) VALUES
 (2, 1, 'Futbol', 0),
 (3, 2, 'Ir a ver', 0),
-(30, 1, 'Padel', 0);
+(4, 1, 'Padel', 0),
+(5, 1, 'Baloncesto', 0),
+(6, 2, 'Teatro', 0),
+(8, 1, 'Tenis', 0),
+(9, 4, 'Huelga 15M', 0);
 
 -- --------------------------------------------------------
 
@@ -157,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `tipos` (
   `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `externo` tinyint(1) NOT NULL,
   PRIMARY KEY (`idTipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tipos`
@@ -165,7 +233,9 @@ CREATE TABLE IF NOT EXISTS `tipos` (
 
 INSERT INTO `tipos` (`idTipo`, `nombre`, `externo`) VALUES
 (1, 'Deportes', 0),
-(2, 'Espectaculos', 0);
+(2, 'Espectaculos', 0),
+(3, 'Discotecas', 0),
+(4, 'Otros', 0);
 
 -- --------------------------------------------------------
 
@@ -198,12 +268,12 @@ INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass
 (2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 2, 31),
 (3, '1990-02-11', 1, 'xusty_alex@hotmail.com', 'alexmacan', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Ale', 'Molina', 1, 0),
 (4, '1980-12-11', 1, 'zp_y_yo@gaymail.com', 'rajoy', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Mari4no', 'Rajoy', 1, 0),
-(5, '2010-11-11', 1, 'email1@dominio.com', 'alias1', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre1', 'apellidos1', 30, 0),
-(6, '1990-02-11', 1, 'email2@dominio.com', 'alias2', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre2', 'apellidos2', 1, 0),
-(7, '1989-12-10', 0, 'email3@dominio.com', 'alias3', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre3', 'apellidos3', 30, 0),
-(8, '1990-10-19', 0, 'email4@dominio.com', 'alias4', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre4', 'apellidos4', 2, 0),
-(9, '1990-10-19', 1, 'email5@dominio.com', 'alias5', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre5', 'apellidos5', 1, 0),
-(10, '1990-10-19', 1, 'email6@dominio.com', 'alias7', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre7', 'apellidos6', 2, 0),
+(5, '2010-11-11', 1, 'email1@dominio.com', 'fargueras', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre1', 'apellidos1', 30, 0),
+(6, '1990-02-11', 1, 'email2@dominio.com', 'rafaé', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre2', 'apellidos2', 1, 0),
+(7, '1989-12-10', 0, 'email3@dominio.com', 'vaquilla', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre3', 'apellidos3', 30, 0),
+(8, '1990-10-19', 0, 'email4@dominio.com', 'antonio', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre4', 'apellidos4', 2, 0),
+(9, '1990-10-19', 1, 'email5@dominio.com', 'bendi', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre5', 'apellidos5', 1, 0),
+(10, '1990-10-19', 1, 'email6@dominio.com', 'sandra', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre7', 'apellidos6', 2, 0),
 (11, '1989-12-10', 1, 'email8@dominio.com', 'alias8', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre8', 'apellidos8', 2, 0),
 (12, '1990-11-11', 1, 'email9@dominio.com', 'alias9', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre9', 'apellidos9', 30, 0),
 (14, '1989-12-10', 1, 'email10@dominio.com', 'alias10', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre10', 'apellidos10', 1, 0),
@@ -224,6 +294,16 @@ CREATE TABLE IF NOT EXISTS `valoraciones` (
   KEY `idEvento` (`idEvento`),
   KEY `idUsuario2` (`idUsuario2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `valoraciones`
+--
+
+INSERT INTO `valoraciones` (`idUsuario1`, `idUsuario2`, `idEvento`, `valoracion`) VALUES
+(2, 1, 1, 8),
+(3, 1, 1, 5),
+(4, 5, 1, 4),
+(6, 1, 1, 6);
 
 --
 -- Restricciones para tablas volcadas

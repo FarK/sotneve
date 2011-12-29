@@ -18,25 +18,15 @@ a.usuario{
 	display:inline-block;
 } 
 
-div#informacion{
-	min-height: 300px;
-}
-
-div#comentarios{
-	min-height: 140px;
-	padding: 10px 5px 0 5px;
-	margin: 0 0 0 160px;
-	background-color: #418eb6;
-	border-radius: 10px;
-}
-
-strong{
-	font-size: 110%; 
-	margin: 1%;
+span.l_usuario{
+	font-size: 120%; 
+	margin: 5px 5px;
+	display: inline-block;
+	font-weight: bold;
 }
 
 strong.num_usuarios{
 	display:inline-block;
 	margin-bottom: 10px;
-	font-size: 105%;
 }
+

@@ -1,25 +1,28 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>sotneve - Únete</title>
+		<meta charset=utf-8" />
+		<title>sotneve - &Uacute;nete</title>
 		<link rel="stylesheet" type="text/css" href="styles/registro.css" />
 		<script type="text/javascript" src="scripts/registro.js"></script>
 	</head>
 	<body>
 		<form name="form" method="post" action="insertarusuario.php" onsubmit="return esFormularioValido()">
 			<fieldset>
-				<h1>¡Únete a nosotros!</h1>
+				<h1>&iexcl;&Uacute;nete a nosotros!</h1>
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
 				<?php
-				if(isset($_GET['err_email'])){
+				if(isset($_SESSION['err_email']) && $_SESSION['err_email']){
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
 				}
-				if(isset($_GET['err_contrasena'])){
+				if(isset($_SESSION['err_contrasena']) && $_SESSION['err_contrasena']){
 					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
 				}
-				if(isset($_GET['err_campos'])){
+				if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
 					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
 				}
 				?>
@@ -41,9 +44,9 @@
 					<input type="text" name="apellidos" id="apellidos" class="inputright" onblur="esCampoNoVacio(this.id)" />
 				</div>
 				<div class="div3">
-					<label class="labelleft" for="contrasena">Contraseña:</label>
+					<label class="labelleft" for="contrasena">Contrase&ntilde;a:</label>
 					<input type="password" name="contrasena" id="contrasena" />
-					<label class="labelright" for="recontrasena">Repite contraseña:</label>
+					<label class="labelright" for="recontrasena">Repite contrase&ntilde;a:</label>
 					<input type="password" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="div4">
@@ -81,7 +84,7 @@
 				</div>
 
 				<button type="submit" id="registrate">
-					¡Registrate!
+					&iexcl;Reg&iacute;strate!
 				</button>
 			</fieldset>
 		</form>

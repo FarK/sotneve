@@ -1,34 +1,32 @@
-/*input {
-	width: 170px;
-	border-radius: 4px 4px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #418eb6;
-	color: #418eb6;
-}*/
-
+.error {
+	display: block;//
+	visibility: hidden;
+	color: red;
+}
 input#descripcion {
 	height: 200px;
 	width: 400px;
-	line-height: 1.2px; 
+	line-height: 1.2px;
 	font-size: 1em;
-	
 }
-
+input{
+	width: 400px;
+}
+div.contenido {
+	font: 126% arial, sans-serif;
+}
 div.filaform {
 	display: table-row;
-	
 }
-
 label {
 	display: table-cell;
-	width:150px;
+	width: 150px;
 }
-
-div{
-
-display: block;	
+label{
+	padding-right: 10px;
+	text-align: right;
+}
+select{
 	
 }
-
 

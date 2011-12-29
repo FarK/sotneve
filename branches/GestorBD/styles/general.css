@@ -41,20 +41,8 @@ input:focus, .boton:focus, select:focus {
 }
 
 img {
+	width: 85px;
 	border-top-left-radius: 5px 5px;
-}
-
-a {
-	margin-top: 5px;
-	/*box-shadow: 0px 0px 5px #FFFFFF; efecto de difuminado del borde*/
-	margin-left: 5px;
-	border: 0px;
-	border-radius: 10px;
-	padding: 6px;
-	color: #418eb6;
-	font-weight: bold;
-	background-color: #D0E8F7;
-	text-decoration: none;
 }
 
 fieldset {
@@ -83,15 +71,29 @@ span.errorserv {
 	color: red;
 }
 
-h1 {
+h1,h2{
 	color: #418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align: center
 }
 
+
+
 /************/
 /* CABECERA */
 /* **********/
+
+a.boton {
+	margin-top: 5px;
+	margin-left: 5px;
+	border: 0px;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+	font-weight: bold;
+	background-color: #D0E8F7;
+	text-decoration: none;
+}
 
 div#hcabecera {
 	background-color: #418eb6;
@@ -131,16 +133,17 @@ div#husuario {
 	text-align: right;
 }
 
+div.opcion{
+	display:inline-block;
+}
+
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
 	display: inline-block;
 }
-
-
 #btnbuscar {
 	background-color: #eaf3fa;
 	color: #418eb6;
-	/*border-radius: 10px 10px;*/
-	position: absolute;
+	border-radius: 10px 10px;
 }
 
 div.contenido{
@@ -165,5 +168,14 @@ div#pie span {
 	margin: 0;
 	padding: 5px 10px;
 	vertical-align: -8px;
+}
+
+a#acerca {
+	
+ vertical-align: -8px;
+ color: #FFF;
+ text-decoration: none;
+ padding: 5px 10px 0px 615px;
+ 
 }
 

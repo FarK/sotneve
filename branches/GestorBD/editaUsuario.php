@@ -56,11 +56,13 @@ function creaCheckBox($usuario, $campo) {
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset=utf-8" />
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="scripts/editausuario.js"></script>
+		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<link rel="stylesheet" type="text/css" href="styles/editaUsuario.css">
+		
 		
 	</head>
 	<body>
@@ -77,7 +79,7 @@ function creaCheckBox($usuario, $campo) {
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
 				}
 				if (isset($_GET['err_contrasena'])) {
-					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+					echo '<span id="errorcontrasena">Contrase&ntildea incorrecta, ambas contrase&ntildea deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
 				}
 				if (isset($_GET['err_campos'])) {
 					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
@@ -110,15 +112,15 @@ function creaCheckBox($usuario, $campo) {
 					<?php creaCheckBox($usuario, $APELLIDOS);?>
 				</div>
 				<div class="divf">
-					<label class="labelleft" for="contrasenaactual">Contraseña Actual:</label>
+					<label class="labelleft" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
 					<input type="password" class="inputvalor" name="contrasenaactual" id="contrasena" />
 					</div>
 					<div class="divf">
-					<label class="labelleft" for="contrasena">Cambiar contraseña:</label>
+					<label class="labelleft" for="contrasena">Cambiar contrase&ntilde;a:</label>
 					<input type="password" class="inputvalor" name="contrasena" id="contrasena" />
 					</div>
 					<div class="divf">
-					<label class="labelleft" for="recontrasena">Repite contraseña:</label>
+					<label class="labelleft" for="recontrasena">Repite contrase&ntilde;a</label>
 					<input type="password" class="inputvalor" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 				</div>
 				<div class="divf">
@@ -163,6 +165,7 @@ function creaCheckBox($usuario, $campo) {
 					Guardar
 				</button>
 		</form>
+			<?php include("includes/footer.php"); ?>
 		<!-- </div> -->
 	</body>
 </html>

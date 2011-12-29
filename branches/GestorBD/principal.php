@@ -1,20 +1,19 @@
 <?php
-include ("includes/testSession.php");
+include("includes/testSession.php");
 include_once ('BD/GestorBD.php');
 include_once ('BD/usuario.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $usuarioActual = new Usuario($_SESSION['idUsuario']);
-if ($usuarioActual -> error() != 0)
-	header('Location:errores.php?error="usernotfound"');
 ?>
-
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="styles/principal.css" />
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<title>Sotneve</title>
+		<meta content="text/xhtml; charset=UTF-8"></meta>
+		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/general.css"></link>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
@@ -69,6 +68,8 @@ if ($usuarioActual -> error() != 0)
 					<strong>Tus eventos</strong>
 				</p>
 				<p>
+						
+						
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
 				
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
@@ -81,14 +82,12 @@ if ($usuarioActual -> error() != 0)
 								<?php
 				$eventos = $usuarioActual -> getEventos();
 				foreach ($eventos as $fav) {
-					$span = sprintf("<span><a href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
+					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
 					echo $span;
 				}
 				?>
 			</div>
-			<div id="pie">
-				<span>Copyright Sotneve 2011 &copy;</span>
-			</div>
+			<?php include("includes/footer.php"); ?>
 		</div>
 	</body>
 </html>

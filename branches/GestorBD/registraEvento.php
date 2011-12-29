@@ -1,4 +1,5 @@
 <?php
+include ("includes/testSession.php");
 include_once ('BD/GestorBD.php');
 
 $bd = new GestorBD();
@@ -32,42 +33,20 @@ if ($bd -> conectar()) {
 
 function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
 	$valido = true;
-	
-	$res = sprintf("Location:registro.php?");
-	echo("empezamos");
-	
 	$camposvacios = false;
 
 	if ($fechaEvento == "" || $titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar=='') {//OK
 		$camposvacios = true;
-		$res = $res . '&err_campos';
-		echo("campos");
+		$_SESSION['err_campos'] = true;
 		$valido=false;
 	}
 
-	if (!$camposvacios && (mysql_num_rows($resultadoEmail) > 0 || strlen($email) > 60)) {//OK
-		$res = $res . '&err_email';
-	echo("email");
-		$valido = false;
-	}
-
-	if (!$camposvacios && ($contrasena != $recontrasena || strlen($contrasena) < 6 || strlen($contrasena) > 15)) {//No entra en el if
-		$res = $res . '&err_contrasena';
-	echo("contrasena");
-		$valido = false;
-	}
-
-	//Nombre y apellidos, validados como campos no vacios
-	
-	if ($sexo != '1' && $sexo != '0') {
-		$valido = false;
-	}
 	$dia = substr($fechanac, 0, 2);
 	$mes = substr($fechanac, 3, 2);
 	$ano = substr($fechanac, 6, 9);
 
 	$diamax=0;
-	//No contemplamos visiestos ni los años
+	//No contemplamos bisiestos ni los años
 
 	if ($mes > 0 && $mes < 13 && strlen($fechanac)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
 		switch ($mes) {
@@ -85,21 +64,15 @@ function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descrip
 				break;
 		}
 		if ($dia < 1 && $dia > $diamax) {
-			echo("fecha");
 			$valido = false;
 		}
 
 	} else {
-		echo("fecha2");
-		$valido = false;
-	}
-	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
-		echo("alias");
 		$valido = false;
 	}
 	
 	if($provincia==0){
-			$res = $res . '&err_campos';
+		$_SESSION['err_campos'] = true;
 		$valido=false;
 	}elseif(!$camposvacios){
 		
@@ -109,7 +82,7 @@ function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descrip
 		while ($fila = mysql_fetch_assoc($tuplas)  && mysql_num_rows($fila)<=1 && mysql_num_rows($fila)>0) { 
 			$prov=$fila['idProvincia'];
 			if($prov==""){
-				$res = $res . '&err_campos';
+				$_SESSION['err_campos'] = true;
 				$valido=false;
 			}	
 		}
@@ -117,17 +90,10 @@ function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descrip
 	}
 
 	if ($valido) {
-		echo("terminamos");
 		return true;
 	} else {
-		header($res);
+		header("crearEvento.php");
 	}
-	// while($fila = mysql_fetch_assoc($resultado)){
-	// $existe=$fila['idUsuario'];
-	// if($existe=='null'){
-	// $valido=false;
-	// }
-	// }
 
 }
 
