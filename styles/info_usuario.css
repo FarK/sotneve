@@ -27,10 +27,11 @@ a.usuario {
 /*** INFO USUARIO ***/
 
 div.info_usuario {
-	margin-left: 35%;
+	margin-left: 40%;
 }
 div.data_row {
 	display : table-row;
+	text-align: left;
 }
 span.l_usuario {
 	font-size: 120%;
@@ -40,6 +41,5 @@ span.l_usuario {
 	padding: 10px 0;
 }
 span.c_usuario {
-	text-align: left;
-	margin: 0 5px;
+	margin: 0 15px;
 }
