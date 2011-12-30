@@ -3,11 +3,12 @@ include_once("tabla.php");
 
 class Usuario extends Tabla{
 	public function __construct(/*$conexion, $id*/){
+		$this->nomTabla = 'usuarios';
+
 		//Distinguimos entre el constructor con uno o dos parámetros
 		$arg_list = func_get_args();
 		if(func_num_args() == 1){
 			//Inicializamos el nombre de la tabla
-			$this->nomTabla = 'usuarios';
 
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
@@ -15,7 +16,6 @@ class Usuario extends Tabla{
 		else if (func_num_args() == 2){
 			//Inicializamos el array de claves primarias y el nombre de la tabla
 			$this->pks = array('idUsuario'=>$arg_list[1]);
-			$this->nomTabla = 'usuarios';
 
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
