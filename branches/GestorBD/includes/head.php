@@ -1,15 +1,20 @@
-	<?php
-include_once ("BD/usuario.php");
+<?php
+session_start();
+if(!isset($_SESSION['idUsuario'])){
+	header("Location:../index.php");
+}		
+include_once ("../BD/usuario.php");
+include_once ("../BD/conexion.php");
 
+$id = $_SESSION['idUsuario'];
 //Creamos el objeto usuario del usuario conectado
-$usuario = new Usuario($_SESSION['idUsuario']);
-//Comprobar si ha habido errores
-if ($usuario -> error() == -2)//No pudo conectar
-	header('Location:index.php?err_bd');
-//Redirecconar con GET a error
+$conex = new Conexion();
+$usuario = new Usuario($conex, $id);
 
-$id=$_SESSION['idUsuario'];
 $enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
+$usuario->prepCampo("nombre");
+$result = $usuario->consultarCampos();
+$nombre = $result['nombre'];
 ?>
 
 <div id="hcabecera">
@@ -17,7 +22,7 @@ $enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 		<a href="principal.php"><img id='logo' src="images/logo.jpg" alt="Inicio"></img></a>
 	</div>
 	<div id="husuario">
-		<span>Hola, <?php echo $usuario -> getCampo("nombre");?></span>
+		<span>Hola, <?php echo $nombre;?></span>
 	</div>
 	<div id="hbotones">
 		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
