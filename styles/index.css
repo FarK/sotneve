@@ -1,4 +1,3 @@
-@import "general.css";
 
 #registrarse{
 	color: #418eb6;
@@ -48,6 +47,6 @@ h1 {
 img#logop{
 	height: 260px;
 	width: 260px;
-	margin: 30px 450px auto 40px;
+	margin: 30px 450px 195px 40px;
 	border-radius: 10px 10px 10px 10px;
 }

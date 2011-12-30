@@ -1,19 +1,19 @@
 <?php
 session_start();
 
-if(isset($_SESSION['idUsuario'])){
+if (isset($_SESSION['idUsuario'])) {
 	header('Location:principal.php');
 }
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- IMPORTANTE ESA LÍNEA DE AHÍ ARRIBA Y LA DE ABAJO!!!  -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"></meta>
-		<title>Sotneve - Login</title>
-		<link rel="stylesheet" type="text/css" href="styles/index.css" />
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8">
+		</meta> <title>Sotneve - Login</title>
+		<link rel="stylesheet" type="text/css" href="styles/general.css">
+		<link rel="stylesheet" type="text/css" href="styles/index.css"/>
 		<script type="text/javascript" src="scripts/index.js"></script>
 	</head>
 	<body>
@@ -48,5 +48,8 @@ if(isset($_SESSION['idUsuario'])){
 				<a id="registrarse" href="registro.php">Registrarse</a>
 			</fieldset>
 		</form>
+		<?php
+		include 'includes/footer.php';
+		?>
 	</body>
 </html>
