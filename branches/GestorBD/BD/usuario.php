@@ -32,7 +32,7 @@ class Usuario extends Tabla{
 	public function getUsuario($id){
 		//Hacemos el bind a la consulta y la ejecutamos
 		$parametros = array(':id'=>$id);
-		return $this->consultarPreparada($this->consultasPreparadas['getUsuario'], $parametros);
+		return $this->consultarPreparada('getUsuario', $parametros);
 	}
 }
 ?>

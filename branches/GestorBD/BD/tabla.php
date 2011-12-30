@@ -47,7 +47,8 @@ abstract class Tabla{
 		$this->consultasPreparadas[$nombre] = $this->conexion->prepare($consulta);
 	}
 
-	protected function consultarPreparada($preparada, $parametros){
+	protected function consultarPreparada($NomPreparada, $parametros){
+		$preparada = $this->consultasPreparadas[$NomPreparada];
 		//Hacemos bind a todos los parámetros
 		foreach($parametros as $key=>&$value){
 			$this->conexion->bindParam($preparada, $key, $value);
