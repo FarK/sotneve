@@ -1,29 +1,39 @@
-body {
-	background: #D0E8F7;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 76%;
-	
-}
-
-
-h1 {
-	margin: 10px 0 40px 0;
-	font-size: 3.5em;
-	color: #418eb6;
-}
-
-a{
-
-}
-
-#listafavoritos{
-	width:700px;
-	margin: 0px auto;
-	
-	margin: 10% auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
-	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
-	width: 800px;
-	border-style: dotted;
+#listafavoritos {
+	width: 820px;
+	margin: 10px auto 10px auto;
+	padding: 20px 30px;
 	border-radius: 20px 20px;
 	border: 2px dotted #418eb6;
+	min-height: 400px;
+}
+/* Título*/
+h1 {
+	margin: 10px 0 20px 0;
+	font-size: 200%;
+	color: #418eb6;
+}
+/*Cada elemento de la lista*/
+div.favorito {
+	background-color: #EEF;
+	margin: 10px 0;
+	text-align: left;
+	padding: 5px 0;
+	border-radius: 10px;
+}
+span.favorito {
+	margin-left: 0;
+	border-radius: 10px;
+	text-align: left;
+	font-weight: bold;
+}
+a.favorito {
+	text-decoration: none;
+	text-align: left;
+	color: #418eb6;
+	padding: 10px 10px;
+}
+img#delete {
+	vertical-align: bottom;
+	float: right;
+	padding-right: 10px;
 }
