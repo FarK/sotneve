@@ -1,32 +1,26 @@
 <?php
-include_once ('BD/GestorBD.php');
+include_once ("BD/utiles.php");
+include_once ("BD/conexion.php");
 
-$bd = new GestorBD();
-$conectado = $bd -> conectar();
+$conex = new Conexion();
+$utiles = new Utiles($conex);
 
-function generaOption($bd, $campo, $tabla) {//el metodo ya no es generico
 
-	$query = sprintf("SELECT %s,idProvincia FROM %s ORDER BY `nombre`", $campo, $tabla);
-	$campos = $bd -> consulta($query);
-
-	while ($fila = mysql_fetch_assoc($campos)) {
-		$campoAux = $fila[$campo];
-		$campoAux2 = $fila['idProvincia'];
-		$option = sprintf("<option value='%s'>%s</option>\n\t\t", $campoAux2, $campoAux);
+function generaProvincias($u) {
+	$provincias = $u->getProvincias();
+	foreach ($provincias as $id=>$arr) {
+		$option = sprintf("<option value='%s'>%s</option>", $id, $arr['nombre']);
 		echo $option;
 	}
-
 }
 
-function generaTipos() {
-
-	$consulta = mysql_query("SELECT idTipo, nombre FROM tipos");
-
+function generaTipos($u) {
+	$tipos = $u->getTiposPadre();
 	// Voy imprimiendo el primer select compuesto por los tipos
 	echo "<select class='selbusc' name='tipos' id='tipos' onchange='cargaContenido(this.id)'>";
-	echo "<option value='0'>Elige</option>";
-	while ($registro = mysql_fetch_row($consulta)) {
-		echo "<option value='" . $registro[0] . "'>" . $registro[1] . "</option>";
+	echo "<option value='-1'>Elige</option>";
+	foreach($tipos as $id=>$arr) {
+		echo "<option value='" . $id . "'>" . $arr['nombre'] . "</option>";
 	}
 	echo "</select>";
 }
@@ -37,20 +31,13 @@ function generaTipos() {
 		<div class='opcion'>
 			<select  name="provincia" id="provincia">
 				<?php
-				if ($conectado) {
-					generaOption($bd, 'nombre', 'provincias');
-				}
+					generaProvincias($utiles);
 				?>
 			</select>
 		</div>
 		<div class='opcion'>
 			<?php
-			if ($conectado) {
-				generaTipos();
-			}
-			$bd -> desconectar();
-
-			$conectado = false;
+				generaTipos($utiles);
 			?>
 		</div>
 		<div class='opcion'>
@@ -65,3 +52,5 @@ function generaTipos() {
 		</div>
 	</div>
 </form>
+
+<?php $conex->desconectar(); ?>

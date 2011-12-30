@@ -1,5 +1,6 @@
 <?php
 include_once("tabla.php");
+
 class Utiles extends Tabla{
 	public function __construct(/*$conexion, $id*/){
 		$arg_list = func_get_args();
@@ -18,11 +19,11 @@ class Utiles extends Tabla{
 	}
 	
 	public function getTiposPadre(){
-		$consulta = mysql_query("SELECT idTipo, nombre FROM tipos WHERE idPadre is NULL");
+		return $this -> consultar("SELECT idTipo, nombre FROM tipos WHERE idPadre is NULL");
 	}
 	
 	public function getSubtipos(){
-		$consulta = mysql_query("SELECT idTipo, nombre FROM tipos WHERE idPadre is not NULL");
+		return $this -> consultar("SELECT idTipo, nombre FROM tipos WHERE idPadre is not NULL");
 	}
 }
 ?>

@@ -23,6 +23,7 @@ class Usuario extends Tabla{
 
 		//Consultas preparadas
 		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
+		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, usuarios U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
 	}
 
 	public function getEventos(){
@@ -35,6 +36,9 @@ class Usuario extends Tabla{
 		return $this->consultarPreparada('getUsuario', $parametros);
 	}
 	
+	public function getFavoritos(){
+		return $this->consultarPreparada('getFavoritos', array());
+	}
 	public function passCorrecta($email, $pass) {
 		$query = sprintf("SELECT idUsuario FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
         $result = $this -> consultar($query);

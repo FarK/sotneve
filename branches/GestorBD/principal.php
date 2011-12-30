@@ -1,10 +1,11 @@
 <?php
 include("includes/testSession.php");
-include_once ('BD/GestorBD.php');
+include_once ('BD/conexion.php');
 include_once ('BD/usuario.php');
 
 //Creamos un objeto usuario con el usuario logeado
-$usuarioActual = new Usuario($_SESSION['idUsuario']);
+$conex = new Conexion();
+$usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 ?>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -56,9 +57,9 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
 					</p>
 				<?php
-				$favoritos = $usuarioActual -> getFavoritos();
+				$favoritos = $usuarioActual->getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario'], $fav['alias']);
+					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario2'], $fav['alias']);
 					echo $span;
 				}
 				?>
@@ -81,10 +82,12 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 					</p>
 								<?php
 				$eventos = $usuarioActual -> getEventos();
+/*
 				foreach ($eventos as $fav) {
 					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
 					echo $span;
 				}
+*/
 				?>
 			</div>
 			<?php include("includes/footer.php"); ?>

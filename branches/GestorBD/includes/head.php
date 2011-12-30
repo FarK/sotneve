@@ -1,10 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION['idUsuario'])){
-	header("Location:../index.php");
-}		
-include_once ("../BD/usuario.php");
-include_once ("../BD/conexion.php");
+include_once ("BD/usuario.php");
+include_once ("BD/conexion.php");
 
 $id = $_SESSION['idUsuario'];
 //Creamos el objeto usuario del usuario conectado
