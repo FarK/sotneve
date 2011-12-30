@@ -3,6 +3,11 @@ CREATE DATABASE IF NOT EXISTS sotneve
 	COLLATE utf8_spanish_ci;
 
 USE sotneve;
+DROP DATABASE IF EXISTS sotneve;
+CREATE DATABASE IF NOT EXISTS sotneve
+	COLLATE utf8_spanish_ci;
+
+USE sotneve;
 -- phpMyAdmin SQL Dump
 -- version 3.4.5
 -- http://www.phpmyadmin.net
