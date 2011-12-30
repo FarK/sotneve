@@ -16,5 +16,13 @@ class Utiles extends Tabla{
         $result = $this -> consultar($query);
 		return $result;
 	}
+	
+	public function getTiposPadre(){
+		$consulta = mysql_query("SELECT idTipo, nombre FROM tipos WHERE idPadre is NULL");
+	}
+	
+	public function getSubtipos(){
+		$consulta = mysql_query("SELECT idTipo, nombre FROM tipos WHERE idPadre is not NULL");
+	}
 }
 ?>
