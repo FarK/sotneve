@@ -46,16 +46,6 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<p>
 					<strong>Tus favoritos</strong>
 				</p>
-				<p>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p>
-					<p>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p>
 				<?php
 				$favoritos = $usuarioActual->getFavoritos();
 				foreach ($favoritos as $fav) {
@@ -68,26 +58,13 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<p>
 					<strong>Tus eventos</strong>
 				</p>
-				<p>
-						
-						
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
 				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p>
-					<p>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p>
-								<?php
+				<?php
 				$eventos = $usuarioActual -> getEventos();
-/*
-				foreach ($eventos as $fav) {
-					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
+				foreach ($eventos as $evento) {
+					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $evento['idEvento'], $evento['titulo']);
 					echo $span;
 				}
-*/
 				?>
 			</div>
 			<?php include("includes/footer.php"); ?>
