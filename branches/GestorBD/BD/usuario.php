@@ -34,5 +34,15 @@ class Usuario extends Tabla{
 		$parametros = array(':id'=>$id);
 		return $this->consultarPreparada('getUsuario', $parametros);
 	}
+	
+	public function passCorrecta($email, $pass) {
+		$query = sprintf("SELECT idUsuario FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
+        $result = $this -> consultar($query);
+        if (count($result) == 1 && count($result[0]) == 1) {
+			return $result[0]['idUsuario'];
+        } else {
+			return false;
+        }
+	}
 }
 ?>
