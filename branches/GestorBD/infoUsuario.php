@@ -1,24 +1,26 @@
 <?php
 	include ("includes/testSession.php");
 	include_once('BD/usuario.php');
-
-	//Se llama usuario visitado porque si no se pisa con usuario de head.php
-	$usuarioVisitado = new Usuario($_GET["idUsuario"]);
-	//Comprobar si ha habido errores
-	if($usuarioVisitado->error() == -2) //No pudo conectar
-		header('Location:index.php?err_bd');	//Redirecconar con GET a error
+	include_once('BD/conexion.php');
 	
-	else if($usuarioVisitado->error() == -1)//no existe el usuario (o ha fallado la consulta)
-		header('Location:errores.php?error="userNotFound"');
-
-
+	$conex = new Conexion();
+	//Se llama usuario visitado porque si no se pisa con usuario de head.php
+	$usuarioVisitado = new Usuario($conex, $_GET["idUsuario"]);
+	$usuarioVisitado->prepCampo('alias');
+	$usuarioVisitado->prepCampo('nombre');
+	$usuarioVisitado->prepCampo('apellidos');
+	$usuarioVisitado->prepCampo('fechaNac');
+	$usuarioVisitado->prepCampo('sexo');
+	$usuarioVisitado->prepCampo('email');
+	$usuarioVisitado->prepCampo('idProvincia');
+	$camposUsuario = $usuarioVisitado->consultarCampos();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<title>Sotneve - <?php echo $usuarioVisitado -> getCampo("alias");?></title>
-		<meta charset="utf-8" />
+		<title>Sotneve - <?php echo $camposUsuario['alias'];?></title>
+		<meta content="text/xhtml; charset=UTF-8"></meta>
 		
 		<link rel="stylesheet" type="text/css" href="styles/general.css"/>
 		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css"/>
@@ -32,7 +34,7 @@
 
 		<div class='lista_usuarios' id="amigos">
 			<p>
-				<strong class="num_usuarios">Amigos de <?php echo $usuarioVisitado->getCampo("alias")
+				<strong class="num_usuarios">Amigos de <?php echo $camposUsuario['alias']
 				?>:
 				<br />
 				</strong>
@@ -43,18 +45,18 @@ $amigos = $usuarioVisitado->getFavoritos();
 
 //Comprobar si ha habido errores
 
-if($usuario->error() == -2) //No pudo conectar
-header('Location:index.php?err_bd');	//Redirecconar con GET a error
-else if($usuario->error() == -1)//no existe el usuario (o ha fallado la consulta)
-echo '<span> Actualmente no hay amigos </span>';
+if(empty($amigos)) //No pudo conectar
+	echo '<span> Actualmente no hay amigos </span>';
+
+
 foreach($amigos as $am){
-$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $am['idUsuario'],$am['alias']);
+$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $am['idUsuario2'],$am['alias']);
 echo $span;
 }
 				?>
 			</p>
 		</div>
-		<h1><?php echo $usuarioVisitado->getCampo("alias")
+		<h1><?php echo $camposUsuario['alias']
 		?></h1>
 		<?php
 
@@ -66,17 +68,17 @@ echo $span;
 		$email = $novisible;
 
 		if ($usuarioVisitado -> esVisible($NOMBRE)) {
-			$nombre = $usuarioVisitado -> getCampo("nombre");
+			$nombre = $camposUsuario['nombre'];
 
 		}
 
 		if ($usuarioVisitado -> esVisible($APELLIDOS)) {
-			$apellidos = $usuarioVisitado -> getCampo("apellidos");
+			$apellidos = $camposUsuario['apellidos'];
 
 		}
 
 		if ($usuarioVisitado -> esVisible($SEXO)) {
-			$sexo = $usuarioVisitado -> getCampo("sexo");
+			$sexo = $camposUsuario['sexo'];
 
 			if ($sexo == 1) {
 				$sexo = "Hombre";
@@ -86,15 +88,15 @@ echo $span;
 		}
 
 		if ($usuarioVisitado -> esVisible($FECHA_NAC)) {
-			$fechaNac = $usuarioVisitado -> getCampo("fechaNac");
+			$fechaNac = $camposUsuario['fechaNac'];
 		}
 
 		if ($usuarioVisitado -> esVisible($EMAIL)) {
-			$email = $usuarioVisitado -> getCampo("email");
+			$email = $camposUsuario['email'];
 		}
 
-		$provincia = $usuarioVisitado -> getCampo("provincia");
-		$alias = $usuarioVisitado -> getCampo("alias");
+		$provincia = $usuarioVisitado -> getProvincia();
+		$alias = $camposUsuario['alias'];
 		?>
 		<div class='info_usuario'>
 			<div class='data_row'>
