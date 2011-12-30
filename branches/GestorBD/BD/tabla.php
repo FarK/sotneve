@@ -29,6 +29,7 @@ abstract class Tabla{
 		if(!empty($campos)){
 			$query = "SELECT " . $campos . " FROM " . $this->nomTabla . " WHERE " . $this->pksToString();
 			$stmt = $this->conexion->consultar($query);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 		}
 
 		//Borramos los campos seleccionados de las tablas
