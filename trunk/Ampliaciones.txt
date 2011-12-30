@@ -34,3 +34,8 @@ PERFIL
 -Numero telefono en perfil?
 -Cuando tu ves el perfil de alguien mostrar la edad calculada
 -FALTA BOTÓN AÑADIR A FAVORITOS
+
+BD
+---------------------
+- En lugar de 2 tablas tipos y subtipos:
+una sóla tabla tipos(idTipo, idPadre, nombre), y para los tipos padre el idPadre es 0 como discriminante
