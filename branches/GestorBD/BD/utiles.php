@@ -12,7 +12,7 @@ class Utiles extends Tabla{
 	//Devuelve el nombre de todas las provincias en un array de arrays
 	//array(52) { [0]=> array(1) { ["nombre"]=> string(5) "Alava" } [1]=> array(1) { ["nombre"]=> string(8) "Albacete" } ...
 	public function getProvincias() {
-		$query = sprintf("SELECT nombre FROM provincias");
+		$query = sprintf("SELECT nombre FROM provincias ORDER BY nombre");
         $result = $this -> consultar($query);
 		return $result;
 	}
