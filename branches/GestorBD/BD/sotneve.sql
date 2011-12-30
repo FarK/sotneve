@@ -3,12 +3,17 @@ CREATE DATABASE IF NOT EXISTS sotneve
 	COLLATE utf8_spanish_ci;
 
 USE sotneve;
+DROP DATABASE IF EXISTS sotneve;
+CREATE DATABASE IF NOT EXISTS sotneve
+	COLLATE utf8_spanish_ci;
+
+USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.7
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-12-2011 a las 17:09:26
+-- Tiempo de generación: 30-12-2011 a las 13:21:27
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -222,20 +227,22 @@ INSERT INTO `subtipos` (`idSubTipo`, `idTipo`, `nombre`, `externo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tipos` (
   `idTipo` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `externo` tinyint(1) NOT NULL,
-  PRIMARY KEY (`idTipo`)
+  `idPadre` int(11) DEFAULT NULL,
+  `nombre` varchar(60) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `externo` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`idTipo`),
+  KEY `idPadre` (`idPadre`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tipos`
 --
 
-INSERT INTO `tipos` (`idTipo`, `nombre`, `externo`) VALUES
-(1, 'Deportes', 0),
-(2, 'Espectaculos', 0),
-(3, 'Discotecas', 0),
-(4, 'Otros', 0);
+INSERT INTO `tipos` (`idTipo`, `idPadre`, `nombre`, `externo`) VALUES
+(1, NULL, NULL, 0),
+(2, NULL, NULL, 0),
+(3, NULL, NULL, 0),
+(4, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -336,6 +343,12 @@ ALTER TABLE `favoritos`
 --
 ALTER TABLE `subtipos`
   ADD CONSTRAINT `subtipos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tipos`
+--
+ALTER TABLE `tipos`
+  ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`idPadre`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
