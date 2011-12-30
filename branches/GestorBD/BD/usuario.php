@@ -1,7 +1,16 @@
 <?php
 include_once("tabla.php");
 
+$FECHA_NAC = 16;
+$SEXO = 8;
+$EMAIL = 4;
+$NOMBRE = 2;
+$APELLIDOS = 1;
+
 class Usuario extends Tabla{
+	
+	private $visibilidad = -1;
+	
 	public function __construct(/*$conexion, $id*/){
 		$this->nomTabla = 'usuarios';
 
@@ -47,6 +56,20 @@ class Usuario extends Tabla{
         } else {
 			return false;
         }
+	}
+	
+	public function esVisible($campo) {
+		if($this->visibilidad == -1){
+			$this->prepCampo('visibilidad');
+			$res = $this->consultarCampos();
+			$this->visibilidad = $res['visibilidad'];
+		}
+		return ($this -> visibilidad & $campo);
+    }
+    
+    public function getProvincia(){
+			$res = $this->consultar("SELECT P.nombre FROM provincias P, usuarios U WHERE U.idUsuario =" . $this->pks['idUsuario'] . " AND P.idProvincia = U.idProvincia");
+			return $res[0]['nombre'];
 	}
 }
 ?>
