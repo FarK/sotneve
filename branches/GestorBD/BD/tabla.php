@@ -57,6 +57,7 @@ abstract class Tabla{
 		$this->conexion->ejecutarPreparada($preparada);
 
 		//Pasamos todas las columnas a un array
+		$preparada->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 		$ret = array();
 		foreach($preparada as $row)
 			$ret[] = $row;
@@ -69,6 +70,7 @@ abstract class Tabla{
 		$stmt = $this->conexion->consultar($query);
 
 		//Pasamos todas las columnas a un array
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 		$ret = array();
 		foreach($stmt as $row)
 			$ret[] = $row;

@@ -21,19 +21,15 @@ echo $arr['apellidos'] . "</br>";
 $i=0;
 foreach($eventos as $evento){
 	echo "<h3>Evento " . $i . "</h3>";
-	foreach($evento as $campo=>$valor){
-		if(!is_int($campo))	//Esto es xq está todo repetido en el array
-			echo $campo . " = " . $valor . "</br>";
-	}
+	foreach($evento as $campo=>$valor)
+		echo $campo . " = " . $valor . "</br>";
 	$i++;
 }
 
 echo "<h2>Usuario</h2>";
 foreach($u as $user){
-	foreach($user as $campo=>$valor){
-		if(!is_int($campo))	//Esto es xq está todo repetido en el array
-			echo $campo . " = " . $valor . "</br>";
-	}
+	foreach($user as $campo=>$valor)
+		echo $campo . " = " . $valor . "</br>";
 	$i++;
 }
 
