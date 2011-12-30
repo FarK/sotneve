@@ -18,10 +18,10 @@
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<title>Sotneve - <?php echo $usuarioVisitado -> getCampo("alias");?></title>
-		<meta charset=utf-8" />
+		<meta charset="utf-8" />
 		
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
-		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css">
+		<link rel="stylesheet" type="text/css" href="styles/general.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css"/>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
