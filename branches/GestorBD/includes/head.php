@@ -15,6 +15,9 @@ $enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 $usuario->prepCampo("nombre");
 $result = $usuario->consultarCampos();
 $nombre = $result['nombre'];
+
+//Ceramos conexión
+$conex->desconectar();
 ?>
 
 <div id="hcabecera">
