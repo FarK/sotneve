@@ -22,4 +22,6 @@
 		$_SESSION['err_pass'] = true;
 		header('Location:index.php');
 	}
+	
+	$conex->desconectar();	
 ?>
