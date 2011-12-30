@@ -31,10 +31,14 @@
 				header('Location:errores.php?error="userNotFound"');
 
 			foreach($favoritos as $fav){
-				$span= sprintf("<span><a href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario'],$fav['alias']);
+				$span= sprintf("<div class='favorito'>
+				<span class='favorito'><a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a></span>
+				<a class='favorito'><img id='delete' src='images/delete.png' width='16px' height='16px' alt='Eliminar favorito'/></a><br/></div>\n\t\t", $fav['idUsuario'],$fav['alias']);
 				echo $span;
 			}
 		?>
+			
+
 	</div>
 		<?php include("includes/footer.php"); ?>
 	</body>

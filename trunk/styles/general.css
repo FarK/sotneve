@@ -40,7 +40,7 @@ input:focus, .boton:focus, select:focus {
 	border-color: #A1B4BF;
 }
 
-img {
+img#logo {
 	width: 85px;
 	border-top-left-radius: 5px 5px;
 }
