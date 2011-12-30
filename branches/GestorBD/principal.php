@@ -71,3 +71,4 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 		</div>
 	</body>
 </html>
+<?php $conex->desconectar(); ?>

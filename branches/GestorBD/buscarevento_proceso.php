@@ -31,7 +31,7 @@ if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada))
 	$conex = new Conexion();
 	$utiles = new Utiles($conex);
 	$subtipos = $utiles->getSubtipos();
-	
+	$conex->desconectar();
 	// Comienzo a imprimir el select
 	echo "<select class='selbusc' name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
 	echo "<option value='-1'>Todos</option>";
