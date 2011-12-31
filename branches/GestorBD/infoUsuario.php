@@ -45,7 +45,7 @@ $amigos = $usuarioVisitado->getFavoritos();
 
 //Comprobar si ha habido errores
 
-if(empty($amigos)) //No pudo conectar
+if(empty($amigos))
 	echo '<span> Actualmente no hay amigos </span>';
 
 
