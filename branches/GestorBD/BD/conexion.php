@@ -82,13 +82,13 @@ class Conexion{
 		}
 	}
 
-	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
-		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
-			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
-		$res = $this -> consulta($query);
-		var_dump($query);
-
-	}
+	// public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
+		// $query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
+			// VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
+		// $res = $this -> consulta($query);
+		// var_dump($query);
+// 
+	// }
 
 
 	public function insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
@@ -98,10 +98,10 @@ class Conexion{
 		var_dump($query);
 	}
 
-	public function usuariosCon($campo, $elemento) {
-		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
-		return $this -> consulta($query);
-	}
+	// public function usuariosCon($campo, $elemento) {
+		// $query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
+		// return $this -> consulta($query);
+	// }
 
 	public function getNombreElementoCon($tabla,$elemento,$id) {
 		$aux = sprintf("SELECT nombre FROM %s WHERE %s=%s", $tabla,$elemento, $id);
