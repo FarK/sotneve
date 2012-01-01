@@ -18,7 +18,7 @@ $conex->desconectar();
 
 <div id="hcabecera">
 	<div id="hlogo">
-		<a href="principal.php"><img id='logo' src="images/logo.jpg" alt="Inicio"></img></a>
+		<a href="principal.php"><img id='logo' src="images/logo.png" alt="Inicio"></img></a>
 	</div>
 	<div id="husuario">
 		<span>Hola, <?php echo $nombre;?></span>

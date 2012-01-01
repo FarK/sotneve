@@ -18,7 +18,7 @@ if (isset($_SESSION['idUsuario'])) {
 	</head>
 	<body>
 		<div id="logoprincipal">
-			<img id="logop" src="images/logo.jpg" alt="Inicio"></img>
+			<img id="logop" src="images/logo.png" alt="Inicio"></img>
 		</div>
 		<form id="login_form" method="post" action="login.php" onsubmit="return validaForm()">
 			<fieldset>
