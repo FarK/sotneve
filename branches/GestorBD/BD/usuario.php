@@ -35,10 +35,6 @@ class Usuario extends Tabla{
 		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, usuarios U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
 	}
 
-	public function getEventos(){
-		return $this->consultar("SELECT * FROM eventos E, afiliaciones A WHERE " . $this->pksToString() . " AND A.idEvento = E.idEvento");
-	}
-
 	public function getUsuario($id){
 		//Hacemos el bind a la consulta y la ejecutamos
 		$parametros = array(':id'=>$id);
