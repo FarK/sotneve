@@ -3,13 +3,12 @@ include_once("tabla.php");
 
 class Eventos extends Tabla{
 	public function __construct(/*$conexion, $id*/){
+		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'eventos';
 
 		//Distinguimos entre el constructor con uno o dos parámetros
 		$arg_list = func_get_args();
 		if(func_num_args() == 1){
-			//Inicializamos el nombre de la tabla
-
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
 		}

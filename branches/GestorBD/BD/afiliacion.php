@@ -4,6 +4,7 @@ include_once("tabla.php");
 class Afiliacion extends Tabla{
 	
 	public function __construct(/*$conexion, $idUsuario, $idEvento*/){
+		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'afiliaciones';
 
 		//Distinguimos entre el constructor con uno o dos parámetros

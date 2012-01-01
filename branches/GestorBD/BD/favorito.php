@@ -4,13 +4,12 @@ include_once("tabla.php");
 class Favorito extends Tabla{
 	
 	public function __construct(/*$conexion, $idUsuario1, $idUsuario2*/){
+		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'favoritos';
 
 		//Distinguimos entre el constructor con uno o dos parámetros
 		$arg_list = func_get_args();
 		if(func_num_args() == 1){
-			//Inicializamos el nombre de la tabla
-
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
 		}

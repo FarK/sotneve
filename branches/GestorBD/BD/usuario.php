@@ -8,17 +8,16 @@ $NOMBRE = 2;
 $APELLIDOS = 1;
 
 class Usuario extends Tabla{
-	
+
 	private $visibilidad = -1;
-	
+
 	public function __construct(/*$conexion, $id*/){
+		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'usuarios';
 
 		//Distinguimos entre el constructor con uno o dos parámetros
 		$arg_list = func_get_args();
 		if(func_num_args() == 1){
-			//Inicializamos el nombre de la tabla
-
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
 		}
@@ -39,17 +38,17 @@ class Usuario extends Tabla{
 		$parametros = array(':id'=>$id);
 		return $this->consultarPreparada('getUsuario', $parametros);
 	}
-	
+
 	public function passCorrecta($email, $pass) {
 		$query = sprintf("SELECT idUsuario FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
-        $result = $this -> consultar($query);
-        if (count($result) == 1 && count($result[0]) == 1) {
+		$result = $this -> consultar($query);
+		if (count($result) == 1 && count($result[0]) == 1) {
 			return $result[0]['idUsuario'];
-        } else {
+		} else {
 			return false;
-        }
+		}
 	}
-	
+
 	public function esVisible($campo) {
 		if($this->visibilidad == -1){
 			$this->prepCampo('visibilidad');
@@ -57,11 +56,11 @@ class Usuario extends Tabla{
 			$this->visibilidad = $res['visibilidad'];
 		}
 		return ($this -> visibilidad & $campo);
-    }
-    
-    public function getProvincia(){
-			$res = $this->consultar("SELECT P.nombre FROM provincias P, usuarios U WHERE U.idUsuario =" . $this->pks['idUsuario'] . " AND P.idProvincia = U.idProvincia");
-			return $res[0]['nombre'];
+	}
+
+	public function getProvincia(){
+		$res = $this->consultar("SELECT P.nombre FROM provincias P, usuarios U WHERE U.idUsuario =" . $this->pks['idUsuario'] . " AND P.idProvincia = U.idProvincia");
+		return $res[0]['nombre'];
 	}
 }
 ?>
