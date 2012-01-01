@@ -1,11 +1,15 @@
 <?php
 	include ("includes/testSession.php");
-	include_once('BD/usuario.php');
 	include_once('BD/conexion.php');
+	include_once('BD/usuario.php');
+	include_once('BD/favorito.php');
 	
 	$conex = new Conexion();
 	//Se llama usuario visitado porque si no se pisa con usuario de head.php
 	$usuarioVisitado = new Usuario($conex, $_GET["idUsuario"]);
+	$favorito = new Favorito($conex);
+
+	//Consultamos los campos del usuario
 	$usuarioVisitado->prepCampo('alias');
 	$usuarioVisitado->prepCampo('nombre');
 	$usuarioVisitado->prepCampo('apellidos');
@@ -14,6 +18,8 @@
 	$usuarioVisitado->prepCampo('email');
 	$usuarioVisitado->prepCampo('idProvincia');
 	$camposUsuario = $usuarioVisitado->consultarCampos();
+	//Consultamos los favoritos del usuario
+	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
@@ -34,23 +40,19 @@
 
 		<div class='lista_usuarios' id="amigos">
 			<p>
-				<strong class="num_usuarios">Amigos de <?php echo $camposUsuario['alias']
+				<strong class="num_usuarios">Favoritos de <?php echo $camposUsuario['alias']
 				?>:
 				<br />
 				</strong>
 				<?php
-//include_once ('BD/evento.php');
 
-$amigos = $usuarioVisitado->getFavoritos();
-
-//Comprobar si ha habido errores
-
-if(empty($amigos))
-	echo '<span> Actualmente no hay amigos </span>';
+//Comprobamos si tiene o no favoritos
+if(empty($favoritos ))
+	echo '<span> Actualmente no hay favoritos </span>';
 
 
-foreach($amigos as $am){
-$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $am['idUsuario2'],$am['alias']);
+foreach($favoritos as $fav){
+$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario2'],$fav['alias']);
 echo $span;
 }
 				?>

@@ -1,15 +1,17 @@
 <?php
-include_once ("BD/utiles.php");
+include_once ("BD/provincia.php");
 include_once ("BD/conexion.php");
+include_once ("BD/utiles.php");
 
 $conex = new Conexion();
 $utiles = new Utiles($conex);
+$provincia = new Provincia($conex);
 
 
-function generaProvincias($u) {
-	$provincias = $u->getProvincias();
-	foreach ($provincias as $id=>$arr) {
-		$option = sprintf("<option value='%s'>%s</option>", $id, $arr['nombre']);
+function generaProvincias($provincia) {
+	$provincias = $provincia ->getProvincias();
+	foreach ($provincias as $id=>$prov) {
+		$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
 		echo $option;
 	}
 }
@@ -31,7 +33,7 @@ function generaTipos($u) {
 		<div class='opcion'>
 			<select  name="provincia" id="provincia">
 				<?php
-					generaProvincias($utiles);
+					generaProvincias($provincia);
 				?>
 			</select>
 		</div>

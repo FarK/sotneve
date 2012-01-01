@@ -1,4 +1,7 @@
 <?php
+include_once('BD/conexion.php');
+include_once('BD/provincia.php');
+
 session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 
 ?>
@@ -61,16 +64,13 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 					<select  name="provincia" id="provincia">
 						<option value="0"></option>
 						<?php
-						
-						include_once 'BD/conexion.php';
-						include_once ("BD/utiles.php");
 						//Crear objeto gestor bd
 						$conexion = new Conexion();
-						$utiles = new Utiles($conexion);
+						$provincia = new Provincia($conexion);
 						
-						$provincias = $utiles->getProvincias();
-						foreach ($provincias as $id=>$arr) {
-						$option = sprintf("<option value='%s'>%s</option>", $id, $arr['nombre']);
+						$provincias = $provincia->getProvincias();
+						foreach ($provincias as $id=>$prov) {
+						$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
 						echo $option;
 						}
 						

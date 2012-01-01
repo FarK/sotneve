@@ -2,10 +2,14 @@
 include("includes/testSession.php");
 include_once ('BD/conexion.php');
 include_once ('BD/usuario.php');
+include_once ('BD/favorito.php');
+include_once ('BD/afiliacion.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $conex = new Conexion();
 $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
+$favorito = new Favorito($conex);
+$afiliacion = new Afiliacion($conex);
 ?>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -47,7 +51,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 					<strong>Tus favoritos</strong>
 				</p>
 				<?php
-				$favoritos = $usuarioActual->getFavoritos();
+				$favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 				foreach ($favoritos as $fav) {
 					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario2'], $fav['alias']);
 					echo $span;
@@ -60,7 +64,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				</p>
 				
 				<?php
-				$eventos = $usuarioActual -> getEventos();
+				$eventos = $afiliacion->getEventos($_SESSION['idUsuario']);
 				foreach ($eventos as $evento) {
 					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $evento['idEvento'], $evento['titulo']);
 					echo $span;
