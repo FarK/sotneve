@@ -23,13 +23,13 @@ class Favorito extends Tabla{
 	}
 
 	//Todos los favoritos de un usuario
-	public function getEventos($idUsuario1){
+	public function getFavoritos($idUsuario1){
 		$parametros = array(':id'=>$idUsuario1);
 		return $this->consultarPreparada('getFavoritos', $parametros);
 	}
 
 	//Todos los que tienen como favorio a un usuario
-	public function getUsuarios($idUsuario2){
+	public function getSeguidores($idUsuario2){
 		$parametros = array(':id'=>$idUsuario2);
 		return $this->consultarPreparada('getSeguidores', $parametros);
 	}
