@@ -3,18 +3,13 @@ CREATE DATABASE IF NOT EXISTS sotneve
 	COLLATE utf8_spanish_ci;
 
 USE sotneve;
-DROP DATABASE IF EXISTS sotneve;
-CREATE DATABASE IF NOT EXISTS sotneve
-	COLLATE utf8_spanish_ci;
-
-USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.7
+-- version 3.4.8
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 30-12-2011 a las 13:21:27
--- Versión del servidor: 5.5.16
+-- Tiempo de generación: 01-01-2012 a las 11:16:17
+-- Versión del servidor: 5.5.18
 -- Versión de PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -48,16 +43,10 @@ CREATE TABLE IF NOT EXISTS `afiliaciones` (
 --
 
 INSERT INTO `afiliaciones` (`idUsuario`, `idEvento`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(7, 1),
-(2, 3),
-(3, 3),
-(4, 3),
-(6, 3),
-(7, 3),
-(8, 3);
+(1, 18),
+(4, 19),
+(3, 20),
+(3, 22);
 
 -- --------------------------------------------------------
 
@@ -67,7 +56,7 @@ INSERT INTO `afiliaciones` (`idUsuario`, `idEvento`) VALUES
 
 CREATE TABLE IF NOT EXISTS `eventos` (
   `idEvento` int(11) NOT NULL AUTO_INCREMENT,
-  `idSubtipo` int(11) NOT NULL,
+  `idTipo` int(11) NOT NULL,
   `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `maxPersonas` int(11) NOT NULL,
   `fechaCreacion` datetime NOT NULL,
@@ -77,20 +66,20 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `lugar` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `propietario` int(11) NOT NULL,
   PRIMARY KEY (`idEvento`),
-  KEY `idSubtipo` (`idSubtipo`),
   KEY `idProvincia` (`idProvincia`),
-  KEY `propietario` (`propietario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=12 ;
+  KEY `propietario` (`propietario`),
+  KEY `idTipo` (`idTipo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`idEvento`, `idSubtipo`, `titulo`, `maxPersonas`, `fechaCreacion`, `descripcion`, `fechaEvento`, `idProvincia`, `lugar`, `propietario`) VALUES
-(1, 2, 'Partido de padel', 4, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 16, 'Polideportivo SADUS', 1),
-(2, 3, 'Partido de padel', 4, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 16, 'Polideportivo SADUS', 2),
-(3, 2, 'Huelga plaza españa', 20000, '2011-12-02 00:00:00', 'Queremos jugar al padel este finde', '2011-12-17 00:00:00', 3, 'Polideportivo SADUS', 3),
-(4, 4, 'Fiesta Universitaria', 200, '2011-12-02 00:00:00', 'Queremos un cubata', '2011-12-17 00:00:00', 3, 'Puente triana', 2);
+INSERT INTO `eventos` (`idEvento`, `idTipo`, `titulo`, `maxPersonas`, `fechaCreacion`, `descripcion`, `fechaEvento`, `idProvincia`, `lugar`, `propietario`) VALUES
+(18, 4, 'Partidito de tenis', 4, '2012-01-01 11:02:01', 'Un partidito de tenis amateur', '2012-01-07 16:00:00', 41, 'La pista de tenis del SADUS', 1),
+(19, 7, 'Discoteca Bandaway', 666, '2012-01-02 16:23:50', 'Vamos de fiesta!!', '2012-01-13 23:30:00', 14, 'Discoteca Bandaway', 4),
+(20, 5, 'Partido de ping-pong', 2, '2012-01-01 00:00:00', 'Partido de ping-pong profesional', NULL, 17, 'Donde cristo perdió el mechero y luego a la derech', 3),
+(22, 1, 'Escalada', 2, '2012-01-01 00:00:00', 'Escalar el Everest dos veces y merendola en el mirador.', NULL, 24, 'Pico monte Everest', 3);
 
 -- --------------------------------------------------------
 
@@ -194,34 +183,6 @@ INSERT INTO `provincias` (`idProvincia`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `subtipos`
---
-
-CREATE TABLE IF NOT EXISTS `subtipos` (
-  `idSubTipo` int(11) NOT NULL AUTO_INCREMENT,
-  `idTipo` int(11) NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `externo` tinyint(1) NOT NULL,
-  PRIMARY KEY (`idSubTipo`),
-  KEY `idTipo` (`idTipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=31 ;
-
---
--- Volcado de datos para la tabla `subtipos`
---
-
-INSERT INTO `subtipos` (`idSubTipo`, `idTipo`, `nombre`, `externo`) VALUES
-(2, 1, 'Futbol', 0),
-(3, 2, 'Ir a ver', 0),
-(4, 1, 'Padel', 0),
-(5, 1, 'Baloncesto', 0),
-(6, 2, 'Teatro', 0),
-(8, 1, 'Tenis', 0),
-(9, 4, 'Huelga 15M', 0);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tipos`
 --
 
@@ -232,17 +193,20 @@ CREATE TABLE IF NOT EXISTS `tipos` (
   `externo` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idTipo`),
   KEY `idPadre` (`idPadre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `tipos`
 --
 
 INSERT INTO `tipos` (`idTipo`, `idPadre`, `nombre`, `externo`) VALUES
-(1, NULL, NULL, 0),
-(2, NULL, NULL, 0),
-(3, NULL, NULL, 0),
-(4, NULL, NULL, 0);
+(1, NULL, 'Deportes', 0),
+(2, NULL, 'Ocio', 0),
+(3, 1, 'Raqueta', 0),
+(4, 3, 'Tenis', 0),
+(5, 3, 'Ping-Pong', 0),
+(7, 2, 'Discoteca', 0),
+(8, 2, 'ba$ur4', 1);
 
 -- --------------------------------------------------------
 
@@ -303,16 +267,6 @@ CREATE TABLE IF NOT EXISTS `valoraciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `valoraciones`
---
-
-INSERT INTO `valoraciones` (`idUsuario1`, `idUsuario2`, `idEvento`, `valoracion`) VALUES
-(2, 1, 1, 8),
-(3, 1, 1, 5),
-(4, 5, 1, 4),
-(6, 1, 1, 6);
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -327,7 +281,7 @@ ALTER TABLE `afiliaciones`
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_5` FOREIGN KEY (`idSubtipo`) REFERENCES `subtipos` (`idSubTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_8` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_6` FOREIGN KEY (`propietario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_7` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -337,12 +291,6 @@ ALTER TABLE `eventos`
 ALTER TABLE `favoritos`
   ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`idUsuario1`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`idUsuario2`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `subtipos`
---
-ALTER TABLE `subtipos`
-  ADD CONSTRAINT `subtipos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tipos`
