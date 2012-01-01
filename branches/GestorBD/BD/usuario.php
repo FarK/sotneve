@@ -15,19 +15,18 @@ class Usuario extends Tabla{
 		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'usuarios';
 
-		//Distinguimos entre el constructor con uno o dos parámetros
+		//Comprobamos si se han recibido las claves primarias
 		$arg_list = func_get_args();
-		if(func_num_args() == 1){
-			//Llamamos al constructor de tabla
-			parent::__construct($arg_list[0]);
-		}
-		else if (func_num_args() == 2){
+		if (func_num_args() == 2){
 			//Inicializamos el array de claves primarias y el nombre de la tabla
 			$this->pks = array('idUsuario'=>$arg_list[1]);
 
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
 		}
+
+		//Llamamos al constructor de tabla
+		parent::__construct($arg_list[0]);
 
 		//Consultas preparadas
 		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
