@@ -1,53 +1,35 @@
 <?php
 include ("includes/testSession.php");
-include_once ('BD/GestorBD.php');
+include_once ('BD/conexion.php');
 include_once ('BD/usuario.php');
+include_once ('BD/provincia.php');
 
-$bd = new GestorBD();
+//Creamos la conexion y las clases de consulta
+$conexion = new Conexion();
+$usuario = new Usuario($conexion, $_SESSION['idUsuario']);
+$provincia = new Provincia($conexion);
 
-//Creamos un objeto usuario con el usuario logeado
-$usuario = new Usuario($_SESSION['idUsuario']);
-if ($usuario -> error() != 0) {
-	header('Location:errores.php?error="usernotfound"');
-}
-function fechaNac($usuario) {
+//Hacemos las consultas
+$usuario->prepCampo('nombre');
+$campos = $usuario->consultarTodosLosCampos();
+$provUsuario = $usuario->getProvincia();
+$provincias = $provincia->getProvincias();
 
-	$fechanac = $usuario -> getCampo('fechaNac');
-	$ano = substr($fechanac, 0, 4);
-	$mes = substr($fechanac, 5, 2);
-	$dia = substr($fechanac, 8, 9);
+//Prepara la fehca a partir de la cadena que recibe
+function fechaNac($fecha) {
+	$ano = substr($fecha, 0, 4);
+	$mes = substr($fecha, 5, 2);
+	$dia = substr($fecha, 8, 9);
 
 	echo $dia . "/" . $mes . "/" . $ano;
 }
 
-function provinciaActual($bd, $usuario) {
-	$valor = $usuario -> getCampo('provincia');
-	$query = sprintf("SELECT nombre FROM provincias WHERE idProvincia=%s", $valor);
-	$tuplas = $bd -> consulta($query);
-
-	while ($fila = mysql_fetch_assoc($tuplas)) {
-		$valor = $fila['nombre'];
-
-	}
-
-	$linea = sprintf(" Actualmente %s", $valor);
-	echo $linea;
-}
-
-function creaPlaceHolder($usuario, $campo) {
-
-	$valor = $usuario -> getCampo($campo);
-	$linea = sprintf("placeholder='%s'", $valor);
-	echo $linea;
-}
-
 function creaCheckBox($usuario, $campo) {
-	$visibilidad = $usuario -> esVisible($campo);
 	$visible = "";
 	$check = "check";
-	if ($visibilidad) {
+	if($usuario->esVisible($campo))
 		$visible = "checked=''";
-	}
+
 	$linea = sprintf("<input type='checkbox' class='visibilitybox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
 	echo $linea;
 }
@@ -85,8 +67,8 @@ function creaCheckBox($usuario, $campo) {
 			<div class="divf">
 				<label for="sexo" class="etiqueta">Sexo:</label>
 				<select  name="sexo" id="sexo" class="info_input">
-					<?php $sexo = $usuario -> getCampo('sexo');
-					if ($sexo == 1) {
+					<?php
+					if ($campos['sexo'] == 1) {
 						echo "<option value='1'>Hombre</option>
 <option value='0'>Mujer</option>";
 					} else {
@@ -99,49 +81,39 @@ function creaCheckBox($usuario, $campo) {
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="nombre">Nombre:</label>
-				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'nombre')?>/>
+				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)" placeholder = '<?php echo $campos['nombre'];?>'/>
 				<?php creaCheckBox($usuario, $NOMBRE);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="apellidos">Apellidos:</label>
-				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" <?php creaPlaceHolder($usuario, 'apellidos')?> />
+				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" placeholder = '<?php echo $campos['apellidos'];?>' />
 				<?php creaCheckBox($usuario, $APELLIDOS);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="email">Email:</label>
-				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()"  <?php creaPlaceHolder($usuario, 'email')?>/>
+				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" placeholder = '<?php echo $campos['email'];?>'/>
 				<?php creaCheckBox($usuario, $EMAIL);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta">Fecha de nacimiento:</label>
-				<input type="text" class="info_input" name="fechanac" id="fechanac"  placeholder="<?php fechaNac($usuario)?>"/>
+				<input type="text" class="info_input" name="fechanac" id="fechanac"  placeholder = '<?php echo fechaNac($campos['fechaNac']);?>'/>
 				<?php creaCheckBox($usuario, $FECHA_NAC);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="provincia">Provincia:</label>
 				<select  class="info_input" name="provincia" id="provincia">
-					<option value="0"><?php
-					if ($bd -> conectar()) {
-						provinciaActual($bd, $usuario);
-						$bd -> desconectar();
-					}
-						?></option>
 					<?php
+						//Ponemos la provincia actual como primera opcion del select
+						$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], $provUsuario['nombre']);
+						echo $option;
 
-					//Conectar a la bd
-					if ($bd -> conectar()) {
-						$query = sprintf("SELECT idProvincia, nombre FROM provincias");
-						$tuplas = $bd -> consulta($query);
-						while ($fila = mysql_fetch_assoc($tuplas)) {
-							$idProvincia = $fila['idProvincia'];
-							$nombre = $fila['nombre'];
-							$option = sprintf('<option value="%s">%s</option>', $idProvincia, $nombre);
-							echo $option;
+						//Ponemos todas las demás provincias
+						foreach($provincias as $idProv=>$prov){
+							if($idProv != $provUsuario['idProvincia']){	//No imprimimos 2 veces la misma provincia
+								$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
+								echo $option;
+							}
 						}
-						$bd -> desconectar();
-					} else {
-						//Error aqui cuando aclaremos que vamos hacer con ellos
-					}
 					?>
 				</select>
 			</div>
