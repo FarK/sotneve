@@ -57,7 +57,7 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 					<label class="labelleft" for="email">Email:</label>
 					<input type="text" name="email" id="email" onblur="esEmailValido()" />
 					<label class="labelright">Fecha de nacimiento:</label>
-					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
+					<input type="text" name="fechanac" id="fechanac" value="dd/mm/aaaa" onclick="fechaClick()"/>
 				</div>
 				<div class="div5">
 					<label class="labelleft" for="provincia">Provincia:</label>

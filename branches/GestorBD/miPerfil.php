@@ -78,25 +78,26 @@ function creaCheckBox($usuario, $campo) {
 					?>
 				</select>
 				<?php creaCheckBox($usuario, $SEXO);?>
+				
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="nombre">Nombre:</label>
-				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)" placeholder = '<?php echo $campos['nombre'];?>'/>
+				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = ""<?php echo $campos['nombre'];?>"/>
 				<?php creaCheckBox($usuario, $NOMBRE);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="apellidos">Apellidos:</label>
-				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" placeholder = '<?php echo $campos['apellidos'];?>' />
+				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
 				<?php creaCheckBox($usuario, $APELLIDOS);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="email">Email:</label>
-				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" placeholder = '<?php echo $campos['email'];?>'/>
+				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" value = "<?php echo $campos['email'];?>"/>
 				<?php creaCheckBox($usuario, $EMAIL);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta">Fecha de nacimiento:</label>
-				<input type="text" class="info_input" name="fechanac" id="fechanac"  placeholder = '<?php echo fechaNac($campos['fechaNac']);?>'/>
+				<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>
 				<?php creaCheckBox($usuario, $FECHA_NAC);?>
 			</div>
 			<div class="divf">
