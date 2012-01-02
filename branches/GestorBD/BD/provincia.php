@@ -22,12 +22,10 @@ class Provincia extends Tabla{
 
 	//Todas las provincias en un array simple
 	public function getProvincias(){
-		$ret = array();
+		$res = $this->consultar("SELECT * FROM provincias ORDER BY nombre");
 
-		$res = $this->consultar("SELECT nombre FROM provincias ORDER BY nombre");
 		foreach($res as $row)
-			foreach($row as $prov)
-				$ret[] = $prov;
+			$ret[$row['idProvincia']] = $row['nombre'];
 
 		return $ret;
 	}
