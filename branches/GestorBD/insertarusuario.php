@@ -41,7 +41,7 @@ $fechanac = dmaToamd($fechanac);
 if ($valido) {
 	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
 	$aux = sprintf("Location:index.php?mens=Registrado con exito. %s", $prov);
-	header($aux);
+//	header($aux);
 }
 $conexion -> desconectar();
 
@@ -111,7 +111,7 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	if (!$camposvacios && ($resultadoAlias || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
 		$valido = false;
 	}
-	
+
 	if ($prov == 0) {
 		$_SESSION['err_campos'] = true;
 		$valido = false;
