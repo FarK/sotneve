@@ -47,7 +47,7 @@ header('Location:index.php?err_bd');	//Redirecconar con GET a error
 else if($usuario->error() == -1)//no existe el usuario (o ha fallado la consulta)
 echo '<span> Actualmente no hay amigos </span>';
 foreach($amigos as $am){
-$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $am['idUsuario'],$am['alias']);
+$span= sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $am['idUsuario'],$am['alias']);
 echo $span;
 }
 				?>
