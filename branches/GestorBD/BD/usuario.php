@@ -61,5 +61,17 @@ class Usuario extends Tabla{
 		$res = $this->consultar("SELECT P.nombre FROM provincias P, usuarios U WHERE U.idUsuario =" . $this->pks['idUsuario'] . " AND P.idProvincia = U.idProvincia");
 		return $res[0]['nombre'];
 	}
+	
+	
+	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
+		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
+		return $this -> consultar($query);
+	}
+	
+	public function usuariosCon($campo, $elemento) {
+		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
+		return $this -> consultar($query);
+	}
 }
 ?>
