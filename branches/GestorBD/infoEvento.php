@@ -23,7 +23,6 @@
 		<title>Sotneve - <?php echo $evento -> getCampo("titulo");?></title>
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="styles/info_evento.css">
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>

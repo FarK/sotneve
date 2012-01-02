@@ -18,7 +18,6 @@ $afiliacion = new Afiliacion($conex);
 		<title>Sotneve</title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
 		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
-		<link rel="stylesheet" type="text/css" href="styles/general.css"></link>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
@@ -53,7 +52,7 @@ $afiliacion = new Afiliacion($conex);
 				<?php
 				$favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario2'], $fav['alias']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
 					echo $span;
 				}
 				?>
@@ -66,7 +65,7 @@ $afiliacion = new Afiliacion($conex);
 				<?php
 				$eventos = $afiliacion->getEventos($_SESSION['idUsuario']);
 				foreach ($eventos as $evento) {
-					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $evento['idEvento'], $evento['titulo']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
 					echo $span;
 				}
 				?>

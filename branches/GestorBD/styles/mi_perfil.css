@@ -1,23 +1,21 @@
+@import "general.css";
+
+
 #errores{
 	color: RED;
 	font-weight: bold;
 	font-variant: small-caps;
 }
+
 div.dif{
 	display: table-row;
 }
+
 label.etiqueta{
 	display: table-cell;
 	font-size: 100%;
-}
-input.info_input{
-	
-}
-
-checkbox{
 }
 
 select.info_input{
 	width: 160px;
 }
-

@@ -28,7 +28,6 @@
 		<title>Sotneve - <?php echo $camposUsuario['alias'];?></title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
 		
-		<link rel="stylesheet" type="text/css" href="styles/general.css"/>
 		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css"/>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
@@ -52,7 +51,7 @@ if(empty($favoritos ))
 
 
 foreach($favoritos as $fav){
-$span= sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario2'],$fav['alias']);
+$span= sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
 echo $span;
 }
 				?>

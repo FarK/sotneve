@@ -1,3 +1,5 @@
+@import "general.css";
+
 
 /*** LISTA USUARIOS ***/
 
@@ -12,16 +14,6 @@ div.lista_usuarios {
 strong.num_usuarios {
 	display: inline-block;
 	margin-bottom: 10px;
-}
-a.usuario {
-	margin: 3px 3px;
-	border-radius: 10px;
-	padding: 4px 6px;
-	color: #418eb6;
-	background-color: #D0E8F7;
-	font-weight: bold;
-	text-decoration: none;
-	display: inline-block;
 }
 
 /*** INFO USUARIO ***/

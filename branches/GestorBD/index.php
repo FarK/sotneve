@@ -12,7 +12,6 @@ if (isset($_SESSION['idUsuario'])) {
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8">
 		</meta> <title>Sotneve - Login</title>
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<link rel="stylesheet" type="text/css" href="styles/index.css"/>
 		<script type="text/javascript" src="scripts/index.js"></script>
 	</head>
