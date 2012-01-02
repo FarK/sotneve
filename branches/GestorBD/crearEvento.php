@@ -1,13 +1,5 @@
 <?php
 include ("includes/testSession.php");
-include_once ('BD/GestorBD.php');
-include_once ('BD/usuario.php');
-
-$usuario= new Usuario($_SESSION['idUsuario']);
-if ($usuario -> error() != 0){
-		header('Location:errores.php?error="usernotfound"');
-}
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -50,6 +42,7 @@ if ($usuario -> error() != 0){
 							<br/>
 						</div>
 						<div class="filaform">
+						<!-- Podríamos usar aquí AJAX para fechas como el 30 de febrero -->
 							<label for="fechaevento">Fecha del Evento</label>
 							<select name="dia" id="dia">
 								<option value="01">1</option>
