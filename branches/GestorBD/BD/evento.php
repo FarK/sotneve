@@ -1,7 +1,7 @@
 <?php
 include_once("tabla.php");
 
-class Eventos extends Tabla{
+class Evento extends Tabla{
 	public function __construct(/*$conexion, $id*/){
 		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'eventos';
@@ -28,4 +28,5 @@ class Eventos extends Tabla{
 
 GET NUM ASISTENTES
 $query = sprintf("SELECT idUsuario FROM afiliaciones WHERE afiliaciones.idEvento = '%s'", $this -> idEvento);
+ */
 ?>
