@@ -1,3 +1,6 @@
+@import "general.css";
+
+
 .error {
 	display: block;//
 	visibility: hidden;

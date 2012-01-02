@@ -1,3 +1,6 @@
+@import "general.css";
+
+
 #errores{
 visibility: hidden;
 color:red;
