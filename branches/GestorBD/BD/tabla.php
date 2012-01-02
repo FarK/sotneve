@@ -18,6 +18,9 @@ abstract class Tabla{
 		$this->consultasPreparadas = array();
 		$this->resultados = array();
 		$this->campos = array();
+
+		//Preparamos la consulta de todos los campos
+		$this->preparar('consultarTodosLosCampos', "SELECT * FROM " . $this->nomTabla . " WHERE " . $this->pksToStringPreparada());
 	}
 	
 	//Realiza las consultas y guarda el resultado en $this->resultados
@@ -37,6 +40,23 @@ abstract class Tabla{
 
 		//Devolvemos el array
 		return $stmt->fetch();
+	}
+
+	public function consultarTodosLosCampos() {
+		//Hacemos bind a las claves primarias
+		$parametros = array();
+		$i = 0;
+		foreach($this->pks as $pk){
+			$parametros[':id' . $i] = $pk;
+			++$i;
+		}
+
+		//Devolvemos un array con todos los campos
+		$ret = $this->consultarPreparada('consultarTodosLosCampos', $parametros);
+		if(!empty($ret))
+			return $ret[0];
+		else
+			return $ret;
 	}
 
 	//Guarda el campo a consular
@@ -71,13 +91,18 @@ abstract class Tabla{
 		//Hacemos la consulta
 		$stmt = $this->conexion->consultar($query);
 
-		//Pasamos todas las columnas a un array
-		$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
-		$ret = array();
-		foreach($stmt as $row)
-			$ret[] = $row;
+		//Comprobamos si ha devuelto algo (SELECT) o no (SELECT vacío o INSERT)
+		if(!empty($stmt)){
+			//Pasamos todas las columnas a un array
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
+			$ret = array();
+			foreach($stmt as $row)
+				$ret[] = $row;
 
-		return $ret;
+			return $ret;
+		}
+		else
+			return $stmt;
 	}
 
 	private function camposToString(){
@@ -101,6 +126,22 @@ abstract class Tabla{
 		//Concatenamos el resto de campos
 		while($par = each($this->pks))
 			$pks = $pks . ' AND ' . $par['key'] . ' = ' . $par['value'];
+
+		return $pks;
+	}
+
+	protected function pksToStringPreparada(){
+		//Sacamos el primer par $nombreCampo=>$valor
+		reset($this->pks);
+		$i = 0;
+		$par = each($this->pks);
+		$pks = $par['key'] . ' = :id' . $i;
+
+		//Concatenamos el resto de campos
+		while($par = each($this->pks)){
+			++$i;
+			$pks = $pks . ' AND ' . $par['key'] . ' = :id' . $i;
+		}
 
 		return $pks;
 	}

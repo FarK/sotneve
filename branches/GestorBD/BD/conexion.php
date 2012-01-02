@@ -35,13 +35,21 @@ class Conexion{
 
 	public function consultar($consulta){
 		try{
-			return $this->PDO->query($consulta);
+			$res = $this->PDO->query($consulta);
 		}
 		catch(PDOException $exp){
 			//TODO: Redirigir a página de error
 			echo "ERROR AL HACER LA CONSULTA</br>";
 			echo $exp;
 		}
+
+		//Si el statement está vacío, ya sea porque el select no ha
+		//devuelto resultados o porque se trata de un insert, devolvemos un
+		//array vacío
+		if($res->columnCount() == 0)
+			return array();
+		else
+			return $res;
 	}
 
 	public function prepare($consulta){
