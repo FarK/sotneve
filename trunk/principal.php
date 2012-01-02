@@ -12,8 +12,8 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 	<head>
 		<title>Sotneve</title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
-		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
 		<link rel="stylesheet" type="text/css" href="styles/general.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
@@ -58,7 +58,7 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 				<?php
 				$favoritos = $usuarioActual -> getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<span><a class='usuario' href='infoUsuario.php?idUsuario=%s'>%s</a></span>\n\t\t", $fav['idUsuario'], $fav['alias']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario'], $fav['alias']);
 					echo $span;
 				}
 				?>
@@ -82,7 +82,7 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 								<?php
 				$eventos = $usuarioActual -> getEventos();
 				foreach ($eventos as $fav) {
-					$span = sprintf("<span><a class='evento' href='infoEvento.php?idEvento=%s'>%s</a></span>\n\t\t", $fav['idEvento'], $fav['titulo']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $fav['idEvento'], $fav['titulo']);
 					echo $span;
 				}
 				?>
