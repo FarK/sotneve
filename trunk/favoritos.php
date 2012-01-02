@@ -6,7 +6,6 @@
 	<head>
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="styles/favoritos.css" />
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 		<title>Sotneve - Tus favoritos</title>
 		
@@ -31,9 +30,14 @@
 				header('Location:errores.php?error="userNotFound"');
 
 			foreach($favoritos as $fav){
-				$span= sprintf("<div class='favorito'>
-				<span class='favorito'><a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a></span>
-				<a class='favorito'><img id='delete' src='images/delete.png' width='16px' height='16px' alt='Eliminar favorito'/></a><br/></div>\n\t\t", $fav['idUsuario'],$fav['alias']);
+				$span= sprintf("
+				<div class='enlaceEnmarcado'>
+					<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
+					<a class='favorito' href='http://www.google.es'>
+						<img id='delete' src='images/delete.png' width='16px' height='16px' alt='Eliminar favorito'/>
+					</a>
+				</div>
+				\n\t\t", $fav['idUsuario'],$fav['alias']);
 				echo $span;
 			}
 		?>
