@@ -9,7 +9,7 @@ $APELLIDOS = 1;
 
 class Usuario extends Tabla{
 
-	private $visibilidad = -1;
+	var $visibilidad;
 
 	public function __construct(/*$conexion, $id*/){
 		//Inicializamos el nombre de la tabla
@@ -25,11 +25,15 @@ class Usuario extends Tabla{
 			parent::__construct($arg_list[0]);
 		}
 
+		//Seteamos la visibilidad
+		$this->visibilidad = -1;
+
 		//Llamamos al constructor de tabla
 		parent::__construct($arg_list[0]);
 
 		//Consultas preparadas
 		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
+		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
 		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
 		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
 	}
@@ -60,8 +64,15 @@ class Usuario extends Tabla{
 	}
 
 	public function getProvincia(){
-		$res = $this->consultar("SELECT P.nombre FROM provincias P, usuarios U WHERE U.idUsuario =" . $this->pks['idUsuario'] . " AND P.idProvincia = U.idProvincia");
-		return $res[0]['nombre'];
+		//Hacemos el bind a la consulta
+		$parametros = array(':id'=>$this->pks['idUsuario']);
+		$res = $this->consultarPreparada('getProvincia', $parametros);
+
+		//Devolvemos la provincia en un array ('idProvincia'=>$idProvincia, 'nombre' => $nombre)
+		$ret = array();
+		if(!empty($res))
+			$ret = $res[0];
+		return $ret;
 	}
 	
 	public function existeEmail($email){
@@ -90,7 +101,7 @@ class Usuario extends Tabla{
 	
 	
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
-		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
+		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, idProvincia, visibilidad) 
 			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		return $this -> consultar($query);
 	}
