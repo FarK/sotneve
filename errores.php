@@ -5,7 +5,6 @@
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta charset=utf-8" />
 		<title>Sotneve -Error</title>
-		<link rel="stylesheet" type="text/css" href="styles/general.css" />
 		<link rel="stylesheet" type="text/css" href="styles/errores.css" />
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>

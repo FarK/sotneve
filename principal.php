@@ -12,7 +12,6 @@ $usuarioActual = new Usuario($_SESSION['idUsuario']);
 	<head>
 		<title>Sotneve</title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
-		<link rel="stylesheet" type="text/css" href="styles/general.css"></link>
 		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>

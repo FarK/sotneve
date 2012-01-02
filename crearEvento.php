@@ -17,7 +17,6 @@ if ($usuario -> error() != 0){
 		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
 		<meta charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
-		<link rel="stylesheet" type="text/css" href="styles/general.css" />
 		<link rel="stylesheet" type="text/css" href="styles/styleEvento.css" />
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 

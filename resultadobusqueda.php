@@ -23,7 +23,6 @@ if ($provincia == NULL || $subtipos == NULL) {//Valido los datos que me llegan p
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="styles/resultadobusqueda.css" />
 		<link rel="stylesheet" type="text/css" href="styles/buscarevento.css">
-		<link rel="stylesheet" type="text/css" href="styles/general.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>

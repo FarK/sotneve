@@ -60,7 +60,6 @@ function creaCheckBox($usuario, $campo) {
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="scripts/editausuario.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="styles/general.css"/>
 		<link rel="stylesheet" type="text/css" href="styles/mi_perfil.css"/>
 	</head>
 	<body>
