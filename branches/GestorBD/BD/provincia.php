@@ -18,6 +18,7 @@ class Provincia extends Tabla{
 		parent::__construct($arg_list[0]);
 
 		//Consultas preparadas
+		$this->preparar('existeProvincia', "SELECT * FROM " . $this->nomTabla . " WHERE idProvincia = :id");
 	}
 
 	//Todas las provincias en un array simple
@@ -29,5 +30,17 @@ class Provincia extends Tabla{
 
 		return $ret;
 	}
+	
+	 public function existeProvincia($idProvincia){
+               //preparamos los parametros
+               $parametros = array(':id'=>$idProvincia);
+               $resp = $this->consultarPreparada('existeProvincia', $parametros);
+               
+               if(empty($resp)){
+                   return false;
+               }else{
+                   return true;
+			   }
+     }
 }
 ?>

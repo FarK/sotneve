@@ -30,6 +30,8 @@ class Usuario extends Tabla{
 
 		//Consultas preparadas
 		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
+		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
+		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
 	}
 
 	public function getUsuario($id){
@@ -62,16 +64,42 @@ class Usuario extends Tabla{
 		return $res[0]['nombre'];
 	}
 	
+	public function existeEmail($email){
+               //preparamos los parametros
+               $parametros = array(':id'=>$email);
+               $resp = $this->consultarPreparada('existeEmail', $parametros);
+               
+               if(empty($resp)){
+                   return false;
+               }else{
+                   return true;
+			   }
+     }
+		 
+	 public function existeAlias($alias){
+               //preparamos los parametros
+               $parametros = array(':id'=>$alias);
+               $resp = $this->consultarPreparada('existeAlias', $parametros);
+               
+               if(empty($resp)){
+                   return false;
+               }else{
+                   return true;
+			   }
+     }
+	
 	
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
 		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, provincia,visibilidad) 
 			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		return $this -> consultar($query);
 	}
-	
+	//TODO posiblemente este metodo se pueda borrar porque no se usa
 	public function usuariosCon($campo, $elemento) {
 		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
 		return $this -> consultar($query);
 	}
+	
+	
 }
 ?>
