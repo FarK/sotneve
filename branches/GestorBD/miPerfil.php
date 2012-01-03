@@ -15,7 +15,7 @@ $campos = $usuario->consultarTodosLosCampos();
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
-$conex->desconectar();
+$conexion->desconectar();
 
 //Prepara la fehca a partir de la cadena que recibe
 function fechaNac($fecha) {
