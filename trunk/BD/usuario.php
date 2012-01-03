@@ -53,10 +53,6 @@ class Usuario extends Tabla{
 		}
 	}
 
-	public function esVisible($visibilidad,$campo) {
-		return ($visibilidad & $campo);
-	}
-
 	public function getProvincia(){
 		//Hacemos el bind a la consulta
 		$parametros = array(':id'=>$this->pks['idUsuario']);

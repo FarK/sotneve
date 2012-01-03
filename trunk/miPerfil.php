@@ -28,10 +28,10 @@ function fechaNac($fecha) {
 	echo $dia . "/" . $mes . "/" . $ano;
 }
 
-function creaCheckBox($usuario, $campo) {
+function creaCheckBox($campos, $campo) {
 	$visible = "";
 	$check = "check";
-	if($usuario->esVisible($campos['visibilidad'], $campo))
+	if($campos['visibilidad'] & $campo)
 		$visible = "checked=''";
 
 	$linea = sprintf("<input type='checkbox' class='visibilitybox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
@@ -81,28 +81,28 @@ function creaCheckBox($usuario, $campo) {
 					}
 					?>
 				</select>
-				<?php creaCheckBox($usuario, $SEXO);?>
+				<?php creaCheckBox($campos, $SEXO);?>
 				
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="nombre">Nombre:</label>
 				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
-				<?php creaCheckBox($usuario, $NOMBRE);?>
+				<?php creaCheckBox($campos, $NOMBRE);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="apellidos">Apellidos:</label>
 				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
-				<?php creaCheckBox($usuario, $APELLIDOS);?>
+				<?php creaCheckBox($campos, $APELLIDOS);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="email">Email:</label>
 				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" value = "<?php echo $campos['email'];?>"/>
-				<?php creaCheckBox($usuario, $EMAIL);?>
+				<?php creaCheckBox($campos, $EMAIL);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta">Fecha de nacimiento:</label>
 				<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>
-				<?php creaCheckBox($usuario, $FECHA_NAC);?>
+				<?php creaCheckBox($campos, $FECHA_NAC);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="provincia">Provincia:</label>

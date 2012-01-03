@@ -17,6 +17,7 @@
 	$usuarioVisitado->prepCampo('sexo');
 	$usuarioVisitado->prepCampo('email');
 	$usuarioVisitado->prepCampo('idProvincia');
+	$usuarioVisitado->prepCampo('visibilidad');
 	$camposUsuario = $usuarioVisitado->consultarCampos();
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
@@ -68,17 +69,17 @@ echo $span;
 		$fechaNac = $novisible;
 		$email = $novisible;
 
-		if ($usuarioVisitado -> esVisible($NOMBRE)) {
+		if ($camposUsuario['visibilidad'] & $NOMBRE) {
 			$nombre = $camposUsuario['nombre'];
 
 		}
 
-		if ($usuarioVisitado -> esVisible($APELLIDOS)) {
+		if ($camposUsuario['visibilidad'] & $APELLIDOS) {
 			$apellidos = $camposUsuario['apellidos'];
 
 		}
 
-		if ($usuarioVisitado -> esVisible($SEXO)) {
+		if ($camposUsuario['visibilidad'] & $SEXO) {
 			$sexo = $camposUsuario['sexo'];
 
 			if ($sexo == 1) {
@@ -88,11 +89,11 @@ echo $span;
 			}
 		}
 
-		if ($usuarioVisitado -> esVisible($FECHA_NAC)) {
+		if ($camposUsuario['visibilidad'] & $FECHA_NAC) {
 			$fechaNac = $camposUsuario['fechaNac'];
 		}
 
-		if ($usuarioVisitado -> esVisible($EMAIL)) {
+		if ($camposUsuario['visibilidad'] & $EMAIL) {
 			$email = $camposUsuario['email'];
 		}
 
