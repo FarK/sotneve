@@ -1,37 +1,29 @@
 @import "general.css";
-
-
-.error {
-	display: block;
-	visibility: hidden;
-	color: red;
+div.filaform {
+	display: table-row;
 }
-
+label {
+	font-weight: bold;
+	display: table-cell;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align: sub;
+}
+select {
+	margin: 5px 1px 0 0;
+	width: 133px;
+}
+input {
+	width: 400px;
+}
 input#descripcion {
 	height: 200px;
 	width: 400px;
 	line-height: 1.2px;
-	font-size: 1em;
+	font-size: 1em;	
 }
-
-input{
-	width: 400px;
-}
-
-div.contenido {
-	font: 126% arial, sans-serif;
-}
-
-div.filaform {
-	display: table-row;
-}
-
-label {
-	display: table-cell;
-	width: 150px;
-}
-
-label{
-	padding-right: 10px;
-	text-align: right;
+#create {
+	margin: 5px 0 10px 0;
+	
 }
