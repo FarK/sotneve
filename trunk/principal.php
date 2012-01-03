@@ -1,11 +1,10 @@
 <?php
 include("includes/testSession.php");
-include_once ('BD/conexion.php');
+include_once ('BD/GestorBD.php');
 include_once ('BD/usuario.php');
 
 //Creamos un objeto usuario con el usuario logeado
-$conex = new Conexion();
-$usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
+$usuarioActual = new Usuario($_SESSION['idUsuario']);
 ?>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -24,25 +23,41 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 			<div id="wrapper">
 				<div id="eventos">
 					<p>
-						<strong id="eventsin">Eventos en tu provincia</strong>
+						<strong id="eventsin">Eventos en [Sevilla(TODO)]</strong>
 					</p>
-					<?php
-					$eventosProv = $usuarioActual->getEventosProvincia();
-					foreach ($eventosProv as $evento) {
-						$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
-						echo $span;
-					}
-					?>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p><span>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</span>
+					
 				</div>
 			</div>
 			<div class='lista_usuarios' id="favoritos">
 				<p>
 					<strong>Tus favoritos</strong>
 				</p>
+				<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
 				<?php
-				$favoritos = $usuarioActual->getFavoritos();
+				$favoritos = $usuarioActual -> getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario'], $fav['alias']);
 					echo $span;
 				}
 				?>
@@ -51,11 +66,22 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<p>
 					<strong>Tus eventos</strong>
 				</p>
+				<p>
+						
+						
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
 				
-				<?php
-				$eventos = $usuarioActual->getEventos();
-				foreach ($eventos as $evento) {
-					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+					<p>
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+				
+						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
+					</p>
+								<?php
+				$eventos = $usuarioActual -> getEventos();
+				foreach ($eventos as $fav) {
+					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $fav['idEvento'], $fav['titulo']);
 					echo $span;
 				}
 				?>
@@ -64,4 +90,3 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 		</div>
 	</body>
 </html>
-<?php $conex->desconectar(); ?>

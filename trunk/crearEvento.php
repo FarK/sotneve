@@ -1,11 +1,21 @@
 <?php
 include ("includes/testSession.php");
+include_once ('BD/GestorBD.php');
+include_once ('BD/usuario.php');
+
+$usuario= new Usuario($_SESSION['idUsuario']);
+if ($usuario -> error() != 0){
+		header('Location:errores.php?error="usernotfound"');
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- IMPORTANTE ESA L�NEA DE AH� ARRIBA Y LA DE ABAJO!!!  -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
-		<meta content="text/xhtml; charset=UTF-8"></meta>
+		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
+		<meta charset=utf-8" />
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/crear_evento.css" />
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
@@ -17,24 +27,23 @@ include ("includes/testSession.php");
 		<?php
 			include ("includes/head.php");
 		?>
-		<h2>Crear Evento</h2>
+		<h1>Crear Evento</h1>
 		<div class="contenido">
 		<?php
-			if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
-				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
+			if(isset($_SESSION['err_campos']) && $_SESSION['err_pass']){
+				echo "<span class='error'>Debe rellenar todos los campos.</span>";
 				$_SESSION['err_campos'] = false;
 			}
 		?>
-		<span class='error'>Debe rellenar todos los campos.</span>
 			<div class="form">
-				<form name="fval" action="registraEvento.php" method="post" onsubmit="return valida()">
+				<form name="fval" onsubmit="return valida()">
 						<div class="filaform">
 							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />
 						</div>
 						<div class="filaform">
 							<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
-							<input type="text" id="numpersonas" name="numpersonas"/>
+							<input type="text" id="numpersonas" />
 							<br/>
 						</div>
 						<div class="filaform">
@@ -87,6 +96,8 @@ include ("includes/testSession.php");
 								<option value="12">Diciembre</option>
 							</select>
 							<select name="ano" id="ano">
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
 								<option value="2012">2012</option>
 								<option value="2013">2013</option>
 								<option value="2014">2014</option>
@@ -94,29 +105,18 @@ include ("includes/testSession.php");
 						</div>
 						<div class="filaform">
 							<label for="provincia">Provincia</label>
-							<select name="provincia" id="provincia">
-								<option value="0"></option>
-								<?php
-								$conex = new Conexion();
-								$provincia = new Provincia($conex);
-								$provincias = $provincia ->getProvincias();
-								$conex->desconectar();
-								foreach ($provincias as $id=>$prov) {
-									$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
-									echo $option;
-								}
-								?>
-							</select>
+							<!--TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODODOODODODOTOOOODOOOOO-->
+							<input type="text" id="provincia"/>
 							<br/>
 						</div>
 						<div class="filaform">
 							<label for="lugar">Lugar</label>
-							<input type="text" id="lugar" name="lugar"/>
+							<input type="text" id="lugar"/>
 							<br/>
 						</div>
 						<div class="filaform">
 							<label for="descripcion" >Descripci&oacute;n</label>
-							<input type="text" id="descripcion" name="descripcion"/>
+							<input type="text" id="descripcion" />
 							<br/>
 						</div>
 						<input class='filaform' id='create' type="submit" value="&iexcl;Crea este evento!"  id="crea">

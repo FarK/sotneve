@@ -1,29 +1,45 @@
-body {
-	background: #D0E8F7;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 76%;
-	
+@import "general.css";
+
+
+#listafavoritos {
+	width: 820px;
+	margin: 10px auto 10px auto;
+	padding: 20px 30px;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+	min-height: 400px;
 }
 
-
+/* Título*/
 h1 {
-	margin: 10px 0 40px 0;
-	font-size: 3.5em;
+	margin: 10px 0 20px 0;
+	font-size: 200%;
 	color: #418eb6;
 }
 
-a{
-
+/*Cada elemento de la lista*/
+div.enlaceEnmarcado{
+	margin: 10px 5px;
+	border: 5px solid #EEF;
+	border-radius: 10px;
 }
 
-#listafavoritos{
-	width:700px;
-	margin: 0px auto;
-	
-	margin: 10% auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
-	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
-	width: 800px;
-	border-style: dotted;
-	border-radius: 20px 20px;
-	border: 2px dotted #418eb6;
+/* Enlace a borrar favorito */
+a.favorito {
+	background-color: #EEF;
+	text-align: left;
+	font-weight: bold;
+	color: #418eb6;
+	text-decoration: none;
+	display: table-cell;
+	min-width: 100%;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+
+/* Imágen de borrar */
+img#delete {
+	vertical-align: middle;
+	float: right;
+	padding-right: 10px;
 }
