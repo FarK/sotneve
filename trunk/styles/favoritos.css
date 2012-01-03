@@ -19,7 +19,7 @@ h1 {
 
 /*Cada elemento de la lista*/
 div.enlaceEnmarcado{
-	margin: 7px;
+	margin: 10px 5px;
 	border: 5px solid #EEF;
 	border-radius: 10px;
 }
@@ -33,11 +33,13 @@ a.favorito {
 	text-decoration: none;
 	display: table-cell;
 	min-width: 100%;
+	vertical-align: middle;
+	padding-left: 5px;
 }
 
 /* Imágen de borrar */
 img#delete {
-	vertical-align: bottom;
+	vertical-align: middle;
 	float: right;
 	padding-right: 10px;
 }
