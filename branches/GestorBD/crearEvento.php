@@ -3,11 +3,9 @@ include ("includes/testSession.php");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- IMPORTANTE ESA L�NEA DE AH� ARRIBA Y LA DE ABAJO!!!  -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
-		<!-- IMPORTANTE ESA L�NEA DE ABAJO!!!  -->
-		<meta charset=utf-8" />
+		<meta content="text/xhtml; charset=UTF-8"></meta>
 		<title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="styles/crear_evento.css" />
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
@@ -101,8 +99,18 @@ include ("includes/testSession.php");
 						</div>
 						<div class="filaform">
 							<label for="provincia">Provincia</label>
-							<!--TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODODOODODODOTOOOODOOOOO-->
-							<input type="text" id="provincia"/>
+							<select name="provincia" id="provincia">
+								<?php
+								$conex = new Conexion();
+								$provincia = new Provincia($conex);
+								$provincias = $provincia ->getProvincias();
+								$conex->desconectar();
+								foreach ($provincias as $id=>$prov) {
+									$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
+									echo $option;
+								}
+								?>
+							</select>
 							<br/>
 						</div>
 						<div class="filaform">
