@@ -36,6 +36,7 @@ class Usuario extends Tabla{
 		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
 		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
 		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
+		$this->preparar('getEventos', "SELECT * FROM " . $this->nomTabla . " A, eventos E WHERE A.idUsuario = :id AND A.idEvento = E.idEvento");
 	}
 
 	public function getUsuario($id){
@@ -99,6 +100,11 @@ class Usuario extends Tabla{
 			   }
      }
 	
+	//Todos los eventos a los que está afiliado un usuario //TODO caducados o no?
+	public function getEventos($idUsuario){
+		$parametros = array(':id'=>$idUsuario);
+		return $this->consultarPreparada('getEventos', $parametros);
+	}
 	
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
 		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, idProvincia, visibilidad) 

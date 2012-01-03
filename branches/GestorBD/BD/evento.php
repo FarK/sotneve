@@ -17,7 +17,16 @@ class Evento extends Tabla{
 		parent::__construct($arg_list[0]);
 
 		//Consultas preparadas
+		$this->preparar('getUsuarios', "SELECT * FROM " . $this->nomTabla . " A, usuarios U WHERE A.idEvento = :id AND A.idUsuario = U.idUsuario");
+		
 	}
+	
+		//Todos los usuarios que están afiliados a un evento
+	public function getUsuarios($idEvento){
+		$parametros = array(':id'=>$idEvento);
+		return $this->consultarPreparada('getUsuario', $parametros);
+	}
+	
 }
 
 /**********************
