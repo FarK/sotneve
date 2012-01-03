@@ -19,7 +19,7 @@ strong.num_usuarios {
 /*** INFO USUARIO ***/
 
 div.info_usuario {
-	margin-left: 40%;
+	margin-left: 32%;
 }
 div.data_row {
 	display : table-row;
@@ -34,4 +34,24 @@ span.l_usuario {
 }
 span.c_usuario {
 	margin: 0 15px;
+}
+
+/*** AÑADIR A FAVORITOS ***/
+#add_to_favs {
+	
+	float: right;
+	font-weight: bold;
+	padding: 4px;
+	border-radius: 5px;
+	background-color: #418eb6;
+	color: WHITE;
+}
+span#add_to_favs {
+	margin-bottom: 200px;
+	margin-top: 10px;
+}
+img#add {
+	height: 36px;
+	width: 36px;
+	vertical-align: middle;
 }
