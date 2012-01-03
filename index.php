@@ -17,7 +17,7 @@ if (isset($_SESSION['idUsuario'])) {
 	</head>
 	<body>
 		<div id="logoprincipal">
-			<img id="logop" src="images/logo.jpg" alt="Inicio"></img>
+			<img id="logop" src="images/logo.png" alt="Inicio"></img>
 		</div>
 		<form id="login_form" method="post" action="login.php" onsubmit="return validaForm()">
 			<fieldset>
@@ -31,10 +31,6 @@ if (isset($_SESSION['idUsuario'])) {
 				if (isset($_SESSION['err_pass']) && $_SESSION['err_pass']) {
 					echo "<span class='errorserv' >Usuario o contrase&ntilde;a incorrecto</span>";
 					$_SESSION['err_pass'] = false;
-				}
-				if (isset($_GET['err_bd']) && $_SESSION['err_bd']) {
-					echo "<span class='errorserv'>No se pudo conectar a la base de datos.</span>";
-					$_SESSION['err_bd'] = false;
 				}
 				?>
 				<br/>

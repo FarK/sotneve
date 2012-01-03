@@ -60,6 +60,10 @@ function esFormularioValido() {
 
 }
 
+function fechaClick(){
+	document.getElementById('fechanac').value="";
+	
+}
 
 function esCampoNoVacio(id){
 		
@@ -106,5 +110,9 @@ function esEmailValido(){
 	}else{
 		ctrlEmail.style.borderColor="#418eb6";
 	}
+
+
+
+
 
 }

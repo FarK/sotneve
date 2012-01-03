@@ -1,33 +1,27 @@
 <?php
-	include_once('BD/GestorBD.php');
+	include_once('BD/conexion.php');
+	include_once('BD/usuario.php');
 	//Iniciar sesion
 	session_start();
 	//Crear objeto gestor bd
-	$bd = new GestorBD();	
-	//Conectar a la bd
-	if($bd->conectar()){
-		//Pudo conectar
-			//Sanear POST
-			$email = $bd->escapeString($_POST['email']);
-			$pass = $bd->escapeString($_POST['pass']);
-			//Comprobar que la contraseña es correcta
-			if($row = $bd->passCorrecta($email, $pass)){
-				//Es correcta
-					//Meter en la variable session que ha conectado
-					$_SESSION['idUsuario'] = $row['idUsuario'];
-					header('Location:principal.php');
-			}else{
-				//Es incorrecta
-					//Redireccionar a index con error en SESSION
-					$_SESSION['err_pass'] = true;
-					header('Location:index.php');
-			}
-			//Desconectar de la bd
-		$bd->desconectar();
+	$conex = new Conexion();	
+	$usuarios = new Usuario($conex);
+	
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
+	
+	//Comprobar que la contraseña es correcta
+	if($id = $usuarios->passCorrecta($email, $pass)){
+		//Es correcta
+		//Meter en la variable session que ha conectado
+		$_SESSION['idUsuario'] = $id;
+		header('Location:principal.php');
 	}else{
-	//No puedo conectar
-		//Redirecconar a index con error en SESSION
-		$_SESSION['err_bd'] = true;
+		//Es incorrecta
+		//Error en SESSION
+		$_SESSION['err_pass'] = true;
 		header('Location:index.php');
 	}
+	
+	$conex->desconectar();	
 ?>

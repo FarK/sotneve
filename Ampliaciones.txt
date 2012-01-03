@@ -2,6 +2,7 @@ GENERAL
 ---------------------
 -Cabecera y pie común, en un archivo externo, reutilizable y que no se recargue entre transiciones
 -Crear y añadir logo cutre en photoshop.
+-Buscador de usuarios
 
 
 LOGIN

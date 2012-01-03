@@ -1,5 +1,9 @@
 <?php
-session_start();
+include_once('BD/conexion.php');
+include_once('BD/provincia.php');
+
+session_start();//TODO hay que hacer algo con sesion luego mas abajo??
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -53,31 +57,25 @@ session_start();
 					<label class="labelleft" for="email">Email:</label>
 					<input type="text" name="email" id="email" onblur="esEmailValido()" />
 					<label class="labelright">Fecha de nacimiento:</label>
-					<input type="text" name="fechanac" id="fechanac" placeholder="dd/mm/aaaa"/>
+					<input type="text" name="fechanac" id="fechanac" value="dd/mm/aaaa" onclick="fechaClick()"/>
 				</div>
 				<div class="div5">
 					<label class="labelleft" for="provincia">Provincia:</label>
 					<select  name="provincia" id="provincia">
 						<option value="0"></option>
 						<?php
-						
-						include_once 'BD/GestorBD.php';
 						//Crear objeto gestor bd
-						$bd = new GestorBD();
-						//Conectar a la bd
-						if ($bd -> conectar()) {
-						$query=sprintf("SELECT idProvincia, nombre FROM provincias");
-						$tuplas=$bd->consulta($query);
-						while ($fila = mysql_fetch_assoc($tuplas)) {
-							$idProvincia = $fila['idProvincia'];
-							$nombre=$fila['nombre'];
-							$option=sprintf('<option value="%s">%s</option>',$idProvincia,$nombre);
-							echo $option;
+						$conexion = new Conexion();
+						$provincia = new Provincia($conexion);
+						
+						$provincias = $provincia->getProvincias();
+						foreach ($provincias as $id=>$prov) {
+						$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
+						echo $option;
 						}
-						$bd->desconectar();
-						}else{
-							//Error aqui cuando aclaremos que vamos hacer con ellos
-						}
+						
+						$conexion->desconectar();
+
 							
 						?>
 					</select>
