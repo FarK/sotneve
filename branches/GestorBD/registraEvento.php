@@ -25,6 +25,7 @@ $prov = new Provincia($conex);
 		$evento = new Evento($conex);
 		$evento-> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
 		$id = $conex->getLastInsertId();
+		
 		header(sprintf("Location:infoEvento.php?idEvento=%s", $id));
 	}
 	 $conex->desconectar();
