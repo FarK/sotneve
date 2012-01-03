@@ -150,12 +150,16 @@ div.opcion{
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
 	display: inline-block;
 }
+
 #btnbuscar {
 	background-color: #eaf3fa;
 	color: #418eb6;
 	border-radius: 10px 10px;
 }
-
+img#search_icon{
+	width: 20px;
+	height: 20px;
+}
 div.contenido{
 	margin-left:150px;
 	
