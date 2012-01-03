@@ -24,10 +24,11 @@ include ("includes/testSession.php");
 		<h2>Crear Evento</h2>
 		<?php
 			if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
-				echo "<span class='error'>Debe rellenar todos los campos.</span>";
+				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
 				$_SESSION['err_campos'] = false;
 			}
 		?>
+		<span class='error'>Debe rellenar todos los campos.</span>
 			<div class="form">
 				<form name="fval" action="registraEvento.php" method="post" onsubmit="return valida()">
 						<div class="filaform">

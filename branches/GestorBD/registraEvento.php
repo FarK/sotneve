@@ -81,7 +81,7 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 	if ($valido) {
 		return true;
 	} else {
-		header("crearEvento.php");
+		header("Location:crearEvento.php");
 	}
 
 }

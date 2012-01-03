@@ -7,6 +7,11 @@
 	color: red;
 }
 
+.errorphp {
+	display: block;
+	color: red;
+}
+
 input#descripcion {
 	height: 200px;
 	width: 400px;
