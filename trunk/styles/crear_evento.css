@@ -2,6 +2,9 @@
 div.filaform {
 	display: table-row;
 }
+input#provincia{
+	background-color: RED;
+}
 label {
 	font-weight: bold;
 	display: table-cell;
@@ -17,13 +20,15 @@ select {
 input {
 	width: 400px;
 }
+input#create{
+	background-color: #418eb6;
+	color: WHITE;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
+}
 input#descripcion {
 	height: 200px;
 	width: 400px;
 	line-height: 1.2px;
 	font-size: 1em;	
-}
-#create {
-	margin: 5px 0 10px 0;
-	
 }

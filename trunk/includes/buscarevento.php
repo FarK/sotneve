@@ -58,11 +58,6 @@ function generaTipos() {
 				<option value="0">Selecciona opci&oacute;n...</option>
 			</select>
 		</div>
-		<div class='opcion'>
-			
-			<button type="submit" id="btnbuscar">
-			<img id='search_icon' type='submit' src='images/search.png' />
-			</button>
-		</div>
+		<input type="image" id="search_icon" src="images/search.png" alt="Buscar eventos"/>
 	</div>
 </form>

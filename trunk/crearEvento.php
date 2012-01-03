@@ -27,10 +27,8 @@ if ($usuario -> error() != 0){
 		<?php
 			include ("includes/head.php");
 		?>
-		
-		<div class="contenido">
-			
 		<h1>Crear Evento</h1>
+		<div class="contenido">
 		<?php
 			if(isset($_SESSION['err_campos']) && $_SESSION['err_pass']){
 				echo "<span class='error'>Debe rellenar todos los campos.</span>";
@@ -121,9 +119,9 @@ if ($usuario -> error() != 0){
 							<input type="text" id="descripcion" />
 							<br/>
 						</div>
-						<button id='create' type="submit" id="crea">
-							Crear Evento
-						</button>
+						<input class='filaform' id='create' type="submit" value="&iexcl;Crea este evento!"  id="crea">
+						
+						
 
 				</form>
 			</div>
