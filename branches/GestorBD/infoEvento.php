@@ -1,9 +1,9 @@
 <?php
-	include 'BD/conexion.php';
-    include 'includes/testSession.php';
+	include_once 'BD/conexion.php';
+    include_once 'includes/testSession.php';
 	include_once 'BD/usuario.php';
-	include 'BD/evento.php';
-	include 'BD/provincia.php';
+	include_once 'BD/evento.php';
+	include_once 'BD/provincia.php';
 
 	
 
