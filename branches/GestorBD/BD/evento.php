@@ -21,6 +21,15 @@ class Evento extends Tabla{
 		
 	}
 	
+	public function insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar){
+		$query = sprintf("INSERT INTO eventos (idSubtipo, titulo, maxPersonas, fechaCreacion, descripcion, 
+							fechaEvento, idProvincia, lugar, propietario) VALUES (%s, '%s', %s, NOW(), '%s', '%s', %s, '%s', %s)", 
+							2/*TODO: subtipo*/, $titulo, $numpersonas, $descripcion, $fechaEvento, $provincia, $lugar, 
+							$_SESSION['idUsuario']);
+		return $this -> consultar($query);
+	}
+	
+	
 		//Todos los usuarios que están afiliados a un evento
 	public function getUsuarios($idEvento){
 		$parametros = array(':id'=>$idEvento);

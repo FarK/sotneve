@@ -23,24 +23,23 @@ include ("includes/testSession.php");
 			
 		<h2>Crear Evento</h2>
 		<?php
-			if(isset($_SESSION['err_campos']) && $_SESSION['err_pass']){
+			if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
 				echo "<span class='error'>Debe rellenar todos los campos.</span>";
 				$_SESSION['err_campos'] = false;
 			}
 		?>
 			<div class="form">
-				<form name="fval" onsubmit="return valida()">
+				<form name="fval" action="registraEvento.php" method="post" onsubmit="return valida()">
 						<div class="filaform">
 							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />
 						</div>
 						<div class="filaform">
 							<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
-							<input type="text" id="numpersonas" />
+							<input type="text" id="numpersonas" name="numpersonas"/>
 							<br/>
 						</div>
 						<div class="filaform">
-						<!-- Podríamos usar aquí AJAX para fechas como el 30 de febrero -->
 							<label for="fechaevento">Fecha del Evento</label>
 							<select name="dia" id="dia">
 								<option value="01">1</option>
@@ -90,8 +89,6 @@ include ("includes/testSession.php");
 								<option value="12">Diciembre</option>
 							</select>
 							<select name="ano" id="ano">
-								<option value="2010">2010</option>
-								<option value="2011">2011</option>
 								<option value="2012">2012</option>
 								<option value="2013">2013</option>
 								<option value="2014">2014</option>
@@ -100,6 +97,7 @@ include ("includes/testSession.php");
 						<div class="filaform">
 							<label for="provincia">Provincia</label>
 							<select name="provincia" id="provincia">
+								<option value="0"></option>
 								<?php
 								$conex = new Conexion();
 								$provincia = new Provincia($conex);
@@ -115,12 +113,12 @@ include ("includes/testSession.php");
 						</div>
 						<div class="filaform">
 							<label for="lugar">Lugar</label>
-							<input type="text" id="lugar"/>
+							<input type="text" id="lugar" name="lugar"/>
 							<br/>
 						</div>
 						<div class="filaform">
 							<label for="descripcion" >Descripci&oacute;n</label>
-							<input type="text" id="descripcion" />
+							<input type="text" id="descripcion" name="descripcion"/>
 							<br/>
 						</div>
 						<button type="submit" id="crea">

@@ -1,54 +1,53 @@
 <?php
 include ("includes/testSession.php");
-include_once ('BD/GestorBD.php');
+include_once ("BD/conexion.php");
+include_once ("BD/evento.php");
+include_once ("BD/provincia.php");
 
-$bd = new GestorBD();
-
-if ($bd -> conectar()) {
-
+$conex = new Conexion();
+$prov = new Provincia($conex);
 	
-	$mes = $bd -> escapeString($_POST['dia']);
-	$dia = $bd -> escapeString($_POST['mes']);
-	$ano = $bd -> escapeString($_POST['ano']);
-	
+	$mes = $_POST['mes'];
+	$dia = $_POST['dia'];
+	$ano = $_POST['ano'];
 	$fechaEvento = $ano.'-'.$mes.'-'.$dia;
-	$titulo = $bd -> escapeString($_POST['nomevento']);
-	$numpersonas = $bd -> escapeString($_POST['numpersonas']);
-	$descripcion = $bd -> escapeString($_POST['descripcion']);
-	$lugar = $bd -> escapeString($_POST['lugar']);
-	$provincia = $bd -> escapeString($_POST['provincia']);
+	$titulo = $_POST['nomevento'];
+	$numpersonas = $_POST['numpersonas'];
+	$descripcion = $_POST['descripcion'];
+	$lugar = $_POST['lugar'];
+	$provincia = $_POST['provincia'];
 
-	$valido = esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia,$descripcion,$lugar);
-	$fechanaEvento= dmaToamd($fechaEvento);
-	
+	$existeProvincia = $prov->existeProvincia($provincia);
 
+	$valido = esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provincia,$descripcion,$lugar);
 	
 	if ($valido){
-		 
-		$bd -> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
-		
+		$evento = new Evento($conex);
+		$evento-> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
+		$id = $conex->getLastInsertId();
+		header(sprintf("Location:infoEvento.php?idEvento=%s", $id));
 	}
-	 $bd->desconectar();
-}
+	 $conex->desconectar();
 
-function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
+
+function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
 	$valido = true;
 	$camposvacios = false;
 
-	if ($fechaEvento == "" || $titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar=='') {//OK
+	if ($fechaEvento == "" || $titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar=='') {
 		$camposvacios = true;
 		$_SESSION['err_campos'] = true;
 		$valido=false;
 	}
 
-	$dia = substr($fechanac, 0, 2);
-	$mes = substr($fechanac, 3, 2);
-	$ano = substr($fechanac, 6, 9);
+	$dia = substr($fechaEvento, 0, 2);
+	$mes = substr($fechaEvento, 3, 2);
+	$ano = substr($fechaEvento, 6, 9);
 
 	$diamax=0;
 	//No contemplamos bisiestos ni los años
 
-	if ($mes > 0 && $mes < 13 && strlen($fechanac)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
+	if ($mes > 0 && $mes < 13 && strlen($fechaEvento)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
 		switch ($mes) {
 			case '2' :
 				$diamax = 28;
@@ -71,22 +70,12 @@ function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descrip
 		$valido = false;
 	}
 	
-	if($provincia==0){
+	if ($provincia == 0) {
+		$_SESSION['err_campos'] = true;
+		$valido = false;
+	} elseif (!$camposvacios && !$existeProvincia) {
 		$_SESSION['err_campos'] = true;
 		$valido=false;
-	}elseif(!$camposvacios){
-		
-		$query=sprintf("SELECT idProvincia FROM provincias WHERE idProvincia=%s",$provincia);
-		$tuplas=$bd->consulta($query);
-		
-		while ($fila = mysql_fetch_assoc($tuplas)  && mysql_num_rows($fila)<=1 && mysql_num_rows($fila)>0) { 
-			$prov=$fila['idProvincia'];
-			if($prov==""){
-				$_SESSION['err_campos'] = true;
-				$valido=false;
-			}	
-		}
-		
 	}
 
 	if ($valido) {
@@ -95,25 +84,5 @@ function esValido($bd, $fechaEvento, $titulo, $numpersonas, $provincia, $descrip
 		header("crearEvento.php");
 	}
 
-}
-
-function dmaToamd($fecha) {
-	$dia = substr($fecha, 0, 2);
-	$mes = substr($fecha, 3, 2);
-	$ano = substr($fecha, 6, 9);
-
-	$fecha = $ano . "-" . $mes . "-" . $dia;
-
-	return $fecha;
-}
-
-function sexoToInt($sexo) {// no se usa ya, lo borraremos cuando estemos 100% seguro
-	if ($sexo == 'Hombre') {
-		$sexo = 1;
-		return $sexo;
-	} elseif ($sexo == 'Mujer') {
-		$sexo = 0;
-		return $sexo;
-	}
 }
 ?> 
