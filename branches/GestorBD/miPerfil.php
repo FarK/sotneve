@@ -15,6 +15,8 @@ $campos = $usuario->consultarTodosLosCampos();
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
+$conex->desconectar();
+
 //Prepara la fehca a partir de la cadena que recibe
 function fechaNac($fecha) {
 	$ano = substr($fecha, 0, 4);
