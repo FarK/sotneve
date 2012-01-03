@@ -1,5 +1,5 @@
 <?php
-include_once ('BD/GestorBD.php');
+include_once("tabla.php");
 
 $FECHA_NAC = 16;
 $SEXO = 8;
@@ -7,131 +7,130 @@ $EMAIL = 4;
 $NOMBRE = 2;
 $APELLIDOS = 1;
 
-class Usuario {
-	private $idUsuario = NULL;
-	private $usuario = NULL;
-	private $favoritos = NULL;
-	private $eventosafiliados = NULL;
+class Usuario extends Tabla{
 
-	private $error = 0;
+	var $visibilidad;
 
-	public function Usuario($idUsuario) {
-		$this -> idUsuario = $idUsuario;
-		//Crear objeto gestor bd
-		$bd = new GestorBD();
-		//Conectar a la bd
-		if ($bd -> conectar()) {//Pudo conectar
-			//Consulta usuario
-			$query = sprintf("SELECT * FROM usuarios WHERE idUsuario = '%s'", $idUsuario);
-			$this -> usuario = mysql_fetch_assoc($bd -> consulta($query));
+	public function __construct(/*$conexion, $id*/){
+		//Inicializamos el nombre de la tabla
+		$this->nomTabla = 'usuarios';
 
-			//Si no existe el usuario (o ha fallado la consulta)
-			if (!$this -> usuario)
-				$this -> error = -1;
+		//Comprobamos si se han recibido las claves primarias
+		$arg_list = func_get_args();
+		if (func_num_args() == 2){
+			//Inicializamos el array de claves primarias y el nombre de la tabla
+			$this->pks = array('idUsuario'=>$arg_list[1]);
 
-			//Desconectar de la bd
-			$bd -> desconectar();
+			//Llamamos al constructor de tabla
+			parent::__construct($arg_list[0]);
+		}
+
+		//Inicializamos la visibilidad
+		$this->prepCampo('visibilidad');
+		$res = $this->consultarCampos();
+		$this->visibilidad = $res['visibilidad'];
+
+		//Llamamos al constructor de tabla
+		parent::__construct($arg_list[0]);
+
+		//Consultas preparadas
+		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
+		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
+		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
+		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
+		$this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
+		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
+		$this->preparar('getEventosProvincia', "SELECT * FROM afiliaciones A, eventos E, usuarios U WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idUsuario = U.idUsuario AND U.idProvincia = E.idProvincia AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
+		
+	}
+
+	public function getUsuario($id){
+		//Hacemos el bind a la consulta y la ejecutamos
+		$parametros = array(':id'=>$id);
+		return $this->consultarPreparada('getUsuario', $parametros);
+	}
+
+	public function passCorrecta($email, $pass) {
+		$query = sprintf("SELECT idUsuario FROM usuarios WHERE email = '%s' AND pass = SHA2('%s', 256)", $email, $pass);
+		$result = $this -> consultar($query);
+		if (count($result) == 1 && count($result[0]) == 1) {
+			return $result[0]['idUsuario'];
 		} else {
-			//No puedo conectar
-			$this -> error = -2;
+			return false;
 		}
 	}
-
-	public function error() {
-		return $this -> error;
-	}
-
-	public function getCampo($campo) {
-		return $this -> usuario[$campo];
-	}
-
-	/* TODO
-	 public function setCampo($nuevoValor, $campo){
-	 }
-	 */
 
 	public function esVisible($campo) {
-		return ($this -> usuario["visibilidad"] & $campo);
+		return ($this -> visibilidad & $campo);
 	}
 
-	//Devuelve un array de arrays del tipo "idEvento => idEvento, titulo=> titulo"
-	public function getEventos() {
-		$fecha = time();
-		$actual = date("Y-m-d h:i:s", $fecha);
+	public function getProvincia(){
+		//Hacemos el bind a la consulta
+		$parametros = array(':id'=>$this->pks['idUsuario']);
+		$res = $this->consultarPreparada('getProvincia', $parametros);
 
-		//Si no ha sido inicializado antes hacemos la consulta
-		if (is_null($this -> eventosafiliados)) {
-			//Crear objeto gestor bd
-			$bd = new GestorBD();
-			//inicializamos el array
-			$this -> eventosafiliados = array();
-
-			if ($bd -> conectar()) {//Se ha podido conectar
-				$query = sprintf("SELECT idEvento FROM afiliaciones WHERE idUsuario= '%s'", $this -> idUsuario);
-				$tuplas = $bd -> consulta($query);
-				//Si no existe el usuario (o ha fallado la consulta)
-				if (!$tuplas)
-					$this -> error = -1;
-
-				while ($fila = mysql_fetch_assoc($tuplas)) {
-					//Obtenemos el idEvento y el titulo del evento
-					$idEvento2 = $fila['idEvento'];
-					
-					
-					
-					
-					
-					
-					$query = sprintf("SELECT titulo FROM eventos WHERE idEvento= '%s' AND fechaEvento>='%s'", $idEvento2, $actual);
-					//Si no existe el usuario (o ha fallado la consulta)
-					if (!$query)
-						$this -> error = -1;
-					$aliasRes = $bd -> consulta($query);
-					$titulo2 = mysql_fetch_assoc($aliasRes);
-
-					$this -> eventosafiliados[] = array('idEvento' => $idEvento2, 'titulo' => $titulo2['titulo']);
-				}
-			} else//Conexión fallida
-				$this -> error = -2;
-
-		}
-		return $this -> eventosafiliados;
+		//Devolvemos la provincia en un array ('idProvincia'=>$idProvincia, 'nombre' => $nombre)
+		$ret = array();
+		if(!empty($res))
+			$ret = $res[0];
+		return $ret;
 	}
-
-	//Devuelve un array de arrays del tipo "idUsuario => idUsuario, alias => alias"
-	public function getFavoritos() {
-		//Si no ha sido inicializado antes hacemos la consulta
-		if (is_null($this -> favoritos)) {
-			//Crear objeto gestor bd
-			$bd = new GestorBD();
-			//inicializamos el array
-			$this -> favoritos = array();
-
-			if ($bd -> conectar()) {//Se ha podido conectar
-				$query = sprintf("SELECT idUsuario2 FROM favoritos WHERE idUsuario1= '%s'", $this -> idUsuario);
-				$tuplas = $bd -> consulta($query);
-				//Si no existe el usuario (o ha fallado la consulta)
-				if (!$tuplas)
-					$this -> error = -1;
-
-				while ($fila = mysql_fetch_assoc($tuplas)) {
-					//Obtenemos el idUsuario y el alias del favorito
-					$idUsuario2 = $fila['idUsuario2'];
-					$query = sprintf("SELECT alias FROM usuarios WHERE idUsuario= '%s'", $idUsuario2);
-					//Si no existe el usuario (o ha fallado la consulta)
-					if (!$query)
-						$this -> error = -1;
-					$aliasRes = $bd -> consulta($query);
-					$alias2 = mysql_fetch_assoc($aliasRes);
-
-					$this -> favoritos[] = array('idUsuario' => $idUsuario2, 'alias' => $alias2['alias']);
-				}
-			} else//Conexión fallida
-				$this -> error = -2;
-
-		}
-		return $this -> favoritos;
+	
+	public function existeEmail($email){
+               //preparamos los parametros
+               $parametros = array(':id'=>$email);
+               $resp = $this->consultarPreparada('existeEmail', $parametros);
+               
+               if(empty($resp)){
+                   return false;
+               }else{
+                   return true;
+			   }
+     }
+		 
+	 public function existeAlias($alias){
+               //preparamos los parametros
+               $parametros = array(':id'=>$alias);
+               $resp = $this->consultarPreparada('existeAlias', $parametros);
+               
+               if(empty($resp)){
+                   return false;
+               }else{
+                   return true;
+			   }
+     }
+	
+	//Todos los eventos a los que está afiliado un usuario NO caducados
+	public function getEventos(){
+		return $this->consultarPreparada('getEventos', array());
 	}
-
+	
+	public function getEventosProvincia(){
+		return $this->consultarPreparada('getEventosProvincia', array());
+	}
+	
+	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
+		$query = sprintf("INSERT INTO usuarios (fechaNac, sexo, email, alias, pass, nombre, apellidos, idProvincia, visibilidad) 
+			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
+		return $this -> consultar($query);
+	}
+	
+	public function getFavoritos(){
+		return $this->consultarPreparada('getFavoritos', array());
+	}
+	
+	public function borraFavorito($idUsuario2) {
+		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
+		$result = $this -> consultar($query);
+	}
+	
+	public function consultarTodosLosCampos(){
+		$res = parent::consultarTodosLosCampos();
+		$this->visibilidad = $res['visibilidad'];
+		echo $this->visibilidad;
+		return $res;
+	}
+	
+	
 }
 ?>
