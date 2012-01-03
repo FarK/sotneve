@@ -25,22 +25,22 @@ $selectDestino=$_GET["select"]; $opcionSeleccionada=$_GET["nombre"];
 if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada))
 {
 	$tabla=$listadoSelects[$selectDestino];
-include_once ('BD/GestorBD.php');
+	include_once ('BD/utiles.php');
+	include_once ('BD/conexion.php');
 
-$bd = new GestorBD();
-$bd->conectar();
-	$consulta=mysql_query("SELECT idSubTipo, nombre FROM $tabla WHERE idTipo='$opcionSeleccionada'") or die(mysql_error());
-	$bd->desconectar();
-	
+	$conex = new Conexion();
+	$utiles = new Utiles($conex);
+	$subtipos = $utiles->getSubtipos();
+	$conex->desconectar();
 	// Comienzo a imprimir el select
 	echo "<select class='selbusc' name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
-	echo "<option value='0'>Todos</option>";
-	while($registro=mysql_fetch_row($consulta))
+	echo "<option value='-1'>Todos</option>";
+	foreach($subtipos as $subtipo)
 	{
 		// Convierto los caracteres conflictivos a sus entidades HTML correspondientes para su correcta visualizacion
-		$registro[1]=htmlentities($registro[1]);
+		$subtipo[1]=htmlentities($subtipo[1]);
 		// Imprimo las opciones del select
-		echo "<option value='".$registro[0]."'>".$registro[1]."</option>";
+		echo "<option value='".$subtipo[0]."'>".$subtipo[1]."</option>";
 	}			
 	echo "</select>";
 }
