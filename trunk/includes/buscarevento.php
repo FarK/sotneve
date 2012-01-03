@@ -59,8 +59,9 @@ function generaTipos() {
 			</select>
 		</div>
 		<div class='opcion'>
+			
 			<button type="submit" id="btnbuscar">
-				&iexcl;Buscar!
+			<img id='search_icon' type='submit' src='images/search.png' />
 			</button>
 		</div>
 	</div>
