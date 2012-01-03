@@ -1,7 +1,6 @@
 <?php
 class Conexion{
 	private $PDO;
-	private $consultas;		//Array con consultas preparadas
 	private $DB_HOST;
 	private $DB_USERNAME;
 	private $DB_PASS;
@@ -10,7 +9,6 @@ class Conexion{
 	public function __construct(){
 		//Inicializamos los atributos
 		$this->PDO = NULL;
-		$this->consultas = array();
 		$this->DB_HOST = 'localhost';
 		$this->DB_USERNAME = 'root';
 		$this->DB_PASS = '';
@@ -35,7 +33,7 @@ class Conexion{
 
 	public function consultar($consulta){
 		try{
-			$res = $this->PDO->query($consulta);
+			$res = $this->PDO->query($consulta, PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $exp){
 			//TODO: Redirigir a página de error
@@ -53,7 +51,7 @@ class Conexion{
 	}
 
 	public function prepare($consulta){
-		return $this->PDO->prepare($consulta);
+		return $this->PDO->prepare($consulta, array(PDO::FETCH_ASSOC));
 	}
 
 	public function bindParam($stmt, $param, $value){

@@ -7,14 +7,12 @@ abstract class Tabla{
 	var $nomTabla;			//Nombre de la tabla
 	var $pks = array();		//Las claves primarias de la tabla ($nomCampo=>$valor)
 
-	var $consultas;			//Consultas a realizar
 	var $consultasPreparada;	//Consultas preparadas a realizar
 	var $campos;			//Campos a consultar de la tabla
 
 	public function __construct($conexion){
 		//Inicializamos los atributos
 		$this->conexion = $conexion;
-		$this->consultas = array();
 		$this->consultasPreparadas = array();
 		$this->resultados = array();
 		$this->campos = array();
@@ -32,7 +30,6 @@ abstract class Tabla{
 		if(!empty($campos)){
 			$query = "SELECT " . $campos . " FROM " . $this->nomTabla . " WHERE " . $this->pksToString();
 			$stmt = $this->conexion->consultar($query);
-			$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 		}
 
 		//Borramos los campos seleccionados de las tablas
@@ -79,7 +76,6 @@ abstract class Tabla{
 		$this->conexion->ejecutarPreparada($preparada);
 
 		//Pasamos todas las columnas a un array
-		$preparada->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 		$ret = array();
 		foreach($preparada as $row)
 			$ret[] = $row;
@@ -94,7 +90,6 @@ abstract class Tabla{
 		//Comprobamos si ha devuelto algo (SELECT) o no (SELECT vacío o INSERT)
 		if(!empty($stmt)){
 			//Pasamos todas las columnas a un array
-			$stmt->setFetchMode(PDO::FETCH_ASSOC);	//La clave va a ser el nombre del campo
 			$ret = array();
 			foreach($stmt as $row)
 				$ret[] = $row;
