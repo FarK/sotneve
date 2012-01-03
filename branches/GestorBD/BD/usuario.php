@@ -26,7 +26,9 @@ class Usuario extends Tabla{
 		}
 
 		//Inicializamos la visibilidad
-		$this->visibilidad = -1;
+		$this->prepCampo('visibilidad');
+		$res = $this->consultarCampos();
+		$this->visibilidad = $res['visibilidad'];
 
 		//Llamamos al constructor de tabla
 		parent::__construct($arg_list[0]);
@@ -58,13 +60,6 @@ class Usuario extends Tabla{
 	}
 
 	public function esVisible($campo) {
-		if($this->visibilidad == -1){
-			echo "asd".$this->visibilidad;
-			$this->prepCampo('visibilidad');
-			$res = $this->consultarCampos();
-			$this->visibilidad = $res['visibilidad'];
-		}
-		echo "asd222".$this->visibilidad;
 		return ($this -> visibilidad & $campo);
 	}
 
@@ -122,14 +117,6 @@ class Usuario extends Tabla{
 	public function getFavoritos(){
 		return $this->consultarPreparada('getFavoritos', array());
 	}
-	
-	public function consultarTodosLosCampos(){
-		$res = parent::consultarTodosLosCampos();
-		$this->visibilidad = $res['visibilidad'];
-		echo $this->visibilidad;
-		return $res;
-	}
-	
 	
 }
 ?>

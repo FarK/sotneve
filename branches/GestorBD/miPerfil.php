@@ -12,7 +12,6 @@ $provincia = new Provincia($conexion);
 //Hacemos las consultas
 $usuario->prepCampo('nombre');
 $campos = $usuario->consultarTodosLosCampos();
-echo "visibilidad->".$usuario->visibilidad;
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
