@@ -1,58 +1,43 @@
 <?php
-include_once 'BD/conexion.php';
-include_once ("BD/usuario.php");
-include_once ("BD/utiles.php");
-include_once ("BD/provincia.php");
-//Crear objeto gestor bd
-$conexion = new Conexion();
-$usuario = new Usuario($conexion);
-$utiles = new Utiles($conexion);
-$provincia = new Provincia($conexion);
+include_once ('BD/GestorBD.php');
 
-// $fechanac = $bd -> escapeString($_POST['fechanac']);
-// $sexo = $bd -> escapeString($_POST['sexo']);
-// $email = $bd -> escapeString($_POST['email']);
-// $alias = $bd -> escapeString($_POST['alias']);
-// $contrasena = $bd -> escapeString($_POST['contrasena']);
-// $nombre = $bd -> escapeString($_POST['nombre']);
-// $apellidos = $bd -> escapeString($_POST['apellidos']);
-//
-// $provincia = $bd -> escapeString($_POST['provincia']);
-// $recontrasena = $bd -> escapeString($_POST['recontrasena']);
+$bd = new GestorBD();
 
-$fechanac = $_POST['fechanac'];
-$sexo = $_POST['sexo'];
-$email = $_POST['email'];
-$alias = $_POST['alias'];
-$contrasena = $_POST['contrasena'];
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$prov = $_POST['provincia'];
-$recontrasena = $_POST['recontrasena'];
+if ($bd -> conectar()) {
 
-$valido = esValido($provincia,$usuario, $email, $contrasena, $recontrasena, $prov, $nombre, $apellidos, $sexo, $fechanac, $alias);
+	$fechanac = $bd -> escapeString($_POST['fechanac']);
+	$sexo = $bd -> escapeString($_POST['sexo']);
+	$email = $bd -> escapeString($_POST['email']);
+	$alias = $bd -> escapeString($_POST['alias']);
+	$contrasena = $bd -> escapeString($_POST['contrasena']);
+	$nombre = $bd -> escapeString($_POST['nombre']);
+	$apellidos = $bd -> escapeString($_POST['apellidos']);
 
-$fechanac = dmaToamd($fechanac);
-//Convertimos la fecha a AAAA-MM-DD para poder meterla en la BD
+	$provincia = $bd -> escapeString($_POST['provincia']);
+	$recontrasena = $bd -> escapeString($_POST['recontrasena']);
 
-//$sexo = sexoToInt($sexo);
-//pasa Hombre a 1 y Mujer a 0
+	$valido = esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias);
 
-if ($valido) {
-	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
-	$aux = sprintf("Location:index.php?mens=Registrado con exito. %s", $prov);
-//	header($aux);
+	$fechanac = dmaToamd($fechanac);
+	//Convertimos la fecha a AAAA-MM-DD para poder meterla en la BD
+
+	//$sexo = sexoToInt($sexo);
+	//pasa Hombre a 1 y Mujer a 0
+
+	if ($valido){
+		$bd -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia);
+		$aux=sprintf("Location:index.php?mens=Registrado con exito. %s",$provincia);
+		header($aux);
+	}
+	 $bd->desconectar();
 }
-$conexion -> desconectar();
 
-function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $prov, $nombre, $apellidos, $sexo, $fechanac, $alias) {
+function esValido($bd, $email, $contrasena, $recontrasena, $provincia, $nombre, $apellidos, $sexo, $fechanac, $alias) {
 	$valido = true;
 	
-	$resultadoEmail = $usuario -> existeEmail($email);
-	$resultadoAlias = $usuario -> existeAlias($alias);
-	$resultadoProvincia = $provincia -> existeProvincia($prov);
-		
-	//TODO Gestionar correctamente errores
+	$resultadoEmail = $bd -> usuariosCon('email',$email);
+	$resultadoAlias = $bd -> usuariosCon('alias',$alias);
+	
 	//Hay error si...
 	$camposvacios = false;
 	//En algunos if se podria hacer que si ya hay alguno que no es valido lo comprobara, todos no porque algunos tienen que añadir el error indicado
@@ -60,11 +45,11 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	if ($email == "" || $contrasena == "" || $nombre == "" || $apellidos == "") {//OK
 		$camposvacios = true;
 		$_SESSION['err_campos'] = true;
-		$valido = false;
+		$valido=false;
 	}
 	//TODO Validar el email con expresiones regulares.
 	
-	if (!$camposvacios && $resultadoEmail) {//OK
+	if (!$camposvacios && (mysql_num_rows($resultadoEmail) > 0 || strlen($email) > 60)) {//OK
 		$_SESSION['err_email'] = true;
 		$valido = false;
 	}
@@ -75,7 +60,7 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	}
 
 	//Nombre y apellidos, validados como campos no vacios
-
+	
 	if ($sexo != '1' && $sexo != '0') {
 		$valido = false;
 	}
@@ -83,10 +68,10 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	$mes = substr($fechanac, 3, 2);
 	$ano = substr($fechanac, 6, 9);
 
-	$diamax = 0;
+	$diamax=0;
 	//No contemplamos bisiestos ni los años
 
-	if ($mes > 0 && $mes < 13 && strlen($fechanac) == 10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
+	if ($mes > 0 && $mes < 13 && strlen($fechanac)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
 		switch ($mes) {
 			case '2' :
 				$diamax = 28;
@@ -108,29 +93,39 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	} else {
 		$valido = false;
 	}
-	if (!$camposvacios && ($resultadoAlias || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
+	if (!$camposvacios && (mysql_num_rows($resultadoAlias) > 0 || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
 		$valido = false;
 	}
-
-	if ($prov == 0) {
-		$_SESSION['err_campos'] = true;
-		$valido = false;
-	} elseif (!$camposvacios) {
-		
 	
-		if(!$resultadoProvincia) {
+	if($provincia==0){
 		$_SESSION['err_campos'] = true;
 		$valido=false;
+	}elseif(!$camposvacios){
+		
+		$query=sprintf("SELECT idProvincia FROM provincias WHERE idProvincia=%s",$provincia);
+		$tuplas=$bd->consulta($query);
+		
+		while ($fila = mysql_fetch_assoc($tuplas)  && mysql_num_rows($fila)<=1 && mysql_num_rows($fila)>0) { 
+			$prov=$fila['idProvincia'];
+			if($prov==""){
+				$_SESSION['err_campos'] = true;
+				$valido=false;
+			}	
 		}
-
+		
 	}
 
 	if ($valido) {
 		return true;
-	} else {//TODO indicar los motivos por los que se a vuelto a registro.php mediante $_SESSION
+	} else {
 		header("Location:registro.php");
 	}
-
+	// while($fila = mysql_fetch_assoc($resultado)){
+	// $existe=$fila['idUsuario'];
+	// if($existe=='null'){
+	// $valido=false;
+	// }
+	// }
 
 }
 
@@ -144,7 +139,7 @@ function dmaToamd($fecha) {
 	return $fecha;
 }
 
-function sexoToInt($sexo) {// TODO no se usa ya, lo borraremos cuando estemos 100% seguro
+function sexoToInt($sexo) {// no se usa ya, lo borraremos cuando estemos 100% seguro
 	if ($sexo == 'Hombre') {
 		$sexo = 1;
 		return $sexo;
