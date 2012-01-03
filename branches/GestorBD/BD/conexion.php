@@ -73,6 +73,10 @@ class Conexion{
 			echo $exp;
 		}
 	}
+	
+	public function getLastInsertId(){
+		return $this->PDO->lastInsertId();
+	}
 
 	/**************************************************************************************************************************************************************************************/
 	/* TODO: Mover estas consultas a sus clases correspondientes                                                                                                                          */
