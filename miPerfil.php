@@ -11,7 +11,9 @@ $provincia = new Provincia($conexion);
 
 //Hacemos las consultas
 $usuario->prepCampo('nombre');
-$campos = $usuario->consultarTodosLosCampos();
+$usuario->prepCampo('visibilidad');
+$campos = $usuario->consultarCampos();
+
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
@@ -29,7 +31,7 @@ function fechaNac($fecha) {
 function creaCheckBox($usuario, $campo) {
 	$visible = "";
 	$check = "check";
-	if($usuario->esVisible($campo))
+	if($usuario->esVisible($campos['visibilidad'], $campo))
 		$visible = "checked=''";
 
 	$linea = sprintf("<input type='checkbox' class='visibilitybox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);

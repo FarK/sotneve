@@ -1,6 +1,7 @@
 <?php
 include_once("tabla.php");
 
+//Campos para la máscara de visibilidad
 $FECHA_NAC = 16;
 $SEXO = 8;
 $EMAIL = 4;
@@ -8,9 +9,6 @@ $NOMBRE = 2;
 $APELLIDOS = 1;
 
 class Usuario extends Tabla{
-
-	var $visibilidad;
-
 	public function __construct(/*$conexion, $id*/){
 		//Inicializamos el nombre de la tabla
 		$this->nomTabla = 'usuarios';
@@ -24,11 +22,6 @@ class Usuario extends Tabla{
 			//Llamamos al constructor de tabla
 			parent::__construct($arg_list[0]);
 		}
-
-		//Inicializamos la visibilidad
-		$this->prepCampo('visibilidad');
-		$res = $this->consultarCampos();
-		$this->visibilidad = $res['visibilidad'];
 
 		//Llamamos al constructor de tabla
 		parent::__construct($arg_list[0]);
@@ -60,8 +53,8 @@ class Usuario extends Tabla{
 		}
 	}
 
-	public function esVisible($campo) {
-		return ($this -> visibilidad & $campo);
+	public function esVisible($visibilidad,$campo) {
+		return ($visibilidad & $campo);
 	}
 
 	public function getProvincia(){
@@ -123,14 +116,5 @@ class Usuario extends Tabla{
 		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
 		$result = $this -> consultar($query);
 	}
-	
-	public function consultarTodosLosCampos(){
-		$res = parent::consultarTodosLosCampos();
-		$this->visibilidad = $res['visibilidad'];
-		echo $this->visibilidad;
-		return $res;
-	}
-	
-	
-	}
+}
 ?>
