@@ -5,18 +5,16 @@ body {
 	font: 76% arial, sans-serif;
 	text-align: center;
 }
-
 input {
 	/*height:30px;*/
-	margin-top:5px;
-	margin-left:5px;
-	border-width:0px;
-	border-style:solid;
-	border-radius:10px;
-	padding:6px;
+	margin-top: 5px;
+	margin-left: 5px;
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 10px;
+	padding: 6px;
 	color: #418eb6;
 }
-
 select {
 
 	border-radius: 4px 4px;
@@ -25,8 +23,7 @@ select {
 	border-color: #418eb6;
 	color: #418eb6;
 }
-
-a.enlaceEnmarcado{
+a.enlaceEnmarcado {
 	margin: 3px;
 	border-radius: 10px;
 	padding: 4px 6px;
@@ -34,28 +31,23 @@ a.enlaceEnmarcado{
 	background-color: #D0E8F7;
 	font-weight: bold;
 	text-decoration: none;
-	display:inline-block;
+	display: inline-block;
 }
-
-input.boton{
-	font-weight:bold;
+input.boton {
+	font-weight: bold;
 }
-
 input:hover, .boton:hover, select:hover, .enlaceEnmarcado:hover {
 	box-shadow: 0px 0px 5px #FFFFFF;
 }
-
 input:focus, .boton:focus, select:focus {
 	box-shadow: 0px 0px 5px #FFFFFF;
-	border-width:1px;
+	border-width: 1px;
 	border-color: #A1B4BF;
 }
-
 img#logo {
 	width: 85px;
 	border-top-left-radius: 5px 5px;
 }
-
 fieldset {
 	border-width: 5px;
 	border-radius: 1em;
@@ -64,31 +56,24 @@ fieldset {
 	right: 10%;
 	box-shadow: 0px 0px 10px #FFFFFF;
 }
-
 legend {
 	display: none;
 }
-
 div.horizontal {
 	width: 900px;
 	margin: auto;
 }
-
 label {
 	font: 100% arial, sans-serif;
 }
-
 span.errorserv {
 	color: red;
 }
-
-h1,h2{
+h1, h2 {
 	color: #418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align: center
 }
-
-
 /************/
 /* CABECERA */
 /* **********/
@@ -104,7 +89,6 @@ a.boton {
 	background-color: #D0E8F7;
 	text-decoration: none;
 }
-
 div#hcabecera {
 	background-color: #418eb6;
 	width: 900px;
@@ -112,19 +96,16 @@ div#hcabecera {
 	border-radius: 10px 10px;
 	/*color: #eaf3fa;*/
 }
-
 div#hcontenedor {
 	width: 900px;
 	background-color: #333366;
 	height: 80px;
 	border-radius: 10px 10px;
 }
-
-select.selbusc{
+select.selbusc {
 	display: inline-block;
 	width: 130px;
 }
-
 div#hlogo {
 	text-align: center;
 	background: #eaf3fa;
@@ -135,36 +116,27 @@ div#hlogo {
 	height: 80px;
 	border-right: solid 1px;
 }
-
 div#husuario {
 	color: white;
 	float: right;
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
-
-div.opcion{
-	display:inline-block;
+div.opcion {
+	display: inline-block;
 }
-
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
 	display: inline-block;
 }
-
-#btnbuscar {
-	background-color: #eaf3fa;
-	color: #418eb6;
-	border-radius: 10px 10px;
-}
-img#search_icon{
+#search_icon {
 	width: 20px;
 	height: 20px;
+	margin: 0 0 -5px 0;
+	padding: 0;
 }
-div.contenido{
-	margin-left:150px;
-	
+div.contenido {
+	margin-left: 150px;
 }
-
 /*******************
  * ***   PIE   *** *
  *******************/
@@ -176,20 +148,17 @@ div#pie {
 	text-align: left;
 	height: 30px;
 	border-radius: 5px 5px;
-	
 }
 div#pie span {
 	margin: 0;
 	padding: 5px 10px;
 	vertical-align: -8px;
 }
-
 a#acerca {
-	
- vertical-align: -8px;
- color: #FFF;
- text-decoration: none;
- padding: 5px 10px 0px 615px;
- 
+
+	vertical-align: -8px;
+	color: #FFF;
+	text-decoration: none;
+	padding: 5px 10px 0px 615px;
 }
 
