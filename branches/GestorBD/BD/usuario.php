@@ -119,7 +119,7 @@ class Usuario extends Tabla{
 		return $this->consultarPreparada('getFavoritos', array());
 	}
 	
-<<<<<<< .mine	public function borraFavorito($idUsuario2) {
+	public function borraFavorito($idUsuario2) {
 		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
 		$result = $this -> consultar($query);
 	}
@@ -132,5 +132,5 @@ class Usuario extends Tabla{
 	}
 	
 	
-=======>>>>>>> .theirs}
+}
 ?>
