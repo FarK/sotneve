@@ -17,8 +17,8 @@ class Evento extends Tabla{
 		parent::__construct($arg_list[0]);
 
 		//Consultas preparadas
-		$this->preparar('getUsuarios', "SELECT * FROM " . $this->nomTabla . " A, usuarios U WHERE A.idEvento = :id AND A.idUsuario = U.idUsuario");
-		
+		$this->preparar('getUsuarios', "SELECT * FROM usuarios U, afiliaciones A WHERE A.idEvento = :id AND A.idUsuario = U.idUsuario");
+
 	}
 	
 	public function insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar){
@@ -31,9 +31,18 @@ class Evento extends Tabla{
 	
 	
 		//Todos los usuarios que están afiliados a un evento
-	public function getUsuarios($idEvento){
-		$parametros = array(':id'=>$idEvento);
-		return $this->consultarPreparada('getUsuario', $parametros);
+	public function getUsuarios(){
+		$parametros = array(':id'=>$this->pks['idEvento']);
+		return $this->consultarPreparada('getUsuarios', $parametros);
+	}
+	
+	public function getAliasPropietario($idPropietario){
+		$query = sprintf("SELECT alias FROM usuarios WHERE idUsuario ='%s'", $idPropietario);
+		$result = $this -> consultar($query);
+		if(empty($result))
+			return $result;
+		else
+			return $result[0]['alias'];
 	}
 	
 }
