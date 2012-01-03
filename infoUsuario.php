@@ -53,6 +53,7 @@ echo $span;
 				?>
 			</p>
 		</div>
+		<span id='add_to_favs'><a id='add_to_favs'><img id="add" src="images/add.png"/> A&ntilde;adir a favoritos</a></span>
 		<h1><?php echo $usuarioVisitado->getCampo("alias")
 		?></h1>
 		<?php

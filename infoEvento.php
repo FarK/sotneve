@@ -34,7 +34,9 @@
 			</div>
 			<div id="wrapper">
 				<div class='lista_usuarios' id="asistentes">
+					
 				<p>
+
 					<strong class="num_usuarios">Van estas <?php echo $evento->getNumAsistentes()
 					?> personas:
 					<br />
@@ -59,7 +61,10 @@ echo $span;
 				</p>
 			</div>
 				<div id="informacion">
+					<span id='me_apunto'><a id='me_apunto'><img id="add" src="images/add.png"/> &iexcl;Me apunto! </a></span>
+
 					<h1><?php echo $evento -> getCampo("titulo");?></h1>
+
 					<p>
 						<strong>Informaci&oacute;n del evento:
 						<br />
