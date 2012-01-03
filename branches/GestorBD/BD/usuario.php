@@ -36,7 +36,9 @@ class Usuario extends Tabla{
 		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
 		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
 		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
-		$this->preparar('getEventos', "SELECT * FROM " . $this->nomTabla . " A, eventos E WHERE A.idUsuario = :id AND A.idEvento = E.idEvento");
+		$this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
+		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
+		$this->preparar('getEventosProvincia', "SELECT * FROM afiliaciones A, eventos E, usuarios U WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idUsuario = U.idUsuario AND U.idProvincia = E.idProvincia AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
 	}
 
 	public function getUsuario($id){
@@ -100,10 +102,13 @@ class Usuario extends Tabla{
 			   }
      }
 	
-	//Todos los eventos a los que está afiliado un usuario //TODO caducados o no?
+	//Todos los eventos a los que está afiliado un usuario NO caducados
 	public function getEventos(){
-		$parametros = array(':id'=>$this->pks['idUsuario']);
-		return $this->consultarPreparada('getEventos', $parametros);
+		return $this->consultarPreparada('getEventos', array());
+	}
+	
+	public function getEventosProvincia(){
+		return $this->consultarPreparada('getEventosProvincia', array());
 	}
 	
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
@@ -111,10 +116,9 @@ class Usuario extends Tabla{
 			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		return $this -> consultar($query);
 	}
-	//TODO posiblemente este metodo se pueda borrar porque no se usa
-	public function usuariosCon($campo, $elemento) {
-		$query = sprintf("SELECT * FROM usuarios WHERE '%s' = '%s'", $campo, $elemento);
-		return $this -> consultar($query);
+	
+	public function getFavoritos(){
+		return $this->consultarPreparada('getFavoritos', array());
 	}
 	
 	

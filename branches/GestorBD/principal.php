@@ -2,14 +2,10 @@
 include("includes/testSession.php");
 include_once ('BD/conexion.php');
 include_once ('BD/usuario.php');
-include_once ('BD/favorito.php');
-include_once ('BD/afiliacion.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $conex = new Conexion();
 $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
-$favorito = new Favorito($conex);
-$afiliacion = new Afiliacion($conex);
 ?>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -28,21 +24,15 @@ $afiliacion = new Afiliacion($conex);
 			<div id="wrapper">
 				<div id="eventos">
 					<p>
-						<strong id="eventsin">Eventos en [Sevilla(TODO)]</strong>
+						<strong id="eventsin">Eventos en tu provincia</strong>
 					</p>
-					<p>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p>
-					<p>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</p><span>
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-				
-						texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto 
-					</span>
-					
+					<?php
+					$eventosProv = $usuarioActual->getEventosProvincia();
+					foreach ($eventosProv as $evento) {
+						$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
+						echo $span;
+					}
+					?>
 				</div>
 			</div>
 			<div class='lista_usuarios' id="favoritos">
@@ -50,7 +40,7 @@ $afiliacion = new Afiliacion($conex);
 					<strong>Tus favoritos</strong>
 				</p>
 				<?php
-				$favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
+				$favoritos = $usuarioActual->getFavoritos();
 				foreach ($favoritos as $fav) {
 					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
 					echo $span;
@@ -63,7 +53,7 @@ $afiliacion = new Afiliacion($conex);
 				</p>
 				
 				<?php
-				$eventos = $afiliacion->getEventos($_SESSION['idUsuario']);
+				$eventos = $usuarioActual->getEventos();
 				foreach ($eventos as $evento) {
 					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
 					echo $span;
