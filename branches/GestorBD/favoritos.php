@@ -15,7 +15,7 @@
 		<?php include ("includes/head.php"); ?>
 
 		<div id=listafavoritos>
-		<h1>Estos son tus favoritos!</h1>
+		<h1>&iexcl;&Eacute;stos son tus favoritos!</h1>
 		<?php
 
 			include_once ('BD/conexion.php');
@@ -29,15 +29,24 @@
 			$favoritos = $favorito->getFavoritos($_GET['idUsuario']);
 
 			foreach($favoritos as $fav){
-				$span= sprintf("
-				<div class='enlaceEnmarcado'>
-					<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
-					<a class='favorito' href='http://www.google.es'>
-						<img id='delete' src='images/delete.png' width='16px' height='16px' alt='Eliminar favorito'/>
-					</a>
-				</div>
-				\n\t\t", $fav['idUsuario'],$fav['alias']);
-				echo $span;
+				if($_SESSION['idUsuario'] == $_GET['idUsuario']){
+					$span= sprintf("
+					<div class='enlaceEnmarcado'>
+						<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
+						<a class='favorito' href='http://www.google.es?%s'>
+							<img id='delete' src='images/delete.png' width='16px' height='16px' alt='Eliminar favorito'/>
+						</a>
+					</div>
+					\n\t\t", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
+					echo $span;
+				}else{
+					$span= sprintf("
+					<div class='enlaceEnmarcado'>
+						<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
+					</div>
+					\n\t\t", $fav['idUsuario'],$fav['alias']);
+					echo $span;
+				}
 			}
 		?>
 			
