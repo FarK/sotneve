@@ -101,8 +101,8 @@ class Usuario extends Tabla{
      }
 	
 	//Todos los eventos a los que está afiliado un usuario //TODO caducados o no?
-	public function getEventos($idUsuario){
-		$parametros = array(':id'=>$idUsuario);
+	public function getEventos(){
+		$parametros = array(':id'=>$this->pks['idUsuario']);
 		return $this->consultarPreparada('getEventos', $parametros);
 	}
 	
