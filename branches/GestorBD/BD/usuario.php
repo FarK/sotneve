@@ -41,6 +41,7 @@ class Usuario extends Tabla{
 		$this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
 		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
 		$this->preparar('getEventosProvincia', "SELECT * FROM afiliaciones A, eventos E, usuarios U WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idUsuario = U.idUsuario AND U.idProvincia = E.idProvincia AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
+		
 	}
 
 	public function getUsuario($id){
@@ -118,5 +119,18 @@ class Usuario extends Tabla{
 		return $this->consultarPreparada('getFavoritos', array());
 	}
 	
-}
+<<<<<<< .mine	public function borraFavorito($idUsuario2) {
+		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
+		$result = $this -> consultar($query);
+	}
+	
+	public function consultarTodosLosCampos(){
+		$res = parent::consultarTodosLosCampos();
+		$this->visibilidad = $res['visibilidad'];
+		echo $this->visibilidad;
+		return $res;
+	}
+	
+	
+=======>>>>>>> .theirs}
 ?>
