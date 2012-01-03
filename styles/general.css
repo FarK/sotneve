@@ -23,6 +23,7 @@ select {
 	border-color: #418eb6;
 	color: #418eb6;
 }
+
 a.enlaceEnmarcado {
 	margin: 3px;
 	border-radius: 10px;
@@ -33,21 +34,36 @@ a.enlaceEnmarcado {
 	text-decoration: none;
 	display: inline-block;
 }
+
 input.boton {
 	font-weight: bold;
 }
-input:hover, .boton:hover, select:hover, .enlaceEnmarcado:hover {
+
+input:hover, .boton:hover, select:hover {
 	box-shadow: 0px 0px 5px #FFFFFF;
 }
+
 input:focus, .boton:focus, select:focus {
 	box-shadow: 0px 0px 5px #FFFFFF;
 	border-width: 1px;
 	border-color: #A1B4BF;
 }
-img#logo {
-	width: 85px;
+img {
 	border-top-left-radius: 5px 5px;
 }
+a {
+	margin-top: 5px;
+	/*box-shadow: 0px 0px 5px #FFFFFF; efecto de difuminado del borde*/
+	margin-left: 5px;
+	border: 0px;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+	font-weight: bold;
+	background-color: #D0E8F7;
+	text-decoration: none;
+}
+
 fieldset {
 	border-width: 5px;
 	border-radius: 1em;
@@ -64,7 +80,7 @@ div.horizontal {
 	margin: auto;
 }
 label {
-	font: 100% arial, sans-serif;
+	font: 76% arial, sans-serif;
 }
 span.errorserv {
 	color: red;
@@ -74,6 +90,7 @@ h1, h2 {
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align: center
 }
+
 /************/
 /* CABECERA */
 /* **********/
@@ -89,6 +106,7 @@ a.boton {
 	background-color: #D0E8F7;
 	text-decoration: none;
 }
+
 div#hcabecera {
 	background-color: #418eb6;
 	width: 900px;
@@ -122,21 +140,26 @@ div#husuario {
 	margin: 5px 10px 5px 5px;
 	text-align: right;
 }
+
 div.opcion {
 	display: inline-block;
 }
+
 div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
 	display: inline-block;
 }
+
 #search_icon {
 	width: 20px;
 	height: 20px;
 	margin: 0 0 -5px 0;
 	padding: 0;
 }
+
 div.contenido {
 	margin-left: 150px;
 }
+
 /*******************
  * ***   PIE   *** *
  *******************/
@@ -154,6 +177,7 @@ div#pie span {
 	padding: 5px 10px;
 	vertical-align: -8px;
 }
+
 a#acerca {
 
 	vertical-align: -8px;
@@ -161,4 +185,3 @@ a#acerca {
 	text-decoration: none;
 	padding: 5px 10px 0px 615px;
 }
-
