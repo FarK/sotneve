@@ -13,7 +13,9 @@ $result = $usuario->consultarCampos();
 $nombre = $result['nombre'];
 
 //Ceramos conexión
+/*
 $conex->desconectar();
+*/
 ?>
 
 <div id="hcabecera">

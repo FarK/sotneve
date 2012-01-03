@@ -12,6 +12,7 @@ $provincia = new Provincia($conexion);
 //Hacemos las consultas
 $usuario->prepCampo('nombre');
 $campos = $usuario->consultarTodosLosCampos();
+echo "visibilidad->".$usuario->visibilidad;
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
@@ -70,10 +71,10 @@ function creaCheckBox($usuario, $campo) {
 					<?php
 					if ($campos['sexo'] == 1) {
 						echo "<option value='1'>Hombre</option>
-<option value='0'>Mujer</option>";
+								<option value='0'>Mujer</option>";
 					} else {
 						echo "<option value='0'>Mujer</option>
-<option value='1'>Hombre</option>";
+								<option value='1'>Hombre</option>";
 					}
 					?>
 				</select>
@@ -82,7 +83,7 @@ function creaCheckBox($usuario, $campo) {
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="nombre">Nombre:</label>
-				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = ""<?php echo $campos['nombre'];?>"/>
+				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
 				<?php creaCheckBox($usuario, $NOMBRE);?>
 			</div>
 			<div class="divf">
