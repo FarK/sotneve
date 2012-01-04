@@ -40,7 +40,7 @@ $fechanac = dmaToamd($fechanac);
 
 if ($valido) {
 	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
-	$aux = sprintf("Location:index.php?mens=Registrado con exito. %s", $prov);
+	$aux = sprintf("Location:../index.php?mens=Registrado con exito. %s", $prov);
 //	header($aux);
 }
 $conexion -> desconectar();
@@ -128,7 +128,7 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	if ($valido) {
 		return true;
 	} else {//TODO indicar los motivos por los que se a vuelto a registro.php mediante $_SESSION
-		header("Location:registro.php");
+		header("Location:../presentacion/registro.php");
 	}
 
 
