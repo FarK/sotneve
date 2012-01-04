@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['idUsuario'])) {
-	header('Location:principal.php');
+	header('Location:presentacion/principal.php');
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -12,14 +12,14 @@ if (isset($_SESSION['idUsuario'])) {
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8">
 		</meta> <title>Sotneve - Login</title>
-		<link rel="stylesheet" type="text/css" href="styles/index.css"/>
-		<script type="text/javascript" src="scripts/index.js"></script>
+		<link rel="stylesheet" type="text/css" href="presentacion/estilos/index.css"/>
+		<script type="text/javascript" src="logica/scripts/index.js"></script>
 	</head>
 	<body>
 		<div id="logoprincipal">
-			<img id="logop" src="images/logo.png" alt="Inicio"></img>
+			<img id="logop" src="presentacion/recursos/imagenes/logo.png" alt="Inicio"></img>
 		</div>
-		<form id="login_form" method="post" action="login.php" onsubmit="return validaForm()">
+		<form id="login_form" method="post" action="logica/login.php" onsubmit="return validaForm()">
 			<fieldset>
 				<legend>
 					Login
@@ -44,7 +44,7 @@ if (isset($_SESSION['idUsuario'])) {
 			</fieldset>
 		</form>
 		<?php
-		include 'includes/footer.php';
+		include 'presentacion/footer.php';
 		?>
 	</body>
 </html>
