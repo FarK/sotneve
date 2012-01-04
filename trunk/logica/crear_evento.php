@@ -1,8 +1,8 @@
 <?php
-include ("includes/testSession.php");
-include_once ("BD/conexion.php");
-include_once ("BD/evento.php");
-include_once ("BD/provincia.php");
+include ("test_session.php");
+include_once ("../datos/conexion.php");
+include_once ("../datos/evento.php");
+include_once ("../datos/provincia.php");
 
 $conex = new Conexion();
 $prov = new Provincia($conex);
