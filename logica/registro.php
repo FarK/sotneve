@@ -1,8 +1,8 @@
 <?php
-include_once 'BD/conexion.php';
-include_once ("BD/usuario.php");
-include_once ("BD/utiles.php");
-include_once ("BD/provincia.php");
+include_once ("../datos/conexion.php");
+include_once ("../datos/usuario.php");
+include_once ("../datos/utiles.php");
+include_once ("../datos/provincia.php");
 //Crear objeto gestor bd
 $conexion = new Conexion();
 $usuario = new Usuario($conexion);
