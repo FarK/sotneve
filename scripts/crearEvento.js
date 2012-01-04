@@ -1,8 +1,12 @@
 function valida() {
 	var factual = new Date()
-	var dia = factual.getUTCDate()
-	var ano = factual.getFullYear();
-	var mes = factual.getMonth();
+	var diaAct = factual.getUTCDate()
+	var anoAct = factual.getFullYear();
+	var mesAct = factual.getMonth();
+	
+	var ano = document.getElementById("ano").value;
+	var mes = document.getElementById("mes").value;
+	var dia = document.getElementById("dia").value;
 	
 	var titulo = document.getElementById("titulo").value;
 	var provincia = document.getElementById("provincia").value;
@@ -25,13 +29,13 @@ function valida() {
 		return false;
 	}
 
-	if(document.getElementById("ano").value < ano) {
+	if(ano < anoAct) {
 		alert("No puedes crear eventos para años ya finalizados");
 		return false;
-	} else if(document.getElementById("ano").value == ano && document.getElementById("mes").value < mes) {
+	} else if(ano == anoAct && mes < mesAct) {
 		alert("No puedes crear eventos para meses que ya han finalizado");
 		return false;
-	} else if(document.getElementById("ano").value == ano && document.getElementById("mes").value < mes && document.getElementById("dia").value < dia) {
+	} else if(ano == anoAct && mes < mesAct && dia < diaAct) {
 		alert("No puedes crear eventos para dias que ya han finalizado");
 		return false;
 	}
