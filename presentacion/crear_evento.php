@@ -104,7 +104,7 @@ $conex->desconectar();
 						</div>
 						<div class="filaform">
 							<label for="descripcion" >Descripci&oacute;n</label>
-							<textarea id="descripcion" name="descripcion" rows="100" maxlength="249" /></textarea>											
+							<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>											
 							
 						</div>
 						<button type="submit" id="crea">

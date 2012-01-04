@@ -23,7 +23,7 @@ label {
 	width: 150px;
 	padding-right: 10px;
 	text-align: right;
-	vertical-align: sub;
+	vertical-align: middle;
 }
 select {
 	margin: 5px 1px 0 0;
