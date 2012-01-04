@@ -18,7 +18,17 @@
 			?>
 		</div>
 		<div>
-			<span id="nosotros"> Esta p&aacute;gina ha sido desarrollada por un grupo de 5 compa&ntilde;eros para la asignatura de ABD. </span>
+			<span id="nosotros"> Esta p&aacute;gina ha sido desarrollada por un grupo de 5 compa&ntilde;eros para la asignatura de ABD. Proyecto de Sotneve de ABD.
+
+	Este proyecto consiste en una aplicación web dónde los usuarios
+registrados podrán crear y/o unirse a eventos/grupos de diferentes actividades.
+
+Programadores:
+	- Alejandro Molinas Salas
+	- Jesus Vacas Bombín
+	- Rafael Espillaque Espinosa
+	- Carlos Falgueras García
+	- Antonio Rodriguez Jimenez</span>
 			<video id="video" controls>
 				<source src="recursos/videos/tu_video.ogv" type="video/ogg" />
 				<source src="recursos/videos/tu_video.mp4" type="video/mp4" />
