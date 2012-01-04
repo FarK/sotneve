@@ -5,12 +5,6 @@
 	color:red;
 }
 
-.error{
-	display:block;
-	visibility:hidden;
-	color:red;
-}
-
 div.filaform {
 	display: table-row;
 }
