@@ -15,7 +15,7 @@
 		//Es correcta
 		//Meter en la variable session que ha conectado
 		$_SESSION['idUsuario'] = $id;
-		header('Location:presentacion/principal.php');
+		header('Location:../presentacion/principal.php');
 	}else{
 		//Es incorrecta
 		//Error en SESSION
