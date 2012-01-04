@@ -15,7 +15,7 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 		<script type="text/javascript" src="../logica/scripts/registro.js"></script>
 	</head>
 	<body>
-		<form name="form" method="post" action="../datos/registro.php" onsubmit="return esFormularioValido()">
+		<form name="form" method="post" action="../logica/registro.php" onsubmit="return esFormularioValido()">
 			<fieldset>
 				<h1>&iexcl;&Uacute;nete a nosotros!</h1>
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>

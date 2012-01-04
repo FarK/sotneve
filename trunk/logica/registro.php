@@ -1,12 +1,10 @@
 <?php
 include_once ("../datos/conexion.php");
 include_once ("../datos/usuario.php");
-include_once ("../datos/utiles.php");
 include_once ("../datos/provincia.php");
 //Crear objeto gestor bd
 $conexion = new Conexion();
 $usuario = new Usuario($conexion);
-$utiles = new Utiles($conexion);
 $provincia = new Provincia($conexion);
 
 // $fechanac = $bd -> escapeString($_POST['fechanac']);
@@ -41,7 +39,7 @@ $fechanac = dmaToamd($fechanac);
 if ($valido) {
 	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
 	$aux = sprintf("Location:../index.php?mens=Registrado con exito. %s", $prov);
-//	header($aux);
+	header($aux);
 }
 $conexion -> desconectar();
 
