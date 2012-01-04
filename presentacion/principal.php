@@ -29,7 +29,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 					<?php
 					$eventosProv = $usuarioActual->getEventosProvincia();
 					foreach ($eventosProv as $evento) {
-						$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
+						$span = sprintf("<a class='enlaceEnmarcado' href='info_evento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
 						echo $span;
 					}
 					?>
@@ -42,7 +42,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<?php
 				$favoritos = $usuarioActual->getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
 					echo $span;
 				}
 				?>
@@ -55,7 +55,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<?php
 				$eventos = $usuarioActual->getEventos();
 				foreach ($eventos as $evento) {
-					$span = sprintf("<a class='enlaceEnmarcado' href='infoEvento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='info_evento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
 					echo $span;
 				}
 				?>
