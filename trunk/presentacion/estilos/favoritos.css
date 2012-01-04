@@ -1,45 +1,43 @@
+
 @import "general.css";
 
-
 #listafavoritos {
-	width: 820px;
+	width: 420px;
 	margin: 10px auto 10px auto;
 	padding: 20px 30px;
 	border-radius: 20px 20px;
 	border: 2px dotted #418eb6;
 	min-height: 400px;
 }
-
-/* Título*/
+/* TÃ­tulo*/
 h1 {
 	margin: 10px 0 20px 0;
 	font-size: 200%;
 	color: #418eb6;
 }
-
 /*Cada elemento de la lista*/
-div.enlaceEnmarcado{
-	margin: 10px 5px;
-	border: 5px solid #EEF;
+div.favorito {
+	background-color: #EEF;
+	margin: 10px 0;
+	text-align: left;
+	padding: 5px 0;
 	border-radius: 10px;
 }
-
-/* Enlace a borrar favorito */
-a.favorito {
-	background-color: #EEF;
+span.favorito {
+	margin-left: 0;
+	border-radius: 10px;
 	text-align: left;
 	font-weight: bold;
-	color: #418eb6;
-	text-decoration: none;
-	display: table-cell;
-	min-width: 100%;
-	vertical-align: middle;
-	padding-left: 5px;
 }
-
-/* Imágen de borrar */
+a.favorito {
+	text-decoration: none;
+	text-align: left;
+	color: #418eb6;
+	padding: 10px 10px;
+	font-weight: bold;
+}
 img#delete {
-	vertical-align: middle;
+	vertical-align: bottom;
 	float: right;
 	padding-right: 10px;
 }
