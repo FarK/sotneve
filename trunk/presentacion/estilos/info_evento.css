@@ -20,9 +20,10 @@ div.lista_usuarios {
 	min-height: 450px;
 }
 img#add {
-	height: 36px;
-	width: 36px;
+	height: 32px;
+	width: 32px;
 	vertical-align: middle;
+	padding-right: 5px;
 }
 div#informacion {
 	min-height: 300px;
