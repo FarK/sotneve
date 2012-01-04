@@ -56,8 +56,20 @@ class Evento extends Tabla{
 			return false;
 	}
 	
+	public function getEventosProvinciaVigentes($idProvincia){
+		$fecha = time (); 
+        $actual =  date ( "Y-m-d h:i:s" , $fecha );
+        $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND fechaEvento>='%s'", $idProvincia, $actual);
+		return $this->consultar($query);
+	}
+	
+	public function getEventosProvinciaTipoVigentes($idProvincia,$idTipo){
+		 $fecha = time (); 
+        $actual =  date ( "Y-m-d h:i:s" , $fecha );
+        $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND idTipo='%s' AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
+		return $this->consultar($query);
+	}
 }
-
 /**********************
  * ANTIGUAS CONSULTAS *
  **********************
