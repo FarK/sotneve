@@ -1,8 +1,8 @@
 <?php
-	include ("includes/testSession.php");
-	include_once('BD/conexion.php');
-	include_once('BD/usuario.php');
-	include_once('BD/favorito.php');
+	include ("../logica/test_session.php");
+	include_once('../datos/conexion.php');
+	include_once('../datos/usuario.php');
+	include_once('../datos/favorito.php');
 	
 	$conex = new Conexion();
 	//Se llama usuario visitado porque si no se pisa con usuario de head.php
@@ -29,13 +29,13 @@
 		<title>Sotneve - <?php echo $camposUsuario['alias'];?></title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
 		
-		<link rel="stylesheet" type="text/css" href="styles/info_usuario.css"/>
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<link rel="stylesheet" type="text/css" href="estilos/info_usuario.css"/>
+		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
 		<?php
-		include ("includes/head.php");
+		include ("head.php");
 		?>
 
 		<div class='lista_usuarios' id="amigos">
@@ -52,7 +52,7 @@ if(empty($favoritos ))
 
 
 foreach($favoritos as $fav){
-$span= sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
+$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
 echo $span;
 }
 				?>
@@ -139,7 +139,7 @@ echo $span;
 			</div>
 		</div>
 		<?php
-		include 'includes/footer.php';
+		include 'footer.php';
 		?>
 	</body>
 </html>
