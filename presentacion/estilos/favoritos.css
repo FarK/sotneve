@@ -1,6 +1,4 @@
-
 @import "general.css";
-
 #listafavoritos {
 	width: 420px;
 	margin: 10px auto 10px auto;
@@ -9,7 +7,7 @@
 	border: 2px dotted #418eb6;
 	min-height: 400px;
 }
-/* TÃ­tulo*/
+/* Título*/
 h1 {
 	margin: 10px 0 20px 0;
 	font-size: 200%;
@@ -28,6 +26,9 @@ span.favorito {
 	border-radius: 10px;
 	text-align: left;
 	font-weight: bold;
+}
+a.favorito:hover{
+	text-shadow: 0 0 3px SKYBLUE;
 }
 a.favorito {
 	text-decoration: none;
