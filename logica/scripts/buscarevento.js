@@ -71,7 +71,7 @@ function cargaContenido(idSelectOrigen)
 		var selectDestino=document.getElementById(idSelectDestino);
 		// Creo el nuevo objeto AJAX y envio al servidor el ID del select a cargar y la opcion seleccionada del select origen
 		var ajax=nuevoAjax();
-		ajax.open("GET", "buscarevento_proceso.php?select="+idSelectDestino+"&nombre="+opcionSeleccionada, true);
+		ajax.open("GET", "../logica/buscarevento.php?select="+idSelectDestino+"&nombre="+opcionSeleccionada, true);
 		ajax.onreadystatechange=function() 
 		{ 
 			if (ajax.readyState==1)
