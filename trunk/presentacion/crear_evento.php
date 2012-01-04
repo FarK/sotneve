@@ -107,10 +107,7 @@ $conex->desconectar();
 							<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>											
 							
 						</div>
-						<button type="submit" id="crea">
-							Crear Evento
-						</button>
-
+						<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>
 				</form>
 			</div>
 		</div>

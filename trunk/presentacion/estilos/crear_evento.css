@@ -37,4 +37,9 @@ input#create{
 	color: WHITE;
 	font-weight: bold;
 	margin: 10px 0 20px 0;
+	width: 200px;
+}
+input#create:hover{
+	text-shadow: 0 0 3px SKYBLUE;
+	cursor: pointer;
 }
