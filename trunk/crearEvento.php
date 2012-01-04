@@ -119,7 +119,7 @@ include ("includes/testSession.php");
 						</div>
 						<div class="filaform">
 							<label for="descripcion" >Descripci&oacute;n</label>
-							<input type="text" id="descripcion" name="descripcion"/>
+							<textarea id="descripcion" name="descripcion" rows="100" maxlength="249" /></textarea>											
 							<br/>
 						</div>
 						<button type="submit" id="crea">
