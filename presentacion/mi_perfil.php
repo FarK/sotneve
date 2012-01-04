@@ -1,8 +1,8 @@
 <?php
-include ("includes/testSession.php");
-include_once ('BD/conexion.php');
-include_once ('BD/usuario.php');
-include_once ('BD/provincia.php');
+include ("../logica/test_session.php");
+include_once ('../datos/conexion.php');
+include_once ('../datos/usuario.php');
+include_once ('../datos/provincia.php');
 
 //Creamos la conexion y las clases de consulta
 $conexion = new Conexion();
@@ -47,18 +47,18 @@ function creaCheckBox($campos, $campo) {
 	<head>
 		<meta charset="utf-8"/>
 		<title>sotneve - Únete</title>
-		<script type="text/javascript" src="scripts/editausuario.js"></script>
+		<script type="text/javascript" src="estilos/editausuario.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="styles/mi_perfil.css"/>
+		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
 	</head>
 	<body>
 		<!--<div class="contenedorgeneral"> -->
 		<?php
-		include ("includes/head.php");
+		include ("head.php");
 		?>
 		<h1>Edita tu perfil</h1>
 		<span id="errores">Ha ocurrido algún error.</span>
-		<form name="form" method="post" action="insertarcambiosperfil.php" onsubmit="return esFormularioValido()">
+		<form name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
 			<?php
 			if (isset($_GET['err_email'])) {
 				echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
@@ -144,7 +144,7 @@ function creaCheckBox($campos, $campo) {
 			</button>
 		</form>
 		<?php
-		include ("includes/footer.php");
+		include ("footer.php");
 		?>
 		<!-- </div> -->
 	</body>
