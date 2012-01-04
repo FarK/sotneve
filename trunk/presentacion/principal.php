@@ -1,5 +1,5 @@
 <?php
-include("../logica/test_Session.php");
+include("../logica/test_session.php");
 include_once ('../datos/conexion.php');
 include_once ('../datos/usuario.php');
 
