@@ -33,7 +33,7 @@ $conex->desconectar();
 	</div>
 
 		<?php
-		//include ("buscarevento.php");
+		include ("buscar_evento.php");
 		?>
 
 </div>
