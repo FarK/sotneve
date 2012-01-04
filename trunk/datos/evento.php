@@ -64,7 +64,7 @@ class Evento extends Tabla{
 	}
 	
 	public function getEventosProvinciaTipoVigentes($idProvincia,$idTipo){
-		 $fecha = time (); 
+		$fecha = time (); 
         $actual =  date ( "Y-m-d h:i:s" , $fecha );
         $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND idTipo='%s' AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
 		return $this->consultar($query);
