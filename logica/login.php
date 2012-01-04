@@ -1,6 +1,6 @@
 <?php
-	include_once('BD/conexion.php');
-	include_once('BD/usuario.php');
+	include_once('datos/conexion.php');
+	include_once('datos/usuario.php');
 	//Iniciar sesion
 	session_start();
 	//Crear objeto gestor bd
@@ -15,7 +15,7 @@
 		//Es correcta
 		//Meter en la variable session que ha conectado
 		$_SESSION['idUsuario'] = $id;
-		header('Location:principal.php');
+		header('Location:presentacion/principal.php');
 	}else{
 		//Es incorrecta
 		//Error en SESSION
