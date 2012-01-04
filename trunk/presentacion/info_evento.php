@@ -1,9 +1,9 @@
 <?php
-	include_once 'BD/conexion.php';
-	include 'includes/testSession.php';
-	include_once 'BD/usuario.php';
-	include_once 'BD/evento.php';
-	include_once 'BD/provincia.php';
+	include_once '../datos/conexion.php';
+	include '../logica/test_session.php';
+	include_once '../datos/usuario.php';
+	include_once '../datos/evento.php';
+	include_once '../datos/provincia.php';
 
 	
 
@@ -44,13 +44,13 @@
 		echo $campos['titulo'];?></title>
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="styles/info_evento.css">
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
 				<span><?php
-				include 'includes/head.php';
+				include 'head.php';
 					?></span>
 			</div>
 			<div id="wrapper">
@@ -106,7 +106,7 @@
 				</p>
 			</div>
 
-				 <?php include 'includes/footer.php';?>
+				 <?php include 'footer.php';?>
 		</div>
 	</body>
 </html>
