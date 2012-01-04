@@ -1,6 +1,6 @@
 <?php
-include_once('BD/conexion.php');
-include_once('BD/provincia.php');
+include_once('../datos/conexion.php');
+include_once('../datos/provincia.php');
 
 session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 
@@ -11,11 +11,11 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 	<head>
 		<meta charset=utf-8" />
 		<title>sotneve - &Uacute;nete</title>
-		<link rel="stylesheet" type="text/css" href="styles/registro.css" />
-		<script type="text/javascript" src="scripts/registro.js"></script>
+		<link rel="stylesheet" type="text/css" href="estilos/registro.css" />
+		<script type="text/javascript" src="../logica/scripts/registro.js"></script>
 	</head>
 	<body>
-		<form name="form" method="post" action="insertarusuario.php" onsubmit="return esFormularioValido()">
+		<form name="form" method="post" action="../datos/registro.php" onsubmit="return esFormularioValido()">
 			<fieldset>
 				<h1>&iexcl;&Uacute;nete a nosotros!</h1>
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
