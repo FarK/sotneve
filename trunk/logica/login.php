@@ -1,6 +1,6 @@
 <?php
-	include_once('datos/conexion.php');
-	include_once('datos/usuario.php');
+	include_once('../datos/conexion.php');
+	include_once('../datos/usuario.php');
 	//Iniciar sesion
 	session_start();
 	//Crear objeto gestor bd
