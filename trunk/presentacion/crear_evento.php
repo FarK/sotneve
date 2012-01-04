@@ -30,9 +30,9 @@ $conex->desconectar();
 			
 		<h2>Crear Evento</h2>
 		<?php
-			if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
+			if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
 				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
-				$_SESSION['err_campos'] = false;
+				$_SESSION['err_campos_evento'] = false;
 			}
 		?>
 			<div class="form">

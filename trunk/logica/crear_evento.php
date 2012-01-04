@@ -37,7 +37,7 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 
 	if ($fechaEvento == "" || $titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar=='') {
 		$camposvacios = true;
-		$_SESSION['err_campos'] = true;
+		$_SESSION['err_campos_evento'] = true;
 		$valido=false;
 	}
 
@@ -72,10 +72,10 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 	}
 	
 	if ($provincia == 0) {
-		$_SESSION['err_campos'] = true;
+		$_SESSION['err_campos_evento'] = true;
 		$valido = false;
 	} elseif (!$camposvacios && !$existeProvincia) {
-		$_SESSION['err_campos'] = true;
+		$_SESSION['err_campos_evento'] = true;
 		$valido=false;
 	}
 
