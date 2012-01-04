@@ -1,7 +1,7 @@
 <?php
-include("includes/testSession.php");
-include_once ('BD/conexion.php');
-include_once ('BD/usuario.php');
+include("../logica/test_Session.php");
+include_once ('../datos/conexion.php');
+include_once ('../datos/usuario.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $conex = new Conexion();
@@ -13,13 +13,13 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 	<head>
 		<title>Sotneve</title>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
-		<link rel="stylesheet" type="text/css" href="styles/principal.css"></link>
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<link rel="stylesheet" type="text/css" href="estilos/principal.css"></link>
+		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
 			<div id="cabecera">
-				<?php include ("includes/head.php"); ?>
+				<?php include ("head.php"); ?>
 			</div>
 			<div id="wrapper">
 				<div id="eventos">
@@ -60,7 +60,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				}
 				?>
 			</div>
-			<?php include("includes/footer.php"); ?>
+			<?php include("footer.php"); ?>
 		</div>
 	</body>
 </html>
