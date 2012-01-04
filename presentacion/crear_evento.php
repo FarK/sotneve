@@ -1,5 +1,12 @@
 <?php
-include ("../logica/testSession.php");
+include ("../logica/test_session.php");
+include ("../datos/conexion.php");
+include ("../datos/provincia.php");
+
+$conex = new Conexion();
+$provincia = new Provincia($conex);
+$provincias = $provincia ->getProvincias();
+$conex->desconectar();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -7,7 +14,7 @@ include ("../logica/testSession.php");
 	<head>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
 		<title>Sotneve - Crear Evento</title>
-		<link rel="stylesheet" type="text/css" href="../logica/styles/crear_evento.css" />
+		<link rel="stylesheet" type="text/css" href="estilos/crear_evento.css" />
 		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
 
 		<script type="text/javascript" src="../logica/scripts/crear_evento.js"></script>
@@ -30,7 +37,7 @@ include ("../logica/testSession.php");
 		?>
 		<span class='error'>Debe rellenar todos los campos.</span>
 			<div class="form">
-				<form name="fval" action="../logica/registra_evento.php" method="post" onsubmit="return valida()">
+				<form name="fval" action="../logica/crear_evento.php" method="post" onsubmit="return valida()">
 						<div class="filaform">
 							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />
@@ -100,10 +107,6 @@ include ("../logica/testSession.php");
 							<select name="provincia" id="provincia">
 								<option value="0"></option>
 								<?php
-								$conex = new Conexion();
-								$provincia = new Provincia($conex);
-								$provincias = $provincia ->getProvincias();
-								$conex->desconectar();
 								foreach ($provincias as $id=>$prov) {
 									$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
 									echo $option;
@@ -129,7 +132,7 @@ include ("../logica/testSession.php");
 				</form>
 			</div>
 		</div>
-			<?php include("includes/footer.php"); ?>
+			<?php include("footer.php"); ?>
 		
 	</body>
 </html>
