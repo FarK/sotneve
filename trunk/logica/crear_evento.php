@@ -26,7 +26,7 @@ $prov = new Provincia($conex);
 		$evento-> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
 		$id = $conex->getLastInsertId();
 		
-		header(sprintf("Location:infoEvento.php?idEvento=%s", $id));
+		header(sprintf("Location:../presentacion/info_evento.php?idEvento=%s", $id));
 	}
 	 $conex->desconectar();
 
@@ -82,7 +82,7 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 	if ($valido) {
 		return true;
 	} else {
-		header("Location:crearEvento.php");
+		header("Location:../presentacion/crear_evento.php");
 	}
 
 }
