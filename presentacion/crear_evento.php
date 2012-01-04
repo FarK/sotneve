@@ -35,7 +35,6 @@ $conex->desconectar();
 				$_SESSION['err_campos'] = false;
 			}
 		?>
-		<span class='error'>Debe rellenar todos los campos.</span>
 			<div class="form">
 				<form name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
 						<div class="filaform">
