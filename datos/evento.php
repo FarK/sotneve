@@ -31,8 +31,12 @@ class Evento extends Tabla{
 	
 	
 		//Todos los usuarios que están afiliados a un evento
-	public function getUsuarios(){
-		$parametros = array(':id'=>$this->pks['idEvento']);
+	public function getUsuarios(/*$idUsuario*/){
+		if (func_num_args() == 1){
+			$parametros = array(':id'=>func_get_arg(0));
+		}else{
+			$parametros = array(':id'=>$this->pks['idEvento']);
+		}
 		return $this->consultarPreparada('getUsuarios', $parametros);
 	}
 	
