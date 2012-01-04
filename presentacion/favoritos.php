@@ -31,17 +31,17 @@
 			foreach($favoritos as $fav){
 				if($_SESSION['idUsuario'] == $_GET['idUsuario']){
 					$span= sprintf("
-					<div class='enlaceEnmarcado'>
+					<div class='favorito'>
 						<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
 						<a class='favorito' href='http://www.google.es?%s'>
 							<img id='delete' src='recursos/imagenes/delete.png' width='16px' height='16px' alt='Eliminar favorito'/>
 						</a>
-					</div>
+				</div>
 					\n\t\t", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
 					echo $span;
 				}else{
 					$span= sprintf("
-					<div class='enlaceEnmarcado'>
+					<div class='favorito'>
 						<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
 					</div>
 					\n\t\t", $fav['idUsuario'],$fav['alias']);
