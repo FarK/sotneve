@@ -5,8 +5,8 @@
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta charset=utf-8" />
 		<title>Sotneve -Error</title>
-		<link rel="stylesheet" type="text/css" href="styles/errores.css" />
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<link rel="stylesheet" type="text/css" href="estilos/errores.css" />
+		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
 	</head>
 	<body>
 		<?php
@@ -24,7 +24,7 @@
 		if ($logeado) {
 			echo("<div id='contenedor'>
 <div id='cabecera'>");
-			include ('includes/head.php');
+			include ('head.php');
 			echo("</div>");
 		}
 		?>

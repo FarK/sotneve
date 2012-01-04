@@ -7,15 +7,15 @@ include ("../logica/testSession.php");
 	<head>
 		<meta content="text/xhtml; charset=UTF-8"></meta>
 		<title>Sotneve - Crear Evento</title>
-		<link rel="stylesheet" type="text/css" href="styles/crear_evento.css" />
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<link rel="stylesheet" type="text/css" href="../logica/styles/crear_evento.css" />
+		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
 
-		<script type="text/javascript" src="scripts/crearEvento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/crear_evento.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
 		<?php
-			include ("includes/head.php");
+			include ("head.php");
 		?>
 
 		
@@ -30,7 +30,7 @@ include ("../logica/testSession.php");
 		?>
 		<span class='error'>Debe rellenar todos los campos.</span>
 			<div class="form">
-				<form name="fval" action="registraEvento.php" method="post" onsubmit="return valida()">
+				<form name="fval" action="../logica/registra_evento.php" method="post" onsubmit="return valida()">
 						<div class="filaform">
 							<label for="nomevento"> T&iacute;tulo</label>
 							<input type="text" id="nomevento" name="nomevento" />

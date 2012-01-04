@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<meta charset=utf-8 />
-		<link rel="stylesheet" type="text/css" href="styles/acerca.css" />
-		<script type="text/javascript" src="scripts/buscarevento.js"></script>
+		<link rel="stylesheet" type="text/css" href="estilos/acerca.css" />
+		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
 	</head>
 	<body>
 		<div id="cabecera">
 			<?php
 			session_start();
 			if (isset($_SESSION['idUsuario'])) {
-				include ("includes/head.php");
+				include ("head.php");
 			}else{
 				//TODO desarrollar un boton de volver, una barra arriba con opciones inicio, registrarse o algo parecido, que esta muy soso
 			}
