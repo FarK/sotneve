@@ -20,6 +20,7 @@ $conex -> desconectar();
 		<script type="text/javascript" src="../logica/scripts/crear_evento.js"></script>
 	</head>
 	<body>
+		 
 		<!-- Incluimos la cabecera -->
 		<?php
 		include ("head.php");
