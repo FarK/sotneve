@@ -45,6 +45,17 @@ class Evento extends Tabla{
 			return $result[0]['alias'];
 	}
 	
+	public function estaCompleto(){
+		$query = sprintf("SELECT A.idUsuario, E.maxPersonas FROM eventos E, afiliaciones A WHERE 
+						A.idEvento = E.idEvento AND	A.idEvento = %s", $this->pks['idEvento']);
+		$result = $this->consultar($query);
+		$max = $result[0]['maxPersonas'];
+		if(count($result)>=$max)
+			return true;
+		else
+			return false;
+	}
+	
 }
 
 /**********************
