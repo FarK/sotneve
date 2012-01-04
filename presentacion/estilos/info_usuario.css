@@ -38,7 +38,6 @@ span.c_usuario {
 
 /*** AÑADIR A FAVORITOS ***/
 #add_to_favs {
-	
 	float: right;
 	font-weight: bold;
 	padding: 4px;
@@ -54,4 +53,5 @@ img#add {
 	height: 36px;
 	width: 36px;
 	vertical-align: middle;
+	padding-right: 5px;
 }

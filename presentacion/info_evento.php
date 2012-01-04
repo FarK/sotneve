@@ -43,7 +43,7 @@
 		$camposProv=$provincia->consultarCampos();
 		echo $campos['titulo'];?></title>
 		<meta charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="styles/info_evento.css">
+		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css">
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 	</head>
 	<body>
@@ -66,14 +66,14 @@
 					</strong>
 					<?php
 						foreach($asistentes as $asist){
-							$span= sprintf("<a class='enlaceEnmarcado' href='infoUsuario.php?idUsuario=%s'>%s</a>\n\t\t", $asist['idUsuario'],$asist['alias']);
+							$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $asist['idUsuario'],$asist['alias']);
 							echo $span;
 						}
 					?>
 				</p>
 			</div>
 				<div id="informacion">
-					<span id='me_apunto'><a id='me_apunto'><img id="add" src="images/add.png"/> &iexcl;Me apunto! </a></span>
+					<span id='me_apunto'><a id='me_apunto'><img id="add" src="recursos/imagenes/add.png"/> &iexcl;Me apunto! </a></span>
 					<h1><?php echo $campos['titulo'];?></h1>
 					<p>
 						<strong>Informaci&oacute;n del evento:
