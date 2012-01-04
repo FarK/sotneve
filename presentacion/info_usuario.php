@@ -10,15 +10,8 @@
 	$favorito = new Favorito($conex);
 
 	//Consultamos los campos del usuario
-	$usuarioVisitado->prepCampo('alias');
-	$usuarioVisitado->prepCampo('nombre');
-	$usuarioVisitado->prepCampo('apellidos');
-	$usuarioVisitado->prepCampo('fechaNac');
-	$usuarioVisitado->prepCampo('sexo');
-	$usuarioVisitado->prepCampo('email');
-	$usuarioVisitado->prepCampo('idProvincia');
-	$usuarioVisitado->prepCampo('visibilidad');
-	$camposUsuario = $usuarioVisitado->consultarCampos();
+	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
+	$provUsuario = $usuarioVisitado -> getProvincia();
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
 ?>
@@ -98,8 +91,7 @@ echo $span;
 		if ($camposUsuario['visibilidad'] & $EMAIL) {
 			$email = $camposUsuario['email'];
 		}
-
-		$provincia = $usuarioVisitado -> getProvincia();
+		
 		$alias = $camposUsuario['alias'];
 		?>
 		<div class='info_usuario'>
@@ -136,7 +128,7 @@ echo $span;
 			<div class='data_row'>
 				<span class="l_usuario"> Provincia: </span>
 				<span class="c_usuario"> <?php
-				echo $provincia;
+				echo $provUsuario['nombre'];
 					?></span>
 			</div>
 		</div>
