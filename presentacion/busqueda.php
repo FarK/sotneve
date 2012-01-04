@@ -44,7 +44,7 @@ $enlaces = array();
 			$asistentes=$eventoObj->getUsuarios($idEvento);
 			$personasActuales=count($asistentes);
 	
-			$enlaces[] = sprintf("<a href='../presentacion/info_evento.php?&idEvento=%s'>Evento: %s , numero de personas %s de %s, lugar %s</a>", $idEvento, $titulo, $personasActuales, $maxpersonas, $lugar);
+			$enlaces[] = sprintf("<a class='enlaceEnmarcado' href='../presentacion/info_evento.php?&idEvento=%s' >Evento: %s , numero de personas %s de %s, lugar %s</a>", $idEvento, $titulo, $personasActuales, $maxpersonas, $lugar);
 			
 		}
 ?>
