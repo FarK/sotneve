@@ -16,6 +16,7 @@ div.filaform {
 }
 select#ev_provincia{
 	width: 416px;
+	margin: 5px 1px 0 0;
 }
 label {
 	font-weight: bold;
@@ -25,7 +26,7 @@ label {
 	text-align: right;
 	vertical-align: middle;
 }
-select {
+select#dia, #mes, #ano {
 	margin: 5px 1px 0 0;
 	width: 133px;
 }
