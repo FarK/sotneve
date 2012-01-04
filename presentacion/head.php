@@ -1,6 +1,6 @@
 <?php
-include_once ("BD/usuario.php");
-include_once ("BD/conexion.php");
+include_once ("../datos/usuario.php");
+include_once ("../datos/conexion.php");
 
 $id = $_SESSION['idUsuario'];
 //Creamos el objeto usuario del usuario conectado
@@ -18,22 +18,22 @@ $conex->desconectar();
 
 <div id="hcabecera">
 	<div id="hlogo">
-		<a href="principal.php"><img id='logo' src="images/logo.png" alt="Inicio"></img></a>
+		<a href="principal.php"><img id='logo' src="recursos/imagenes/logo.png" alt="Inicio"></img></a>
 	</div>
 	<div id="husuario">
 		<span>Hola, <?php echo $nombre;?></span>
 	</div>
 	<div id="hbotones">
 		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
-		<a class="boton"  id ="creaEvento" href="crearEvento.php">Crear Evento</a>
+		<a class="boton"  id ="creaEvento" href="../logica/crear_evento.php">Crear Evento</a>
 		<a class="boton" href=<?php echo $enlaceFavorito ?>>Favoritos</a>
-		<a class="boton" href="miPerfil.php">Mi perfil</a>
-		<a class="boton" href="logout.php">Logout</a>
+		<a class="boton" href="mi_perfil.php">Mi perfil</a>
+		<a class="boton" href="../logica/logout.php">Logout</a>
 		
 	</div>
 
 		<?php
-		include ("buscarevento.php");
+		//include ("buscarevento.php");
 		?>
 
 </div>
