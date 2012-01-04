@@ -10,8 +10,8 @@ if (isset($_SESSION['idUsuario'])) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8">
-		</meta> <title>Sotneve - Login</title>
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"/>
+		<title>Sotneve - Login</title>
 		<link rel="stylesheet" type="text/css" href="presentacion/estilos/index.css"/>
 		<script type="text/javascript" src="logica/scripts/index.js"></script>
 	</head>
