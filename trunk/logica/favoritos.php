@@ -1,7 +1,7 @@
 <?php
-	 include 'includes/testSession.php';
-	 include_once 'BD/conexion.php';
-	 include_once 'BD/usuario.php';
+	 include 'test_session.php';
+	 include_once '../datos/conexion.php';
+	 include_once '../datos/usuario.php';
 
 	$conexion = new Conexion();	
 	//Crear objeto evento
