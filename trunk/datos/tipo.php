@@ -63,6 +63,7 @@ class Tipo extends Tabla{
 	}
 
 	public function creaIndentacion($nivel){
+		$indentacion = '';
 		if($nivel != 0){
 			$indentacion = '&nbsp;';
 			for($i = $nivel-1 ; $i > 0 ; --$i){
@@ -70,7 +71,6 @@ class Tipo extends Tabla{
 			}
 			$indentacion = $indentacion . '|--';
 		}
-		//&nbsp;
 		return $indentacion;
 	}
 }
