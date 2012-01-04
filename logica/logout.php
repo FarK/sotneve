@@ -3,5 +3,5 @@
 	session_unset();
 	session_destroy();
 	$_SESSION=array();
-	header("Location:../logica/index.php");
+	header("Location:../index.php");
 ?>
