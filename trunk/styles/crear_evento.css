@@ -1,4 +1,16 @@
 @import "general.css";
+
+.errorphp{
+	display:block;
+	color:red;
+}
+
+.error{
+	display:block;
+	visibility:hidden;
+	color:red;
+}
+
 div.filaform {
 	display: table-row;
 }
