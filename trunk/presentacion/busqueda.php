@@ -34,6 +34,19 @@ if ($idtipo == 0) {//Si es 0 se muestran todos
 } else {
 	$eventos = $eventoObj -> getEventosProvinciaTipoVigentes($idprovincia, $idtipo);
 }
+$enlaces = array();
+		foreach ($eventos as $evento) {
+			$idEvento = $evento['idEvento'];
+			$titulo = $evento['titulo'];
+			$maxpersonas = $evento['maxPersonas'];
+			$lugar = $evento['lugar'];
+			//TODO hacer asistentes
+			$asistentes=$eventoObj->getUsuarios($idEvento);
+			$personasActuales=count($asistentes);
+	
+			$enlaces[] = sprintf("<a href='../presentacion/info_evento.php?&idEvento=%s'>Evento: %s , numero de personas %s de %s, lugar %s</a>", $idEvento, $titulo, $personasActuales, $maxpersonas, $lugar);
+			
+		}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -67,19 +80,8 @@ if ($idtipo == 0) {//Si es 0 se muestran todos
 		?></h1>
 		<?php
 
-		foreach ($eventos as $evento) {
-			$idEvento = $evento['idEvento'];
-			$titulo = $evento['titulo'];
-			$maxpersonas = $evento['maxPersonas'];
-			$lugar = $evento['lugar'];
-			//TODO hacer asistentes
-			// $asistentes=$evento->getUsuarios($campos['idEvento']);
-			// $numeroAsistentes=count($asistentes);
-			// $personasActuales=$evento -> getNumAsistentes();
-			$personasActuales = 2;
-
-			$linea = sprintf("<span><a href='../presentacion/info_evento.php?&idEvento=%s'>Evento: %s , numero de personas %s de %s, lugar %s</a></span>", $idEvento, $titulo, $personasActuales, $maxpersonas, $lugar);
-			echo($linea);
+		foreach ($enlaces as $linea) {
+			echo $linea;
 		}
 		?>
 		<?php
