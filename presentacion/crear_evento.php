@@ -104,7 +104,7 @@ $conex->desconectar();
 						</div>
 						<div class="filaform">
 							<label for="provincia">Provincia</label>
-							<select name="provincia" id="provincia">
+							<select name="provincia" id="ev_provincia">
 								<option value="0"></option>
 								<?php
 								foreach ($provincias as $id=>$prov) {

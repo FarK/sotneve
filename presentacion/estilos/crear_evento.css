@@ -14,8 +14,8 @@
 div.filaform {
 	display: table-row;
 }
-select#provincia{
-	background-color: RED;
+select#ev_provincia{
+	width: 416px;
 }
 label {
 	font-weight: bold;
