@@ -42,7 +42,7 @@ $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
 				<?php
 				$favoritos = $usuarioActual->getFavoritos();
 				foreach ($favoritos as $fav) {
-					$span = sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], $fav['alias']);
+					$span = sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'], htmlentities($fav['alias']));
 					echo $span;
 				}
 				?>
