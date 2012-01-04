@@ -11,9 +11,12 @@ $provincia = new Provincia($conexion);
 
 //Hacemos las consultas
 $usuario->prepCampo('nombre');
+$usuario->prepCampo('apellidos');
+$usuario->prepCampo('email');
+$usuario->prepCampo('fechaNac');
+$usuario->prepCampo('idProvincia');
 $usuario->prepCampo('visibilidad');
 $campos = $usuario->consultarCampos();
-
 $provUsuario = $usuario->getProvincia();
 $provincias = $provincia->getProvincias();
 
@@ -67,7 +70,9 @@ function creaCheckBox($campos, $campo) {
 				echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
 			}
 			?>
-
+			<div class="divf">
+				<label for="visible" class="etiqueta">¿Es visible?</label>
+			</div>
 			<div class="divf">
 				<label for="sexo" class="etiqueta">Sexo:</label>
 				<select  name="sexo" id="sexo" class="info_input">
