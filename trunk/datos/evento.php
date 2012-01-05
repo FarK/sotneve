@@ -59,7 +59,10 @@ class Evento extends Tabla{
 		$query = sprintf("SELECT A.idUsuario, E.maxPersonas FROM eventos E, afiliaciones A WHERE 
 						A.idEvento = E.idEvento AND	A.idEvento = %s", $this->pks['idEvento']);
 		$result = $this->consultar($query);
-		$max = $result[0]['maxPersonas'];
+		if(!empty($result))
+			$max = $result[0]['maxPersonas'];
+		else
+			return false;
 		if(count($result)>=$max)
 			return true;
 		else
@@ -79,6 +82,27 @@ class Evento extends Tabla{
         $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND idTipo='%s' AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
 		return $this->consultar($query);
 	}
+	
+	public function inscribeUsuario($idUser){
+		 $query = sprintf("INSERT INTO afiliaciones (idUsuario, idEvento) VALUES ('%s', '%s')", $idUser, $this->pks['idEvento']);
+		 return $this->consultar($query);
+	}
+	
+	public function desinscribeUsuario($idUser){
+		$query = sprintf("DELETE FROM afiliaciones WHERE idUsuario = '%s' AND idEvento = '%s'", $idUser, $this->pks['idEvento']);
+		 return $this->consultar($query);
+	}
+	
+	public function estaInscrito($idUser){
+		$parametros = array(':id'=>$this->pks['idEvento']);
+		$usuarios = $this->consultarPreparada('getUsuarios', $parametros);
+		foreach($usuarios as $user){
+			if($user['idUsuario'] == $idUser)
+				return true;
+		}
+		return false;
+	}
+	
 }
 /**********************
  * ANTIGUAS CONSULTAS *
