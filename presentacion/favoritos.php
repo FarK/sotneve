@@ -18,7 +18,7 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 	<head>
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/favoritos.css" />
-		<script type="text/javascript" src="scripts/buscar_evento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/favoritos.js"></script>
 		<title>Sotneve - Tus favoritos</title>
 		
 	</head>
@@ -26,23 +26,23 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 		<!-- Incluimos la cabecera -->
 		<?php include ("head.php"); ?>
 
-		<div id=listafavoritos>
+		<div id='listafavoritos'>
 		<h1>&iexcl;&Eacute;stos son tus favoritos!</h1>
+		<div id='favoritos'>
 		<?php
 			foreach($favoritos as $fav){
-					$span= sprintf("
+					$echo = sprintf("
 					<div class='favorito'>
 						<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
-						<a class='favorito' href='http://www.google.es?%s'>
-							<img id='delete' src='recursos/imagenes/delete.png' width='16px' height='16px' alt='Eliminar favorito'/>
-						</a>
-				</div>
-					\n\t\t", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
-					echo $span;
+						<form class='favorito' action='javascript:borraFavorito(%s)'>
+							<input id='delete' type='image' src='recursos/imagenes/delete.png'></input>
+						</form>
+				</div>", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
+					echo $echo;
 			}
 		?>
 			
-
+	</div>
 	</div>
 		<?php include("footer.php"); ?>
 	</body>

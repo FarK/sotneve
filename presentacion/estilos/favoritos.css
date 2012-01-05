@@ -31,14 +31,24 @@ a.favorito:hover{
 	text-shadow: 0 0 3px SKYBLUE;
 }
 a.favorito {
+	display:inline;
 	text-decoration: none;
 	text-align: left;
 	color: #418eb6;
 	padding: 10px 10px;
 	font-weight: bold;
 }
-img#delete {
+form.favorito:hover{
+	text-shadow: 0 0 3px SKYBLUE;
+}
+form.favorito {
+	display:inline;
+}
+#delete {
+	display: inline;
 	vertical-align: bottom;
 	float: right;
 	padding-right: 10px;
+	width: 16px;
+	height: 16px;
 }
