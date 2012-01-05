@@ -13,11 +13,18 @@ $tipo = new Tipo($conex);
 
 //Si nos pasan un idEvento se está intentando editar el evento
 $campos = array();
+$nomTipo = null;
 $provinciaEv = null;
 if(isset($_GET['idEvento'])){
 	$idEvento = $_GET['idEvento'];
 	$evento = new Evento($conex,$idEvento);
 	$campos = $evento->consultarTodosLosCampos();
+
+	//Inicializamos el tipo por defecto del objeto Tipo
+	$tipo->pks = array('idTipo'=>$campos['idTipo']);
+	$tipo->prepCampo('nombre');
+	$res = $tipo->consultarCampos();
+	$nomTipo = $res['nombre'];
 }
 
 $conex->desconectar();
@@ -203,11 +210,19 @@ function selectProvincia($campos, $provincias){
 
 	echo '</select>';
 }
-function selectTipos($tipo){
+
+function selectTipos($campos, $tipo,  $nomTipo){
 	echo '<select name="tipos" id="ev_tipos">';
+
+	if(!empty($campos)){
+		$option = sprintf('<option value="%s">%s</option>', $campos['idTipo'], $nomTipo);
+	}
+
 	$tipo->getArbolTipos();
+
 	echo '</select>';
 }
+
 function inputLugar($campos){
 	if(!empty($campos))
 		$input = sprintf('<input type="text" id="lugar" name="lugar" value = "%s"/>', $campos['lugar']);
@@ -224,6 +239,16 @@ function texareaDescripcion($campos){
 		$input = '<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>';
 
 	echo $input;
+}
+
+function inputBoton($campos){
+	if(empty($campos))
+		$input = '<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>';
+	else
+		$input = sprintf('<input class="enlaceEnmarcado" type="submit" id="create" value=\'Actualizar "%s"\'/>', $campos['titulo']);
+
+	echo $input;
+						
 }
 ?>
 
@@ -280,7 +305,7 @@ function texareaDescripcion($campos){
 					</div>
 					<div class="filaform">
 						<label for="tipos">Tipo</label>
-						<?php selectTipos($tipo); ?>
+						<?php selectTipos($campos, $tipo, $nomTipo); ?>
 					</div>
 					<div class="filaform">
 						<label for="lugar">Lugar</label>
@@ -290,7 +315,7 @@ function texareaDescripcion($campos){
 						<label for="descripcion" >Descripci&oacute;n</label>
 						<?php texareaDescripcion($campos) ?>
 					</div>
-						<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>
+					<?php inputBoton($campos); ?>
 			</form>
 			</div>
 		</div>
