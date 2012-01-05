@@ -5,46 +5,47 @@
 	include_once '../datos/evento.php';
 	include_once '../datos/provincia.php';
 
-	
-
 	$conexion = new Conexion();	
 	//Crear objeto evento
-	$evento = new Evento($conexion,$_GET["idEvento"]);
-	
-
-	//Comprobar si ha habido errores //TODO redireccionar a la pagina de errores correcta
-	// if() //No pudo conectar
-		// header('Location:index.php?err_bd');	//Redirecconar con GET a error
-// 	
-	// else if()//no existe el evento (o ha fallado la consulta)
-		// header('Location:errores.php?error="eventNotFound"');
+	$idEventoVisitado = $_GET["idEvento"];
+	$evento = new Evento($conexion, $idEventoVisitado);
+	$campos = $evento->consultarTodosLosCampos();
+	if(empty($campos)){
+		//TODO
+		echo "ERROR: Mandar a error de evento no encontrado";
+	}
+	$provincia= new Provincia($conexion,$campos['idProvincia']);
+	$provincia->prepCampo("nombre");
+	$camposProv=$provincia->consultarCampos();
+		
+	$asistentes=$evento->getUsuarios($campos['idEvento']);
+	$numeroAsistentes=count($asistentes);
+		
+	$estaCompleto = $evento->estaCompleto();
+	$estaInscrito = $evento->estaInscrito($_SESSION['idUsuario']);
+	if($estaInscrito){
+		$add_form_action = 'javascript:desinscribeEvento('.$idEventoVisitado.')';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Desinscribirse';
+	}else{
+		if($estaCompleto){ //no inscrito pero completo->boton desactivado
+			$add_form_action = 'javascript:hacerNada()';
+			$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png">Evento completo';
+		}else{ //no inscrito y no completo -> boton verde
+			$add_form_action = 'javascript:inscribeEvento('.$idEventoVisitado.')';
+			$add_image = '<input type="image" id="add" src="recursos/imagenes/add.png">&iexcl;Me apunto!';
+		}
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<title>Sotneve - <?php 
-		$evento -> prepCampo("idEvento");
-		$evento -> prepCampo("titulo");
-		$evento -> prepCampo("fechaEvento");
-		$evento -> prepCampo("lugar");
-		$evento -> prepCampo("idProvincia");
-		$evento -> prepCampo("maxPersonas");
-		$evento -> prepCampo("descripcion");
-		$evento -> prepCampo("propietario");
-		$campos = $evento->consultarCampos();
-		if(empty($campos)){
-			//TODO
-			echo "ERROR: Mandar a error de evento no encontrado";
-		}
-		$provincia= new Provincia($conexion,$campos['idProvincia']);
-		$provincia->prepCampo("nombre");
-		$camposProv=$provincia->consultarCampos();
-		echo $campos['titulo'];?></title>
+		<title>Sotneve - <?php echo $campos['titulo'];?> </title>
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css">
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/info_evento.js"></script>
 	</head>
 	<body>
 		<div id="container">
@@ -54,26 +55,36 @@
 					?></span>
 			</div>
 			<div id="wrapper">
-				<div class='lista_usuarios' id="asistentes">
+				<div class='lista_usuarios'>
 					
 				<p>
-					<strong class="num_usuarios">Van estas <?php 
-					$asistentes=$evento->getUsuarios($campos['idEvento']);
-					$numeroAsistentes=count($asistentes);
-					echo $numeroAsistentes;?> personas:
-					
-					<br />
+					<strong class="num_usuarios">
+						<span id="num_asistentes">
+							<?php
+								if($numeroAsistentes>0)
+									echo "Asisten &eacute;stas personas:</br>";
+								else
+									echo "Ninguna persona asiste</br>";
+							?>
+						</span>
 					</strong>
+					<span id="asistentes">
 					<?php
 						foreach($asistentes as $asist){
-							$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $asist['idUsuario'],$asist['alias']);
-							echo $span;
+							$a= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $asist['idUsuario'],$asist['alias']);
+							echo $a;
 						}
 					?>
+					</span>
 				</p>
 			</div>
-				<div id="informacion">
-					<span id='me_apunto'><a id='me_apunto'><img id="add" src="recursos/imagenes/add.png"/> &iexcl;Me apunto! </a></span>
+				<form id="informacion" method="post" action=<?php echo $add_form_action ?>>
+					<span id='me_apunto'>
+						<?php echo $add_image ?>
+					</span>
+				</form>
+					
+					
 					<h1><?php echo $campos['titulo'];?></h1>
 					<p>
 						<strong>Informaci&oacute;n del evento:
