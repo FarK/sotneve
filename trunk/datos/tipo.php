@@ -22,38 +22,40 @@ class Tipo extends Tabla{
 		$this->tipos = $this->consultar("SELECT * FROM tipos");
 	}
 
-	public function getArbolTipos(){
+	public function getArbolTipos($debeImprimir){
 		$arbolTipos = array();
 		foreach($this->tipos as $tipo){
 			if($tipo['idPadre'] == NULL){
-				$this->creaOption($tipo['idTipo'], $tipo['nombre'], 0);
-				$this->getArbolSubtipos($tipo, 1);
+				if($debeImprimir)
+					$this->creaOption($tipo['idTipo'], $tipo['nombre'], 0);
+				$this->getArbolSubtipos($tipo, 1, $debeImprimir);
 				//Lo insertamos en el array
-				//$arbolTipos[] = array(
-				//	$tipo['idTipo'] => $tipo['nombre'],
-				//	'subtipos' => $this->getArbolSubtipos($tipo, 1)
-				//);
+				$arbolTipos[] = array(
+					$tipo['idTipo'] => $tipo['nombre'],
+					'subtipos' => $this->getArbolSubtipos($tipo, 1, $debeImprimir)
+				);
 			}
 		}
 
-		//return $arbolTipos;
+		return $arbolTipos;
 	}
 
-	private function getArbolSubtipos($tipoPadre, $nivel){
+	private function getArbolSubtipos($tipoPadre, $nivel, $debeImprimir){
 		//Obtenemos los subtipos del tipos actual
 		$arbolTipos = array();
 		foreach($this->tipos as $tipoHijo)
 			if(($tipoHijo['idPadre'] != NULL) && ($tipoHijo['idPadre'] == $tipoPadre['idTipo'])){
-				$this->creaOption($tipoHijo['idTipo'], $tipoHijo['nombre'], $nivel);
-				$this->getArbolSubtipos($tipoHijo, $nivel + 1);
+				if($debeImprimir)
+					$this->creaOption($tipoHijo['idTipo'], $tipoHijo['nombre'], $nivel);
+				$this->getArbolSubtipos($tipoHijo, $nivel + 1, $debeImprimir);
 				//Lo insertamos en el array
-				//$arbolTipos[] = array(
-				//	$tipoHijo['idTipo'] => $tipoHijo['nombre'],
-				//	'subtipos' => $this->getArbolSubtipos($tipoHijo, $nivel + 1)
-				//);
+				$arbolTipos[] = array(
+					$tipoHijo['idTipo'] => $tipoHijo['nombre'],
+					'subtipos' => $this->getArbolSubtipos($tipoHijo, $nivel + 1, $debeImprimir)
+				);
 			}
 
-		//return $arbolTipos;
+		return $arbolTipos;
 	}
 
 	public function creaOption($idTipo, $nombre, $nivel){
