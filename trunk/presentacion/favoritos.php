@@ -1,4 +1,16 @@
-﻿<?php include ("../logica/test_session.php"); ?>
+﻿<?php 
+include ('../logica/test_session.php'); 
+include_once ('../datos/conexion.php');
+include_once ('../datos/usuario.php');
+include_once ('../datos/favorito.php');
+
+//Creamos la conexión y los objetos de consulta
+$conexion = new Conexion();
+$usuario = new Usuario($conexion, $_SESSION['idUsuario']);
+$favorito = new Favorito($conexion);
+$favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
+
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -17,19 +29,7 @@
 		<div id=listafavoritos>
 		<h1>&iexcl;&Eacute;stos son tus favoritos!</h1>
 		<?php
-
-			include_once ('../datos/conexion.php');
-			include_once ('../datos/usuario.php');
-			include_once ('../datos/favorito.php');
-
-			//Creamos la conexión y los objetos de consulta
-			$conexion = new Conexion();
-			$usuario = new Usuario($conexion, $_GET["idUsuario"]);
-			$favorito = new Favorito($conexion);
-			$favoritos = $favorito->getFavoritos($_GET['idUsuario']);
-
 			foreach($favoritos as $fav){
-				if($_SESSION['idUsuario'] == $_GET['idUsuario']){
 					$span= sprintf("
 					<div class='favorito'>
 						<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
@@ -39,14 +39,6 @@
 				</div>
 					\n\t\t", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
 					echo $span;
-				}else{
-					$span= sprintf("
-					<div class='favorito'>
-						<a class='favorito' href='infoUsuario.php?idUsuario=%s'>%s</a>
-					</div>
-					\n\t\t", $fav['idUsuario'],$fav['alias']);
-					echo $span;
-				}
 			}
 		?>
 			
