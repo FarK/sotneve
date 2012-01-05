@@ -11,7 +11,12 @@ div.filaform {
 select#ev_provincia{
 	width: 400px;
 	margin: 5px 1px 0 0;
-	height: 30px;
+	height: 25px;
+}
+select#ev_tipos{
+	width: 400px;
+	margin: 5px 1px 0 0;
+	height: 25px;
 }
 label {
 	font-weight: bold;
