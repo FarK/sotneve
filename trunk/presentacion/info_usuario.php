@@ -9,12 +9,21 @@
 	$idUserVisitado = $_GET["idUsuario"];
 	$usuarioVisitado = new Usuario($conex, $idUserVisitado);
 	$favorito = new Favorito($conex);
+	$userLog = new Usuario($conex, $_SESSION['idUsuario']);
 
 	//Consultamos los campos del usuario
 	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
 	$provUsuario = $usuarioVisitado -> getProvincia();
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
+	$esFavorito = $userLog->esFavorito($idUserVisitado);
+	if($esFavorito){
+		$add_form_action = 'javascript:borraFavorito('.$idUserVisitado.')';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Borrar de favoritos';
+	}else{
+		$add_form_action = 'javascript:insertaFavorito('.$idUserVisitado.')';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/add.png">A&ntilde;adir a favoritos';
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
@@ -47,16 +56,16 @@
 
 
 				foreach($favoritos as $fav){
-				$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
-				echo $span;
+					$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
+					echo $span;
 				}
 				?>
 			</p>
 		</div>
 		
-		<form id="add_form" method="post" action='javascript:insertaFavorito(<?php echo $idUserVisitado ?>)'>
+		<form id="add_form" method="post" action=<?php echo $add_form_action ?>>
 		<span id='add_to_favs'>
-			<input id="add" type='image' src="recursos/imagenes/add.png">A&ntilde;adir a favoritos</input>
+			<?php echo $add_image ?>
 		</span>
 		</form>
 

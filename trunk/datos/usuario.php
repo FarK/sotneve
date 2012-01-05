@@ -109,6 +109,15 @@ class Usuario extends Tabla{
 		return $this->consultarPreparada('getFavoritos', array());
 	}
 	
+	public function esFavorito($idFav2){
+		$favs = $this->consultarPreparada('getFavoritos', array());
+		foreach($favs as $user){
+			if($user['idUsuario2']==$idFav2)
+				return true;
+		}
+		return false;
+	}
+	
 	public function borraFavorito($idUsuario2) {
 		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
 		$result = $this -> consultar($query);

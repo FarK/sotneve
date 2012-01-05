@@ -22,7 +22,7 @@ function insertaFavorito(idFav) {
 function insertaCallback() {
 	if(ajax.readyState == 4){ 
 		var response = ajax.responseText;
-		document.getElementById('add_to_favs').innerHTML = '<input type="image" id="add" src="recursos/imagenes/delete.png">Eliminar';
+		document.getElementById('add_to_favs').innerHTML = '<input type="image" id="add" src="recursos/imagenes/delete.png">Borrar de favoritos';
 		document.getElementById('add_form').action = 'javascript:borraFavorito('+idFavorito+')';
 	}
 }
@@ -36,7 +36,7 @@ function borraFavorito(idFav) {
 function borraCallback() {
 	if(ajax.readyState == 4){ 
 		var response = ajax.responseText;
-		document.getElementById('add_to_favs').innerHTML = '<input type="image" id="add" src="recursos/imagenes/add.png">Eliminar';
+		document.getElementById('add_to_favs').innerHTML = '<input type="image" id="add" src="recursos/imagenes/add.png">A&ntilde;adir a favoritos';
 		document.getElementById('add_form').action = 'javascript:insertaFavorito('+idFavorito+')';
 	}
 }
