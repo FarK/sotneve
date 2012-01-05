@@ -29,10 +29,10 @@ label {
 select#dia, #mes, #ano {
 	margin: 5px 1px 0 0;
 	width: 100px;
-	height: 30px;
+	height: 25px;
 }
 #hora, #min{
-	height: 30px;
+	height: 25px;
 	
 }
 input {
