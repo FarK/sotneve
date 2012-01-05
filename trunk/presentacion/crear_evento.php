@@ -13,28 +13,25 @@ $conex -> desconectar();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<meta content="text/xhtml; charset=UTF-8">
-		</meta>
-		<title>Sotneve - Crear Evento</title>
+		</meta> <title>Sotneve - Crear Evento</title>
 		<link rel="stylesheet" type="text/css" href="estilos/crear_evento.css" />
 		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
 		<script type="text/javascript" src="../logica/scripts/crear_evento.js"></script>
 	</head>
 	<body>
-		 
 		<!-- Incluimos la cabecera -->
 		<?php
 		include ("head.php");
 		?>
 
 		<div class="contenido">
-			
-		<h2>Crear Evento</h2>
-		<?php
-			if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
+			<h2>Crear Evento</h2>
+			<?php
+			if (isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']) {
 				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
 				$_SESSION['err_campos_evento'] = false;
 			}
-		?>
+			?>
 			<div class="form">
 				<form name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
 					<div class="filaform">
@@ -87,26 +84,28 @@ $conex -> desconectar();
 						<select name="hora" id="hora">
 							<option value=""></option>
 							<?php
-		for ($i=0; $i <24; $i++) {
-		$hora="00"+$i;
-	if($i>=10){$option = sprintf('<option value="%s">%s</option>',$hora,$hora);}
-	else{$option = sprintf('<option value="%s">0%s</option>',$hora,$hora);}
-		
-		echo $option;
-													}?>
+							for ($i = 0; $i < 24; $i++) {
+								$hora = "00" + $i;
+								if ($i >= 10) {$option = sprintf('<option value="%s">%s</option>', $hora, $hora);
+								} else {$option = sprintf('<option value="%s">0%s</option>', $hora, $hora);
+								}
+
+								echo $option;
+							}
+							?>
 						</select>
 						<select name="min" id="min">
 							<option value=""></option>
 							<?php
-							for ($i=0; $i <60 ; $i=$i+5) { 
-								if($i<10){$option = sprintf('<option value="%s">0%s</option>',$i,$i);
-											echo $option;}
-								else {
-									$option = sprintf('<option value="%s">%s</option>',$i,$i);
-											echo $option;
-									}}
-							?>	
-							
+							for ($i = 0; $i < 60; $i = $i + 5) {
+								if ($i < 10) {$option = sprintf('<option value="%s">0%s</option>', $i, $i);
+									echo $option;
+								} else {
+									$option = sprintf('<option value="%s">%s</option>', $i, $i);
+									echo $option;
+								}
+							}
+							?>
 						</select>
 					</div>
 					<div class="filaform">
@@ -129,12 +128,12 @@ $conex -> desconectar();
 						<label for="descripcion" >Descripci&oacute;n</label>
 						<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>
 					</div>
-						<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>
-			</form>
+					<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>
+				</form>
 			</div>
 		</div>
 		<?php
-			include ("footer.php");
+		include ("footer.php");
 		?>
 	</body>
 </html>
