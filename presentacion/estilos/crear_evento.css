@@ -9,8 +9,9 @@ div.filaform {
 	display: table-row;
 }
 select#ev_provincia{
-	width: 416px;
+	width: 400px;
 	margin: 5px 1px 0 0;
+	height: 30px;
 }
 label {
 	font-weight: bold;
@@ -22,7 +23,12 @@ label {
 }
 select#dia, #mes, #ano {
 	margin: 5px 1px 0 0;
-	width: 133px;
+	width: 100px;
+	height: 30px;
+}
+#hora, #min{
+	height: 30px;
+	
 }
 input {
 	width: 400px;
@@ -36,5 +42,6 @@ input#create{
 }
 input#create:hover{
 	text-shadow: 0 0 3px SKYBLUE;
+	box-shadow: 0 0 10px SKYBLUE;
 	cursor: pointer;
 }
