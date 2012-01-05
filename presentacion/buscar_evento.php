@@ -29,7 +29,7 @@ $tipo = new Tipo($conexion);
 			<select name="tipo" id="tipo">
 				<option value="0">Elige</option>
 				
-				<?php $tipo -> getArbolTipos();?>
+				<?php $tipo -> getArbolTipos(true);?>
 				
 			</select>
 		</div>
