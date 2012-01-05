@@ -34,7 +34,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="estilos/info_usuario.css"/>
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
-		<script type="text/javascript" src="../logica/scripts/edita_favoritos.js"></script>
+		<script type="text/javascript" src="../logica/scripts/info_usuario.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
