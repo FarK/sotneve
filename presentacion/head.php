@@ -7,7 +7,6 @@ $id = $_SESSION['idUsuario'];
 $conex = new Conexion();
 $usuario = new Usuario($conex, $id);
 
-$enlaceFavorito=sprintf("'favoritos.php?idUsuario=%s'",$id);
 $usuario->prepCampo("nombre");
 $result = $usuario->consultarCampos();
 $nombre = $result['nombre'];
@@ -26,7 +25,7 @@ $conex->desconectar();
 	<div id="hbotones">
 		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
 		<a class="boton"  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
-		<a class="boton" href=<?php echo $enlaceFavorito ?>>Favoritos</a>
+		<a class="boton" href="favoritos.php">Favoritos</a>
 		<a class="boton" href="mi_perfil.php">Mi perfil</a>
 		<a class="boton" href="../logica/logout.php">Logout</a>
 		
