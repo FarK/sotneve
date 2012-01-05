@@ -6,7 +6,8 @@ include_once ("../datos/provincia.php");
 
 $conex = new Conexion();
 $prov = new Provincia($conex);
-	
+	 
+	 
 	$mes = $_POST['mes'];
 	$dia = $_POST['dia'];
 	$ano = $_POST['ano'];
@@ -16,7 +17,7 @@ $prov = new Provincia($conex);
 	$descripcion = $_POST['descripcion'];
 	$lugar = $_POST['lugar'];
 	$provincia = $_POST['provincia'];
-
+echo "-<".$fechaEvento;
 	$existeProvincia = $prov->existeProvincia($provincia);
 
 	$valido = esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provincia,$descripcion,$lugar);
@@ -42,8 +43,9 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 	}
 
 	$dia = substr($fechaEvento, 0, 2);
+	echo($fechaEvento);
 	$mes = substr($fechaEvento, 3, 2);
-	$ano = substr($fechaEvento, 6, 9);
+	$ano = substr($fechaEvento, 6, 4);
 
 	$diamax=0;
 	//No contemplamos bisiestos ni los años
@@ -63,7 +65,7 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 			default :
 				break;
 		}
-		if ($dia < 1 && $dia > $diamax) {
+		if ($dia < 1 || $dia > $diamax) {
 			$valido = false;
 		}
 
@@ -80,9 +82,10 @@ function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provin
 	}
 
 	if ($valido) {
+		echo("ee");
 		return true;
 	} else {
-		header("Location:../presentacion/crear_evento.php");
+		//header("Location:../presentacion/crear_evento.php");
 	}
 
 }
