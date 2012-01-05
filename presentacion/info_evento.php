@@ -45,7 +45,7 @@
 		<meta charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css">
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
-		<script type="text/javascript" src="../logica/scripts/info_evento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/edita_inscripciones_evento.js"></script>
 	</head>
 	<body>
 		<div id="container">
