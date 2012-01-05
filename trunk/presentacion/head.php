@@ -25,7 +25,7 @@ $conex->desconectar();
 	</div>
 	<div id="hbotones">
 		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
-		<a class="boton"  id ="creaEvento" href="../logica/crear_evento.php">Crear Evento</a>
+		<a class="boton"  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
 		<a class="boton" href=<?php echo $enlaceFavorito ?>>Favoritos</a>
 		<a class="boton" href="mi_perfil.php">Mi perfil</a>
 		<a class="boton" href="../logica/logout.php">Logout</a>
