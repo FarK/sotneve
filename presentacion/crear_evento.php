@@ -3,10 +3,13 @@ include ("../logica/test_session.php");
 include ("../datos/conexion.php");
 include ("../datos/provincia.php");
 include ("../datos/evento.php");
+include ("../datos/tipo.php");
 
 $conex = new Conexion();
 $provincia = new Provincia($conex);
 $provincias = $provincia -> getProvincias();
+
+$tipo = new Tipo($conex);
 
 //Si nos pasan un idEvento se está intentando editar el evento
 $campos = array();
@@ -16,6 +19,8 @@ if(isset($_GET['idEvento'])){
 	$evento = new Evento($conex,$idEvento);
 	$campos = $evento->consultarTodosLosCampos();
 }
+
+$conex->desconectar();
 
 function tituloWeb($campos){
 	if(empty($campos))
@@ -147,7 +152,7 @@ function selectHora($campos){
 				$hora = $i;
 			$option = sprintf('<option value="%s">%s</option>\n',$hora,$hora);
 		}
-
+			
 		echo $option;
 	}
 
@@ -198,7 +203,11 @@ function selectProvincia($campos, $provincias){
 
 	echo '</select>';
 }
-
+function selectTipos($tipo){
+	echo '<select name="tipos" id="ev_tipos">';
+	$tipo->getArbolTipos();
+	echo '</select>';
+}
 function inputLugar($campos){
 	if(!empty($campos))
 		$input = sprintf('<input type="text" id="lugar" name="lugar" value = "%s"/>', $campos['lugar']);
@@ -212,7 +221,7 @@ function texareaDescripcion($campos){
 	if(!empty($campos))
 		$input = sprintf('<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"> %s </textarea>', $campos['descripcion']);
 	else
-		$input = '<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"> %s </textarea>';
+		$input = '<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>';
 
 	echo $input;
 }
@@ -268,6 +277,10 @@ function texareaDescripcion($campos){
 					<div class="filaform">
 						<label for="provincia">Provincia</label>
 						<?php selectProvincia($campos, $provincias); ?>
+					</div>
+					<div class="filaform">
+						<label for="tipos">Tipo</label>
+						<?php selectTipos($tipo); ?>
 					</div>
 					<div class="filaform">
 						<label for="lugar">Lugar</label>
