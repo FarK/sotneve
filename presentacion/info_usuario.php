@@ -6,7 +6,8 @@
 	
 	$conex = new Conexion();
 	//Se llama usuario visitado porque si no se pisa con usuario de head.php
-	$usuarioVisitado = new Usuario($conex, $_GET["idUsuario"]);
+	$idUserVisitado = $_GET["idUsuario"];
+	$usuarioVisitado = new Usuario($conex, $idUserVisitado);
 	$favorito = new Favorito($conex);
 
 	//Consultamos los campos del usuario
@@ -24,6 +25,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="estilos/info_usuario.css"/>
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
+		<script type="text/javascript" src="../logica/scripts/info_usuario.js"></script>
 	</head>
 	<body>
 		<!-- Incluimos la cabecera -->
@@ -39,19 +41,24 @@
 				</strong>
 				<?php
 
-//Comprobamos si tiene o no favoritos
-if(empty($favoritos ))
-	echo '<span> Actualmente no hay favoritos </span>';
+				//Comprobamos si tiene o no favoritos
+				if(empty($favoritos ))
+					echo '<span> Actualmente no hay favoritos </span>';
 
 
-foreach($favoritos as $fav){
-$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
-echo $span;
-}
+				foreach($favoritos as $fav){
+				$span= sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a>\n\t\t", $fav['idUsuario2'],$fav['alias']);
+				echo $span;
+				}
 				?>
 			</p>
 		</div>
-		                <span id='add_to_favs'><a id='add_to_favs'><img id="add" src="recursos/imagenes/add.png"/> A&ntilde;adir a favoritos</a></span>
+		
+		<form id="add_form" method="post" action='javascript:insertaFavorito(<?php echo $idUserVisitado ?>)'>
+		<span id='add_to_favs'>
+			<input id="add" type='image' src="recursos/imagenes/add.png">A&ntilde;adir a favoritos</input>
+		</span>
+		</form>
 
 		<h1><?php echo $camposUsuario['alias']
 		?></h1>

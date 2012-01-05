@@ -113,5 +113,10 @@ class Usuario extends Tabla{
 		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
 		$result = $this -> consultar($query);
 	}
+	
+	public function insertaFavorito($idFav){
+		$query = sprintf("INSERT INTO favoritos (idUsuario1, idUsuario2) VALUES ('%s', '%s')", $this->pks['idUsuario'], $idFav);
+		$result = $this -> consultar($query);
+	}
 }
 ?>
