@@ -48,6 +48,12 @@ class Evento extends Tabla{
 		else
 			return $result[0]['alias'];
 	}
+
+	public function getProvincia(){
+		$query = sprintf("SELECT P.nombre FROM provincias P, eventos E WHERE E.idEvento = %s AND E.idProvincia = P.idProvincia", $this->pks['idEvento']);
+		$ret = $this->consultar($query);
+		return $ret[0]['nombre'];
+	}
 	
 	public function estaCompleto(){
 		$query = sprintf("SELECT A.idUsuario, E.maxPersonas FROM eventos E, afiliaciones A WHERE 
