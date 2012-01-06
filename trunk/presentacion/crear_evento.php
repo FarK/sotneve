@@ -97,7 +97,7 @@ function selectMes($campos){
 		$mesAct = (int)substr($campos['fechaEvento'], 5, 2);
 
 	$meses = array(
-		'Enero',
+		1=>'Enero',
 		'Febrero',
 		'Marzo',
 		'Abril',
