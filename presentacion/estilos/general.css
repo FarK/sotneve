@@ -6,21 +6,7 @@ body {
 	text-align: center;
 }
 
-textarea{
-	font: 76% arial, sans-serif;
-	height: 200px;
-	width: 400px;
-	font-size: 1em;	
-	margin-top: 5px;
-	margin-left: 5px;
-	border-width: 0px;
-	border-style: solid;
-	border-radius: 10px;
-	padding: 6px;
-	color: #418eb6;
-}
-
-input {
+input, textarea {
 	/*height:30px;*/
 	margin-top: 5px;
 	margin-left: 5px;
@@ -30,8 +16,8 @@ input {
 	padding: 6px;
 	color: #418eb6;
 }
-select {
 
+select {
 	border-radius: 4px 4px;
 	border-style: solid;
 	border-width: 1px;
@@ -51,10 +37,10 @@ a.enlaceEnmarcado {
 input.boton {
 	font-weight: bold;
 }
-input:hover, .boton:hover, select:hover, .enlaceEnmarcado:hover {
+input:hover, textarea:hover, .boton:hover, select:hover, .enlaceEnmarcado:hover {
 	box-shadow: 0px 0px 5px #FFFFFF;
 }
-input:focus, .boton:focus, select:focus {
+input:focus, textarea:focus, .boton:focus, select:focus {
 	box-shadow: 0px 0px 5px #FFFFFF;
 	border-width: 1px;
 	border-color: #A1B4BF;
