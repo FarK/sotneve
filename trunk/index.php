@@ -39,7 +39,7 @@ if (isset($_SESSION['idUsuario'])) {
 				<input id="email" name="email" type="text"  onchange="validaEmail()" onclick="onClickEmail()" value="Email"/>
 				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
 				<input id="pass" name="pass" type="password"  onblur="validaPass()" onclick="onClickPass()" value="Password"/>
-				<input id="send" class="boton" name="Send" type="submit" value="Entrar"/>
+				<input name="Send" type="submit" value="Entrar"/>
 				<a id="registrarse" href="presentacion/registro.php">Registrarse</a>
 			</fieldset>
 		</form>

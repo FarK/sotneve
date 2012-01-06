@@ -33,23 +33,15 @@ function claseEnlace($paginas, $indice){
 ?>
 
 <div id="hcabecera">
-	<div id="hlogo">
-		<a href="principal.php"><img id='logo' src="recursos/imagenes/logo.png" alt="Inicio"></img></a>
-	</div>
-	<div id="husuario">
-		<span>Hola, <?php echo $nombre;?></span>
-	</div>
-	<div id="hbotones">
-		<a <?php claseEnlace($paginas, 'principal'); ?>  id="hinicio" href="principal.php">Inicio</a>
-		<a <?php claseEnlace($paginas, 'crear_evento'); ?>  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
-		<a <?php claseEnlace($paginas, 'favoritos'); ?> href="favoritos.php">Favoritos</a>
-		<a <?php claseEnlace($paginas, 'mi_perfil'); ?> href="mi_perfil.php">Mi perfil</a>
-		<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
-			
-	</div>
+		<a id='enlaceLogo' href="principal.php"><img id='logo' src="recursos/imagenes/logoHead.png" alt="Inicio"></img></a>
+		<div id="hbotones">
+			<a <?php claseEnlace($paginas, 'principal'); ?>  id="hinicio" href="principal.php">Inicio</a>
+			<a <?php claseEnlace($paginas, 'crear_evento'); ?>  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
+			<a <?php claseEnlace($paginas, 'favoritos'); ?> href="favoritos.php">Favoritos</a>
+			<a <?php claseEnlace($paginas, 'mi_perfil'); ?> href="mi_perfil.php">Mi perfil</a>
+			<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
 
-		<?php
-		include ("buscar_evento.php");
-		?>
-
+		</div>
+		<span id='husuario'>Hola, <?php echo $nombre;?></span>
+	<?php include ("buscar_evento.php"); ?>
 </div>

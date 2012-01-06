@@ -6,6 +6,10 @@ body {
 	text-align: center;
 }
 
+div.contenido {
+	width: 900px;
+}
+
 input, textarea {
 	/*height:30px;*/
 	margin-top: 5px;
@@ -39,6 +43,11 @@ input.boton {
 }
 input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover {
 	box-shadow: 0px 0px 5px #FFFFFF;
+	transition: box-shadow 0.5s;
+
+	-moz-transition: box-shadow 0.5s; /* Firefox 4 */
+	-webkit-transition: box-shadow 0.5s; /* Safari and Chrome */
+	-o-transition: box-shadow 0.5s; /* Opera */
 }
 input:focus, textarea:focus, .boton:focus, select:focus {
 	box-shadow: 0px 0px 5px #FFFFFF;
@@ -84,67 +93,84 @@ a.boton, a.botonResaltado {
 	margin-left: 5px;
 	border: 0px;
 	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 	padding: 6px;
 	color: #418eb6;
 	font-weight: bold;
 	background-color: #D0E8F7;
 	text-decoration: none;
+
+	-moz-transition: padding 0.5s; /* Firefox 4 */
+	-webkit-transition: padding 0.5s; /* Safari and Chrome */
+	-o-transition: padding 0.5s; /* Opera */
 }
 
-a.botonResaltado {
+a.botonResaltado, .boton:hover {
 	text-decoration: underline;
 	padding-top: 10px;
 	padding-bottom: 10px;
+
+	-moz-transition: padding 0.5s; /* Firefox 4 */
+	-webkit-transition: padding 0.5s; /* Safari and Chrome */
+	-o-transition: padding 0.5s; /* Opera */
 }
 
 div#hcabecera {
-	background-color: #418eb6;
 	width: 900px;
-	margin: auto;
+	height: 85px;
 	border-radius: 10px 10px;
-	/*color: #eaf3fa;*/
-}
-div#hcontenedor {
-	width: 900px;
-	background-color: #333366;
-	height: 80px;
+	background-color: #418EB6;
 	border-radius: 10px 10px;
 }
+
+div #buscador {
+	display: inline-block;
+	position: relative;
+	bottom: 35px;
+	left: 69px;
+}
+
 select.selbusc {
 	display: inline-block;
 	width: 130px;
+	height: 18px;
 }
-div#hlogo {
-	text-align: center;
-	background: #eaf3fa;
-	border-radius: 10px 10px;
-	float: left;
-	color: #418eb6;
-	width: 400px;
-	height: 80px;
-	border-right: solid 1px;
-}
-div#husuario {
-	color: white;
-	float: right;
-	margin: 5px 10px 5px 5px;
-	text-align: right;
-}
-div.opcion {
-	display: inline-block;
-}
-div #buscador {/*No es de estas lineas el problema de que el buscador desapararezca*/
-	display: inline-block;
-}
+
 #search_icon {
 	width: 20px;
 	height: 20px;
 	margin: 0 0 -5px 0;
 	padding: 0;
 }
-div.contenido {
-	margin-left: 150px;
+
+a#enlaceLogo, img#logo {
+	width: 900px;
+	height: 85px;
+	display:block;
 }
+
+span#husuario {
+	color: white;
+	float: right;
+	margin: 5px 10px 5px 5px;
+	text-align: right;
+	position: relative;
+	bottom: 85px;
+	width: 100px;
+}
+
+div#hbotones {
+	display: inline;
+	position: relative;
+	bottom: 82px;
+	left: 56px;
+}
+
+div.opcion {
+	display: inline-block;
+}
+
 /*******************
  * ***   PIE   *** *
  *******************/
