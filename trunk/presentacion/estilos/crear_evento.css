@@ -50,3 +50,11 @@ input#create:hover{
 	box-shadow: 0 0 10px SKYBLUE;
 	cursor: pointer;
 }
+
+textarea {
+	font: 76% arial, sans-serif;
+	height: 200px;
+	width: 400px;
+	font-size: 1em;	
+}
+
