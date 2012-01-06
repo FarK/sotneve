@@ -20,6 +20,10 @@ if(isset($_GET['idEvento'])){
 	$evento = new Evento($conex,$idEvento);
 	$campos = $evento->consultarTodosLosCampos();
 
+	//Si no es propietario redirigimos a info_evento.php
+	if($_SESSION['idUsuario'] != $campos['propietario'])
+		header('Location: info_evento.php?idEvento=' . $campos['idEvento']);	
+
 	//Inicializamos el tipo por defecto del objeto Tipo
 	$tipo->pks = array('idTipo'=>$campos['idTipo']);
 	$tipo->prepCampo('nombre');
@@ -74,6 +78,7 @@ function selectDia($campos){
 		$diaAct = (int)substr($campos['fechaEvento'], 8, 2);
 		$option = sprintf('<option value="%s">%s</option>', $diaAct, $diaAct);
 		echo $option;
+		echo '<option disabled="true">----</option>';
 	}
 
 	for ($i = 1; $i < 32; $i++) {
@@ -110,6 +115,7 @@ function selectMes($campos){
 	if($mesAct != -1){
 		$option = sprintf('<option value=%s> %s </option>\n', $mesAct, $meses[$mesAct]);
 		echo $option;
+		echo '<option disabled="true">-----------</option>';
 	}
 	foreach($meses as $index=>$mes){
 		if($mesAct != $index){
@@ -128,6 +134,7 @@ function selectAno($campos){
 		$anoAct = (int)substr($campos['fechaEvento'], 0, 4);
 		$option = sprintf('<option value="%s">%s</option>', $anoAct, $anoAct);
 		echo $option;
+		echo '<option disabled="true">--------</option>';
 	}
 
 	for ($i = 0; $i < 10; $i++) {
@@ -149,6 +156,7 @@ function selectHora($campos){
 		$horaAct = (int)substr($campos['fechaEvento'], 11, 2);
 		$option = sprintf('<option value="%s">%s</option>', $horaAct, $horaAct);
 		echo $option;
+		echo '<option disabled="true">----</option>';
 	}
 
 	for ($i=0; $i <24; $i++) {
@@ -174,6 +182,7 @@ function selectMinutos($campos){
 		$minutosAct = (int)substr($campos['fechaEvento'], 14, 2);
 		$option = sprintf('<option value="%s">%s</option>', $minutosAct, $minutosAct);
 		echo $option;
+		echo '<option disabled="true">----</option>';
 	}
 
 	for ($i=0; $i <60 ; $i=$i+5) {
@@ -199,6 +208,7 @@ function selectProvincia($campos, $provincias){
 		$idProvAct = $campos['idProvincia'];
 		$option = sprintf('<option value="%s">%s</option>', $idProvAct, $provincias[$idProvAct]);
 		echo $option;
+		echo '<option disabled="true">-----------</option>';
 	}
 
 	foreach ($provincias as $id => $prov) {
@@ -216,6 +226,8 @@ function selectTipos($campos, $tipo,  $nomTipo){
 
 	if(!empty($campos)){
 		$option = sprintf('<option value="%s">%s</option>', $campos['idTipo'], $nomTipo);
+		echo $option;
+		echo '<option disabled="true">-----------</option>';
 	}
 
 	$tipo->getArbolTipos();
@@ -265,14 +277,13 @@ function inputBoton($campos){
 	<body>
 		 
 		<!-- Incluimos la cabecera -->
-		<?php
-		include ("head.php");
-		?>
+		<?php include ("head.php"); ?>
 
 		<div class="contenido">
 			
-		<?php tituloEvento($campos); ?>
 		<?php
+			tituloEvento($campos);
+
 			if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
 				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
 				$_SESSION['err_campos_evento'] = false;
@@ -319,8 +330,6 @@ function inputBoton($campos){
 			</form>
 			</div>
 		</div>
-		<?php
-			include ("footer.php");
-		?>
+		<?php include ("footer.php"); ?>
 	</body>
 </html>
