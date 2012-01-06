@@ -57,8 +57,8 @@ $favoritos = $usuarioActual->getFavoritos();
 					?>
 				</div>
 			</div>
-			<?php include("footer.php"); ?>
 		</div>
+		<?php include("footer.php"); ?>
 	</body>
 </html>
 <?php $conex->desconectar(); ?>
