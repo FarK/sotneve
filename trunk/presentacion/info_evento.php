@@ -4,7 +4,8 @@
 	include_once '../datos/usuario.php';
 	include_once '../datos/evento.php';
 	include_once '../datos/provincia.php';
-
+	include_once '../datos/tipo.php';
+	
 	$conexion = new Conexion();	
 	//Crear objeto evento
 	$idEventoVisitado = $_GET["idEvento"];
@@ -17,6 +18,10 @@
 	$provincia= new Provincia($conexion,$campos['idProvincia']);
 	$provincia->prepCampo("nombre");
 	$camposProv=$provincia->consultarCampos();
+	
+	$tipo = new tipo($conexion , $campos['idTipo']);
+	$tipo->prepCampo("nombre");
+	$camposTipo = $tipo->consultarCampos();
 		
 	$asistentes=$evento->getUsuarios($campos['idEvento']);
 	$numeroAsistentes=count($asistentes);
@@ -94,6 +99,7 @@
 						echo " en "; 
 						echo $camposProv['nombre'];?></span>
 						<br />
+						<span class='info'>Actividad:  <?php echo $camposTipo['nombre'];?> </span>
 						<span class='info'>Fecha: <?php echo $campos['fechaEvento'];?></span>
 						<br />
 						<span class='info'>Quedan <?php echo $campos['maxPersonas']-$numeroAsistentes;
