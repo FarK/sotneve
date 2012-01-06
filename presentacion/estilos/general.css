@@ -37,7 +37,7 @@ a.enlaceEnmarcado {
 input.boton {
 	font-weight: bold;
 }
-input:hover, textarea:hover, .boton:hover, select:hover, .enlaceEnmarcado:hover {
+input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover {
 	box-shadow: 0px 0px 5px #FFFFFF;
 }
 input:focus, textarea:focus, .boton:focus, select:focus {
@@ -79,7 +79,7 @@ h1, h2 {
 /* CABECERA */
 /* **********/
 
-a.boton {
+a.boton, a.botonResaltado {
 	margin-top: 5px;
 	margin-left: 5px;
 	border: 0px;
@@ -90,6 +90,13 @@ a.boton {
 	background-color: #D0E8F7;
 	text-decoration: none;
 }
+
+a.botonResaltado {
+	text-decoration: underline;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 div#hcabecera {
 	background-color: #418eb6;
 	width: 900px;

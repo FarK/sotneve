@@ -13,6 +13,23 @@ $nombre = $result['nombre'];
 
 //Ceramos conexión
 $conex->desconectar();
+
+$presentacion = '/Sotneve/presentacion/';
+$paginas = array(
+	'principal'=> $presentacion . 'principal.php',
+	'crear_evento'=> $presentacion . 'crear_evento.php',
+	'favoritos'=> $presentacion . 'favoritos.php',
+	'mi_perfil'=> $presentacion . 'mi_perfil.php',
+	'logout'=> $presentacion . 'logout.php'
+);
+
+function claseEnlace($paginas, $indice){
+	if($paginas[$indice] == $_SERVER['PHP_SELF'])
+		echo 'class = botonResaltado';
+	else
+		echo 'class = boton';
+}
+
 ?>
 
 <div id="hcabecera">
@@ -23,12 +40,12 @@ $conex->desconectar();
 		<span>Hola, <?php echo $nombre;?></span>
 	</div>
 	<div id="hbotones">
-		<a class="boton"  id="hinicio" href="principal.php">Inicio</a>
-		<a class="boton"  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
-		<a class="boton" href="favoritos.php">Favoritos</a>
-		<a class="boton" href="mi_perfil.php">Mi perfil</a>
-		<a class="boton" href="../logica/logout.php">Logout</a>
-		
+		<a <?php claseEnlace($paginas, 'principal'); ?>  id="hinicio" href="principal.php">Inicio</a>
+		<a <?php claseEnlace($paginas, 'crear_evento'); ?>  id ="creaEvento" href="crear_evento.php">Crear Evento</a>
+		<a <?php claseEnlace($paginas, 'favoritos'); ?> href="favoritos.php">Favoritos</a>
+		<a <?php claseEnlace($paginas, 'mi_perfil'); ?> href="mi_perfil.php">Mi perfil</a>
+		<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
+			
 	</div>
 
 		<?php
