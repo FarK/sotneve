@@ -1,16 +1,16 @@
 function valida() {
 	
+	
 	var factual = new Date()
 	var diaAct = factual.getUTCDate();
 	var anoAct = factual.getFullYear();
 	var mesAct = factual.getMonth()+1; //El +1 es porque getMonth cuenta los meses desde 0 a 11
 		
 	
-	
+
 	var ano = document.getElementById("ano").value;
 	var mes = document.getElementById("mes").value;
 	var dia = document.getElementById("dia").value;
-	
 	
 	var titulo = document.getElementById("nomevento").value;
 	var provincia = document.getElementById("ev_provincia").value;
