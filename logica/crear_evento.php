@@ -7,20 +7,27 @@ include_once ("../datos/provincia.php");
 $conex = new Conexion();
 $prov = new Provincia($conex);
 	 
-	 
+	$tipo = $_POST['tipos'];
 	$mes = $_POST['mes'];
 	$dia = $_POST['dia'];
 	$ano = $_POST['ano'];
-	$fechaEvento = $ano.'-'.$mes.'-'.$dia;
+	$hora = $_POST['hora'];
+	$min = $_POST['min'];
+	$fechaEvento = $ano.'-'.$mes.'-'.$dia.'-'.$hora.'-'.$dia;
 	$titulo = $_POST['nomevento'];
 	$numpersonas = $_POST['numpersonas'];
 	$descripcion = $_POST['descripcion'];
 	$lugar = $_POST['lugar'];
 	$provincia = $_POST['provincia'];
-echo "-<".$fechaEvento;
+	$fechaActual = time();
+	$anoActual = date_default_timezone_get();
+	$fechaEvento = $ano."-".$mes."-".$dia." ".$hora.":".$min.":"."00";
+
+		
 	$existeProvincia = $prov->existeProvincia($provincia);
 
-	$valido = esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provincia,$descripcion,$lugar);
+
+	 $valido = esValido($tipo,$existeProvincia, $provincia ,$ano, $mes, $dia, $hora, $min, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
 	
 	if ($valido){
 		$evento = new Evento($conex);
@@ -32,61 +39,74 @@ echo "-<".$fechaEvento;
 	 $conex->desconectar();
 
 
-function esValido($existeProvincia, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
+function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $min, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
 	$valido = true;
 	$camposvacios = false;
 
-	if ($fechaEvento == "" || $titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar=='') {
+	if ($ano == "" ||$mes == "" ||$dia == "" ||$hora == "" ||$provincia == "" ||$min == "" || 
+		$titulo == "" || $numpersonas== "" || $descripcion == "" || $lugar==""  || $provincia == "" || $tipo== "") {
 		$camposvacios = true;
 		$_SESSION['err_campos_evento'] = true;
 		$valido=false;
+		return(false);
 	}
 
-	$dia = substr($fechaEvento, 0, 2);
-	echo($fechaEvento);
-	$mes = substr($fechaEvento, 3, 2);
-	$ano = substr($fechaEvento, 6, 4);
-
-	$diamax=0;
-	//No contemplamos bisiestos ni los años
-
-	if ($mes > 0 && $mes < 13 && strlen($fechaEvento)==10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
-		switch ($mes) {
-			case '2' :
-				$diamax = 28;
-				break;
-
-			case 04 || 06 || 11 || 09 :
-				$diamax = 30;
-				break;
-			case 01 || 03 || 05 || 07 || 08 || 10 || 12 :
-				$diamax = 31;
-				break;
-			default :
-				break;
-		}
-		if ($dia < 1 || $dia > $diamax) {
-			$valido = false;
-		}
-
-	} else {
-		$valido = false;
+	if(!$existeProvincia || $tipos > 0){
+		
+		$valido=false;
+		return(false);
+		
 	}
 	
-	if ($provincia == 0) {
-		$_SESSION['err_campos_evento'] = true;
-		$valido = false;
-	} elseif (!$camposvacios && !$existeProvincia) {
-		$_SESSION['err_campos_evento'] = true;
+
+	if($min < 0 || $min > 60 || $hora < 0 || $hora > 23  ){
+		
 		$valido=false;
+		return(false);
 	}
+	
 
-	if ($valido) {
-		echo("ee");
-		return true;
-	} else {
-		//header("Location:../presentacion/crear_evento.php");
-	}
+	$diamax=1;
+	 
+	 if ($mes < 1 || $mes > 12) {
+	 	
+			$valido=false;
+		 	return (false);
+			
+	 } else {
+		 switch ($mes) {
+			 case '2' :
+				 if (((ano % 4 == 0) && (ano % 100 != 0)) || ((ano % 100 == 0) && (ano % 400 == 0))){//Contemplo año bisiesto.
+				 	$diamax = 29;
+				 }else{
+				 	$diamax = 28;
+				 }
+				 $diamax = 28;
+				 break; 
+			 case 04 || 06 || 11 || 09 :
+				 $diamax = 30;
+				 break;
+			 case 01 || 03 || 05 || 07 || 08 || 10 || 12 :
+				 $diamax = 31;
+				 break;
+			 default :
+				 break;
+		 }
+		 if ($dia < 1 || $dia > $diamax) {
+			 $valido = false;
+			 return (false);
+		 }
+ 
+	 }
+	 
 
-}
+	  if ($valido) {
+		  return true;
+	  } else {
+		  header("Location:../presentacion/crear_evento.php");
+	 }
+
+	
+
+	 }
 ?> 
