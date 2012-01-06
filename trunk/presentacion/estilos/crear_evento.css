@@ -5,19 +5,27 @@
 	color:red;
 }
 
+h2#ev_titulo, input#create {
+	position: relative;
+	left: 70px;
+}
+
+form#evento {
+	display: inline-block;
+	position: relative;
+	right: 50px;
+}
+
 div.filaform {
 	display: table-row;
 }
-select#ev_provincia{
-	width: 400px;
-	margin: 5px 1px 0 0;
-	height: 25px;
+
+select.hora, select.fecha, select#ev_provincia, select#ev_tipos {
+	width: 98%;
+	margin: 5px 0px 0px 5px;
+	height: 20px;
 }
-select#ev_tipos{
-	width: 400px;
-	margin: 5px 1px 0 0;
-	height: 25px;
-}
+
 label {
 	font-weight: bold;
 	display: table-cell;
@@ -26,25 +34,28 @@ label {
 	text-align: right;
 	vertical-align: middle;
 }
-select#dia, #mes, #ano {
-	margin: 5px 1px 0 0;
-	width: 100px;
-	height: 25px;
+
+select.fecha {
+	display: inline-block;
+	width: 32%;
 }
-#hora, #min{
-	height: 25px;
-	
+select.hora {
+	display: inline-block;
+	width: 48.5%;
 }
-input {
-	width: 400px;
+
+input.evento {
+	width: 96%;
 }
+
 input#create{
 	background-color: #418eb6;
 	color: WHITE;
 	font-weight: bold;
 	margin: 10px 0 20px 0;
-	width: 200px;
+	min-width: 200px;
 }
+
 input#create:hover{
 	text-shadow: 0 0 3px SKYBLUE;
 	box-shadow: 0 0 10px SKYBLUE;
@@ -54,7 +65,7 @@ input#create:hover{
 textarea {
 	font: 76% arial, sans-serif;
 	height: 200px;
-	width: 400px;
+	min-width: 400px;
 	font-size: 1em;	
 }
 

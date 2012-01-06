@@ -44,34 +44,34 @@ function tituloWeb($campos){
 
 function tituloEvento($campos){
 	if(empty($campos))
-		$titulo = '<h2>Crear Evento</h2>';
+		$titulo = '<h2 id="ev_titulo">Crear Evento</h2>';
 	else
-		$titulo = sprintf('<h2>Editar "%s"</h2>', $campos['titulo']);
+		$titulo = sprintf('<h2 id="ev_titulo">Editar "%s"</h2>', $campos['titulo']);
 
 	echo $titulo;
 }
 
 function inputTitulo($campos){
 	if(empty($campos))
-		$input = '<input type="text" id="nomevento"  name="nomevento" />';
+		$input = '<input class="evento" type="text" id="nomevento"  name="nomevento" />';
 	else
-		$input = sprintf('<input type="text" id="nomevento"  value="%s" name="nomevento" />', $campos['titulo']);
+		$input = sprintf('<input class="evento" type="text" id="nomevento"  value="%s" name="nomevento" />', $campos['titulo']);
 
 	echo $input;
 }
 
 function inputNumPersonas($campos){
 	if(!empty($campos))
-		$input = sprintf('<input type="text" id="numpersonas" name="numpersonas" value="%s" />', $campos['maxPersonas']);
+		$input = sprintf('<input class="evento" type="text" id="numpersonas" name="numpersonas" value="%s" />', $campos['maxPersonas']);
 	else
-		$input = '<input type="text" id="numpersonas" name="numpersonas"/>'; 
+		$input = '<input class="evento" type="text" id="numpersonas" name="numpersonas"/>'; 
 
 	echo $input;
 }
 
 //TODO: Empezar por la fecha actual
 function selectDia($campos){
-	echo '<select name="dia" id="dia">';
+	echo '<select class="fecha" name="dia" id="dia">';
 
 	$diaAct = -1;
 	if(!empty($campos)){
@@ -111,7 +111,7 @@ function selectMes($campos){
 		'Diciembre'
 	);
 
-	echo '<select name="mes" id="mes">';
+	echo '<select class="fecha" name="mes" id="mes">';
 	if($mesAct != -1){
 		$option = sprintf('<option value=%s> %s </option>\n', $mesAct, $meses[$mesAct]);
 		echo $option;
@@ -127,7 +127,7 @@ function selectMes($campos){
 }
 
 function selectAno($campos){
-	echo '<select name="ano" id="ano">';
+	echo '<select class="fecha" name="ano" id="ano">';
 
 	$anoAct = -1;
 	if(!empty($campos)){
@@ -149,7 +149,7 @@ function selectAno($campos){
 }
 
 function selectHora($campos){
-	echo '<select name="hora" id="hora">';
+	echo '<select class="hora" name="hora" id="hora">';
 
 	$horaAct = -1;
 	if(!empty($campos)){
@@ -175,7 +175,7 @@ function selectHora($campos){
 }
 
 function selectMinutos($campos){
-	echo '<select name="min" id="min">';
+	echo '<select class="hora" name="min" id="min">';
 
 	$minutosAct = -1;
 	if(!empty($campos)){
@@ -237,9 +237,9 @@ function selectTipos($campos, $tipo,  $nomTipo){
 
 function inputLugar($campos){
 	if(!empty($campos))
-		$input = sprintf('<input type="text" id="lugar" name="lugar" value = "%s"/>', $campos['lugar']);
+		$input = sprintf('<input class="evento" type="text" id="lugar" name="lugar" value = "%s"/>', $campos['lugar']);
 	else
-		$input = '<input type="text" id="lugar" name="lugar"/>';
+		$input = '<input class="evento" type="text" id="lugar" name="lugar"/>';
 
 	echo $input;
 }
@@ -280,17 +280,16 @@ function inputBoton($campos){
 		<?php include ("head.php"); ?>
 
 		<div class="contenido">
-			
-		<?php
-			tituloEvento($campos);
+			<?php
+				tituloEvento($campos);
 
-			if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
-				echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
-				$_SESSION['err_campos_evento'] = false;
-			}
-		?>
-			<div class="form">
-				<form name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
+				if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
+					echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
+					$_SESSION['err_campos_evento'] = false;
+				}
+			?>
+
+			<form id='evento' name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
 					<div class="filaform">
 						<label for="nomevento"> T&iacute;tulo</label>
 						<?php inputTitulo($campos); ?>
@@ -306,6 +305,12 @@ function inputBoton($campos){
 							selectDia($campos);
 							selectMes($campos);
 							selectAno($campos);
+						?>
+					</div>
+
+					<div class='filaform'>
+						<label for="fechaevento">Hora del Evento</label>
+						<?php
 							selectHora($campos);
 							selectMinutos($campos);
 						?>
@@ -328,7 +333,6 @@ function inputBoton($campos){
 					</div>
 					<?php inputBoton($campos); ?>
 			</form>
-			</div>
 		</div>
 		<?php include ("footer.php"); ?>
 	</body>
