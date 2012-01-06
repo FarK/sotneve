@@ -26,13 +26,13 @@ $tipo = new Tipo($conexion);
 			</select>
 		</div>
 		<div class='opcion'>
-			<select name="tipo" id="tipo">
+			<select class = 'selbusc' name="tipo" id="tipo">
 				<option value="0">Elige</option>
 				
 				<?php $tipo -> getArbolTipos();?>
 				
 			</select>
+			<input type="image" id="search_icon" src="recursos/imagenes/search.png" alt="Buscar eventos"/>
 		</div>
-		<input type="image" id="search_icon" src="recursos/imagenes/search.png" alt="Buscar eventos"/>
 	</div>
 </form>
