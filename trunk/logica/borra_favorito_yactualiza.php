@@ -17,6 +17,7 @@ foreach($favoritos as $fav){
 	$echo = sprintf("
 			<div class='favorito'>
 				<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
+				<span class='espacioBlanco'></span>
 				<form class='favorito' action='javascript:borraFavorito(%s)'>
 					<input id='delete' type='image' src='recursos/imagenes/delete.png'></input>
 				</form>

@@ -34,15 +34,17 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 					$echo = sprintf("
 					<div class='favorito'>
 						<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
+						<span class='espacioBlanco'></span>
 						<form class='favorito' action='javascript:borraFavorito(%s)'>
 							<input id='delete' type='image' src='recursos/imagenes/delete.png'></input>
 						</form>
-				</div>", $fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
+					</div>",
+					$fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
 					echo $echo;
 			}
 		?>
+		</div>
 			
-	</div>
 	</div>
 		<?php include("footer.php"); ?>
 	</body>
