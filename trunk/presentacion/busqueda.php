@@ -5,6 +5,9 @@ include_once ('../datos/conexion.php');
 include_once ('../datos/tipo.php');
 include_once ('../datos/provincia.php');
 
+//Para evitar warning con el timezone
+date_default_timezone_set('Europe/Madrid');
+
 $idprovincia = $_GET["provincia"];
 $idtipo = $_GET["tipo"];
 
