@@ -1,15 +1,10 @@
-DROP DATABASE IF EXISTS sotneve;
-CREATE DATABASE IF NOT EXISTS sotneve
-	COLLATE utf8_spanish_ci;
-
-USE sotneve;
 -- phpMyAdmin SQL Dump
--- version 3.4.8
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-01-2012 a las 11:16:17
--- Versión del servidor: 5.5.18
+-- Tiempo de generación: 07-01-2012 a las 15:56:55
+-- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -43,10 +38,25 @@ CREATE TABLE IF NOT EXISTS `afiliaciones` (
 --
 
 INSERT INTO `afiliaciones` (`idUsuario`, `idEvento`) VALUES
-(1, 18),
-(4, 19),
-(3, 20),
-(3, 22);
+(20, 24),
+(21, 24),
+(17, 25),
+(20, 25),
+(21, 25),
+(18, 26),
+(20, 26),
+(21, 27),
+(19, 28),
+(21, 28),
+(18, 29),
+(19, 29),
+(19, 30),
+(19, 31),
+(17, 32),
+(17, 33),
+(18, 34),
+(18, 35),
+(20, 35);
 
 -- --------------------------------------------------------
 
@@ -69,17 +79,25 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   KEY `idProvincia` (`idProvincia`),
   KEY `propietario` (`propietario`),
   KEY `idTipo` (`idTipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=36 ;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
 INSERT INTO `eventos` (`idEvento`, `idTipo`, `titulo`, `maxPersonas`, `fechaCreacion`, `descripcion`, `fechaEvento`, `idProvincia`, `lugar`, `propietario`) VALUES
-(18, 4, 'Partidito de tenis', 4, '2012-01-01 11:02:01', 'Un partidito de tenis amateur', '2012-01-07 16:00:00', 41, 'La pista de tenis del SADUS', 1),
-(19, 7, 'Discoteca Bandaway', 666, '2012-01-02 16:23:50', 'Vamos de fiesta!!', '2012-01-13 23:30:00', 14, 'Discoteca Bandaway', 4),
-(20, 5, 'Partido de ping-pong', 2, '2012-01-01 00:00:00', 'Partido de ping-pong profesional', NULL, 17, 'Donde cristo perdió el mechero y luego a la derech', 3),
-(22, 1, 'Escalada', 2, '2012-01-01 00:00:00', 'Escalar el Everest dos veces y merendola en el mirador.', NULL, 24, 'Pico monte Everest', 3);
+(24, 2, 'Partida de ping pong', 2, '2012-01-07 13:13:58', 'Quiero echar una partida al pingpong, nivel medio', '2012-02-05 11:00:00', 41, 'Calle falsa numero 123', 20),
+(25, 2, 'Ir a ver Saw 8', 8, '2012-01-07 13:16:07', 'Quiero ver Saw 8 con personas que le gusten este tipo de peliculas', '2012-02-10 00:00:00', 41, 'Nervion', 20),
+(26, 2, 'Partido de futboll!!!', 12, '2012-01-07 13:17:55', 'Partido 6 contra 6', '2012-02-15 19:00:00', 41, 'Campo del Valle', 20),
+(27, 2, 'Padel en parejas', 4, '2012-01-07 13:21:38', 'Quiero echar un partido por parejas', '2012-02-15 20:00:00', 41, 'Calle mentira n231', 21),
+(28, 2, 'Partido de futbol ya!', 10, '2012-01-07 13:23:44', 'Partido de 5 vs 5 hay que poner 1,20€ cada uno para el alquiler de la pista', '2012-02-15 20:00:00', 41, 'Pistas de cavaleri', 21),
+(29, 2, 'me gustaria jugar al padel o al tenis', 2, '2012-01-07 13:28:24', 'Me gustaria jugar al padel o al tenis, mi nivel es bajo', '2012-02-19 00:00:00', 41, 'SATOS Sport', 19),
+(30, 2, 'Ver alguna pelicula', 4, '2012-01-07 13:37:39', 'Me gustaria ir al cine a ver una pelicula', '2012-02-05 00:00:00', 41, 'Los Arcos', 19),
+(31, 2, 'natacion o buceo', 4, '2012-01-07 13:49:33', 'Algo de deporte en el mar, quedariamos en sevilla en plaza de armas para echar el dia, vamos en mi coche', '2012-02-11 09:00:00', 41, 'Playa la costilla', 19),
+(32, 2, 'Baloncesto', 10, '2012-01-07 14:28:54', 'jugar al baloncesto', '2012-02-12 00:00:00', 41, 'Polideportivo San Pablo', 17),
+(33, 2, 'Ir al cine', 4, '2012-01-07 14:39:09', 'Quiero ver alguna pelicula de comedia', '2012-02-19 00:00:00', 41, 'PLaza de Armas', 17),
+(34, 2, 'Remar por el Guadalquivir', 4, '2012-01-07 14:41:32', 'vamos a remar un poco!', '2012-02-14 19:00:00', 41, 'Rio', 18),
+(35, 2, 'remo o buceo', 6, '2012-01-07 14:42:30', 'vamos a remar o a bucear!!', '2012-02-18 19:00:00', 41, 'Cualquier sitio', 18);
 
 -- --------------------------------------------------------
 
@@ -99,16 +117,11 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
 --
 
 INSERT INTO `favoritos` (`idUsuario1`, `idUsuario2`) VALUES
-(2, 1),
-(1, 2),
-(3, 2),
-(1, 3),
-(2, 3),
-(1, 4),
-(2, 4),
-(3, 4),
-(1, 5),
-(1, 6);
+(20, 18),
+(18, 20),
+(19, 20),
+(19, 21),
+(20, 21);
 
 -- --------------------------------------------------------
 
@@ -193,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `tipos` (
   `externo` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idTipo`),
   KEY `idPadre` (`idPadre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `tipos`
@@ -204,9 +217,21 @@ INSERT INTO `tipos` (`idTipo`, `idPadre`, `nombre`, `externo`) VALUES
 (2, NULL, 'Ocio', 0),
 (3, 1, 'Raqueta', 0),
 (4, 3, 'Tenis', 0),
-(5, 3, 'Ping-Pong', 0),
+(5, 4, 'Tenis de mesa(Ping Pong)', 0),
 (7, 2, 'Discoteca', 0),
-(8, 2, 'ba$ur4', 1);
+(8, 3, 'Padel', 1),
+(9, NULL, 'Espectaculo', 0),
+(10, 9, 'Cine', 0),
+(11, 9, 'Teatro', 0),
+(12, 10, 'Terror', 1),
+(13, 10, 'Comedia', 1),
+(14, 1, 'Futbol', 0),
+(15, 1, 'Baloncesto', 0),
+(16, 1, 'Golf', 0),
+(17, NULL, 'Deportes acuaticos', 0),
+(18, 17, 'Natacion', 0),
+(19, 17, 'Remo', 0),
+(20, 17, 'Buceo', 0);
 
 -- --------------------------------------------------------
 
@@ -228,27 +253,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`),
   KEY `idProvincia` (`idProvincia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `fechaNac`, `sexo`, `email`, `alias`, `pass`, `nombre`, `apellidos`, `idProvincia`, `visibilidad`) VALUES
-(1, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'Rafaesp', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'Rafael', 'Espillaque Espinosa', 2, 1),
-(2, '2000-01-01', 0, 'asd@asd.com', 'kiki', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carmen', 'Delgado', 2, 31),
-(3, '1990-02-11', 1, 'xusty_alex@hotmail.com', 'alexmacan', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Ale', 'Molina', 1, 0),
-(4, '1980-12-11', 1, 'zp_y_yo@gaymail.com', 'rajoy', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Mari4no', 'Rajoy', 1, 0),
-(5, '2010-11-11', 1, 'email1@dominio.com', 'fargueras', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre1', 'apellidos1', 30, 0),
-(6, '1990-02-11', 1, 'email2@dominio.com', 'rafaé', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre2', 'apellidos2', 1, 0),
-(7, '1989-12-10', 0, 'email3@dominio.com', 'vaquilla', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre3', 'apellidos3', 30, 0),
-(8, '1990-10-19', 0, 'email4@dominio.com', 'antonio', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre4', 'apellidos4', 2, 0),
-(9, '1990-10-19', 1, 'email5@dominio.com', 'bendi', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre5', 'apellidos5', 1, 0),
-(10, '1990-10-19', 1, 'email6@dominio.com', 'sandra', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre7', 'apellidos6', 2, 0),
-(11, '1989-12-10', 1, 'email8@dominio.com', 'alias8', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre8', 'apellidos8', 2, 0),
-(12, '1990-11-11', 1, 'email9@dominio.com', 'alias9', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre9', 'apellidos9', 30, 0),
-(14, '1989-12-10', 1, 'email10@dominio.com', 'alias10', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre10', 'apellidos10', 1, 0),
-(15, '1989-12-10', 1, 'email11@dominio.com', 'alias11', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'nombre11', 'apellidos11', 1, 0);
+(17, '1990-10-19', 1, 'rafaespillaque@gmail.com', 'rafaesp', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Rafa', 'Espillaque', 41, 0),
+(18, '1990-05-24', 1, 'fark.zano@gmail.com', 'fark.zano', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Carlos', 'Falguera', 41, 0),
+(19, '1990-07-09', 1, 'antrodjim@gmail.com', 'sater', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Antonio', 'Rodriguez', 41, 0),
+(20, '1990-02-11', 1, 'xusty_alex@hotmail.com', 'alexmacan', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Alejandro', 'Molina', 41, 0),
+(21, '1989-12-10', 1, 'ervaka@gmail.com', 'ervaka344', '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8', 'Jesus', 'Vacas', 41, 0);
 
 -- --------------------------------------------------------
 
@@ -281,9 +297,9 @@ ALTER TABLE `afiliaciones`
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_8` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_6` FOREIGN KEY (`propietario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `eventos_ibfk_7` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `eventos_ibfk_7` FOREIGN KEY (`idProvincia`) REFERENCES `provincias` (`idProvincia`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_8` FOREIGN KEY (`idTipo`) REFERENCES `tipos` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `favoritos`
