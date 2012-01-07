@@ -6,10 +6,20 @@ include_once ("../datos/provincia.php");
 
 $conex = new Conexion();
 $prov = new Provincia($conex);
+$usuario = new Usuario($conex, $_SESSION['idUsuario']);
+$usuario -> prepCampo('pass');
+$usuario -> prepCampo('email');
+
+
+$camposUsuario = $usuario -> consultarCampos();
+$passUsuario = $camposUsuario['pass'];
+$emailUsuario = $camposUsuario['email'];
 
 $nombre = $_POST['nombre'];
 $apellidos = $_POST['apellidos'];
-$fechaNac = $_POST['fechanac'];
+$dia = $_POST['dia'];
+$mes = $_POST['mes'];
+$ano = $_POST['ano'];
 $email = $_POST['email'];
 $provincia = $_POST['provincia'];
 $sexo = $_POST['sexo'];
@@ -17,59 +27,54 @@ $passActual = $_POST['contrasenaactual'];
 $passNueva = $_POST['contrasena'];
 $passNueva2 = $_POST['recontrasena'];
 
-//TODO Obtener y actualizar checkboxes
-$cbNombre = $_POST['checkNombre'];
-$cbApellidos = $_POST['checkApellidos'];
-$cbFechaNac = $_POST['checkFechaNac'];
-$cbEmail = $_POST['checkEmail'];
-$cbProvincia = $_POST['checkProvincia'];
-$cbSexo = $_POST['checkSexo'];
+$cbVisib = array('cbNombre' => $_POST['check' . $NOMBRE], 'cbApellidos' => $_POST['check' . $APELLIDOS], 'cbFechaNac' => $_POST['check' . $FECHA_NAC], 'cbEmail' => $_POST['check' . $EMAIL], 'cbProvincia' => $_POST['check' . $PROVINCIA], 'cbSexo' => $_POST['check' . $SEXO], );
+$visibilidad = visibilidad($cbVisib);
+$valido = esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2);
 
-$existeProvincia = $prov -> existeProvincia($provincia);
-$visibilidad = visibilidad();
-$valido = esValido($nombre, $apellidos, $fechaNac, $email, $passActual, $passNueva, $passNueva2);
-//TODO Comprobar provincia, y checkboxes
-if ($valido) {
-
-	$id = $_SESSION['idUsuario'];
-	//TODO actualiza usuario con SESSION->idUsuario y valores del perfil
-
+if ($valido && $prov -> existeProvincia($provincia) && (!$usuario->existeEmail($email) || $email==$emailUsuario)) {
+	$fechaNac = $ano . '-' . $mes . '-' . $dia;
+	if ($passNueva == '') {
+		$usuario -> actualizarUsuarioSinPass($fechaNac, (int)$sexo, $email, $nombre, $apellidos, $provincia, $visibilidad);
+	} else
+		$usuario -> actualizarUsuarioConPass($fechaNac, (int)$sexo, $email, $passNueva, $nombre, $apellidos, $provincia, $visibilidad);
 	header("Location:../presentacion/mi_perfil.php");
+
 }
 $conex -> desconectar();
 
-function visibilidad() {
-	if ($cbNombre)
-		$nombreVisible = $NOMBRE;
+function visibilidad($cbVisib) {
+	if ($cbVisib['cbNombre'])
+		$nombreVisible = $GLOBALS['NOMBRE'];
 	else
 		$nombreVisible = 0;
-	if ($cbApellidos)
-		$apellidosVisible = $APELLIDOS;
+	if ($cbVisib['cbApellidos'])
+		$apellidosVisible = $GLOBALS['APELLIDOS'];
 	else
 		$apellidosVisible = 0;
-	if ($cbFechaNac)
-		$fechaNacVisible = $FECHANAC;
+	if ($cbVisib['cbFechaNac'])
+		$fechaNacVisible = $GLOBALS['FECHA_NAC'];
 	else
 		$fechaNacVisible = 0;
-	if ($cbEmail)
-		$emailVisible = $EMAIL;
+	if ($cbVisib['cbEmail'])
+		$emailVisible = $GLOBALS['EMAIL'];
 	else
 		$emailVisible = 0;
-	if ($cbProvincia)
-		$provinciaVisible = $PROVINCIA;
+	if ($cbVisib['cbProvincia'])
+		$provinciaVisible = $GLOBALS['PROVINCIA'];
 	else
 		$provinciaVisible = 0;
-	if ($cbSexo)
-		$sexoVisible = $SEXO;
+	if ($cbVisib['cbSexo'])
+		$sexoVisible = $GLOBALS['SEXO'];
 	else
 		$sexoVisible = 0;
 	return $nombreVisible | $apellidosVisible | $fechaNacVisible | $emailVisible | $provinciaVisible | $sexoVisible;
 }
 
-function esValido($nombre, $apellidos, $fechaNac, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2) {
+function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2) {
 	$valido = true;
+
 	/******** COMPROBACIÓN CAMPOS VACÍOS *********/
-	if ($nombre == "" || $apellidos == "" || $fechaNac == "" || $email == "" || $provincia == '' || $sexo == '') {
+	if ($nombre == "" || $apellidos == "" || $dia == "" || $mes == "" || $ano == "" || $email == "" || $provincia == "" || $sexo == "") {
 		$camposvacios = true;
 		$_SESSION['err_campos_perfil'] = true;
 		$valido = false;
@@ -77,7 +82,7 @@ function esValido($nombre, $apellidos, $fechaNac, $email, $provincia, $sexo, $pa
 	/******** FIN COMPROBACIÓN CAMPOS VACÍOS *********/
 
 	/******** COMPROBACIÓN NOMBRE/APELLIDOS *********/
-	$patronNomApe = "/^[[[:space:]][[:alpha:]]]+$/";
+	$patronNomApe = "/^([[:space:]][[:alpha:]]|[[:alpha:]])+$/";
 	if (!preg_match($patronNomApe, $nombre) || !preg_match($patronNomApe, $apellidos)) {
 		$valido = false;
 	} elseif (strlen($nombre) > 30 || strlen($apellidos) > 60) {
@@ -86,52 +91,45 @@ function esValido($nombre, $apellidos, $fechaNac, $email, $provincia, $sexo, $pa
 	/******** FIN COMPROBACIÓN NOMBRE/APELLIDOS *********/
 
 	/******** COMPROBACIÓN FECHA NACIMIENTO *********/
-	$patronFecha = "/^([[:digit:]]{2}\/){2}[[:digit:]]{4}$/";
-
-	if (!preg_match($patronFecha, $fechaNac)) {
+	
+	$diamax = 0;
+	if ($mes < 1 && $mes > 12) {
 		$valido = false;
-	} else {
-
-		$dia = substr($fechaNac, 0, 2);
-		$mes = substr($fechaNac, 3, 2);
-		$ano = substr($fechaNac, 6, 4);
-
-		$diamax = 0;
-
-		if ($mes > 0 && $mes < 13 && strlen($fechaEvento) == 10) {
-			//La fecha es correcta (No contemplamos bisiestos ni los años)
-			switch ($mes) {
-				case '2' :
-					$diamax = 28;
-					break;
-				case 04 || 06 || 11 || 09 :
-					$diamax = 30;
-					break;
-				case 01 || 03 || 05 || 07 || 08 || 10 || 12 :
-					$diamax = 31;
-					break;
-				default :
-					break;
-			}
-			if ($dia < 1 || $dia > $diamax) {
+	} else {//Comprobación de que la fecha no es posterior a la fecha actua
+		if ($ano > date("Y")) {
+			$valido = false;
+		} else
+		if ($ano == date("Y")) {
+			if ($mes > date("m")) {
 				$valido = false;
-			}
-			//Comprobación de que la fecha no es posterior a la fecha actual
-			if ($ano > date("Y")) {
-				$valido = false;
-			} elseif ($ano == date("Y")) {
-				if ($mes > date("m")) {
+			
+			} elseif ($mes == date("m")) {
+				if ($dia > date("d")) {
 					$valido = false;
-				} elseif ($mes == date("m")) {
-					if ($dia > date("d")) {
-						$valido = false;
-					}
 				}
 			}
-		} else {
-			$valido = false;
 		}
-	}
+		switch ($mes) {
+			case '2' :
+				if ((($ano % 4 == 0) && ($ano % 100 != 0)) || (($ano % 100 == 0) && ($ano % 400 == 0))) {//Contemplo año bisiesto.
+					$diamax = 29;
+				} else {
+					$diamax = 28;
+				}
+				break;
+			case 04 || 06 || 11 || 09 :
+				$diamax = 30;
+				break;
+			case 01 || 03 || 05 || 07 || 08 || 10 || 12 :
+				$diamax = 31;
+				break;
+		}
+		if ($dia < 1 || $dia > $diamax) {
+			$valido = false;
+		 }
+	
+	 }
+
 	/******* FIN COMPROBACIÓN FECHA NACIMIENTO *******/
 
 	/******* COMPROBACIÓN EMAIL *******/
@@ -143,14 +141,24 @@ function esValido($nombre, $apellidos, $fechaNac, $email, $provincia, $sexo, $pa
 
 	/******* COMPROBACIÓN CONTRASEÑAS *******/
 
-	// TODO Comprobar contraseñas
+	if ($passNueva != "") {
+		if (strlen($passNueva) < 6) {
+			$valido = false;
+		} elseif (!strcmp($passNueva, $passNueva2)) {
+			$valido = false;
+		} elseif (!strcmp($passUsuario, $passActual)) {
+			$valido = false;
+		}
+	}
 
 	/******* FIN COMPROBACIÓN CONTRASEÑAS *******/
 
 	if ($valido) {
 		return true;
+		
 	} else {
-		header("Location:../presentacion/mi_perfil.php");
+		//header("Location:../presentacion/mi_perfil.php");
+		echo "no valido : $dia-$mes-$ano";
 	}
 
 }

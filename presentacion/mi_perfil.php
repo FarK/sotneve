@@ -13,6 +13,7 @@ $provincia = new Provincia($conexion);
 $usuario -> prepCampo('nombre');
 $usuario -> prepCampo('apellidos');
 $usuario -> prepCampo('email');
+$usuario -> prepCampo('sexo');
 $usuario -> prepCampo('fechaNac');
 $usuario -> prepCampo('idProvincia');
 $usuario -> prepCampo('visibilidad');
@@ -157,7 +158,7 @@ function creaCheckBox($campos, $campo) {
 				<select  class="info_input" name="provincia" id="provincia">
 					<?php
 					//Ponemos la provincia actual como primera opcion del select
-					$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], $provUsuario['nombre']);
+					$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], htmlentities($provUsuario['nombre']));
 					echo $option;
 
 					//Ponemos todas las demás provincias
@@ -177,10 +178,10 @@ function creaCheckBox($campos, $campo) {
 					<?php
 					if ($campos['sexo'] == 1) {
 						echo "<option value='1'>Hombre</option>
-<option value='0'>Mujer</option>";
+						<option value='0'>Mujer</option>";
 					} else {
 						echo "<option value='0'>Mujer</option>
-<option value='1'>Hombre</option>";
+						<option value='1'>Hombre</option>";
 					}
 					?>
 				</select>
