@@ -95,7 +95,7 @@ class Evento extends Tabla{
 		return $this->consultar($query);
 	}
 	
-	public function inscribeUsuario($idUser ,$idEvento){
+	public function inscribeUsuario($idUser){
 		$arg_list = func_get_args();
 		if (func_num_args() == 2){
 			//Inicializamos el array de claves primarias y el nombre de la tabla
