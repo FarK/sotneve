@@ -83,7 +83,12 @@ class Evento extends Tabla{
 		return $this->consultar($query);
 	}
 	
-	public function inscribeUsuario($idUser){
+	public function inscribeUsuario($idUser ,$idEvento){
+		$arg_list = func_get_args();
+		if (func_num_args() == 2){
+			//Inicializamos el array de claves primarias y el nombre de la tabla
+			$this->pks = array('idEvento'=>$arg_list[1]);
+		}
 		 $query = sprintf("INSERT INTO afiliaciones (idUsuario, idEvento) VALUES ('%s', '%s')", $idUser, $this->pks['idEvento']);
 		 return $this->consultar($query);
 	}
@@ -102,6 +107,21 @@ class Evento extends Tabla{
 		}
 		return false;
 	}
+
+	public function esPropietario($idUsuario){
+		
+		$query = sprintf("SELECT propietario FROM eventos WHERE idEvento = '%s'", $this->pks['idEvento'] );
+		$resultado = $this->consultar($query);
+		if(!empty($resultado) && $idUsuario==$resultado[0]['propietario']){
+			return true;
+		} else{
+			return false;
+		}
+			
+		
+	}
+
+
 	
 }
 /**********************
