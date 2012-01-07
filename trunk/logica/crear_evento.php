@@ -51,7 +51,7 @@ function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $m
 		return(false);
 	}
 
-	if(!$existeProvincia || $tipos > 0){
+	if(!$existeProvincia || $tipo < 1){
 		
 		$valido=false;
 		return(false);
