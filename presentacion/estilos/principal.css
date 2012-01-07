@@ -17,18 +17,18 @@ div.listaLateral {
 }
 
 div#listaFavoritos {
-	width:15%;
+	width:150px;
 }
 
 div#listaEventos{
-	width:25%;
+	width: 225px;
 }
 
 div#listaEventosProvincia {
 	display: table-cell;
 	border-left: 10px;
 	border-right: 10px;
-	width:60%;
+	width: 540px;
 }
 
 div#listas, div.lista, div#listaEventosProvincia {
