@@ -57,7 +57,12 @@ function creaCheckBox($campos, $campo) {
 		include ("head.php");
 		?>
 		<h1>Edita tu perfil</h1>
-		<span id="errores">Ha ocurrido algún error.</span>
+		<?php
+		if(isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']){
+			echo '<span id="errores">Ha ocurrido algún error.</span>';
+			$_SESSION['err_campos_perfil'] = false;
+		}
+		?>
 		<form name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
 			<?php
 			if (isset($_GET['err_email'])) {

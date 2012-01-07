@@ -20,7 +20,7 @@
 		//Es incorrecta
 		//Error en SESSION
 		$_SESSION['err_pass'] = true;
-		header('Location:index.php');
+		header('Location:../index.php');
 	}
 	
 	$conex->desconectar();	
