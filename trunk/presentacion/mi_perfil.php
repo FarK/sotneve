@@ -10,19 +10,69 @@ $usuario = new Usuario($conexion, $_SESSION['idUsuario']);
 $provincia = new Provincia($conexion);
 
 //Hacemos las consultas
-$usuario->prepCampo('nombre');
-$usuario->prepCampo('apellidos');
-$usuario->prepCampo('email');
-$usuario->prepCampo('fechaNac');
-$usuario->prepCampo('idProvincia');
-$usuario->prepCampo('visibilidad');
-$campos = $usuario->consultarCampos();
-$provUsuario = $usuario->getProvincia();
-$provincias = $provincia->getProvincias();
+$usuario -> prepCampo('nombre');
+$usuario -> prepCampo('apellidos');
+$usuario -> prepCampo('email');
+$usuario -> prepCampo('fechaNac');
+$usuario -> prepCampo('idProvincia');
+$usuario -> prepCampo('visibilidad');
+$campos = $usuario -> consultarCampos();
+$provUsuario = $usuario -> getProvincia();
+$provincias = $provincia -> getProvincias();
 
-$conexion->desconectar();
+$conexion -> desconectar();
 
-//Prepara la fehca a partir de la cadena que recibe
+//Prepara la fecha a partir de la cadena que recibe
+function selectDia($campos) {
+	echo '<select class="fecha" name="dia" id="dia">';
+	$diaAct = (int)substr($campos['fechaNac'], 8, 2);
+	$option = sprintf('<option value="%s">%s</option>', $diaAct, $diaAct);
+	echo $option;
+	echo '<option disabled="true">----</option>';
+	for ($i = 1; $i < 32; $i++) {
+		if ($diaAct != $i){
+			$option = sprintf('<option value="%s">%s</option>', $i, $i);
+		echo $option;
+		}
+	}
+	echo '</select>';
+}
+
+function selectMes($campos) {
+
+	$mesAct = (int)substr($campos['fechaNac'], 5, 2);
+	$meses = array(1 => 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+
+	echo '<select class="fecha" name="mes" id="mes">';
+	$option = sprintf('<option value=%s> %s </option>\n', $mesAct, $meses[$mesAct]);
+	echo $option;
+	echo '<option disabled="true">-----------</option>';
+	foreach($meses as $index=>$mes){
+		if($mesAct != $index){
+			$option = sprintf('<option value=%s> %s </option>\n', $index, $mes);
+			echo $option;
+		}
+	}
+	echo '</select>';
+}
+
+function selectAno($campos) {
+	echo '<select class="fecha" name="ano" id="ano">';
+	$anoAct = (int)substr($campos['fechaNac'], 0, 4);
+	$option = sprintf('<option value="%s">%s</option>', $anoAct, $anoAct);
+	echo $option;
+	echo '<option disabled="true">--------</option>';
+
+	for ($i = 0; $i < 100; $i++) {
+		if ($anoAct != (date("Y") - $i)) {
+			$ano = date("Y") - $i;
+			$option = sprintf('<option value="%s">%s</option>', $ano, $ano);
+			echo $option;
+		}
+	}
+	echo '</select>';
+}
+
 function fechaNac($fecha) {
 	$ano = substr($fecha, 0, 4);
 	$mes = substr($fecha, 5, 2);
@@ -34,10 +84,10 @@ function fechaNac($fecha) {
 function creaCheckBox($campos, $campo) {
 	$visible = "";
 	$check = "check";
-	if($campos['visibilidad'] & $campo)
+	if ($campos['visibilidad'] & $campo)
 		$visible = "checked=''";
 
-	$linea = sprintf("<input type='checkbox' class='visibilitybox' id='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
+	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
 	echo $linea;
 }
 ?>
@@ -48,7 +98,6 @@ function creaCheckBox($campos, $campo) {
 		<meta charset="utf-8"/>
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="estilos/editausuario.js"></script>
-
 		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
 	</head>
 	<body>
@@ -58,7 +107,7 @@ function creaCheckBox($campos, $campo) {
 		?>
 		<h1>Edita tu perfil</h1>
 		<?php
-		if(isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']){
+		if (isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']) {
 			echo '<span id="errores">Ha ocurrido algún error.</span>';
 			$_SESSION['err_campos_perfil'] = false;
 		}
@@ -79,58 +128,63 @@ function creaCheckBox($campos, $campo) {
 				<label for="visible" class="etiqueta">¿Es visible?</label>
 			</div>
 			<div class="divf">
-				<label for="sexo" class="etiqueta">Sexo:</label>
-				<select  name="sexo" id="sexo" class="info_input">
-					<?php
-					if ($campos['sexo'] == 1) {
-						echo "<option value='1'>Hombre</option>
-								<option value='0'>Mujer</option>";
-					} else {
-						echo "<option value='0'>Mujer</option>
-								<option value='1'>Hombre</option>";
-					}
-					?>
-				</select>
-				<?php creaCheckBox($campos, $SEXO);?>
-				
-			</div>
-			<div class="divf">
 				<label class="etiqueta" for="nombre">Nombre:</label>
 				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
-				<?php creaCheckBox($campos, $NOMBRE);?>
+				<?php      creaCheckBox($campos, $NOMBRE);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="apellidos">Apellidos:</label>
 				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
-				<?php creaCheckBox($campos, $APELLIDOS);?>
+				<?php      creaCheckBox($campos, $APELLIDOS);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="email">Email:</label>
 				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" value = "<?php echo $campos['email'];?>"/>
-				<?php creaCheckBox($campos, $EMAIL);?>
+				<?php      creaCheckBox($campos, $EMAIL);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta">Fecha de nacimiento:</label>
-				<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>
-				<?php creaCheckBox($campos, $FECHA_NAC);?>
+				<?php
+				selectDia($campos);
+				selectMes($campos);
+				selectAno($campos);
+				creaCheckBox($campos, $FECHA_NAC);
+				?>
+				<!--<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>-->
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="provincia">Provincia:</label>
 				<select  class="info_input" name="provincia" id="provincia">
 					<?php
-						//Ponemos la provincia actual como primera opcion del select
-						$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], $provUsuario['nombre']);
-						echo $option;
+					//Ponemos la provincia actual como primera opcion del select
+					$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], $provUsuario['nombre']);
+					echo $option;
 
-						//Ponemos todas las demás provincias
-						foreach($provincias as $idProv=>$prov){
-							if($idProv != $provUsuario['idProvincia']){	//No imprimimos 2 veces la misma provincia
-								$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
-								echo $option;
-							}
+					//Ponemos todas las demás provincias
+					foreach ($provincias as $idProv => $prov) {
+						if ($idProv != $provUsuario['idProvincia']) {//No imprimimos 2 veces la misma provincia
+							$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
+							echo $option;
 						}
+					}
 					?>
 				</select>
+				<?php      creaCheckBox($campos, $PROVINCIA);?>
+			</div>
+			<div class="divf">
+				<label for="sexo" class="etiqueta">Sexo:</label>
+				<select  name="sexo" id="sexo" class="info_input">
+					<?php
+					if ($campos['sexo'] == 1) {
+						echo "<option value='1'>Hombre</option>
+<option value='0'>Mujer</option>";
+					} else {
+						echo "<option value='0'>Mujer</option>
+<option value='1'>Hombre</option>";
+					}
+					?>
+				</select>
+				<?php      creaCheckBox($campos, $SEXO);?>
 			</div>
 			<div class="divf">
 				<label class="etiqueta" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
@@ -144,9 +198,7 @@ function creaCheckBox($campos, $campo) {
 				<label class="etiqueta" for="recontrasena">Repite contrase&ntilde;a</label>
 				<input type="password" class="info_input" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 			</div>
-			<input type="submit" id="registrate">
-				Cambiar texto de Enviar por Guardar en el CSS
-			</input>
+			<input type="submit" id="registrate" value="Guardar cambios"/>
 		</form>
 		<?php
 		include ("footer.php");
