@@ -32,11 +32,15 @@ $tipoString = $auxTipo['nombre'];
 
 $eventoObj = new Evento($conexion);
 
-if ($idtipo == 0) {//Si es 0 se muestran todos
+if ($idtipo == 0 && $idprovincia == 0)
+	$eventos = $eventoObj -> getEventosVigentes();
+elseif ($idtipo == 0 && $idprovincia != 0) 
 	$eventos = $eventoObj -> getEventosProvinciaVigentes($idprovincia);
-} else {
+elseif ($idtipo !=0  && $idprovincia == 0) 
+	$eventos = $eventoObj -> getEventosTipoVigentes($idtipo);
+elseif ($idtipo != 0 && $idprovincia != 0) 
 	$eventos = $eventoObj -> getEventosProvinciaTipoVigentes($idprovincia, $idtipo);
-}
+
 $enlaces = array();
 		foreach ($eventos as $evento) {
 			$idEvento = $evento['idEvento'];
@@ -88,7 +92,7 @@ $enlaces = array();
 		}
 		?>
 		<?php
-			include ("../presentacion/footer.php");
- ?>
+		include ("../presentacion/footer.php");
+		?>
 		</body>
-		</html>
+</html>
