@@ -75,8 +75,8 @@ function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $m
 			
 	 } else {
 		 switch ($mes) {
-			 case '2' :
-				 if (((ano % 4 == 0) && (ano % 100 != 0)) || ((ano % 100 == 0) && (ano % 400 == 0))){//Contemplo año bisiesto.
+			 case 2 :
+				 if ((($ano % 4 == 0) && ($ano % 100 != 0)) || (($ano % 100 == 0) && ($ano % 400 == 0))){//Contemplo año bisiesto.
 				 	$diamax = 29;
 				 }else{
 				 	$diamax = 28;
