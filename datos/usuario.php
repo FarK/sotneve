@@ -104,6 +104,20 @@ class Usuario extends Tabla{
 			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		return $this -> consultar($query);
 	}
+	public function actualizarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, $visibilidad) {
+		if (func_num_args() == 9){
+			$query = sprintf("UPDATE usuarios SET fechaNac='%s', sexo='%s', email='%s', alias='%s', 
+			pass=SHA2('%s',256), nombre='%s', apellidos='%s', idProvincia='%s', visibilidad='%s' 
+			WHERE idUsuario = " . $pks['idUsuario'], $fechanac, $sexo, $email, $alias, $contrasena, $nombre, 
+			$apellidos, $provincia, $visibilidad);
+		}elseif(func_num_args() == 8){
+			$query = sprintf("UPDATE usuarios SET fechaNac='%s', sexo='%s', email='%s', alias='%s', 
+			nombre='%s', apellidos='%s', idProvincia='%s', visibilidad='%s' 
+			WHERE idUsuario = " . $pks['idUsuario'], $fechanac, $sexo, $email, $alias, $nombre, 
+			$apellidos, $provincia, $visibilidad);
+		}
+		return $this -> consultar($query);
+	}
 	
 	public function getFavoritos(){
 		return $this->consultarPreparada('getFavoritos', array());
