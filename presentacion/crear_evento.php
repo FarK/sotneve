@@ -15,6 +15,7 @@ $tipo = new Tipo($conex);
 $campos = array();
 $nomTipo = null;
 $provinciaEv = null;
+$idEvento = -1;
 if(isset($_GET['idEvento'])){
 	$idEvento = $_GET['idEvento'];
 	$evento = new Evento($conex,$idEvento);
@@ -290,48 +291,51 @@ function inputBoton($campos){
 			?>
 
 			<form id='evento' name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
-					<div class="filaform">
-						<label for="nomevento"> T&iacute;tulo</label>
-						<?php inputTitulo($campos); ?>
-					</div>
-					<div class="filaform">
-						<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
-						<?php inputNumPersonas($campos); ?>
-						<br/>
-					</div>
-					<div class="filaform">
-						<label for="fechaevento">Fecha del Evento</label>
-						<?php
-							selectDia($campos);
-							selectMes($campos);
-							selectAno($campos);
-						?>
-					</div>
+				<div class="filaform">
+					<label for="nomevento"> T&iacute;tulo</label>
+					<?php inputTitulo($campos); ?>
+				</div>
+				<div class="filaform">
+					<label id="nump" for="numpersonas">N&uacute;mero de personas</label>
+					<?php inputNumPersonas($campos); ?>
+					<br/>
+				</div>
+				<div class="filaform">
+					<label for="fechaevento">Fecha del Evento</label>
+					<?php
+						selectDia($campos);
+						selectMes($campos);
+						selectAno($campos);
+					?>
+				</div>
 
-					<div class='filaform'>
-						<label for="fechaevento">Hora del Evento</label>
-						<?php
-							selectHora($campos);
-							selectMinutos($campos);
-						?>
-					</div>
-					<div class="filaform">
-						<label for="provincia">Provincia</label>
-						<?php selectProvincia($campos, $provincias); ?>
-					</div>
-					<div class="filaform">
-						<label for="tipos">Tipo</label>
-						<?php selectTipos($campos, $tipo, $nomTipo); ?>
-					</div>
-					<div class="filaform">
-						<label for="lugar">Lugar</label>
-						<?php inputLugar($campos); ?>
-					</div>
-					<div class="filaform">
-						<label for="descripcion" >Descripci&oacute;n</label>
-						<?php texareaDescripcion($campos) ?>
-					</div>
-					<?php inputBoton($campos); ?>
+				<div class='filaform'>
+					<label for="fechaevento">Hora del Evento</label>
+					<?php
+						selectHora($campos);
+						selectMinutos($campos);
+					?>
+				</div>
+				<div class="filaform">
+					<label for="provincia">Provincia</label>
+					<?php selectProvincia($campos, $provincias); ?>
+				</div>
+				<div class="filaform">
+					<label for="tipos">Tipo</label>
+					<?php selectTipos($campos, $tipo, $nomTipo); ?>
+				</div>
+				<div class="filaform">
+					<label for="lugar">Lugar</label>
+					<?php inputLugar($campos); ?>
+				</div>
+				<div class="filaform">
+					<label for="descripcion" >Descripci&oacute;n</label>
+					<?php texareaDescripcion($campos) ?>
+				</div>
+				<?php inputBoton($campos); ?>
+
+				<!-- Campo fantasma para distinguir entre crear y actualizar un evento -->
+				<?php echo '<input name="actualizar" type="hidden" value="' . $idEvento . '" ></input>'; ?>
 			</form>
 		</div>
 		<?php include ("footer.php"); ?>
