@@ -1,6 +1,9 @@
 <?php
 include_once("tabla.php");
 
+//Para evitar warning con el timezone
+date_default_timezone_set('Europe/Madrid');
+
 class Evento extends Tabla{
 	public function __construct(/*$conexion, $id*/){
 		//Inicializamos el nombre de la tabla
@@ -21,12 +24,21 @@ class Evento extends Tabla{
 
 	}
 	
-	public function insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar){
+	public function insertarEvento($idTipo, $fechaEvento, $titulo, $maxPersonas, $provincia, $descripcion, $lugar, $propietario){
 		$query = sprintf("INSERT INTO eventos (idTipo, titulo, maxPersonas, fechaCreacion, descripcion, 
-							fechaEvento, idProvincia, lugar, propietario) VALUES (%s, '%s', %s, NOW(), '%s', '%s', %s, '%s', %s)", 
-							2/*TODO: subtipo*/, $titulo, $numpersonas, $descripcion, $fechaEvento, $provincia, $lugar, 
-							$_SESSION['idUsuario']);
-		return $this -> consultar($query);
+				fechaEvento, idProvincia, lugar, propietario) VALUES (%s, '%s', %s, NOW(), '%s', '%s', %s, '%s', %s)", 
+				$idTipo, $titulo, $maxPersonas, $descripcion, $fechaEvento, $provincia, $lugar, $propietario);
+
+		$this -> consultar($query);
+	}
+
+	public function actualizarEvento($idTipo, $fechaEvento, $titulo, $maxPersonas, $provincia, $descripcion, $lugar, $propietario, $idEvento){
+		$query = sprintf('UPDATE eventos SET
+			idTipo="%s", fechaEvento="%s", titulo="%s", maxPersonas="%s", idProvincia="%s", descripcion="%s", lugar="%s", propietario="%s"
+			WHERE idEvento="%s"',
+			$idTipo, $fechaEvento, $titulo, $maxPersonas, $provincia, $descripcion, $lugar, $propietario, $idEvento);
+
+		$this -> consultar($query);
 	}
 	
 	
@@ -124,13 +136,4 @@ class Evento extends Tabla{
 
 	
 }
-/**********************
- * ANTIGUAS CONSULTAS *
- **********************
- GET ASISTENTES
- $query = sprintf("SELECT alias,afiliaciones.idUsuario FROM usuarios, afiliaciones WHERE usuarios.idUsuario=afiliaciones.idUsuario AND afiliaciones.idEvento='%s'", $this -> idEvento);
-
-GET NUM ASISTENTES
-$query = sprintf("SELECT idUsuario FROM afiliaciones WHERE afiliaciones.idEvento = '%s'", $this -> idEvento);
- */
 ?>

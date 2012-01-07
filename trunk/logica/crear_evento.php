@@ -16,10 +16,12 @@ $prov = new Provincia($conex);
 	$min = $_POST['min'];
 	$fechaEvento = $ano.'-'.$mes.'-'.$dia.'-'.$hora.'-'.$dia;
 	$titulo = $_POST['nomevento'];
+	$tipo = $_POST['tipos'];
 	$numpersonas = $_POST['numpersonas'];
 	$descripcion = $_POST['descripcion'];
 	$lugar = $_POST['lugar'];
 	$provincia = $_POST['provincia'];
+	$actualizar = $_POST['actualizar'];
 	$fechaActual = time();
 	$anoActual = date_default_timezone_get();
 	$fechaEvento = $ano."-".$mes."-".$dia." ".$hora.":".$min.":"."00";
@@ -32,13 +34,21 @@ $prov = new Provincia($conex);
 	
 	if ($valido){
 		$evento = new Evento($conex);
-		$evento-> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
-		$id = $conex->getLastInsertId();
-		$evento->inscribeUsuario($_SESSION['idUsuario'],$id);		
+
+		if($actualizar == -1){
+			$evento-> insertarEvento($tipo, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar, $_SESSION['idUsuario']);
+			$id = $conex->getLastInsertId();
+			$evento->inscribeUsuario($_SESSION['idUsuario'],$id);
+		}
+		else{
+			$evento-> actualizarEvento($tipo, $fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar, $_SESSION['idUsuario'], $actualizar);
+			$id = $actualizar;
+		}
 		
 		header(sprintf("Location:../presentacion/info_evento.php?idEvento=%s", $id));
 	}
-	 $conex->desconectar();
+	
+	$conex->desconectar();
 
 
 function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $min, $titulo, $numpersonas, $provincia, $descripcion, $lugar) {
@@ -69,7 +79,7 @@ function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $m
 	
 
 	$diamax=1;
-	 
+	
 	 if ($mes < 1 || $mes > 12) {
 	 	
 			$valido=false;
