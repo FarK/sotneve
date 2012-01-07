@@ -93,7 +93,6 @@ function esValido($tipo ,$existeProvincia,$povincia ,$ano, $mes, $dia, $hora, $m
 				 }else{
 				 	$diamax = 28;
 				 }
-				 $diamax = 28;
 				 break; 
 			 case 04 || 06 || 11 || 09 :
 				 $diamax = 30;
