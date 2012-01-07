@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once ("../datos/conexion.php");
 include_once ("../datos/usuario.php");
 include_once ("../datos/provincia.php");
@@ -7,16 +8,6 @@ $conexion = new Conexion();
 $usuario = new Usuario($conexion);
 $provincia = new Provincia($conexion);
 
-// $fechanac = $bd -> escapeString($_POST['fechanac']);
-// $sexo = $bd -> escapeString($_POST['sexo']);
-// $email = $bd -> escapeString($_POST['email']);
-// $alias = $bd -> escapeString($_POST['alias']);
-// $contrasena = $bd -> escapeString($_POST['contrasena']);
-// $nombre = $bd -> escapeString($_POST['nombre']);
-// $apellidos = $bd -> escapeString($_POST['apellidos']);
-//
-// $provincia = $bd -> escapeString($_POST['provincia']);
-// $recontrasena = $bd -> escapeString($_POST['recontrasena']);
 
 $fechanac = $_POST['fechanac'];
 $sexo = $_POST['sexo'];
@@ -38,8 +29,9 @@ $fechanac = dmaToamd($fechanac);
 
 if ($valido) {
 	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
-	$aux = sprintf("Location:../index.php?mens=Registrado con exito. %s", $prov);
-	header($aux);
+	$id = $conexion->getLastInsertId();
+	$_SESSION['idUsuario'] = $id;
+	header("Location:../presentacion/principal.php");
 }
 $conexion -> desconectar();
 
@@ -53,14 +45,12 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 	//TODO Gestionar correctamente errores
 	//Hay error si...
 	$camposvacios = false;
-	//En algunos if se podria hacer que si ya hay alguno que no es valido lo comprobara, todos no porque algunos tienen que añadir el error indicado
 
 	if ($email == "" || $contrasena == "" || $nombre == "" || $apellidos == "") {//OK
 		$camposvacios = true;
 		$_SESSION['err_campos'] = true;
 		$valido = false;
 	}
-	//TODO Validar el email con expresiones regulares.
 	
 	if (!$camposvacios && $resultadoEmail) {//OK
 		$_SESSION['err_email'] = true;
@@ -72,7 +62,6 @@ function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $pro
 		$valido = false;
 	}
 
-	//Nombre y apellidos, validados como campos no vacios
 
 	if ($sexo != '1' && $sexo != '0') {
 		$valido = false;
