@@ -81,6 +81,20 @@ class Evento extends Tabla{
 			return false;
 	}
 	
+	public function getEventosVigentes(){
+		$fecha = time (); 
+        $actual =  date ( "Y-m-d h:i:s" , $fecha );
+        $query = sprintf("SELECT * FROM eventos WHERE fechaEvento>='%s'", $actual);
+		return $this->consultar($query);
+	}
+	
+	public function getEventosTipoVigentes($idTipo){
+		$fecha = time (); 
+        $actual =  date ( "Y-m-d h:i:s" , $fecha);
+        $query = sprintf("SELECT * FROM eventos, tipos WHERE eventos.idTipo = tipos.idTipo AND tipos.idTipo='%s' AND fechaEvento>='%s'", $idTipo, $actual);
+		return $this->consultar($query);
+	}
+	
 	public function getEventosProvinciaVigentes($idProvincia){
 		$fecha = time (); 
         $actual =  date ( "Y-m-d h:i:s" , $fecha );
@@ -91,7 +105,7 @@ class Evento extends Tabla{
 	public function getEventosProvinciaTipoVigentes($idProvincia,$idTipo){
 		$fecha = time (); 
         $actual =  date ( "Y-m-d h:i:s" , $fecha );
-        $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND idTipo='%s' AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
+        $query = sprintf("SELECT * FROM eventos E, tipos T WHERE idProvincia='%s' AND idTipo='%s' AND E.idTipo = T.idTipo AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
 		return $this->consultar($query);
 	}
 	
