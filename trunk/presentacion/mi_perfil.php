@@ -144,9 +144,9 @@ function creaCheckBox($campos, $campo) {
 				<label class="etiqueta" for="recontrasena">Repite contrase&ntilde;a</label>
 				<input type="password" class="info_input" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
 			</div>
-			<button type="submit" id="registrate">
-				Guardar
-			</button>
+			<input type="submit" id="registrate">
+				Cambiar texto de Enviar por Guardar en el CSS
+			</input>
 		</form>
 		<?php
 		include ("footer.php");
