@@ -6,6 +6,7 @@
 	include_once '../datos/provincia.php';
 	include_once '../datos/tipo.php';
 	
+	
 	$conexion = new Conexion();	
 	//Crear objeto evento
 	$idEventoVisitado = $_GET["idEvento"];
@@ -28,7 +29,13 @@
 		
 	$estaCompleto = $evento->estaCompleto();
 	$estaInscrito = $evento->estaInscrito($_SESSION['idUsuario']);
-	if($estaInscrito){
+	
+	$esPropietario = $evento->esPropietario($_SESSION['idUsuario']);
+	if($esPropietario){
+		$add_form_action = sprintf('crear_evento.php?idEvento=%s', $idEventoVisitado);
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/editar.png">Editar Evento';
+	}
+	else if($estaInscrito){
 		$add_form_action = 'javascript:desinscribeEvento('.$idEventoVisitado.')';
 		$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Desinscribirse';
 	}else{

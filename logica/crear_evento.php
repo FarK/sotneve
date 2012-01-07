@@ -3,6 +3,7 @@ include ("test_session.php");
 include_once ("../datos/conexion.php");
 include_once ("../datos/evento.php");
 include_once ("../datos/provincia.php");
+include_once("../datos/usuario.php");
 
 $conex = new Conexion();
 $prov = new Provincia($conex);
@@ -33,6 +34,7 @@ $prov = new Provincia($conex);
 		$evento = new Evento($conex);
 		$evento-> insertarEvento($fechaEvento, $titulo, $numpersonas, $provincia, $descripcion, $lugar);
 		$id = $conex->getLastInsertId();
+		$evento->inscribeUsuario($_SESSION['idUsuario'],$id);		
 		
 		header(sprintf("Location:../presentacion/info_evento.php?idEvento=%s", $id));
 	}
