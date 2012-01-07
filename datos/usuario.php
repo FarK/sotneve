@@ -2,6 +2,7 @@
 include_once("tabla.php");
 
 //Campos para la máscara de visibilidad
+$PROVINCIA = 32;
 $FECHA_NAC = 16;
 $SEXO = 8;
 $EMAIL = 4;
@@ -104,18 +105,18 @@ class Usuario extends Tabla{
 			VALUES ('%s', '%s', '%s', '%s', SHA2('%s',256), '%s', '%s', '%s', '%s' )", $fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia, 0);
 		return $this -> consultar($query);
 	}
-	public function actualizarUsuario($fechanac, $sexo, $email, $contrasena, $nombre, $apellidos, $provincia, $visibilidad) {
-		if (func_num_args() == 8){
+	public function actualizarUsuarioConPass($fechanac, $sexo, $email, $contrasena, $nombre, $apellidos, $provincia, $visibilidad) {
 			$query = sprintf("UPDATE usuarios SET fechaNac='%s', sexo='%s', email='%s', pass=SHA2('%s',256), nombre='%s', apellidos='%s', idProvincia='%s', visibilidad='%s' 
-			WHERE idUsuario = " . $pks['idUsuario'], $fechanac, $sexo, $email, $contrasena, $nombre, 
+			WHERE idUsuario = " . $this->pks['idUsuario'], $fechanac, $sexo, $email, $contrasena, $nombre, 
 			$apellidos, $provincia, $visibilidad);
-		}elseif(func_num_args() == 7){
+			return $this -> consultar($query);
+	}
+	public function actualizarUsuarioSinPass($fechanac, $sexo, $email, $nombre, $apellidos, $provincia, $visibilidad) {
 			$query = sprintf("UPDATE usuarios SET fechaNac='%s', sexo='%s', email='%s', 
 			nombre='%s', apellidos='%s', idProvincia='%s', visibilidad='%s' 
-			WHERE idUsuario = " . $pks['idUsuario'], $fechanac, $sexo, $email, $nombre, 
+			WHERE idUsuario = " . $this->pks['idUsuario'], $fechanac, $sexo, $email, $nombre, 
 			$apellidos, $provincia, $visibilidad);
-		}
-		return $this -> consultar($query);
+			return $this -> consultar($query);
 	}
 	
 	public function getFavoritos(){
