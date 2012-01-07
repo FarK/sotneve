@@ -21,13 +21,16 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 				<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
 				<?php
 				if(isset($_SESSION['err_email']) && $_SESSION['err_email']){
-					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
+					echo '<span class="error" id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
+					$_SESSION['err_email'] = false;
 				}
 				if(isset($_SESSION['err_contrasena']) && $_SESSION['err_contrasena']){
-					echo '<span id="errorcontrasena">Contraseña incorrecta, ambas contraseña deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+					echo '<span class="error" id="errorcontrasena">Contrase&ntilde;a incorrecta, ambas contrase&ntilde;a deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+					$_SESSION['err_contrasena'] = false;
 				}
 				if(isset($_SESSION['err_campos']) && $_SESSION['err_campos']){
-					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
+					echo '<span class="error" id="errorcampos">Todos los campos son obligatorios</span>';
+					$_SESSION['err_campos'] = false;
 				}
 				?>
 				<hr />

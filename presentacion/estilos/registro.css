@@ -2,11 +2,12 @@
 
 
 #errores{
-visibility: hidden;
-color:red;
+	visibility: hidden;
 }
 
-#erroremail{
+.error{
+	position: relative;
+	right: 150px;
 	color:red;
 }
 
