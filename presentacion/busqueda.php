@@ -30,7 +30,7 @@ $tipoString = $auxTipo['nombre'];
 $eventoObj = new Evento($conexion);
 
 if ($idtipo == 0) {//Si es 0 se muestran todos
-	$eventos = $eventoObj -> getEventosProvinciaVigentes($provincia);
+	$eventos = $eventoObj -> getEventosProvinciaVigentes($idprovincia);
 } else {
 	$eventos = $eventoObj -> getEventosProvinciaTipoVigentes($idprovincia, $idtipo);
 }

@@ -27,7 +27,7 @@ $tipo = new Tipo($conexion);
 		</div>
 		<div class='opcion'>
 			<select class = 'selbusc' name="tipo" id="tipo">
-				<option value="0">Elige</option>
+				<option value="0">Todos</option>
 				
 				<?php $tipo -> getArbolTipos();?>
 				
