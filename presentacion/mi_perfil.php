@@ -102,11 +102,10 @@ function creaCheckBox($campos, $campo) {
 		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
 	</head>
 	<body>
-		<!--<div class="contenedorgeneral"> -->
 		<?php
 		include ("head.php");
 		?>
-		<h1>Edita tu perfil</h1>
+		<span class="h1">Edita tu perfil</span>
 		<?php
 		if (isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']) {
 			echo '<span id="errores">Ha ocurrido algún error.</span>';
@@ -208,6 +207,5 @@ function creaCheckBox($campos, $campo) {
 		<?php
 		include ("footer.php");
 		?>
-		<!-- </div> -->
 	</body>
 </html>
