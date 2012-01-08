@@ -1,14 +1,20 @@
 @import "general.css";
 
-
-#errores{
-	color: RED;
+#OK, #errores {
+	color: WHITE;
 	font-weight: bold;
 	font-variant: small-caps;
+	background-color: GREEN;
+	border-radius: 3px;
+	padding: 1px 3px;
+}
+
+#errores{
+	background-color: #B22222;
 }
 
 div.dif{
-	display: table-row;
+	display: table-cell;
 }
 
 label.etiqueta{
@@ -18,4 +24,18 @@ label.etiqueta{
 
 select.info_input{
 	width: 160px;
+}
+
+input#registrate{
+	background-color: #418eb6;
+	color: WHITE;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
+	min-width: 200px;
+}
+
+input#registrate:hover{
+	text-shadow: 0 0 3px SKYBLUE;
+	box-shadow: 0 0 10px #418eb6;
+	cursor: pointer;
 }
