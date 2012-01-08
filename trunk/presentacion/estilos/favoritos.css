@@ -35,8 +35,9 @@ a.favorito {
 	display: table-cell;
 	text-decoration: none;
 	color: #418eb6;
-	padding: 0px 0px 0px 10px;
+	padding: 0 0 0 10px;
 	font-weight: bold;
+	vertical-align: middle;
 }
 
 a.favorito:hover {
