@@ -112,6 +112,10 @@ function creaCheckBox($campos, $campo) {
 			echo '<span id="errores">Ha ocurrido algún error.</span>';
 			$_SESSION['err_campos_perfil'] = false;
 		}
+		else if (isset($_SESSION['OK']) && $_SESSION['OK']){
+			echo '<span id="OK">Tus datos se han actualizado con &eacute;xito</span>';
+			$_SESSION['OK'] = false;
+		}
 		?>
 		<form name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
 			<?php

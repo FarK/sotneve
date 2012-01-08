@@ -7,13 +7,12 @@ include_once ("../datos/provincia.php");
 $conex = new Conexion();
 $prov = new Provincia($conex);
 $usuario = new Usuario($conex, $_SESSION['idUsuario']);
-$usuario -> prepCampo('pass');
 $usuario -> prepCampo('email');
-
+$usuario -> prepCampo('pass');
 
 $camposUsuario = $usuario -> consultarCampos();
-$passUsuario = $camposUsuario['pass'];
 $emailUsuario = $camposUsuario['email'];
+$passUsuario = $camposUsuario['pass'];
 
 $nombre = $_POST['nombre'];
 $apellidos = $_POST['apellidos'];
@@ -27,16 +26,24 @@ $passActual = $_POST['contrasenaactual'];
 $passNueva = $_POST['contrasena'];
 $passNueva2 = $_POST['recontrasena'];
 
-$cbVisib = array('cbNombre' => $_POST['check' . $NOMBRE], 'cbApellidos' => $_POST['check' . $APELLIDOS], 'cbFechaNac' => $_POST['check' . $FECHA_NAC], 'cbEmail' => $_POST['check' . $EMAIL], 'cbProvincia' => $_POST['check' . $PROVINCIA], 'cbSexo' => $_POST['check' . $SEXO], );
-$visibilidad = visibilidad($cbVisib);
-$valido = esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2);
+$cbVisib = array(
+'cbNombre' => $_POST['check' . $NOMBRE], 
+'cbApellidos' => $_POST['check' . $APELLIDOS], 
+'cbFechaNac' => $_POST['check' . $FECHA_NAC], 
+'cbEmail' => $_POST['check' . $EMAIL], 
+'cbProvincia' => $_POST['check' . $PROVINCIA], 
+'cbSexo' => $_POST['check' . $SEXO], );
 
-if ($valido && $prov -> existeProvincia($provincia) && (!$usuario->existeEmail($email) || $email==$emailUsuario)) {
+$visibilidad = visibilidad($cbVisib);
+$valido = esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2, $passUsuario);
+
+if ($valido && $prov -> existeProvincia($provincia) && (!$usuario -> existeEmail($email) || $email == $emailUsuario)) {
 	$fechaNac = $ano . '-' . $mes . '-' . $dia;
 	if ($passNueva == '') {
 		$usuario -> actualizarUsuarioSinPass($fechaNac, (int)$sexo, $email, $nombre, $apellidos, $provincia, $visibilidad);
 	} else
 		$usuario -> actualizarUsuarioConPass($fechaNac, (int)$sexo, $email, $passNueva, $nombre, $apellidos, $provincia, $visibilidad);
+	$_SESSION['OK']=true;
 	header("Location:../presentacion/mi_perfil.php");
 
 }
@@ -70,7 +77,7 @@ function visibilidad($cbVisib) {
 	return $nombreVisible | $apellidosVisible | $fechaNacVisible | $emailVisible | $provinciaVisible | $sexoVisible;
 }
 
-function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2) {
+function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $sexo, $passActual, $passNueva, $passNueva2, $passUsuario) {
 	$valido = true;
 
 	/******** COMPROBACIÓN CAMPOS VACÍOS *********/
@@ -91,18 +98,17 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 	/******** FIN COMPROBACIÓN NOMBRE/APELLIDOS *********/
 
 	/******** COMPROBACIÓN FECHA NACIMIENTO *********/
-	
+
 	$diamax = 0;
 	if ($mes < 1 && $mes > 12) {
 		$valido = false;
 	} else {//Comprobación de que la fecha no es posterior a la fecha actua
 		if ($ano > date("Y")) {
 			$valido = false;
-		} else
-		if ($ano == date("Y")) {
+		} else if ($ano == date("Y")) {
 			if ($mes > date("m")) {
 				$valido = false;
-			
+
 			} elseif ($mes == date("m")) {
 				if ($dia > date("d")) {
 					$valido = false;
@@ -126,9 +132,9 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 		}
 		if ($dia < 1 || $dia > $diamax) {
 			$valido = false;
-		 }
-	
-	 }
+		}
+
+	}
 
 	/******* FIN COMPROBACIÓN FECHA NACIMIENTO *******/
 
@@ -140,14 +146,13 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 	/******* FIN COMPROBACIÓN EMAIL *******/
 
 	/******* COMPROBACIÓN CONTRASEÑAS *******/
-
 	if ($passNueva != "") {
 		if (strlen($passNueva) < 6) {
 			$valido = false;
-		} elseif (!strcmp($passNueva, $passNueva2)) {
+		} elseif ($passNueva != $passNueva2) {
 			$valido = false;
-		} elseif (!strcmp($passUsuario, $passActual)) {
-			$valido = false;
+		} elseif (hash("sha256", $passActual) != $passUsuario){
+			$valido= false;
 		}
 	}
 
@@ -155,10 +160,10 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 
 	if ($valido) {
 		return true;
-		
+
 	} else {
-		//header("Location:../presentacion/mi_perfil.php");
-		echo "no valido : $dia-$mes-$ano";
+		$_SESSION['err_campos_perfil'] = true;
+		header("Location:../presentacion/mi_perfil.php");
 	}
 
 }
