@@ -85,11 +85,21 @@ label {
 span.errorserv {
 	color: red;
 }
-h1, h2 {
+
+span.h1, span.h2 {
 	color: #418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align: center
 }
+
+span.h1 {
+	font-size: x-large;	
+}
+
+span.h2 {
+	font-size: large;	
+}
+
 /************/
 /* CABECERA */
 /* **********/

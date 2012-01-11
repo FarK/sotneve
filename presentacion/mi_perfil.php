@@ -89,7 +89,9 @@ function creaCheckBox($campos, $campo) {
 		$visible = "checked=''";
 
 	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s%s' %s>", $check, $campo, $check, $campo, $visible);
+	echo "<div class='cell'>";
 	echo $linea;
+	echo "</div>";
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -102,110 +104,134 @@ function creaCheckBox($campos, $campo) {
 		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
 	</head>
 	<body>
-		<?php
-		include ("head.php");
-		?>
-		<span class="h1">Edita tu perfil</span>
-		<?php
-		if (isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']) {
-			echo '<span id="errores">Ha ocurrido algún error.</span>';
-			$_SESSION['err_campos_perfil'] = false;
-		}
-		else if (isset($_SESSION['OK']) && $_SESSION['OK']){
-			echo '<span id="OK">Tus datos se han actualizado con &eacute;xito</span>';
-			$_SESSION['OK'] = false;
-		}
-		?>
-		<form name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
+		<?php include ("head.php"); ?>
+		<div class='contenido'>
+			<span class="h1" id="titulo">Edita tu perfil</span>
 			<?php
-			if (isset($_GET['err_email'])) {
-				echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
+			if (isset($_SESSION['err_campos_perfil']) && $_SESSION['err_campos_perfil']) {
+				echo '<span id="errores">Ha ocurrido algún error.</span>';
+				$_SESSION['err_campos_perfil'] = false;
 			}
-			if (isset($_GET['err_contrasena'])) {
-				echo '<span id="errorcontrasena">Contrase&ntildea incorrecta, ambas contrase&ntildea deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
-			}
-			if (isset($_GET['err_campos'])) {
-				echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
+			else if (isset($_SESSION['OK']) && $_SESSION['OK']){
+				echo '<span id="OK">Tus datos se han actualizado con &eacute;xito</span>';
+				$_SESSION['OK'] = false;
 			}
 			?>
-			<div class="divf">
-				<label for="visible" class="etiqueta">¿Es visible?</label>
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="nombre">Nombre:</label>
-				<input type="text" class='input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
-				<?php      creaCheckBox($campos, $NOMBRE);?>
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="apellidos">Apellidos:</label>
-				<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
-				<?php      creaCheckBox($campos, $APELLIDOS);?>
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="email">Email:</label>
-				<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" value = "<?php echo $campos['email'];?>"/>
-				<?php      creaCheckBox($campos, $EMAIL);?>
-			</div>
-			<div class="divf">
-				<label class="etiqueta">Fecha de nacimiento:</label>
+			<form id='miPerfilForm' name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
 				<?php
-				selectDia($campos);
-				selectMes($campos);
-				selectAno($campos);
-				creaCheckBox($campos, $FECHA_NAC);
+				if (isset($_GET['err_email'])) {
+					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
+				}
+				if (isset($_GET['err_contrasena'])) {
+					echo '<span id="errorcontrasena">Contrase&ntildea incorrecta, ambas contrase&ntildea deben de coincidir y ser superior a 6 caracteres e inferior a 15</span>';
+				}
+				if (isset($_GET['err_campos'])) {
+					echo '<span id="errorcampos">Todos los campos son obligatorios</span>';
+				}
 				?>
-				<!--<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>-->
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="provincia">Provincia:</label>
-				<select  class="info_input" name="provincia" id="provincia">
-					<?php
-					//Ponemos la provincia actual como primera opcion del select
-					$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], htmlentities($provUsuario['nombre']));
-					echo $option;
+				<div class="divf">
+					<div class='cell'>
+					</div>
+					<div class='cell'>
+					</div>
+					<div class='cell'>
+					<label for="visible" class="etiqueta">¿Es visible?</label>
+					</div>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="nombre">Nombre:</label>
+					<div class='cell'>
+					<input type="text" class='info_input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
+					</div>
+					<?php      creaCheckBox($campos, $NOMBRE);?>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="apellidos">Apellidos:</label>
+					<div class='cell'>
+					<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
+					</div>
+					<?php      creaCheckBox($campos, $APELLIDOS);?>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="email">Email:</label>
+					<div class='cell'>
+					<input type="text" class="info_input" name="email" id="email" onblur="esEmailValido()" value = "<?php echo $campos['email'];?>"/>
+					</div>
+					<?php      creaCheckBox($campos, $EMAIL);?>
+				</div>
+				<div class="divf">
+					<label class="etiqueta">Fecha de nacimiento:</label>
+					<div id=fecha>
+						<?php
+						selectDia($campos);
+						selectMes($campos);
+						selectAno($campos);
+						?>
+					</div>
+					<?php creaCheckBox($campos, $FECHA_NAC); ?>
+					<!--<input type="text" class="info_input" name="fechanac" id="fechanac"  value = "<?php echo fechaNac($campos['fechaNac']);?>"/>-->
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="provincia">Provincia:</label>
+					<select  class="info_input" name="provincia" id="provincia">
+						<?php
+						//Ponemos la provincia actual como primera opcion del select
+						$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], htmlentities($provUsuario['nombre']));
+						echo $option;
 
-					//Ponemos todas las demás provincias
-					foreach ($provincias as $idProv => $prov) {
-						if ($idProv != $provUsuario['idProvincia']) {//No imprimimos 2 veces la misma provincia
-							$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
-							echo $option;
+						//Ponemos todas las demás provincias
+						foreach ($provincias as $idProv => $prov) {
+							if ($idProv != $provUsuario['idProvincia']) {//No imprimimos 2 veces la misma provincia
+								$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
+								echo $option;
+							}
 						}
-					}
-					?>
-				</select>
-				<?php      creaCheckBox($campos, $PROVINCIA);?>
-			</div>
-			<div class="divf">
-				<label for="sexo" class="etiqueta">Sexo:</label>
-				<select  name="sexo" id="sexo" class="info_input">
-					<?php
-					if ($campos['sexo'] == 1) {
-						echo "<option value='1'>Hombre</option>
-						<option value='0'>Mujer</option>";
-					} else {
-						echo "<option value='0'>Mujer</option>
-						<option value='1'>Hombre</option>";
-					}
-					?>
-				</select>
-				<?php      creaCheckBox($campos, $SEXO);?>
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
-				<input type="password" class="info_input" name="contrasenaactual" id="contrasena" />
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="contrasena">Cambiar contrase&ntilde;a:</label>
-				<input type="password" class="info_input" name="contrasena" id="contrasena" />
-			</div>
-			<div class="divf">
-				<label class="etiqueta" for="recontrasena">Repite contrase&ntilde;a</label>
-				<input type="password" class="info_input" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
-			</div>
-			<input type="submit" id="registrate" value="Guardar cambios"/>
-		</form>
-		<?php
-		include ("footer.php");
-		?>
+						?>
+					</select>
+					<?php      creaCheckBox($campos, $PROVINCIA);?>
+				</div>
+				<div class="divf">
+					<label for="sexo" class="etiqueta">Sexo:</label>
+					<select  name="sexo" id="sexo" class="info_input">
+						<?php
+						if ($campos['sexo'] == 1) {
+							echo "<option value='1'>Hombre</option>
+							<option value='0'>Mujer</option>";
+						} else {
+							echo "<option value='0'>Mujer</option>
+							<option value='1'>Hombre</option>";
+						}
+						?>
+					</select>
+					<?php      creaCheckBox($campos, $SEXO);?>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
+					<div class='cell'>
+					<input type="password" class="info_input" name="contrasenaactual" id="contrasena" />
+					</div>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="contrasena">Cambiar contrase&ntilde;a:</label>
+					<div class='cell'>
+					<input type="password" class="info_input" name="contrasena" id="contrasena" />
+					</div>
+				</div>
+				<div class="divf">
+					<label class="etiqueta" for="recontrasena">Repite contrase&ntilde;a</label>
+					<div class='cell'>
+					<input type="password" class="info_input" name="recontrasena" id="recontrasena" onblur="esMismaContrasena()"/>
+					</div>
+				</div>
+				<div class="divf">
+					<div class='cell'>
+					</div>
+					<div class='cell'>
+					<input type="submit" id="registrate" value="Guardar cambios"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		<?php include ("footer.php"); ?>
 	</body>
 </html>

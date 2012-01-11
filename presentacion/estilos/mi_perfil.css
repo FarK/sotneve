@@ -1,5 +1,68 @@
 @import "general.css";
 
+form#miPerfilForm {
+	display: inline-block;
+	position: relative;
+	right: 10px;
+}
+
+div.divf{
+	display: table-row;
+}
+
+label.etiqueta, div.cell {
+	display: table-cell;
+}
+
+label.etiqueta{
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+}
+
+input.info_input {
+	width: 220px;
+}
+
+select.fecha {
+	display: inline-block;
+	margin: 0 7px 0 0;
+}
+
+select#ano {
+	margin: 0;
+}
+
+select#sexo {
+	width: 97%;
+}
+
+select#provincia {
+	width: 97%;
+}
+
+input.visibilitybox {
+}
+
+input#registrate {
+	background-color: #418eb6;
+	color: WHITE;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
+	min-width: 200px;
+}
+
+input#registrate:hover {
+	text-shadow: 0 0 3px SKYBLUE;
+	box-shadow: 0 0 10px #418eb6;
+	cursor: pointer;
+}
+
+span#titulo {
+	display: block;
+	margin: 0 0 0 140px;
+}
+
 #OK, #errores {
 	color: WHITE;
 	font-weight: bold;
@@ -11,31 +74,4 @@
 
 #errores{
 	background-color: #B22222;
-}
-
-div.dif{
-	display: table-cell;
-}
-
-label.etiqueta{
-	display: table-cell;
-	font-size: 100%;
-}
-
-select.info_input{
-	width: 160px;
-}
-
-input#registrate{
-	background-color: #418eb6;
-	color: WHITE;
-	font-weight: bold;
-	margin: 10px 0 20px 0;
-	min-width: 200px;
-}
-
-input#registrate:hover{
-	text-shadow: 0 0 3px SKYBLUE;
-	box-shadow: 0 0 10px #418eb6;
-	cursor: pointer;
 }
