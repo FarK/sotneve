@@ -64,6 +64,7 @@ span#titulo {
 }
 
 #OK, #errores {
+	display: block;
 	color: WHITE;
 	font-weight: bold;
 	font-variant: small-caps;
