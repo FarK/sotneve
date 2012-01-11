@@ -12,7 +12,11 @@ $idprovincia = $_GET["provincia"];
 $idtipo = $_GET["tipo"];
 
 //Comprobar si ha habido errores
-
+//TODO arreglar errores
+if ($idprovincia == 0){
+	
+	header('Location:errores.php?error="Elige una provincia"');
+}
 if ($idprovincia == NULL || $idtipo == NULL) {//Valido los datos que me llegan por get parte1 de 2
 	//TODO mandar a errores bien
 	header('Location:errores.php?error="Busqueda no valida"');
@@ -90,6 +94,7 @@ $enlaces = array();
 		foreach ($enlaces as $linea) {
 			echo $linea;
 		}
+		
 		?>
 		<?php
 		include ("../presentacion/footer.php");
