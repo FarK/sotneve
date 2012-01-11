@@ -12,7 +12,9 @@
 			if (isset($_SESSION['idUsuario'])) {
 				include ("head.php");
 			}else{
-				//TODO desarrollar un boton de volver, una barra arriba con opciones inicio, registrarse o algo parecido, que esta muy soso
+				
+	
+				echo "<a href='../index.php'>Volver</a>";
 			}
 			
 			?>
