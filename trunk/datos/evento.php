@@ -83,29 +83,29 @@ class Evento extends Tabla{
 	
 	public function getEventosVigentes(){
 		$fecha = time (); 
-        $actual =  date ( "Y-m-d h:i:s" , $fecha );
-        $query = sprintf("SELECT * FROM eventos WHERE fechaEvento>='%s'", $actual);
+		$actual =  date ( "Y-m-d h:i:s" , $fecha );
+		$query = sprintf("SELECT * FROM eventos WHERE fechaEvento>='%s'", $actual);
 		return $this->consultar($query);
 	}
 	
 	public function getEventosTipoVigentes($idTipo){
 		$fecha = time (); 
-        $actual =  date ( "Y-m-d h:i:s" , $fecha);
-        $query = sprintf("SELECT * FROM eventos, tipos WHERE eventos.idTipo = tipos.idTipo AND tipos.idTipo='%s' AND fechaEvento>='%s'", $idTipo, $actual);
+		$actual =  date ( "Y-m-d h:i:s" , $fecha);
+		$query = sprintf("SELECT * FROM eventos E, tipos T WHERE E.idTipo = T.idTipo AND (%s) AND fechaEvento>='%s'", $this->pksSubtipos($idTipo), $actual);
 		return $this->consultar($query);
 	}
 	
 	public function getEventosProvinciaVigentes($idProvincia){
 		$fecha = time (); 
-        $actual =  date ( "Y-m-d h:i:s" , $fecha );
-        $query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND fechaEvento>='%s'", $idProvincia, $actual);
+		$actual =  date ( "Y-m-d h:i:s" , $fecha );
+		$query = sprintf("SELECT * FROM eventos WHERE idProvincia='%s' AND fechaEvento>='%s'", $idProvincia, $actual);
 		return $this->consultar($query);
 	}
 	
 	public function getEventosProvinciaTipoVigentes($idProvincia,$idTipo){
 		$fecha = time (); 
-        $actual =  date ( "Y-m-d h:i:s" , $fecha );
-        $query = sprintf("SELECT * FROM eventos E, tipos T WHERE idProvincia='%s' AND idTipo='%s' AND E.idTipo = T.idTipo AND fechaEvento>='%s'", $idProvincia,$idTipo, $actual);
+		$actual =  date ( "Y-m-d h:i:s" , $fecha );
+		$query = sprintf("SELECT * FROM eventos E, tipos T WHERE idProvincia='%s' AND (%s) AND E.idTipo = T.idTipo AND fechaEvento>='%s'", $idProvincia, $this->pksSubtipos($idTipo), $actual);
 		return $this->consultar($query);
 	}
 	
@@ -147,7 +147,18 @@ class Evento extends Tabla{
 		
 	}
 
+	//Devuelve un string para usar en una consulta: "T.idTipo = $idTipo OR T.idTipo = $idSubtipo1 OR ..."
+	public function pksSubtipos($idTipo){
+		$tipo = new Tipo($this->conexion);
+		$subtipos = $tipo->getArbolTipos(array($tipo, 'getIdsSubtipos'), $idTipo);
 
-	
+		//Sacamos el primero
+		$string = 'T.idTipo = ' . current($subtipos);
+		//Concatenamos el resto
+		while($idSubtipo= next($subtipos))
+			$string = $string . ' OR T.idTipo = ' . $idSubtipo;
+
+		return $string;
+	}
 }
 ?>
