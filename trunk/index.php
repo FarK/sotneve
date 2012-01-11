@@ -40,6 +40,7 @@ if (isset($_SESSION['idUsuario'])) {
 				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
 				<input id="pass" name="pass" type="password"  onblur="validaPass()" onclick="onClickPass()" value="Password"/>
 				<input name="Send" type="submit" value="Entrar"/>
+				<div id="espacioBlanco"></div>
 				<a id="registrarse" href="presentacion/registro.php">Registrarse</a>
 			</fieldset>
 		</form>
