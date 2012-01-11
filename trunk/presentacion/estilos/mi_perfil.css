@@ -59,8 +59,8 @@ input#registrate:hover {
 }
 
 span#titulo {
-	display: block;
-	margin: 0 0 0 140px;
+	position: relative;
+	left: 72px;
 }
 
 #OK, #errores {

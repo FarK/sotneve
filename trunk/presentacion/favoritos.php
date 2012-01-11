@@ -27,7 +27,7 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 		<?php include ("head.php"); ?>
 
 		<div id='listafavoritos'>
-		<h1>&iexcl;&Eacute;stos son tus favoritos!</h1>
+		<span class="h1">&iexcl;&Eacute;stos son tus favoritos!</span>
 		<div id='favoritos'>
 		<?php
 			foreach($favoritos as $fav){
