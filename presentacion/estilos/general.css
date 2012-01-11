@@ -87,6 +87,7 @@ span.errorserv {
 }
 
 span.h1, span.h2 {
+	display: block;
 	color: #418eb6;
 	text-shadow: 0px 0px 2px #FFFFFF;
 	text-align: center

@@ -5,7 +5,7 @@
 	color:red;
 }
 
-h2#ev_titulo, input#create {
+span#ev_titulo, input#create {
 	position: relative;
 	left: 70px;
 }
