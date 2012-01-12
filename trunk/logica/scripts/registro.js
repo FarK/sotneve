@@ -15,20 +15,20 @@ function esFormularioValido() {
 	var valido=true;
 
 	if(alias == "" || alias.length<3) {
-		res=res+"- El campo alias no puede ser vacio o menor de 3 caracteres\n";
+		res=res+"- El campo alias no puede ser vacío o menor de 3 caracteres\n";
 		valido=false;
 	}
 	if(nombre == "") {
-		res=res+"- El campo nombre no puede ser vacio\n";
+		res=res+"- El campo nombre no puede ser vacío\n";
 		valido=false;
 	}
 	if (apellidos == "" ) {
-		res=res+"- El campo apellidos no puede ser vacio\n";
+		res=res+"- El campo apellidos no puede ser vacío\n";
 		valido=false;		
 	}
 	
 	if (contrasena!=recontrasena || contrasena.length<6 || contrasena.length>15){
-		res=res+"- Las contrase"+String.fromCharCode(241)+"as no coinciden o bien son inferior a 6 caracteres o superior a 15\n";
+		res=res+"- Las contraseñas no coinciden o bien son inferior a 6 caracteres o superior a 15\n";
 		valido=false;
 	}
 	
