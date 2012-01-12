@@ -2,11 +2,13 @@
 include("../logica/test_session.php");
 include_once ('../datos/conexion.php');
 include_once ('../datos/usuario.php');
+include_once ('../datos/evento.php');
 
 //Creamos un objeto usuario con el usuario logeado
 $conex = new Conexion();
 
 $usuarioActual = new Usuario($conex, $_SESSION['idUsuario']);
+$eventoObj = new Evento($conex);
 $eventos = $usuarioActual->getEventos();
 $eventosProv = $usuarioActual->getEventosProvincia();
 $favoritos = $usuarioActual->getFavoritos();
@@ -40,7 +42,15 @@ $favoritos = $usuarioActual->getFavoritos();
 					<br/>
 					<?php
 					foreach ($eventosProv as $evento) {
-						$span = sprintf("<a class='enlaceEnmarcado' id='enlaceEnmarcadoInv' href='info_evento.php?idEvento=%s'>%s</a>\n\t\t", $evento['idEvento'], $evento['titulo']);
+						$asistentes = count($eventoObj->getUsuarios($evento['idEvento']));
+
+						$idLleno = 'id="enlaceEnmarcadoInv"';
+						if($asistentes == $evento['maxPersonas'])
+							$idLleno = 'id="enlaceEnmarcadoInvlleno"';
+
+						$span = sprintf("<a class='enlaceEnmarcado' %s href='info_evento.php?idEvento=%s'>
+							%s [%s/%s]</a>\n\t\t",
+						       	$idLleno, $evento['idEvento'], $evento['titulo'], $asistentes, $evento['maxPersonas']);
 						echo $span;
 					}
 					?>

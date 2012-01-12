@@ -41,12 +41,16 @@ span.titulo {
 	margin-bottom: 5px;
 }
 
-a#enlaceEnmarcadoInv {
+a#enlaceEnmarcadoInv, a#enlaceEnmarcadoInvlleno {
 	color: #418eb6;
 	background-color: #B9CAFF;
 }
 
-a#enlaceEnmarcadoInv:hover {
+a#enlaceEnmarcadoInvlleno {
+	background-color: #FF4144;
+}
+
+a#enlaceEnmarcadoInv:hover, a#enlaceEnmarcadoInvlleno:hover {
 	box-shadow: 0px 0px 3px #B9CAFF;
 	text-shadow: 0 0 3px WHITE;
 	transition: box-shadow 0.5s;
@@ -59,4 +63,9 @@ a#enlaceEnmarcadoInv:hover {
 	-moz-transition: text-shadow 0.5s; 
 	-webkit-transition: text-shadow 0.5s; 
 	-o-transition: text-shadow 0.5s;
+}
+
+a#enlaceEnmarcadoInvlleno:hover {
+	box-shadow: 0px 0px 3px #FF4144;
+	text-shadow: 0 0 3px #FF8587;
 }
