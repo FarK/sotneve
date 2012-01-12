@@ -45,11 +45,16 @@ foreach ($eventos as $evento) {
 
 	$idLleno = '';
 	if($asistentes == $evento['maxPersonas'])
-		$idLleno = 'id="lleno"';
+		$idLleno = 'class="lleno"';
 
-	$enlaces[] = sprintf("<a class='enlaceEnmarcado' %s href='../presentacion/info_evento.php?&idEvento=%s'>
-		%s en %s [%s/%s]</a>",
-		$idLleno, $evento['idEvento'], $evento['titulo'], $evento['lugar'], $asistentes, $evento['maxPersonas']);
+	$enlaces[] = sprintf("
+		<tr>
+		<td><a class='enlace' href='../presentacion/info_evento.php?&idEvento=%s'>%s</a></td>
+		<td><span class='celda'>%s</span></td>
+		<td><span %s class='celda'>[%s/%s]</span></td>
+		</tr>
+		",
+		$evento['idEvento'], $evento['titulo'], $evento['lugar'], $idLleno, $asistentes, $evento['maxPersonas']);
 }
 ?>
 
@@ -60,7 +65,7 @@ foreach ($eventos as $evento) {
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<meta charset=utf-8" />
 		<title>Sotneve - Resultado Busqueda</title>
-		<link rel="stylesheet" type="text/css" href="estilos/busqueda.css">
+		<link rel="stylesheet" type="text/css" href="estilos/busqueda.css"/>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
 	</head>
 	<body>
@@ -79,14 +84,24 @@ foreach ($eventos as $evento) {
 				echo ' en ' . $nomProvincia;
 			if ($idtipo !=0) 
 				echo ' del tipo ' . $nomTipo;
+
 			echo '</span>';
-
-			//Imprimimos todos los enlaces a eventos
-			foreach ($enlaces as $enlace)
-				echo $enlace;
 			?>
-		<div>
 
-		<?php include ("../presentacion/footer.php"); ?>
+			<table>
+				<tr>
+				<th>Nombre</th>
+				<th>Lugar</th>
+				<th>NºAsistentes/Plazas</th>
+				</tr>
+			<?php
+			foreach ($enlaces as $enlace){
+				echo $enlace;
+			}
+			?>
+			</table>
+		</div>
+
+		<?php include ("footer.php"); ?>
 	</body>
 </html>
