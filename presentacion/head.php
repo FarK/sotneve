@@ -43,5 +43,5 @@ function claseEnlace($paginas, $indice){
 
 		</div>
 		<span id='husuario'>Hola, <?php echo $nombre;?></span>
-	<?php include ("buscar_evento.php"); ?>
+	<?php include ("buscador.php"); ?>
 </div>

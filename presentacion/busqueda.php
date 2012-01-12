@@ -8,17 +8,11 @@ include_once ('../datos/provincia.php');
 //Para evitar warning con el timezone
 date_default_timezone_set('Europe/Madrid');
 
-$idprovincia = $_GET["provincia"];
-$idtipo = $_GET["tipo"];
-
-//Comprobar si ha habido errores
-//TODO arreglar errores
-if ($idprovincia == 0){
-	
-	header('Location:errores.php?error="Elige una provincia"');
+if(isset($_GET['provincia']) || isset($_GET['tipo'])){
+	$idprovincia = $_GET["provincia"];
+	$idtipo = $_GET["tipo"];
 }
-if ($idprovincia == NULL || $idtipo == NULL) {//Valido los datos que me llegan por get parte1 de 2
-	//TODO mandar a errores bien
+else{
 	header('Location:errores.php?error="Busqueda no valida"');
 }
 
@@ -27,12 +21,12 @@ $conexion = new Conexion();
 $provincia = new Provincia($conexion, $idprovincia);
 $provincia -> prepCampo("nombre");
 $auxProv = $provincia -> consultarCampos();
-$provinciaString = $auxProv['nombre'];
+$nomProvincia = $auxProv['nombre'];
 
 $tipo = new Tipo($conexion, $idtipo);
 $tipo -> prepCampo("nombre");
 $auxTipo = $tipo -> consultarCampos();
-$tipoString = $auxTipo['nombre'];
+$nomTipo = $auxTipo['nombre'];
 
 $eventoObj = new Evento($conexion);
 
@@ -46,18 +40,17 @@ elseif ($idtipo != 0 && $idprovincia != 0)
 	$eventos = $eventoObj -> getEventosProvinciaTipoVigentes($idprovincia, $idtipo);
 
 $enlaces = array();
-		foreach ($eventos as $evento) {
-			$idEvento = $evento['idEvento'];
-			$titulo = $evento['titulo'];
-			$maxpersonas = $evento['maxPersonas'];
-			$lugar = $evento['lugar'];
-			//TODO hacer asistentes
-			$asistentes=$eventoObj->getUsuarios($idEvento);
-			$personasActuales=count($asistentes);
-	
-			$enlaces[] = sprintf("<a class='enlaceEnmarcado' href='../presentacion/info_evento.php?&idEvento=%s' >Evento: %s , numero de personas %s de %s, lugar %s</a>", $idEvento, $titulo, $personasActuales, $maxpersonas, $lugar);
-			
-		}
+foreach ($eventos as $evento) {
+	$asistentes = count($eventoObj->getUsuarios($evento['idEvento']));
+
+	$idLleno = '';
+	if($asistentes == $evento['maxPersonas'])
+		$idLleno = 'id="lleno"';
+
+	$enlaces[] = sprintf("<a class='enlaceEnmarcado' %s href='../presentacion/info_evento.php?&idEvento=%s'>
+		%s en %s [%s/%s]</a>",
+		$idLleno, $evento['idEvento'], $evento['titulo'], $evento['lugar'], $asistentes, $evento['maxPersonas']);
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -69,35 +62,31 @@ $enlaces = array();
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="estilos/busqueda.css">
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
-		</head>
-		<body>
+	</head>
+	<body>
 		<!-- Incluimos la cabecera -->
-		<?php
-		include ("../presentacion/head.php");
-		?>
+		<?php include ("../presentacion/head.php"); ?>
 
-		<h1><?php
+		<div class="contenido">
+			<?php
+			//Comprobamos si ha habido resultados
+			if (empty($enlaces))
+				echo '<span class="h1" id="sinResultados">No se ha encontrado ningún evento';
+			else
+				echo '<span class="h1">Todos los eventos';
 
-		if ($idtipo == 0) {
-			$tipoString = "'Todos'";
-		}
+			if ($idprovincia != 0)
+				echo ' en ' . $nomProvincia;
+			if ($idtipo !=0) 
+				echo ' del tipo ' . $nomTipo;
+			echo '</span>';
 
-		if ($provinciaString == NULL || $tipoString == NULL) {//Valido los datos que me llegan por get parte2 de 2
-			header('Location:errores.php?error="los valores de busqueda no existen en la base de datos"');
-		}
-		$aux = sprintf("En %s buscando la actividad %s", $provinciaString, $tipoString);
+			//Imprimimos todos los enlaces a eventos
+			foreach ($enlaces as $enlace)
+				echo $enlace;
+			?>
+		<div>
 
-		echo($aux);
-		?></h1>
-		<?php
-
-		foreach ($enlaces as $linea) {
-			echo $linea;
-		}
-		
-		?>
-		<?php
-		include ("../presentacion/footer.php");
-		?>
-		</body>
+		<?php include ("../presentacion/footer.php"); ?>
+	</body>
 </html>
