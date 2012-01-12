@@ -11,11 +11,11 @@ $prov = $provincia -> getProvincias();
 $tipo = new Tipo($conexion);
 ?>
 
-<form method="get" action="../logica/busqueda.php">
+<form method="get" action="busqueda.php">
 	<div id="buscador" style="width:600px;">
 		<div class='opcion'>
 			<select class='selbusc' name='provincia' id='provincia'>
-				<option value='0'>Elige</option>
+				<option value='0'>Todos</option>
 				<?php
 
 				foreach ($prov as $idp => $p) {
