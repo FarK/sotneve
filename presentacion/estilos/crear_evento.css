@@ -5,6 +5,10 @@
 	color:red;
 }
 
+span#ev_titulo{
+	padding:20px;
+}
+
 span#ev_titulo, input#create {
 	position: relative;
 	left: 70px;

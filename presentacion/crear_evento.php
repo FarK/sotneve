@@ -47,7 +47,7 @@ function tituloEvento($campos){
 	if(empty($campos))
 		$titulo = '<span class="h1" id="ev_titulo">Crear Evento</span>';
 	else
-		$titulo = sprintf('<h2 id="ev_titulo">Editar "%s"</h2>', $campos['titulo']);
+		$titulo = sprintf('<span class="h1" id="ev_titulo">Editar "%s"</span>', $campos['titulo']);
 
 	echo $titulo;
 }
