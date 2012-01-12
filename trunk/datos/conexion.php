@@ -20,9 +20,8 @@ class Conexion{
 			$this->PDO->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		}
 		catch(PDOException $exp){
-			//TODO: Redirigir a página de error
-			echo "ERROR AL CONECTARSE CON LA BD </br>";
-			echo $exp;
+			$_SESSION['error'] = "internalError";
+			header("Location: ../presentacion/errores.php");
 		}
 	}
 
@@ -36,9 +35,8 @@ class Conexion{
 			$res = $this->PDO->query($consulta, PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $exp){
-			//TODO: Redirigir a página de error
-			echo "ERROR AL HACER LA CONSULTA</br>";
-			echo $exp;
+			$_SESSION['error'] = "internalError";
+			header("Location: ../presentacion/errores.php");
 		}
 
 		//Si el statement está vacío, ya sea porque el select no ha
@@ -56,8 +54,8 @@ class Conexion{
 
 	public function bindParam($stmt, $param, $value){
 		if(!$stmt->bindParam($param, $value)){
-			//TODO: Redirigir a página de error
-			echo "ERROR AL HACER BIND</br>";
+			$_SESSION['error'] = "internalError";
+			header("Location: ../presentacion/errores.php");
 		}
 
 	}
@@ -68,9 +66,8 @@ class Conexion{
 			$consultaPreparada->execute();
 		}
 		catch(PDOException $exp){
-			//TODO: Redirigir a página de error
-			echo "ERROR AL HACER LA CONSULTA PREPARADA</br>";
-			echo $exp;
+			$_SESSION['error'] = "internalError";
+			header("Location: ../presentacion/errores.php");
 		}
 	}
 	

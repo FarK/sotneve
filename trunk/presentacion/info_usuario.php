@@ -4,13 +4,17 @@
 	include_once('../datos/usuario.php');
 	include_once('../datos/favorito.php');
 	
+	if(!isset($_GET["idUsuario"])){
+		$_SESSION['error'] = "userNotFound";
+		header("Location:errores.php");
+	}
+	
 	$conex = new Conexion();
 	//Se llama usuario visitado porque si no se pisa con usuario de head.php
 	$idUserVisitado = $_GET["idUsuario"];
 	$usuarioVisitado = new Usuario($conex, $idUserVisitado);
 	$favorito = new Favorito($conex);
 	$userLog = new Usuario($conex, $_SESSION['idUsuario']);
-
 	//Consultamos los campos del usuario
 	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
 	$provUsuario = $usuarioVisitado -> getProvincia();

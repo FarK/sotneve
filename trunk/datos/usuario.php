@@ -19,13 +19,18 @@ class Usuario extends Tabla{
 		if (func_num_args() == 2){
 			//Inicializamos el array de claves primarias y el nombre de la tabla
 			$this->pks = array('idUsuario'=>$arg_list[1]);
-
-			//Llamamos al constructor de tabla
-			parent::__construct($arg_list[0]);
 		}
 
 		//Llamamos al constructor de tabla
 		parent::__construct($arg_list[0]);
+
+		//Comprobamos que el usuario existe
+		if (func_num_args() == 2){
+			if(!$this->existeUsuario()){
+				$_SESSION['error'] = "userNotFound";
+				header("Location:errores.php");
+			}
+		}
 
 		//Consultas preparadas
 		$this->preparar('getUsuario', "SELECT * FROM " . $this->nomTabla . " WHERE idUsuario = :id");
@@ -35,6 +40,8 @@ class Usuario extends Tabla{
 		//TODO CARLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSS pks
 		 $this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
 		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
+		
+
 		
 	}
 
@@ -89,6 +96,15 @@ class Usuario extends Tabla{
                    return true;
 			   }
      }
+     
+	public function existeUsuario(){
+		$resp = $this->consultar(sprintf("SELECT email FROM usuarios WHERE idUsuario = '%s'", $this->pks['idUsuario']));
+		if(empty($resp)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
 	//Todos los eventos a los que está afiliado un usuario NO caducados
 	public function getEventos(){
