@@ -15,20 +15,20 @@ function esFormularioValido() {
 	var valido=true;
 
 	if(alias == "" || alias.length<3) {
-		res=res+"- El campo alias no puede ser vacío o menor de 3 caracteres\n";
+		res=res+"- El campo alias no puede ser vacio o menor de 3 caracteres\n";
 		valido=false;
 	}
 	if(nombre == "") {
-		res=res+"- El campo nombre no puede ser vacío\n";
+		res=res+"- El campo nombre no puede ser vacio\n";
 		valido=false;
 	}
 	if (apellidos == "" ) {
-		res=res+"- El campo apellidos no puede ser vacío\n";
+		res=res+"- El campo apellidos no puede ser vacio\n";
 		valido=false;		
 	}
 	
 	if (contrasena!=recontrasena || contrasena.length<6 || contrasena.length>15){
-		res=res+"- Las contraseñas no coinciden o bien son inferior a 6 caracteres o superior a 15\n";
+		res=res+"- Las contrase"+String.fromCharCode(241)+"as no coinciden o bien son inferior a 6 caracteres o superior a 15\n";
 		valido=false;
 	}
 	
@@ -89,7 +89,6 @@ function esMismaContrasena(){
 		ctrlContrasena.style.borderColor="red";
 		ctrlRecontrasena.style.borderColor="red";
 		ctrlErrores.style.visibility="visible";	
-		//alert("Las contrase\u00f1as no coinciden, le recomendamos que vuelva a escribir ambos campos");
 	}else{
 		ctrlContrasena.style.borderColor="#418eb6";
 		ctrlRecontrasena.style.borderColor="#418eb6";
@@ -106,7 +105,6 @@ function esEmailValido(){
 	if(!patronEmail.test(email)){
 		ctrlErrores.style.visibility="visible";	
 		ctrlEmail.style.borderColor="red";	
-		//alert("Email no valido");
 	}else{
 		ctrlEmail.style.borderColor="#418eb6";
 	}
