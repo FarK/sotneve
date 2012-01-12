@@ -197,7 +197,6 @@ div#pie {
 	background: #333;
 	color: #FFF;
 	text-align: left;
-	height: 30px;
 	border-radius: 5px 5px;
 }
 
@@ -207,16 +206,17 @@ div#pie {
 
 div#pie span {
 	margin: 0;
-	padding: 10px;
-	vertical-align: -8px;
+	padding: 0 10px;
+	vertical-align: middle;
+	height: 30px;
 }
 
 div#espacioBlanco {
 	width: 70%;
 }
 
-a#acerca {
-	vertical-align: -8px;
+#acerca {
+	vertical-align: middle;
 	color: #FFF;
 	text-decoration: none;
 }
