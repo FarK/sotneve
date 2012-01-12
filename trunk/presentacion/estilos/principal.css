@@ -47,7 +47,8 @@ a#enlaceEnmarcadoInv, a#enlaceEnmarcadoInvlleno {
 }
 
 a#enlaceEnmarcadoInvlleno {
-	background-color: #FF4144;
+	background-color: #C06060;
+	color: WHITE;
 }
 
 a#enlaceEnmarcadoInv:hover, a#enlaceEnmarcadoInvlleno:hover {
