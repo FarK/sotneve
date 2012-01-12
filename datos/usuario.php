@@ -35,7 +35,6 @@ class Usuario extends Tabla{
 		//TODO CARLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSS pks
 		 $this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
 		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
-		$this->preparar('getEventosProvincia', "SELECT idEvento, E.titulo FROM eventos E, usuarios U WHERE U.idUsuario = " . $this->pks['idUsuario'] ." AND U.idProvincia = E.idProvincia AND fechaEvento >= NOW()");
 		
 	}
 
@@ -97,7 +96,8 @@ class Usuario extends Tabla{
 	}
 	
 	public function getEventosProvincia(){
-		return $this->consultarPreparada('getEventosProvincia', array());
+		$query = sprintf("SELECT * FROM eventos E, usuarios U WHERE U.idUsuario = %s AND U.idProvincia = E.idProvincia AND fechaEvento >= NOW()", $this->pks['idUsuario']);
+		return $this->consultar($query);
 	}
 	
 	public function insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $provincia) {
