@@ -9,7 +9,7 @@ session_start();//TODO hay que hacer algo con sesion luego mas abajo??
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
-		<meta charset=utf-8" />
+		<meta content="text/xhtml; charset="utf-8" >
 		<title>sotneve - &Uacute;nete</title>
 		<link rel="stylesheet" type="text/css" href="estilos/registro.css" />
 		<script type="text/javascript" src="../logica/scripts/registro.js"></script>
