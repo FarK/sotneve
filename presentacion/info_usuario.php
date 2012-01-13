@@ -17,7 +17,7 @@
 	$userLog = new Usuario($conex, $_SESSION['idUsuario']);
 	//Consultamos los campos del usuario
 	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
-	$provUsuario = $usuarioVisitado -> getProvincia();
+	$provincia = $usuarioVisitado -> getProvincia();
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
 	$esFavorito = $userLog->esFavorito($idUserVisitado);
@@ -114,7 +114,7 @@
 		}
 		
 		if ($camposUsuario['visibilidad'] & $PROVINCIA) {
-			$provincia = $camposUsuario['provincia'];
+			$provincia = $camposUsuario['provincia']; //TODO es idProvincia -> Sacar la consulta
 		}
 		
 		$alias = $camposUsuario['alias'];
