@@ -19,9 +19,27 @@ class Evento extends Tabla{
 		//Llamamos al constructor de tabla
 		parent::__construct($arg_list[0]);
 
+		//Comprobamos que el evento existe
+		if (func_num_args() == 2){
+			if(!$this->existeEvento()){
+				$_SESSION['error'] = 'eventNotFound';
+				header("Location:errores.php");
+				exit;
+			}
+		}
+
 		//Consultas preparadas
 		$this->preparar('getUsuarios', "SELECT * FROM usuarios U, afiliaciones A WHERE A.idEvento = :id AND A.idUsuario = U.idUsuario");
 
+	}
+	
+	public function existeEvento(){
+		$resp = $this->consultar(sprintf("SELECT * FROM eventos WHERE idEvento = '%s'", $this->pks['idEvento']));
+		if(empty($resp)){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	public function insertarEvento($idTipo, $fechaEvento, $titulo, $maxPersonas, $provincia, $descripcion, $lugar, $propietario){
