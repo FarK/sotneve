@@ -12,10 +12,7 @@
 	$idEventoVisitado = $_GET["idEvento"];
 	$evento = new Evento($conexion, $idEventoVisitado);
 	$campos = $evento->consultarTodosLosCampos();
-	if(empty($campos)){
-		//TODO
-		echo "ERROR: Mandar a error de evento no encontrado";
-	}
+
 	$provincia= new Provincia($conexion,$campos['idProvincia']);
 	$provincia->prepCampo("nombre");
 	$camposProv=$provincia->consultarCampos();
