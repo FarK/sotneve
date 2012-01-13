@@ -1,6 +1,4 @@
 @import "general.css";
-
-
 /*** LISTA USUARIOS ***/
 
 div.lista_usuarios {
@@ -15,14 +13,17 @@ strong.num_usuarios {
 	display: inline-block;
 	margin-bottom: 10px;
 }
-
 /*** INFO USUARIO ***/
 
+.h1 {
+	padding: 20px;
+}
 div.info_usuario {
-	margin-left: 32%;
+	margin-left: 25%;
+	
 }
 div.data_row {
-	display : table-row;
+	display: table-row;
 	text-align: left;
 }
 span.l_usuario {
@@ -35,7 +36,6 @@ span.l_usuario {
 span.c_usuario {
 	margin: 0 15px;
 }
-
 /*** AÑADIR A FAVORITOS ***/
 #add_to_favs {
 	float: right;

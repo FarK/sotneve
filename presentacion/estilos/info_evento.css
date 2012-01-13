@@ -1,5 +1,9 @@
 @import "general.css";
 
+.h1{
+	padding:20px;
+}
+
 #me_apunto {
 	margin-top: 10px;
 	float: right;
@@ -11,7 +15,7 @@
 	margin-bottom: 200px;
 }
 div.lista_usuarios {
-	margin: 0px 0 10px 0;
+	margin: 10px 0;
 	border-radius: 7px 7px;
 	float: left;
 	width: 150px;
