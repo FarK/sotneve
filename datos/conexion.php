@@ -21,6 +21,7 @@ class Conexion{
 		}
 		catch(PDOException $exp){
 			$_SESSION['error'] = "internalError";
+			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
 		}
 	}
@@ -36,6 +37,7 @@ class Conexion{
 		}
 		catch(PDOException $exp){
 			$_SESSION['error'] = "internalError";
+			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
 		}
 
@@ -55,6 +57,7 @@ class Conexion{
 	public function bindParam($stmt, $param, $value){
 		if(!$stmt->bindParam($param, $value)){
 			$_SESSION['error'] = "internalError";
+			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
 		}
 
@@ -67,6 +70,7 @@ class Conexion{
 		}
 		catch(PDOException $exp){
 			$_SESSION['error'] = "internalError";
+			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
 		}
 	}
