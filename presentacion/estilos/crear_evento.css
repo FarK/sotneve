@@ -5,19 +5,10 @@
 	color:red;
 }
 
-span#ev_titulo{
-	padding:20px;
-}
-
-span#ev_titulo, input#create {
-	position: relative;
-	left: 70px;
-}
-
 form#evento {
 	display: inline-block;
 	position: relative;
-	right: 50px;
+	right: 80px;
 }
 
 div.filaform {
@@ -30,7 +21,7 @@ select.hora, select.fecha, select#ev_provincia, select#ev_tipos {
 	height: 20px;
 }
 
-label {
+label, div.cell {
 	font-weight: bold;
 	display: table-cell;
 	width: 150px;

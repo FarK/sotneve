@@ -8,6 +8,7 @@ body {
 
 div.contenido {
 	width: 900px;
+	margin-top: 15px;
 }
 
 input, textarea {
@@ -141,11 +142,9 @@ div#hcabecera {
 	border-radius: 10px 10px;
 }
 
-div #buscador {
-	display: inline-block;
+div#buscador {
 	position: relative;
-	bottom: 35px;
-	left: 69px;
+	bottom: 85px;
 }
 
 select.selbusc {
@@ -167,21 +166,22 @@ a#enlaceLogo, img#logo {
 	display:block;
 }
 
-span#husuario {
+div#husuario {
 	color: white;
-	float: right;
 	margin: 5px 10px 5px 5px;
+	overflow: hidden;
 	text-align: right;
 	position: relative;
-	bottom: 85px;
+	bottom: 100px;
+	left: 780px;
 	width: 100px;
+	height: 40px;
 }
 
 div#hbotones {
 	display: inline;
 	position: relative;
 	bottom: 82px;
-	left: 56px;
 }
 
 div.opcion {

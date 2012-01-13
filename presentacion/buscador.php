@@ -11,8 +11,8 @@ $prov = $provincia -> getProvincias();
 $tipo = new Tipo($conexion);
 ?>
 
-<form method="get" action="busqueda.php">
-	<div id="buscador" style="width:600px;">
+<div id="buscador">
+	<form method="get" action="busqueda.php">
 		<div class='opcion'>
 			<select class='selbusc' name='provincia' id='provincia'>
 				<option value='0'>Todos</option>
@@ -34,5 +34,5 @@ $tipo = new Tipo($conexion);
 			</select>
 			<input type="image" id="search_icon" src="recursos/imagenes/search.png" alt="Buscar eventos"/>
 		</div>
-	</div>
-</form>
+	</form>
+</div>
