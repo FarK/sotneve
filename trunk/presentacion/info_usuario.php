@@ -18,6 +18,7 @@
 	//Consultamos los campos del usuario
 	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
 	$provincia = $usuarioVisitado -> getProvincia();
+	$provActual = $provincia;
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
 	$esFavorito = $userLog->esFavorito($idUserVisitado);
@@ -114,7 +115,7 @@
 		}
 		
 		if ($camposUsuario['visibilidad'] & $PROVINCIA) {
-			$provincia = $camposUsuario['provincia']; //TODO es idProvincia -> Sacar la consulta
+			$provincia = $provActual['nombre'];
 		}
 		
 		$alias = $camposUsuario['alias'];
