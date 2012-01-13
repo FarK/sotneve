@@ -89,7 +89,8 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 	/******** FIN COMPROBACIÓN CAMPOS VACÍOS *********/
 
 	/******** COMPROBACIÓN NOMBRE/APELLIDOS *********/
-	$patronNomApe = "/^([[:space:]][[:alpha:]]|[[:alpha:]])+$/";
+	//Nombre sin dobles espacios y sin espacios al principio ni al final
+	$patronNomApe = '/^[A-Za-zñçáéíóúÁÉÍÓÚÜü.]+( [A-Za-zñçáéíóúÁÉÍÓÚÜü.]+)*$/';
 	if (!preg_match($patronNomApe, $nombre) || !preg_match($patronNomApe, $apellidos)) {
 		$valido = false;
 	} elseif (strlen($nombre) > 30 || strlen($apellidos) > 60) {
@@ -139,7 +140,7 @@ function esValido($nombre, $apellidos, $dia, $mes, $ano, $email, $provincia, $se
 	/******* FIN COMPROBACIÓN FECHA NACIMIENTO *******/
 
 	/******* COMPROBACIÓN EMAIL *******/
-	$patronEmail = "/^\w+@\w+\.\w+$/";
+	$patronEmail = "/^\w+\.*\w*@\w+\.\w+$/";
 	if (!preg_match($patronEmail, $email)) {
 		$valido = false;
 	}
