@@ -332,7 +332,10 @@ function inputBoton($campos){
 					<label for="descripcion" >Descripci&oacute;n</label>
 					<?php texareaDescripcion($campos) ?>
 				</div>
+				<div class="filaform">
+				<div class="cell"></div>
 				<?php inputBoton($campos); ?>
+				</div>
 
 				<!-- Campo fantasma para distinguir entre crear y actualizar un evento -->
 				<?php echo '<input name="actualizar" type="hidden" value="' . $idEvento . '" ></input>'; ?>

@@ -1,13 +1,9 @@
 @import "general.css";
 
-.h1{
-	padding: 20px;
-}
-
 form#miPerfilForm {
 	display: inline-block;
 	position: relative;
-	right: 10px;
+	right: 20px;
 }
 
 div.divf{
@@ -32,9 +28,7 @@ select.fecha {
 	display: inline-block;
 	margin-right: 7px;
 }
-select{
-	margin-top: 5px;
-}
+
 select#ano {
 	margin: 0;
 }
@@ -55,11 +49,6 @@ input#registrate:hover {
 	text-shadow: 0 0 3px SKYBLUE;
 	box-shadow: 0 0 10px #418eb6;
 	cursor: pointer;
-}
-
-span#titulo {
-	position: relative;
-	left: 72px;
 }
 
 #OK, #errores {

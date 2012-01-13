@@ -42,6 +42,6 @@ function claseEnlace($paginas, $indice){
 			<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
 
 		</div>
-		<span id='husuario'>Hola, <?php echo $nombre;?></span>
+		<div id="husuario"><span>Hola, <?php echo $nombre;?></span></div>
 	<?php include ("buscador.php"); ?>
 </div>
