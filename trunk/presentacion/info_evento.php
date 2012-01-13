@@ -26,13 +26,16 @@
 		
 	$estaCompleto = $evento->estaCompleto();
 	$estaInscrito = $evento->estaInscrito($_SESSION['idUsuario']);
-	
 	$esPropietario = $evento->esPropietario($_SESSION['idUsuario']);
-	if($esPropietario){
+	$terminado = $evento->haTerminado();
+	
+	if($terminado){	//ha terminado->boton desactivado
+		$add_form_action = 'javascript:hacerNada()';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png">Evento finalizado';
+	}else if($esPropietario){ // boton de lapiz
 		$add_form_action = sprintf('crear_evento.php?idEvento=%s', $idEventoVisitado);
-		$add_image = '<input type="image" id="add" src="recursos/imagenes/editar.png">Editar Evento';
-	}
-	else if($estaInscrito){
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/editar.png">Editar evento';
+	}else if($estaInscrito){ // boton de desinscribirse
 		$add_form_action = 'javascript:desinscribeEvento('.$idEventoVisitado.')';
 		$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Desinscribirse';
 	}else{
