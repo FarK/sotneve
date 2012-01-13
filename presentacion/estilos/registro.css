@@ -29,7 +29,7 @@ hr {
 }
 fieldset {
 
-	margin: 10% auto auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
+	margin: 7% 8% auto auto;/* margin es para que se quede centrado el fieldset en la pantalla */
 	padding: 30px 30px 30px 30px;/*padding hace que los componentes internos esten separados de la linea, con un margen*/
 	width: 800px;
 	border-style: dotted;
