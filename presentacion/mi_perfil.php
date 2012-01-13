@@ -100,7 +100,7 @@ function creaCheckBox($campos, $campo) {
 	<head>
 		<meta charset="utf-8"/>
 		<title>sotneve - Únete</title>
-		<script type="text/javascript" src="estilos/editausuario.js"></script>
+		<script type="text/javascript" src="../logica/scripts/mi_perfil.js"></script>
 		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
 	</head>
 	<body>
