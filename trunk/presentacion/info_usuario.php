@@ -73,8 +73,8 @@
 		</span>
 		</form>
 
-		<h1><?php echo $camposUsuario['alias']
-		?></h1>
+		<span class="h1"><?php echo $camposUsuario['alias']
+		?></span>
 		<?php
 
 		$novisible = "No Disponible";
@@ -83,6 +83,7 @@
 		$sexo = $novisible;
 		$fechaNac = $novisible;
 		$email = $novisible;
+		$provincia = $novisible;
 
 		if ($camposUsuario['visibilidad'] & $NOMBRE) {
 			$nombre = $camposUsuario['nombre'];
@@ -110,6 +111,10 @@
 
 		if ($camposUsuario['visibilidad'] & $EMAIL) {
 			$email = $camposUsuario['email'];
+		}
+		
+		if ($camposUsuario['visibilidad'] & $PROVINCIA) {
+			$provincia = $camposUsuario['provincia'];
 		}
 		
 		$alias = $camposUsuario['alias'];
@@ -148,7 +153,7 @@
 			<div class='data_row'>
 				<span class="l_usuario"> Provincia: </span>
 				<span class="c_usuario"> <?php
-				echo $provUsuario['nombre'];
+				echo $provincia;
 					?></span>
 			</div>
 		</div>

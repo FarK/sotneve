@@ -97,7 +97,7 @@
 				</form>
 					
 					
-					<h1><?php echo $campos['titulo'];?></h1>
+					<span class="h1"><?php echo $campos['titulo'];?></span>
 					<p>
 						<strong>Informaci&oacute;n del evento:
 						<br />
