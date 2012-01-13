@@ -1,5 +1,9 @@
 @import "general.css";
 
+.h1{
+	padding: 20px;
+}
+
 form#miPerfilForm {
 	display: inline-block;
 	position: relative;
@@ -26,22 +30,17 @@ input.info_input {
 
 select.fecha {
 	display: inline-block;
-	margin: 0 7px 0 0;
+	margin-right: 7px;
 }
-
+select{
+	margin-top: 5px;
+}
 select#ano {
 	margin: 0;
 }
 
-select#sexo {
+select#sexo, select#provincia {
 	width: 97%;
-}
-
-select#provincia {
-	width: 97%;
-}
-
-input.visibilitybox {
 }
 
 input#registrate {
