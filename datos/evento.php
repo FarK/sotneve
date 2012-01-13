@@ -106,6 +106,16 @@ class Evento extends Tabla{
 		return $this->consultar($query);
 	}
 	
+	public function haTerminado(){
+		$query = sprintf("SELECT * FROM eventos WHERE IdEvento = '%s' AND fechaEvento>=NOW()", $this->pks['idEvento']);
+		$res = $this->consultar($query);
+		if(empty($res)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public function getEventosTipoVigentes($idTipo){
 		$fecha = time (); 
 		$actual =  date ( "Y-m-d h:i:s" , $fecha);
