@@ -2,142 +2,88 @@
 session_start();
 include_once ("../datos/conexion.php");
 include_once ("../datos/usuario.php");
-include_once ("../datos/provincia.php");
+include_once ("validador.php");
+
+
 //Crear objeto gestor bd
 $conexion = new Conexion();
 $usuario = new Usuario($conexion);
-$provincia = new Provincia($conexion);
 
+//Comprobamos que los se han pasado todos los campos
+if(!(
+	isset($_POST['alias'])		&&
+	isset($_POST['sexo'])		&&
+	isset($_POST['nombre'])		&&
+	isset($_POST['apellidos'])	&&
+	isset($_POST['contrasena'])	&&
+	isset($_POST['recontrasena'])	&&
+	isset($_POST['email'])		&&
+	isset($_POST['dia'])		&&
+	isset($_POST['mes'])		&&
+	isset($_POST['ano'])		&&
+	isset($_POST['provincia'])
+)){
+	$_SESSION['error'] = 'POSTError';
+	$_SESSION['debug'] = 'No se han recibido los POSTs correctos';
+	header("Location: ../presentacion/errores.php");
+	exit;
+}
 
-$fechanac = $_POST['fechanac'];
-$sexo = $_POST['sexo'];
-$email = $_POST['email'];
-$alias = $_POST['alias'];
-$contrasena = $_POST['contrasena'];
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$prov = $_POST['provincia'];
-$recontrasena = $_POST['recontrasena'];
+//Comporbamos si existen el alias y el email  
+$exAlias = $usuario->existeAlias($_POST['alias']);
+$exEmail = $usuario->existeEmail($_POST['email']);
 
-$valido = esValido($provincia,$usuario, $email, $contrasena, $recontrasena, $prov, $nombre, $apellidos, $sexo, $fechanac, $alias);
+if (esValido($_POST, $usuario) && !$exAlias && !$exEmail){
+	//Vaciamos los campos en _SESSION para que no reaparezcan
+	$_SESSION['alias'] = '';
+	$_SESSION['nombre'] = '';
+	$_SESSION['apellidos'] = '';
+	$_SESSION['email'] = '';
 
-$fechanac = dmaToamd($fechanac);
-//Convertimos la fecha a AAAA-MM-DD para poder meterla en la BD
+	//Cambiamos la fecha al formato que usa la BD
+	$fechanac = sprintf('%s-%s-%s', $_POST['ano'], $_POST['mes'], $_POST['dia']);
 
-//$sexo = sexoToInt($sexo);
-//pasa Hombre a 1 y Mujer a 0
-
-if ($valido) {
-	$usuario -> insertarUsuario($fechanac, $sexo, $email, $alias, $contrasena, $nombre, $apellidos, $prov);
+	//Insertamos los usuarios
+	$usuario -> insertarUsuario($fechanac, $_POST['sexo'], $_POST['email'], $_POST['alias'], $_POST['contrasena'], $_POST['nombre'], $_POST['apellidos'], $_POST['provincia']);
 	$id = $conexion->getLastInsertId();
+
 	$_SESSION['idUsuario'] = $id;
 	header("Location:../presentacion/principal.php");
+	exit;
+	echo '<span>bien</span>';
 }
+else{
+	//Seteamos los campos en _SESSION para que reaparezcan
+	$_SESSION['alias'] = $_POST['alias'];
+	$_SESSION['nombre'] = $_POST['nombre'];
+	$_SESSION['apellidos'] = $_POST['apellidos'];
+	$_SESSION['email'] = $_POST['email'];
+
+	//Seteamos el erro a la opción adecuada
+	$_SESSION['err_registro'] = 0;
+	if($exAlias)
+		$_SESSION['err_registro'] = 1;
+	if($exEmail)
+		$_SESSION['err_registro'] = $_SESSION['err_registro'] | 2;
+
+	header("Location:../presentacion/registro.php");
+	exit;
+}
+
 $conexion -> desconectar();
 
-function esValido($provincia, $usuario, $email, $contrasena, $recontrasena, $prov, $nombre, $apellidos, $sexo, $fechanac, $alias) {
-	$valido = true;
-	
-	$resultadoEmail = $usuario -> existeEmail($email);
-	$resultadoAlias = $usuario -> existeAlias($alias);
-	$resultadoProvincia = $provincia -> existeProvincia($prov);
-		
-	//TODO Gestionar correctamente errores
-	//Hay error si...
-	$camposvacios = false;
-
-	if ($email == "" || $contrasena == "" || $nombre == "" || $apellidos == "") {//OK
-		$camposvacios = true;
-		$_SESSION['err_campos'] = true;
-		$valido = false;
-	}
-	
-	if (!$camposvacios && $resultadoEmail) {//OK
-		$_SESSION['err_email'] = true;
-		$valido = false;
-	}
-
-	if (!$camposvacios && ($contrasena != $recontrasena || strlen($contrasena) < 6 || strlen($contrasena) > 15)) {//No entra en el if
-		$_SESSION['err_contrasena'] = true;
-		$valido = false;
-	}
-
-
-	if ($sexo != '1' && $sexo != '0') {
-		$valido = false;
-	}
-	$dia = substr($fechanac, 0, 2);
-	$mes = substr($fechanac, 3, 2);
-	$ano = substr($fechanac, 6, 9);
-
-	$diamax = 0;
-	//No contemplamos bisiestos ni los años
-
-	if ($mes > 0 && $mes < 13 && strlen($fechanac) == 10) {//con == 10 hacemos que sea de la forma dd/mm/aaaa
-		switch ($mes) {
-			case '2' :
-				$diamax = 28;
-				break;
-
-			case 04 || 06 || 11 || 09 :
-				$diamax = 30;
-				break;
-			case 01 || 03 || 05 || 07 || 08 || 10 || 12 :
-				$diamax = 31;
-				break;
-			default :
-				break;
-		}
-		if ($dia < 1 && $dia > $diamax) {
-			$valido = false;
-		}
-
-	} else {
-		$valido = false;
-	}
-	if (!$camposvacios && ($resultadoAlias || strlen($alias) > 60 || strlen($alias) < 3)) {//OK
-		$valido = false;
-	}
-
-	if ($prov == 0) {
-		$_SESSION['err_campos'] = true;
-		$valido = false;
-	} elseif (!$camposvacios) {
-		
-	
-		if(!$resultadoProvincia) {
-		$_SESSION['err_campos'] = true;
-		$valido=false;
-		}
-
-	}
-
-	if ($valido) {
-		return true;
-	} else {//TODO indicar los motivos por los que se a vuelto a registro.php mediante $_SESSION
-		header("Location:../presentacion/registro.php");
-	}
-
-
-}
-
-function dmaToamd($fecha) {
-	$dia = substr($fecha, 0, 2);
-	$mes = substr($fecha, 3, 2);
-	$ano = substr($fecha, 6, 9);
-
-	$fecha = $ano . "-" . $mes . "-" . $dia;
-
-	return $fecha;
-}
-
-function sexoToInt($sexo) {// TODO no se usa ya, lo borraremos cuando estemos 100% seguro
-	if ($sexo == 'Hombre') {
-		$sexo = 1;
-		return $sexo;
-	} elseif ($sexo == 'Mujer') {
-		$sexo = 0;
-		return $sexo;
-	}
+function esValido($_POST, $usuario) {
+	return	Validador::palabra($_POST['alias'])		&&
+		($_POST['sexo'] == 0 || $_POST['sexo'] == 1)	&&
+		Validador::palabras($_POST['nombre'])		&&
+		Validador::palabras($_POST['apellidos'])	&&
+		Validador::passNueva($_POST['contrasena'],
+				$_POST['recontrasena'])		&&
+		Validador::email($_POST['email'])		&&
+		Validador::fechaPasada($_POST['dia'],
+				$_POST['mes'],
+				$_POST['ano'])			&&
+		Validador::idProvincia($_POST['provincia'])
+	;
 }
 ?> 

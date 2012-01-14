@@ -22,7 +22,11 @@ div.row {
 	display: table-row;
 }
 
-form#registro input, form#registro select, form#registro label {
+div#fecha {
+	width: 210;
+}
+
+form#registro input, select.cellSelect, form#registro label {
 	width: 170px;
 	display: table-cell;
 	margin: 8px 0 8px 0;
@@ -31,6 +35,12 @@ form#registro input, form#registro select, form#registro label {
 form#registro select {
 	background-color: white;
 	color: #418eb6;
+}
+
+select.fecha {
+	display: inline-block;
+	width: auto;
+	margin-right: 7px;
 }
 
 form#registro label {
