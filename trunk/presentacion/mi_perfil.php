@@ -64,10 +64,9 @@ function selectAno($campos) {
 	echo $option;
 	echo '<option disabled="true">--------</option>';
 
-	for ($i = 0; $i < 100; $i++) {
-		if ($anoAct != (date("Y") - $i)) {
-			$ano = date("Y") - $i;
-			$option = sprintf('<option value="%s">%s</option>', $ano, $ano);
+	for ($i = date('Y') ; $i > 1900 ; --$i) {
+		if ($anoAct != $i) {
+			$option = sprintf('<option value="%s">%s</option>', $i, $i);
 			echo $option;
 		}
 	}
