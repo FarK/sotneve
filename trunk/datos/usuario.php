@@ -28,6 +28,7 @@ class Usuario extends Tabla{
 		if (func_num_args() == 2){
 			if(!$this->existeUsuario()){
 				$_SESSION['error'] = "userNotFound";
+				$_SESSION['debug'] = "El usuario " . $arg_list[1] . " no existe.";
 				header("Location:errores.php");
 			}
 		}
@@ -37,9 +38,6 @@ class Usuario extends Tabla{
 		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
 		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
 		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
-		//TODO CARLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSS pks
-		 $this->preparar('getEventos', "SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = " . $this->pks['idUsuario'] ." AND A.idEvento = E.idEvento AND fechaEvento >= NOW()");
-		$this->preparar('getFavoritos', "SELECT idUsuario1, idUsuario2, alias FROM favoritos F, " . $this->nomTabla . " U WHERE F.idUsuario1 = " . $this->pks['idUsuario'] ." AND U.idUsuario = F.idUsuario2");
 		
 
 		
@@ -108,7 +106,7 @@ class Usuario extends Tabla{
 	
 	//Todos los eventos a los que está afiliado un usuario NO caducados
 	public function getEventos(){
-		return $this->consultarPreparada('getEventos', array());
+		return $this->consultar(sprintf('SELECT * FROM afiliaciones A, eventos E WHERE A.idUsuario = %s AND A.idEvento = E.idEvento AND fechaEvento >= NOW()', $this->pks['idUsuario']));
 	}
 	
 	public function getEventosProvincia(){
@@ -136,7 +134,7 @@ class Usuario extends Tabla{
 	}
 	
 	public function getFavoritos(){
-		return $this->consultarPreparada('getFavoritos', array());
+		return $this->consultar(sprintf('SELECT idUsuario1, idUsuario2, alias FROM favoritos F, %s U WHERE F.idUsuario1 = %s AND U.idUsuario = F.idUsuario2', $this->nomTabla, $this->pks['idUsuario']));
 	}
 	
 	public function esFavorito($idFav2){
