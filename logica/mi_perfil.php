@@ -95,7 +95,7 @@ function esValido($_POST, $passBD, $emailBD, $prov, $usuario) {
 			$passBD,
 			$_POST['contrasena'],
 			$_POST['recontrasena'])						&&
-		$prov->existeProvincia($_POST['provincia'])				&&
+		Validador::idProvincia($_POST['provincia'])				&&
 		(!$usuario->existeEmail($_POST['email']) || $_POST['email'] == $emailBD)
 	;
 }

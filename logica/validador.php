@@ -58,5 +58,9 @@ class Validador{
 			(Validador::passNueva($pass1, $pass2) &&
 			(hash('sha256', $passActual)) == $passBD);
 	}
+
+	public static function idProvincia($string){
+		return ((int)$string) >= 1 && ((int)$string) <= 52;
+	}
 }
 ?>
