@@ -23,6 +23,7 @@ class Conexion{
 			$_SESSION['error'] = "internalError";
 			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
+			exit;
 		}
 	}
 
@@ -59,6 +60,7 @@ class Conexion{
 			$_SESSION['error'] = "internalError";
 			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
+			exit;
 		}
 
 	}
@@ -72,6 +74,7 @@ class Conexion{
 			$_SESSION['error'] = "internalError";
 			$_SESSION['debug'] = $exp->getMessage();
 			header("Location: ../presentacion/errores.php");
+			exit;
 		}
 	}
 	

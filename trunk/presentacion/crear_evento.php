@@ -284,9 +284,9 @@ function inputBoton($campos){
 			<?php
 				tituloEvento($campos);
 
-				if(isset($_SESSION['err_campos_evento']) && $_SESSION['err_campos_evento']){
-					echo "<span class='errorphp'>Debe rellenar todos los campos.</span>";
-					$_SESSION['err_campos_evento'] = false;
+				if(isset($_SESSION['err_campos_crearEvento']) && $_SESSION['err_campos_crearEvento']){
+					echo "<span class='errorphp'>Ha ocurrido algún error</span>";
+					$_SESSION['err_campos_crearEvento'] = false;
 				}
 			?>
 
