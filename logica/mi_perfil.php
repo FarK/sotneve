@@ -27,9 +27,11 @@ if(!(
 	isset($_POST['contrasenaactual'])	&&
 	isset($_POST['contrasena'])		&&
 	isset($_POST['recontrasena'])
-))
-	//TODO: Redirigir a error
-	echo "ERROR: no se han pasado bien los post";
+)){
+	$_SESSION['error'] = 'No se han recibido los POSTs correctos';
+	header("Location: ../presentacion.errores.php");
+	exit;
+}
 
 $visibilidad = 0;
 //Pasamos la visibilidad al formato de la BD
@@ -51,15 +53,8 @@ if(isset($_POST['check' . $PROVINCIA]))
 if(isset($_POST['check' . $SEXO]))
 	$visibilidad = $visibilidad | (int)$_POST['check' . $SEXO];
 
-//Añadimos la contraseña actual de la BD al array _POST para pasarselo a esValido
-$_POST['passBD'] = $camposUsuario['pass'];
-
-//Comprobamos que el formulario es válido, que la provincia realmente existe y que el email no está ya en uso
-
-if(esValido($_POST) &&
-	$prov->existeProvincia($_POST['provincia']) &&
-	(!$usuario->existeEmail($_POST['email']) || $_POST['email'] == $camposUsuario['email']))
-{
+//Comprobamos que el formulario es válido y actualizamos en la BD
+if(esValido($_POST, $camposUsuario['pass'], $camposUsuario['email'], $prov, $usuario)){
 	$fechaNac = $_POST['ano']. '-' . $_POST['mes']. '-' . $_POST['dia'];
 	if ($_POST['contrasena'] == '')
 		$usuario->actualizarUsuarioSinPass(
@@ -91,15 +86,17 @@ else{
 }
 $conex -> desconectar();
 
-function esValido($_POST) {
+function esValido($_POST, $passBD, $emailBD, $prov, $usuario) {
 	return	Validador::palabras($_POST['nombre'])					&&
 		Validador::palabra($_POST['apellidos'])					&&
 		Validador::email($_POST['email'])					&&
 		Validador::fechaPasada($_POST['dia'], $_POST['mes'], $_POST['ano'])	&&
 		Validador::changePass($_POST['contrasenaactual'],
-			$_POST['passBD'],
+			$passBD,
 			$_POST['contrasena'],
-			$_POST['recontrasena'])
+			$_POST['recontrasena'])						&&
+		$prov->existeProvincia($_POST['provincia'])				&&
+		(!$usuario->existeEmail($_POST['email']) || $_POST['email'] == $emailBD)
 	;
 }
 ?> 
