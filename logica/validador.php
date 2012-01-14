@@ -31,6 +31,11 @@ class Validador{
 		return preg_match('/^\w+\.*\w*@\w+\.\w+$/', $string);
 	}
 
+	public static function hora($hora, $minutos){
+		return	$hora >= 0 && $hora <= 23 &&
+			$minutos >= 0 && $minutos <= 59;
+	}
+
 	public static function fecha($dia, $mes, $ano){
 		return checkdate($mes, $dia, $ano);
 	}
