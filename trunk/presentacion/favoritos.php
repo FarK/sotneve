@@ -36,7 +36,9 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 						<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
 						<span class='espacioBlanco'></span>
 						<form class='favorito' action='javascript:borraFavorito(%s)'>
-							<input id='delete' type='image' src='recursos/imagenes/delete.png'></input>
+						<div>
+							<input class='delete' type='image' src='recursos/imagenes/delete.png'/>
+						</div>
 						</form>
 					</div>",
 					$fav['idUsuario'], $fav['alias'], $fav['idUsuario']);
