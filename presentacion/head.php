@@ -11,6 +11,9 @@ $usuario->prepCampo("nombre");
 $result = $usuario->consultarCampos();
 $nombre = $result['nombre'];
 
+$hvaloracion = $usuario->getValoracion();
+if($hvaloracion == -1)
+	$hvaloracion = "Sin datos";
 //Ceramos conexión
 $conex->desconectar();
 
@@ -44,6 +47,6 @@ function claseEnlace($paginas, $indice){
 			<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
 
 		</div>
-		<div id="husuario"><span>Hola, <?php echo $nombre;?></span></div>
+		<div id="husuario"><span>Hola, <?php echo $nombre;?></span><br/><span>Tu puntuaci&oacute;n: <?php echo $hvaloracion;?></span></div>
 	<?php include ("buscador.php"); ?>
 </div>
