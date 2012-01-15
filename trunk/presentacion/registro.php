@@ -20,7 +20,7 @@ if(!isset($_SESSION['alias'])){
 
 function selectDia() {
 	echo '<select class="fecha" name="dia" id="dia">';
-	echo '<option value="0">Día</option>';
+	echo '<option value="0">D&iacute;a</option>';
 
 	for ($i = 1; $i < 32; $i++)
 		echo sprintf('<option value="%s">%s</option>', $i, $i);
@@ -45,7 +45,7 @@ function selectMes() {
 
 function selectAno() {
 	echo '<select class="fecha" name="ano" id="ano">';
-	echo '<option value="0">Año</option>';
+	echo '<option value="0">A&ntilde;o</option>';
 
 	for ($i = date('Y') ; $i > 1900 ; --$i) {
 		$option = sprintf('<option value="%s">%s</option>', $i, $i);
@@ -60,7 +60,7 @@ function selectProvincias($provincias){
 	echo '<option value="0"></option>';
 
 	foreach ($provincias as $id=>$prov) {
-		$option = sprintf("<option value='%s'>%s</option>", $id, $prov);
+		$option = sprintf("<option value='%s'>%s</option>", $id, htmlentities($prov));
 		echo $option;
 	}
 
