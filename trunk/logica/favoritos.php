@@ -1,7 +1,13 @@
 <?php
-	 include 'test_session.php';
-	 include_once '../datos/conexion.php';
-	 include_once '../datos/usuario.php';
+	include 'test_session.php';
+	include_once '../datos/conexion.php';
+	include_once '../datos/usuario.php';
+
+	if(!isset($_POST['idUsuario2']){
+		$_SESSION['error'] = 'POSTTError';
+		head('Location:../presentacion/errores.php');
+		exit;
+	}
 
 	$conexion = new Conexion();	
 	//Crear objeto evento

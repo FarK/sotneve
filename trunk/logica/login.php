@@ -7,6 +7,12 @@
 	$conex = new Conexion();	
 	$usuarios = new Usuario($conex);
 	
+	if(!(isset($_POST['email']) && isset($_POST['pass']))){
+		$_SESSION['error'] = 'POSTError';
+		head('Location:../presentacion/errores.php');
+		exit;
+	}
+
 	$email = $_POST['email'];
 	$pass = $_POST['pass'];
 	
