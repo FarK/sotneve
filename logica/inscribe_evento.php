@@ -3,6 +3,12 @@ include 'test_session.php';
 include_once '../datos/conexion.php';
 include_once '../datos/evento.php';
 
+if(!isset($_GET['idEv'])){
+	$_SESSION['error'] = 'GETTError';
+	head('Location:../presentacion/errores.php');
+	exit;
+}
+
 $idUser = $_SESSION['idUsuario'];
 $idEvento = $_GET['idEv'];
 $conex = new Conexion();
