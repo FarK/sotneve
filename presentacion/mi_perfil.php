@@ -29,7 +29,7 @@ function selectDia($campos) {
 	$diaAct = (int)substr($campos['fechaNac'], 8, 2);
 	$option = sprintf('<option value="%s">%s</option>', $diaAct, $diaAct);
 	echo $option;
-	echo '<option disabled="true">----</option>';
+	echo '<option disabled="disabled">----</option>';
 	for ($i = 1; $i < 32; $i++) {
 		if ($diaAct != $i){
 			$option = sprintf('<option value="%s">%s</option>', $i, $i);
@@ -47,7 +47,7 @@ function selectMes($campos) {
 	echo '<select class="fecha" name="mes" id="mes">';
 	$option = sprintf('<option value="%s"> %s </option>', $mesAct, $meses[$mesAct]);
 	echo $option;
-	echo '<option disabled="true">-----------</option>';
+	echo '<option disabled="disabled">-----------</option>';
 	foreach($meses as $index=>$mes){
 		if($mesAct != $index){
 			$option = sprintf('<option value="%s"> %s </option>', $index, $mes);
@@ -62,7 +62,7 @@ function selectAno($campos) {
 	$anoAct = (int)substr($campos['fechaNac'], 0, 4);
 	$option = sprintf('<option value="%s">%s</option>', $anoAct, $anoAct);
 	echo $option;
-	echo '<option disabled="true">--------</option>';
+	echo '<option disabled="disabled">--------</option>';
 
 	for ($i = date('Y') ; $i > 1900 ; --$i) {
 		if ($anoAct != $i) {
@@ -116,7 +116,7 @@ function creaCheckBox($campos, $campo) {
 				$_SESSION['OK'] = false;
 			}
 			?>
-			<form id='miPerfilForm' name="form" method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
+			<form id='miPerfilForm'  method="post" action="../logica/mi_perfil.php" onsubmit="return esFormularioValido()">
 				<?php
 				if (isset($_GET['err_email'])) {
 					echo '<span id="erroremail">El email ya existe o es superior a 60 caracteres</span>';
@@ -134,7 +134,7 @@ function creaCheckBox($campos, $campo) {
 					<div class='cell'>
 					</div>
 					<div class='cell'>
-					<label for="visible" class="etiqueta">¿Es visible?</label>
+					<label class="etiqueta">¿Es visible?</label>
 					</div>
 				</div>
 				<div class="divf">
