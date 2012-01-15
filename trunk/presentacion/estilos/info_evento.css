@@ -28,17 +28,6 @@ div.lista_usuarios {
 	vertical-align: middle;
 	padding-right: 5px;
 }
-form#informacion {
-	//min-height: 300px;
-	width: 900px;
-}
-div#comentarios {
-	min-height: 140px;
-	padding: 10px 5px 0 5px;
-	margin: 0 0 0 160px;
-	background-color: #418eb6;
-	border-radius: 10px;
-}
 strong {
 	font-size: 110%;
 	margin: 1%;
@@ -47,4 +36,25 @@ strong.num_usuarios {
 	display: inline-block;
 	margin-bottom: 10px;
 	font-size: 105%;
+}
+div.info_evento {
+	margin-left: 30%;
+}	
+#quedan{
+	font-size: 120%;
+	font-weight: bold;
+}
+div.data_row {
+	display: table-row;
+	text-align: left;
+}
+span.campo_evento {
+	font-size: 120%;
+	font-weight: bold;
+	display: table-cell;
+	text-align: right;
+	padding: 10px 0;
+}
+span.valor_evento {
+	margin: 0 15px;
 }

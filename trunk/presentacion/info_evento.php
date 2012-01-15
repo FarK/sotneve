@@ -99,35 +99,44 @@
 					
 					<span class="h1"><?php echo $campos['titulo'];?></span>
 					<p>
-						<strong>Informaci&oacute;n del evento:
-						<br />
-						</strong>
-						<span class='info'>Lugar: <?php echo $campos['lugar']; 
-						echo " en "; 
-						echo $camposProv['nombre'];?></span>
-						<br />
-						<span class='info'>Actividad:  <?php echo $camposTipo['nombre'];?> </span>
-						<span class='info'>Fecha: <?php echo $campos['fechaEvento'];?></span>
-						<br />
-						<span class='info'>Quedan <?php echo $campos['maxPersonas']-$numeroAsistentes;
-							?> plazas restantes de <?php echo $campos['maxPersonas'];?> participantes</span>
-						<br />
-						<span class='info'>Descripci&oacute;n: <?php echo $campos['descripcion'];?></span>
-						<br />
-						<span class='info'>Creado por: <?php
-													
-							echo $evento->getAliasPropietario($campos['propietario']);
 						
-							?></span>
+						<span id='quedan'>Quedan <?php echo $campos['maxPersonas']-$numeroAsistentes;
+							?> plazas restantes de <?php echo $campos['maxPersonas'];?> participantes</span>
+						
 						<br />
+				<div class='info_evento'>
+						
+						<br />
+						<div class='data_row'>
+							<span class="campo_evento"> Lugar: </span>
+							<span class="valor_evento"> <?php echo $campos['lugar']; 
+									echo " en "; 
+									echo $camposProv['nombre'];?></span>
+						</div>
+						<div class='data_row'>
+							<span class="campo_evento"> Fecha: </span>
+							<span class="valor_evento"> <?php echo $campos['fechaEvento'];?>
+							</span>
+						</div>
+						<div class='data_row'>
+							<span class="campo_evento"> Actividad: </span>
+							<span class="valor_evento"> <?php echo $camposTipo['nombre'];?>
+							</span>
+						</div>
+						<div class='data_row'>
+							<span class="campo_evento"> Creado por: </span>
+							<span class="valor_evento"> <?php
+							echo $evento->getAliasPropietario($campos['propietario']);
+							?>
+							</span>
+						</div>
+						<div class='data_row'>
+							<span class="campo_evento"> Descripci&oacute;n: </span>
+							<span class="valor_evento"> <?php echo $campos['descripcion'];?>
+							</span>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div id="comentarios">
-				<p>
-					<strong>Comentarios (no sabemos si implementarlo):
-					<br />
-					</strong> very text make long column make filler fill make column column silly filler text silly column fill silly fill column text filler make text silly filler make filler very silly make text very very text make long filler very make column make silly column fill silly column long make silly filler column filler silly long long column fill silly column very
-				</p>
 			</div>
 
 				 <?php include 'footer.php';?>
