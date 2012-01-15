@@ -73,7 +73,7 @@ function selectProvincias($provincias){
 	<head>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<title>sotneve - &Uacute;nete</title>
-		<link rel="stylesheet" type="text/css" href="estilos/registro.css" />
+		<link rel="stylesheet" type="text/css" href="estilos/registro.css" ></link>
 		<script type="text/javascript" src="../logica/scripts/registro.js"></script>
 	</head>
 	<body>
