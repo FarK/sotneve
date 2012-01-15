@@ -14,7 +14,7 @@ $tipo = new Tipo($conexion);
 <div id="buscador">
 	<form method="get" action="busqueda.php">
 		<div class='opcion'>
-			<select class='selbusc' name='provincia' id='provincia'>
+			<select class='selbusc' name='provincia' id='provincias'>
 				<option value='0'>Todos</option>
 				<?php
 
