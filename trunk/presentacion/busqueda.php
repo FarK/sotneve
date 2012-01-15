@@ -60,7 +60,7 @@ foreach ($eventos as $evento) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
-		<meta charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<title>Sotneve - Resultado Busqueda</title>
 		<link rel="stylesheet" type="text/css" href="estilos/busqueda.css"/>
 		<script type="text/javascript" src="scripts/buscarevento.js"></script>
