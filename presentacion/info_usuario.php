@@ -36,7 +36,7 @@
 	<head>
 		<!-- IMPORTANTE ESA LÍNEA DE ABAJO!!!  -->
 		<title>Sotneve - <?php echo $camposUsuario['alias'];?></title>
-		<meta content="text/xhtml; charset=UTF-8"></meta>
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		
 		<link rel="stylesheet" type="text/css" href="estilos/info_usuario.css"/>
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
