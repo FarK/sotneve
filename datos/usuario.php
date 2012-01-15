@@ -141,12 +141,17 @@ class Usuario extends Tabla{
 	
 	public function borraFavorito($idUsuario2) {
 		$query = sprintf("DELETE FROM favoritos WHERE idUsuario1 = '%s' AND idUsuario2 = '%s'", $this->pks['idUsuario'], $idUsuario2);
-		$result = $this -> consultar($query);
+		return $this -> consultar($query);
 	}
 	
 	public function insertaFavorito($idFav){
 		$query = sprintf("INSERT INTO favoritos (idUsuario1, idUsuario2) VALUES ('%s', '%s')", $this->pks['idUsuario'], $idFav);
-		$result = $this -> consultar($query);
+		return $this -> consultar($query);
+	}
+	
+	public function valoraUsuario($idUser2, $val){
+		$query = sprintf("INSERT INTO valoraciones (idUsuario1, idUsuario2, valoracion) VALUES ('%s', '%s', '%s') ON DUPLICATE KEY UPDATE valoracion='%s'", $this->pks['idUsuario'], $idUser2, $val, $val);
+		return $query;
 	}
 }
 ?>
