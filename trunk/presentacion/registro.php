@@ -36,7 +36,7 @@ function selectMes() {
 	echo '<option value="0">Mes</option>';
 
 	foreach($meses as $index=>$mes){
-		$option = sprintf('<option value="%s"> %s </option>\n', $index, $mes);
+		$option = sprintf('<option value="%s"> %s </option>', $index, $mes);
 		echo $option;
 	}
 
@@ -77,10 +77,10 @@ function selectProvincias($provincias){
 		<script type="text/javascript" src="../logica/scripts/registro.js"></script>
 	</head>
 	<body>
-		<form id="registro" name="form" method="post" action="../logica/registro.php" onsubmit="return esFormularioValido()">
-			<span class="h1">&iexcl;&Uacute;nete a nosotros!</span>
+		<form id="registro"  method="post" action="../logica/registro.php" onsubmit="return esFormularioValido()">
+			<div><span class="h1">&iexcl;&Uacute;nete a nosotros!</span>
 			<span id="errores">Corrige los campos en rojo, todos son obligatorios.</span>
-			<?php
+			</div><?php
 			if(isset($_SESSION['err_registro'])){
 				if($_SESSION['err_registro'] & 1)
 					echo '<span class="error">El usuario ya existe</span>';
@@ -118,7 +118,7 @@ function selectProvincias($provincias){
 			</div>
 			<div class="row">
 				<label class="labelleft" for="email">Email:</label>
-				<input type="text" name="email" id="email" value="<?php echo $_SESSION['email']?>" onblur="esEmailValido()" />
+				<input type="text" name="email" id="email" value="<?php echo $_SESSION['email']?>" onblur="esEmailValido()"></input>
 				<label class="labelright">Fecha de nacimiento:</label>
 				<div id='fecha'>
 				<?php
@@ -133,9 +133,8 @@ function selectProvincias($provincias){
 				<?php selectProvincias($provincias); ?>
 			</div>
 
-			<button type="submit" id="registrate">
-				&iexcl;Reg&iacute;strate!
-			</button>
+			<div><input type="submit" id="registrate" value="&iexcl;Reg&iacute;strate!"/>
+			</div>
 		</form>
 	</body>
 </html>
