@@ -87,7 +87,7 @@ function creaCheckBox($campos, $campo) {
 	if ($campos['visibilidad'] & $campo)
 		$visible = "checked=''";
 
-	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s'></input>", $check, $campo, $campo, $visible);
+	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s'%s></input>", $check, $campo, $campo, $visible);
 	echo "<div class='cell'>";
 	echo $linea;
 	echo "</div>";
