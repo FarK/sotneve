@@ -46,9 +46,9 @@ foreach ($eventos as $evento) {
 
 	$enlaces[] = sprintf("
 		<tr>
-		<td><a class='enlace' href='../presentacion/info_evento.php?&idEvento=%s'>%s</a></td>
-		<td><span class='celda'>%s</span></td>
-		<td><span %s class='celda'>[%s/%s]</span></td>
+		<td><a class='enlace' href='../presentacion/info_evento.php?&amp;idEvento=%s'>%s</a></td>
+		<td><span class='celda'>%s </span></td>
+		<td><span %s>[%s/%s]</span></td>
 		</tr>
 		",
 		$evento['idEvento'], $evento['titulo'], $evento['lugar'], $idLleno, $asistentes, $evento['maxPersonas']);
