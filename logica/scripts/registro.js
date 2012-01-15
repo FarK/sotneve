@@ -1,23 +1,22 @@
 function esFormularioValido() {
-
+	
 	var ctrlAlias = document.getElementById("alias");
 	var alias = ctrlAlias.value;
-	
 	var sexo = document.getElementById("sexo").value;
 	var email = document.getElementById("email").value;
 	var nombre = document.getElementById("nombre").value;
 	var apellidos = document.getElementById("apellidos").value;
 	var contrasena = document.getElementById("contrasena").value;
 	var recontrasena = document.getElementById("recontrasena").value;
-	var fechaNac = document.getElementById("fechanac").value;
 	
 	var res="No se ha podido completar el registro:\n"
 	var valido=true;
-
+	
 	if(alias == "" || alias.length<3) {
 		res=res+"- El campo alias no puede ser vacío o menor de 3 caracteres\n";
 		valido=false;
 	}
+	
 	if(nombre == "") {
 		res=res+"- El campo nombre no puede ser vacío\n";
 		valido=false;
@@ -42,15 +41,7 @@ function esFormularioValido() {
 		res=res+"- Selecciona un sexo\n";
 		valido=false;
 	}
-	
-	var patronFecha= /(0[1-9]|1[0-9]|2[0-9]|30|31)\/((0[1-9])|1[0-2])\/((19|20)[0-9]{2})/
-	if(patronFecha="" || !(patronFecha.test(fechaNac))){
-		res=res+"- La fecha de nacimiento no es correcta";
-		valido=false;
-	
-	
-	}
-	
+
 	if(valido){
 		return true;
 	}else{
@@ -108,9 +99,4 @@ function esEmailValido(){
 	}else{
 		ctrlEmail.style.borderColor="#418eb6";
 	}
-
-
-
-
-
 }
