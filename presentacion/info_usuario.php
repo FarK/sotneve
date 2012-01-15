@@ -24,10 +24,10 @@
 	$esFavorito = $userLog->esFavorito($idUserVisitado);
 	if($esFavorito){
 		$add_form_action = 'javascript:borraFavorito('.$idUserVisitado.')';
-		$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Borrar de favoritos';
+		$add_image = '<input type="image" class="add_image" src="recursos/imagenes/delete.png"> Borrar de favoritos';
 	}else{
 		$add_form_action = 'javascript:insertaFavorito('.$idUserVisitado.')';
-		$add_image = '<input type="image" id="add" src="recursos/imagenes/add.png">A&ntilde;adir a favoritos';
+		$add_image = '<input type="image" class="add_image" src="recursos/imagenes/add.png"> A&ntilde;adir a favoritos';
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
