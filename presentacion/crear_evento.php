@@ -114,13 +114,13 @@ function selectMes($campos){
 
 	echo '<select class="fecha" name="mes" id="mes">';
 	if($mesAct != -1){
-		$option = sprintf('<option value=%s> %s </option>\n', $mesAct, $meses[$mesAct]);
+		$option = sprintf("<option value='%s'> %s </option>\n", $mesAct, $meses[$mesAct]);
 		echo $option;
 		echo '<option disabled="true">-----------</option>';
 	}
 	foreach($meses as $index=>$mes){
 		if($mesAct != $index){
-			$option = sprintf('<option value=%s> %s </option>\n', $index, $mes);
+			$option = sprintf("<option value='%s'> %s </option>\n", $index, $mes);
 			echo $option;
 		}
 	}
@@ -133,7 +133,7 @@ function selectAno($campos){
 	$anoAct = -1;
 	if(!empty($campos)){
 		$anoAct = (int)substr($campos['fechaEvento'], 0, 4);
-		$option = sprintf('<option value="%s">%s</option>', $anoAct, $anoAct);
+		$option = sprintf("<option value='%s'>%s</option>", $anoAct, $anoAct);
 		echo $option;
 		echo '<option disabled="true">--------</option>';
 	}
@@ -166,7 +166,7 @@ function selectHora($campos){
 				$hora = '0' . $i;
 			else
 				$hora = $i;
-			$option = sprintf('<option value="%s">%s</option>\n',$hora,$hora);
+			$option = sprintf("<option value='%s'>%s</option>\n",$hora,$hora);
 		}
 			
 		echo $option;
@@ -247,9 +247,9 @@ function inputLugar($campos){
 
 function texareaDescripcion($campos){
 	if(!empty($campos))
-		$input = sprintf('<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"> %s </textarea>', $campos['descripcion']);
+		$input = sprintf('<textarea id="descripcion" name="descripcion" rows="100" cols="70"> %s </textarea>', $campos['descripcion']);
 	else
-		$input = '<textarea id="descripcion" name="descripcion" rows="100" maxlength="249"></textarea>';
+		$input = '<textarea id="descripcion" name="descripcion" cols="70" rows="100"></textarea>';
 
 	echo $input;
 }
@@ -289,7 +289,7 @@ function inputBoton($campos){
 				}
 			?>
 
-			<form id='evento' name="fval" action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
+			<form id='evento' action="../logica/crear_evento.php" method="post"   onsubmit="return valida()">
 				<div class="filaform">
 					<label for="nomevento"> T&iacute;tulo</label>
 					<?php inputTitulo($campos); ?>
@@ -300,7 +300,7 @@ function inputBoton($campos){
 					<br/>
 				</div>
 				<div class="filaform">
-					<label for="fechaevento">Fecha del Evento</label>
+					<label>Fecha del Evento</label>
 					<?php
 						selectDia($campos);
 						selectMes($campos);
@@ -309,18 +309,18 @@ function inputBoton($campos){
 				</div>
 
 				<div class='filaform'>
-					<label for="fechaevento">Hora del Evento</label>
+					<label>Hora del Evento</label>
 					<?php
 						selectHora($campos);
 						selectMinutos($campos);
 					?>
 				</div>
 				<div class="filaform">
-					<label for="provincia">Provincia</label>
+					<label>Provincia</label>
 					<?php selectProvincia($campos, $provincias); ?>
 				</div>
 				<div class="filaform">
-					<label for="tipos">Tipo</label>
+					<label>Tipo</label>
 					<?php selectTipos($campos, $tipo, $nomTipo); ?>
 				</div>
 				<div class="filaform">
@@ -334,10 +334,11 @@ function inputBoton($campos){
 				<div class="filaform">
 				<div class="cell"></div>
 				<?php inputBoton($campos); ?>
-				</div>
+				
 
 				<!-- Campo fantasma para distinguir entre crear y actualizar un evento -->
 				<?php echo '<input name="actualizar" type="hidden" value="' . $idEvento . '" ></input>'; ?>
+				</div>
 			</form>
 		</div>
 		<?php include ("footer.php"); ?>
