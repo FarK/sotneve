@@ -59,7 +59,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>Sotneve - <?php echo $campos['titulo'];?> </title>
-		<meta charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css">
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 		<script type="text/javascript" src="../logica/scripts/info_evento.js"></script>
