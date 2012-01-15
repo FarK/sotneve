@@ -52,10 +52,8 @@
 			<p>
 				<?php 
 				$titulo = sprintf('<strong class="num_usuarios">Favoritos de %s:</strong>', $camposUsuario['alias']);
-				$form = sprintf('<form method="post" action="javascript:valoraUsuario(%s)">
-									<input type="image" src="recursos/imagenes/valoracion.png">
-									<span id="valora">&iexcl;Punt&uacute;alo!</span></form>', $idUserVisitado);
-				echo $titulo . $form;
+				
+				echo $titulo;
 				?>
 				<br />
 				<?php
@@ -72,12 +70,19 @@
 				?>
 			</p>
 		</div>
+		<div id="acciones_usuario">
+			<form id="add_form" method="post" action=<?php echo $add_form_action ?>>
+				<span id='add_to_favs'>
+				<?php echo $add_image ?>
+				</span>
+			</form>
 		
-		<form id="add_form" method="post" action=<?php echo $add_form_action ?>>
-		<span id='add_to_favs'>
-			<?php echo $add_image ?>
-		</span>
-		</form>
+			<?$form = sprintf('
+			<form method="post" id="rate_form" action="javascript:valoraUsuario(%s)">
+			<input type="image" class="add_image" src="recursos/imagenes/valoracion.png">
+			<span id="valora">&iexcl;Punt&uacute;alo!</span></form>', $idUserVisitado);
+			echo $form;?>
+		</div>
 
 		<span class="h1"><?php echo $camposUsuario['alias']
 		?></span>
