@@ -62,6 +62,7 @@ function valoraUsuario(idFav, valoracion) {
 function valoraCallback() {
 	if(ajax.readyState == 4){ 
 		var response = ajax.responseText;
+		document.getElementById('val').innerHTML = response;
 		document.getElementById('valora').innerHTML = '¡Puntuado!';
 	}
 }

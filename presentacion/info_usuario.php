@@ -174,7 +174,7 @@
 			</div>
 			<div class='data_row'>
 				<span class="l_usuario"> Valoraci&oacute;n: </span>
-				<span class="c_usuario"> <?php
+				<span id='val' class="c_usuario"> <?php
 				echo $valoracion;
 					?></span>
 			</div>
