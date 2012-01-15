@@ -3,11 +3,11 @@ buscador.php
 busqueda.php
 crear_evento.php
 errores.php
-favoritos.php
-footer.php
-head.php
+favoritos.php ale Result:	 Passed, 1 warning(s)
+footer.php X
+head.php X
 info_evento.php
 info_usuario.php
-mi_perfil.php	ale cadi 1W
-principal.php	rafa 1W
-registro.php	sAtEr 1w
+mi_perfil.php	ale cadi Result:	 Passed, 1 warning(s)
+principal.php	rafa Result:	 Passed, 1 warning(s)
+registro.php
