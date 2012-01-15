@@ -97,7 +97,7 @@ function creaCheckBox($campos, $campo) {
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<title>sotneve - Únete</title>
 		<script type="text/javascript" src="../logica/scripts/mi_perfil.js"></script>
 		<link rel="stylesheet" type="text/css" href="estilos/mi_perfil.css"/>
