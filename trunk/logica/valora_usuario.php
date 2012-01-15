@@ -17,5 +17,9 @@ $valoracion = $_GET['valoracion'];
 $conex = new Conexion();
 $user = new Usuario($conex, $idUser);
 $user->valoraUsuario($idUser2, $valoracion);
+$usuario2 = new Usuario($conex, $idUser2);
+
+echo $usuario2->getValoracion();
+
 $conex->desconectar();
 ?>
