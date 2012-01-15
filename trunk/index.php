@@ -16,34 +16,34 @@ if (isset($_SESSION['idUsuario'])) {
 		<script type="text/javascript" src="logica/scripts/index.js"></script>
 	</head>
 	<body>
-		<div id="logoprincipal">
+		<div class="contenido">
+			<form id="login_form" method="post" action="logica/login.php" onsubmit="return validaForm()">
+				<fieldset>
+					<legend>
+						Login
+					</legend>
+					<h1>BIENVENIDO A SOTNEVE</h1>
+					<span class="error">Inserte un correo electr&oacute;nico v&aacute;lido</span>
+					<span class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</span>
+					<?php
+					if (isset($_SESSION['err_pass']) && $_SESSION['err_pass']) {
+						echo "<span class='errorserv' >Usuario o contrase&ntilde;a incorrecto</span>";
+						$_SESSION['err_pass'] = false;
+					}
+					?>
+					<br/>
+					<!--Se puede usar : o debe usar codigo ascii? -->
+					<label for="email" class="normal"> Correo electr&oacute;nico </label>
+					<input id="email" name="email" type="text"  onchange="validaEmail()" onclick="onClickEmail()" value="Email"/>
+					<label for="pass" class="normal"> Contrase&ntilde;a: </label>
+					<input id="pass" name="pass" type="password"  onblur="validaPass()" onclick="onClickPass()" value="Password"/>
+					<input name="Send" type="submit" value="Entrar"/>
+					<div id="espacioBlanco"></div>
+					<a id="registrarse" href="presentacion/registro.php">Registrarse</a>
+				</fieldset>
+			</form>
 			<img id="logop" src="presentacion/recursos/imagenes/logo.png" alt="Inicio"></img>
 		</div>
-		<form id="login_form" method="post" action="logica/login.php" onsubmit="return validaForm()">
-			<fieldset>
-				<legend>
-					Login
-				</legend>
-				<h1>BIENVENIDO A SOTNEVE</h1>
-				<span class="error">Inserte un correo electr&oacute;nico v&aacute;lido</span>
-				<span class="error">El campo contrase&ntilde;a no puede estar vac&iacute;o</span>
-				<?php
-				if (isset($_SESSION['err_pass']) && $_SESSION['err_pass']) {
-					echo "<span class='errorserv' >Usuario o contrase&ntilde;a incorrecto</span>";
-					$_SESSION['err_pass'] = false;
-				}
-				?>
-				<br/>
-				<!--Se puede usar : o debe usar codigo ascii? -->
-				<label for="email" class="normal"> Correo electr&oacute;nico </label>
-				<input id="email" name="email" type="text"  onchange="validaEmail()" onclick="onClickEmail()" value="Email"/>
-				<label for="pass" class="normal"> Contrase&ntilde;a: </label>
-				<input id="pass" name="pass" type="password"  onblur="validaPass()" onclick="onClickPass()" value="Password"/>
-				<input name="Send" type="submit" value="Entrar"/>
-				<div id="espacioBlanco"></div>
-				<a id="registrarse" href="presentacion/registro.php">Registrarse</a>
-			</fieldset>
-		</form>
 		<?php
 		include 'presentacion/footer.php';
 		?>
