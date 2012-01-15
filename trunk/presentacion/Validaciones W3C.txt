@@ -1,5 +1,5 @@
 acerca.php
-buscador.php ale Passed, 1 warning(s)
+buscador.php hecho
 busqueda.php
 crear_evento.php	ervaka 	Passed, 1 warning(s)
 errores.php
