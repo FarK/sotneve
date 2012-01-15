@@ -2,6 +2,7 @@
 
 #errores{
 	visibility: hidden;
+	color: red;
 }
 
 .error{
@@ -20,10 +21,6 @@ form#registro {
 
 div.row {
 	display: table-row;
-}
-
-div#fecha {
-	width: 210;
 }
 
 form#registro input, select.cellSelect, form#registro label {
