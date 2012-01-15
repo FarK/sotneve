@@ -25,7 +25,7 @@ foreach($favoritos as $fav){
 				<a class='favorito' href='info_usuario.php?idUsuario=%s'>%s</a>
 				<span class='espacioBlanco'></span>
 				<form class='favorito' action='javascript:borraFavorito(%s)'>
-					<input id='delete' type='image' src='recursos/imagenes/delete.png'></input>
+					<input class='delete' type='image' src='recursos/imagenes/delete.png'></input>
 				</form>
 			</div>", $fav['idUsuario2'], $fav['alias'], $fav['idUsuario2']);
 	$enlaces = $enlaces . $echo;
