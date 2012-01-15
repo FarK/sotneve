@@ -14,7 +14,7 @@ var idFavorito;
 
 function insertaFavorito(idFav) {
 	idFavorito = idFav;
-	document.getElementById('add_to_favs').innerHTML = '<img class="add_image" src="recursos/imagenes/spinner.gif"/> Espere por favor';
+	document.getElementById('add_to_favs').innerHTML = '<img class="add_image" src="recursos/imagenes/spinner.gif"> Espere por favor</img>';
 	ajax.open('get', '../logica/inserta_favorito.php?idFav=' +idFavorito);
 	ajax.onreadystatechange = insertaCallback;
 	ajax.send(null);
