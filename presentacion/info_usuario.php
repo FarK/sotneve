@@ -50,10 +50,14 @@
 
 		<div class='lista_usuarios' id="amigos">
 			<p>
-				<strong class="num_usuarios">Favoritos de <?php echo $camposUsuario['alias']
-				?>:
+				<?php 
+				$titulo = sprintf('<strong class="num_usuarios">Favoritos de %s:</strong>', $camposUsuario['alias']);
+				$form = sprintf('<form method="post" action="javascript:valoraUsuario(%s)">
+									<input type="image" src="recursos/imagenes/valoracion.png">
+									<span id="valora">&iexcl;Punt&uacute;alo!</span></form>', $idUserVisitado);
+				echo $titulo . $form;
+				?>
 				<br />
-				</strong>
 				<?php
 
 				//Comprobamos si tiene o no favoritos
