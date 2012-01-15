@@ -132,8 +132,10 @@
 						</div>
 						<div class='data_row'>
 							<span class="campo_evento"> Descripci&oacute;n: </span>
-							<span class="valor_evento"> <?php echo $campos['descripcion'];?>
+							<div id="descr">
+							<span id="descr"> <?php echo $campos['descripcion'];?>
 							</span>
+							</div>
 						</div>
 					</div>
 				</div>

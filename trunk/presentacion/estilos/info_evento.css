@@ -1,9 +1,7 @@
 @import "general.css";
-
-.h1{
-	padding:20px;
+.h1 {
+	padding: 20px;
 }
-
 #me_apunto {
 	margin-top: 10px;
 	float: right;
@@ -39,8 +37,8 @@ strong.num_usuarios {
 }
 div.info_evento {
 	margin-left: 30%;
-}	
-#quedan{
+}
+#quedan {
 	font-size: 120%;
 	font-weight: bold;
 }
@@ -56,5 +54,8 @@ span.campo_evento {
 	padding: 10px 0;
 }
 span.valor_evento {
-	margin: 0 15px;
+	padding: 0 15px;
+}
+div#descr {
+	padding: 0 15px;
 }
