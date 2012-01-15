@@ -160,10 +160,10 @@ class Usuario extends Tabla{
 		if(empty($valoraciones))
 			return -1;
 		$total = 0;
-		foreach($valoraciones[0] as $val){
-			$total += (int)$val;
+		foreach($valoraciones as $val){
+			$total += (double)$val['valoracion'];
 		}
-		return $total/count($valoraciones[0]);
+		return $total/count($valoraciones);
 	}
 	
 }
