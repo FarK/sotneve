@@ -38,18 +38,25 @@ span.c_usuario {
 	margin: 0 15px;
 }
 /*** AÑADIR A FAVORITOS ***/
-#add_to_favs {
+#acciones_usuario{
+	display:table;
+	float:right;
+}
+
+#add_to_favs, #rate_form {
 	float: right;
 	font-weight: bold;
 	padding: 4px;
 	border-radius: 5px;
 	background-color: #418eb6;
 	color: WHITE;
+	display:table-column;	
 }
+
 span#add_to_favs {
-	margin-bottom: 200px;
-	margin-top: 10px;
+	margin: 10px 0;
 }
+
 .add_image{
 	height: 36px;
 	width: 36px;
