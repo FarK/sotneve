@@ -40,33 +40,3 @@ span.titulo {
 	font-weight: bold;
 	margin-bottom: 5px;
 }
-
-a#enlaceEnmarcadoInv, a#enlaceEnmarcadoInvlleno {
-	color: #418eb6;
-	background-color: #B9CAFF;
-}
-
-a#enlaceEnmarcadoInvlleno {
-	background-color: #C06060;
-	color: WHITE;
-}
-
-a#enlaceEnmarcadoInv:hover, a#enlaceEnmarcadoInvlleno:hover {
-	box-shadow: 0px 0px 3px #B9CAFF;
-	text-shadow: 0 0 3px WHITE;
-	transition: box-shadow 0.5s;
-	transition: text-shadow 0.5s;
-
-	-moz-transition: box-shadow 0.5s; /* Firefox 4 */
-	-webkit-transition: box-shadow 0.5s; /* Safari and Chrome */
-	-o-transition: box-shadow 0.5s; /* Opera */
-	
-	-moz-transition: text-shadow 0.5s; 
-	-webkit-transition: text-shadow 0.5s; 
-	-o-transition: text-shadow 0.5s;
-}
-
-a#enlaceEnmarcadoInvlleno:hover {
-	box-shadow: 0px 0px 3px #FF4144;
-	text-shadow: 0 0 3px #FF8587;
-}

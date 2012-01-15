@@ -31,7 +31,7 @@ $favoritos = $usuarioActual->getFavoritos();
 					<br/>
 					<?php
 					foreach ($favoritos as $fav) {
-						$span = sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a></br>", $fav['idUsuario2'], htmlentities($fav['alias']));
+						$span = sprintf("<a class='enlaceEnmarcado' href='info_usuario.php?idUsuario=%s'>%s</a><br/>", $fav['idUsuario2'], htmlentities($fav['alias']));
 						echo $span;
 					}
 					?>
@@ -44,11 +44,11 @@ $favoritos = $usuarioActual->getFavoritos();
 					foreach ($eventosProv as $evento) {
 						$asistentes = count($eventoObj->getUsuarios($evento['idEvento']));
 
-						$idLleno = 'id="enlaceEnmarcadoInv"';
+						$idLleno = 'class="enlaceEnmarcadoInv"';
 						if($asistentes == $evento['maxPersonas'])
-							$idLleno = 'id="enlaceEnmarcadoInvlleno"';
+							$idLleno = 'class="enlaceEnmarcadoInvlleno"';
 
-						$span = sprintf("<a class='enlaceEnmarcado' %s href='info_evento.php?idEvento=%s'>
+						$span = sprintf("<a %s href='info_evento.php?idEvento=%s'>
 							%s [%s/%s]</a>\n\t\t",
 						       	$idLleno, $evento['idEvento'], $evento['titulo'], $asistentes, $evento['maxPersonas']);
 						echo $span;
@@ -61,7 +61,7 @@ $favoritos = $usuarioActual->getFavoritos();
 					<br/>
 					<?php
 					foreach ($eventos as $evento) {
-						$span = sprintf("<a class='enlaceEnmarcado' href='info_evento.php?idEvento=%s'>%s</a></br>\n\t\t", $evento['idEvento'], $evento['titulo']);
+						$span = sprintf("<a class='enlaceEnmarcado' href='info_evento.php?idEvento=%s'>%s</a><br/>\n\t\t", $evento['idEvento'], $evento['titulo']);
 						echo $span;
 					}
 					?>

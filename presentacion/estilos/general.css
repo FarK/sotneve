@@ -29,9 +29,10 @@ select {
 	border-color: #418eb6;
 	color: #418eb6;
 }
-a.enlaceEnmarcado {
+a.enlaceEnmarcado, a.enlaceEnmarcadoInv, a.enlaceEnmarcadoInvlleno {
 	margin: 5px 4px;
 	border-radius: 10px;
+	border-width: 0px;
 	padding: 4px 6px;
 	color: #418eb6;
 	background-color: #D0E8F7;
@@ -39,10 +40,20 @@ a.enlaceEnmarcado {
 	text-decoration: none;
 	display: inline-block;
 }
+a.enlaceEnmarcadoInv {
+	color: #418eb6;
+	background-color: #B9CAFF;
+}
+
+a.enlaceEnmarcadoInvlleno {
+	background-color: #C06060;
+	color: WHITE;
+}
+
 input.boton {
 	font-weight: bold;
 }
-input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover {
+input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover, .enlaceEnmarcadoInvlleno:hover, .enlaceEnmarcadoInv:hover {
 	box-shadow: 0px 0px 5px WHITE;
 	text-shadow: 0 0 3px WHITE;
 	transition: box-shadow 0.5s;
@@ -56,6 +67,17 @@ input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, 
 	-webkit-transition: text-shadow 0.5s; 
 	-o-transition: text-shadow 0.5s;
 }
+
+a.enlaceEnmarcadoInv:hover {
+	box-shadow: 0px 0px 3px #B9CAFF;
+	text-shadow: 0 0 3px WHITE;
+}
+
+a.enlaceEnmarcadoInvlleno:hover {
+	box-shadow: 0px 0px 3px #FF4144;
+	text-shadow: 0 0 3px #FF8587;
+}
+
 input:focus, textarea:focus, .boton:focus, select:focus {
 	box-shadow: 0px 0px 5px #FFFFFF;
 	border-width: 1px;
