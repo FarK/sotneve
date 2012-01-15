@@ -1,6 +1,6 @@
 acerca.php
 buscador.php hecho
-busqueda.php
+busqueda.php ervaka ale	Passed, 1 warning(s)
 crear_evento.php	ervaka 	Passed, 1 warning(s)
 errores.php
 favoritos.php ale Result:	 Passed, 1 warning(s)
