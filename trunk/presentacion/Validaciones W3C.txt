@@ -10,4 +10,4 @@ info_evento.php ----Rafa termina
 info_usuario.php-----Rafa termina
 mi_perfil.php	ale cadi Result:	 Passed, 1 warning(s)
 principal.php	rafa Result:	 Passed, 1 warning(s)
-registro.php    hecho
+registro.php    cadi Result:	 Passed, 1 warning(s)
