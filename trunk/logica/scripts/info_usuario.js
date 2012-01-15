@@ -49,7 +49,7 @@ function valoraUsuario(idFav, valoracion) {
 	idFavorito = idFav;
 	valoracion = prompt("Introduce una puntuación entre 0 y 5");
 	
-	if(valoracion >= 0 && valoracion < 6){
+	if(valoracion != null && valoracion >= 0 && valoracion < 6){
 		ajax.open('get', '../logica/valora_usuario.php?idUser2=' +idFavorito+ '&valoracion='+valoracion);
 		ajax.onreadystatechange = valoraCallback;
 		document.getElementById('valora').innerHTML = 'Procesando...';
