@@ -1,0 +1,13 @@
+acerca.php
+buscador.php
+busqueda.php
+crear_evento.php
+errores.php
+favoritos.php
+footer.php
+head.php
+info_evento.php
+info_usuario.php
+mi_perfil.php	rafa 1W
+principal.php
+registro.php
