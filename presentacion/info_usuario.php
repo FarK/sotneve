@@ -7,6 +7,7 @@
 	if(!isset($_GET["idUsuario"])){
 		$_SESSION['error'] = "userNotFound";
 		header("Location:errores.php");
+		exit;
 	}
 	
 	$conex = new Conexion();

@@ -6,6 +6,11 @@
 	include_once '../datos/provincia.php';
 	include_once '../datos/tipo.php';
 	
+	if(!isset($_GET["idEvento"])){
+		$_SESSION['error'] = "eventNotFound";
+		header("Location:errores.php");
+		exit;
+	}
 	
 	$conexion = new Conexion();	
 	//Crear objeto evento
