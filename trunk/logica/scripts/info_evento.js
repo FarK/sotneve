@@ -41,7 +41,7 @@ function desinscribeEvento(idEv) {
 function desinscribeCallback() {
 	if(ajax.readyState == 4){ 
 		var response = ajax.responseText;
-		document.getElementById('me_apunto').innerHTML = '<input type="image" id="add" src="recursos/imagenes/add.png">&iexcl;Me apunto!';
+		document.getElementById('me_apunto').innerHTML = '<input type="image" id="add" src="recursos/imagenes/add.png" />&iexcl;Me apunto!';
 		document.getElementById('informacion').action = 'javascript:inscribeEvento('+idEvento+')';
 		if(response == "")
 			document.getElementById('num_asistentes').innerHTML = "Ninguna persona asiste</br>";
