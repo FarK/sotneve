@@ -157,6 +157,8 @@ class Usuario extends Tabla{
 	public function getValoracion(){
 		$query = sprintf("SELECT valoracion FROM valoraciones WHERE idUsuario2='%s'", $this->pks['idUsuario']);
 		$valoraciones = $this->consultar($query);
+		if(empty($valoraciones))
+			return -1;
 		$total = 0;
 		foreach($valoraciones[0] as $val){
 			$total += (int)$val;
