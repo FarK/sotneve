@@ -18,7 +18,7 @@ $favoritos = $usuarioActual->getFavoritos();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
 		<title>Sotneve</title>
-		<meta content="text/xhtml; charset=UTF-8"></meta>
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/principal.css"></link>
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 	</head>
