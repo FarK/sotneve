@@ -153,5 +153,16 @@ class Usuario extends Tabla{
 		$query = sprintf("INSERT INTO valoraciones (idUsuario1, idUsuario2, valoracion) VALUES ('%s', '%s', '%s') ON DUPLICATE KEY UPDATE valoracion='%s'", $this->pks['idUsuario'], $idUser2, $val, $val);
 		return $this->consultar($query);
 	}
+	
+	public function getValoracion(){
+		$query = sprintf("SELECT valoracion FROM valoraciones WHERE idUsuario2='%s'", $this->pks['idUsuario']);
+		$valoraciones = $this->consultar($query);
+		$total = 0;
+		foreach($valoraciones[0] as $val){
+			$total += (int)$val;
+		}
+		return $total/count($valoraciones[0]);
+	}
+	
 }
 ?>
