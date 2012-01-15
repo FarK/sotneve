@@ -8,6 +8,6 @@ footer.php
 head.php
 info_evento.php
 info_usuario.php
-mi_perfil.php	rafa 1W
-principal.php
+mi_perfil.php	ale cadi 1W
+principal.php	rafa 1W
 registro.php
