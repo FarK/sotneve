@@ -36,7 +36,7 @@ function selectMes() {
 	echo '<option value="0">Mes</option>';
 
 	foreach($meses as $index=>$mes){
-		$option = sprintf('<option value=%s> %s </option>\n', $index, $mes);
+		$option = sprintf('<option value="%s"> %s </option>\n', $index, $mes);
 		echo $option;
 	}
 
@@ -60,7 +60,7 @@ function selectProvincias($provincias){
 	echo '<option value="0"></option>';
 
 	foreach ($provincias as $id=>$prov) {
-		$option = sprintf("<option value='%s'>%s</option>", $id, htmlentities($prov));
+		$option = sprintf('<option value="%s">%s</option>', $id, htmlentities($prov));
 		echo $option;
 	}
 

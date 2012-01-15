@@ -60,7 +60,7 @@ class Tipo extends Tabla{
 		$argList = func_get_args();
 
 		$indentacion = $this->creaIndentacion($argList[2]);
-		$option = sprintf("<option value=%s> %s%s </option>\n", $argList[0], $indentacion, htmlentities($argList[1]));
+		$option = sprintf("<option value='%s'> %s%s </option>\n", $argList[0], $indentacion, htmlentities($argList[1]));
 		echo $option;
 	}
 
