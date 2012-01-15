@@ -14,13 +14,15 @@ $nombre = $result['nombre'];
 //Ceramos conexión
 $conex->desconectar();
 
-$presentacion = '/Sotneve/presentacion/';
+$presentacion = array();
+preg_match('/\/.+\/presentacion/',$_SERVER['SCRIPT_NAME'], $presentacion);
+$presentacion = $presentacion[0];
 $paginas = array(
-	'principal'=> $presentacion . 'principal.php',
-	'crear_evento'=> $presentacion . 'crear_evento.php',
-	'favoritos'=> $presentacion . 'favoritos.php',
-	'mi_perfil'=> $presentacion . 'mi_perfil.php',
-	'logout'=> $presentacion . 'logout.php'
+	'principal'=> $presentacion . '/principal.php',
+	'crear_evento'=> $presentacion . '/crear_evento.php',
+	'favoritos'=> $presentacion . '/favoritos.php',
+	'mi_perfil'=> $presentacion . '/mi_perfil.php',
+	'logout'=> $presentacion . '/logout.php'
 );
 
 function claseEnlace($paginas, $indice){
