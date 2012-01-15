@@ -86,7 +86,7 @@
 				<form method="post" id="rate_form" action="javascript:valoraUsuario(%s)">
 				<div id="rate_user">
 					<input type="image" class="add_image" src="recursos/imagenes/valoracion.png">
-					<span class="texto_accion">&iexcl;Punt&uacute;alo!</span>
+					<span id="valora" class="texto_accion">&iexcl;Punt&uacute;alo!</span>
 				</div>
 				</form>', $idUserVisitado);
 			echo $form;?>
