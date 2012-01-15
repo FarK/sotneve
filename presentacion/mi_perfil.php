@@ -45,12 +45,12 @@ function selectMes($campos) {
 	$meses = array(1 => 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
 
 	echo '<select class="fecha" name="mes" id="mes">';
-	$option = sprintf('<option value=%s> %s </option>\n', $mesAct, $meses[$mesAct]);
+	$option = sprintf('<option value="%s"> %s </option>', $mesAct, $meses[$mesAct]);
 	echo $option;
 	echo '<option disabled="true">-----------</option>';
 	foreach($meses as $index=>$mes){
 		if($mesAct != $index){
-			$option = sprintf('<option value=%s> %s </option>\n', $index, $mes);
+			$option = sprintf('<option value="%s"> %s </option>', $index, $mes);
 			echo $option;
 		}
 	}
@@ -87,7 +87,7 @@ function creaCheckBox($campos, $campo) {
 	if ($campos['visibilidad'] & $campo)
 		$visible = "checked=''";
 
-	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s' %s>", $check, $campo, $campo, $visible);
+	$linea = sprintf("<input type='checkbox' class='visibilitybox' name='%s%s' value='%s'></input>", $check, $campo, $campo, $visible);
 	echo "<div class='cell'>";
 	echo $linea;
 	echo "</div>";
@@ -160,7 +160,7 @@ function creaCheckBox($campos, $campo) {
 				</div>
 				<div class="divf">
 					<label class="etiqueta">Fecha de nacimiento:</label>
-					<div id=fechaNac>
+					<div id="fechaNac">
 						<?php
 						selectDia($campos);
 						selectMes($campos);

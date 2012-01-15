@@ -27,9 +27,9 @@ $paginas = array(
 
 function claseEnlace($paginas, $indice){
 	if($paginas[$indice] == $_SERVER['PHP_SELF'])
-		echo 'class = botonResaltado';
+		echo 'class = "botonResaltado"';
 	else
-		echo 'class = boton';
+		echo 'class = "boton"';
 }
 
 ?>
