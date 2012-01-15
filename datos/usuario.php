@@ -151,7 +151,7 @@ class Usuario extends Tabla{
 	
 	public function valoraUsuario($idUser2, $val){
 		$query = sprintf("INSERT INTO valoraciones (idUsuario1, idUsuario2, valoracion) VALUES ('%s', '%s', '%s') ON DUPLICATE KEY UPDATE valoracion='%s'", $this->pks['idUsuario'], $idUser2, $val, $val);
-		return $query;
+		return $this->consultar($query);
 	}
 }
 ?>
