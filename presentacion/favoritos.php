@@ -16,7 +16,7 @@ $favoritos = $favorito->getFavoritos($_SESSION['idUsuario']);
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/favoritos.css" />
 		<script type="text/javascript" src="../logica/scripts/favoritos.js"></script>
 		<title>Sotneve - Tus favoritos</title>
