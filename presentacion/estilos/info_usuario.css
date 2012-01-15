@@ -20,8 +20,6 @@ strong.num_usuarios {
 }
 div.info_usuario {
 	margin-left: 30%;
-	
-	
 }
 div.data_row {
 	display: table-row;
@@ -37,29 +35,33 @@ span.l_usuario {
 span.c_usuario {
 	margin: 0 15px;
 }
-/*** AÑADIR A FAVORITOS ***/
-#acciones_usuario{
-	display:table;
-	float:right;
-}
-
-#add_to_favs, #rate_form {
+/*** ACCIONES ***/
+#acciones_usuario {
 	float: right;
-	font-weight: bold;
-	padding: 4px;
+}
+#add_to_favs, #rate_user{
+	background-color: #418EB6;
 	border-radius: 5px;
-	background-color: #418eb6;
 	color: WHITE;
-	display:table-column;	
+	margin-top: 10px;
+	font-weight: bold;
+	text-align: left;
+	
 }
-
-span#add_to_favs {
-	margin: 10px 0;
-}
-
-.add_image{
+.add_image {
 	height: 36px;
 	width: 36px;
+	margin: 0;
+	padding-right: 5px;
 	vertical-align: middle;
-	padding-right: 10px;
+	
 }
+span.texto_accion{
+	padding-top: 16px;
+	float: right;
+	padding-right: 5px;
+	vertical-align: middle;
+	
+}
+
+
