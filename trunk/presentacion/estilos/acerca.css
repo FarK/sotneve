@@ -10,3 +10,7 @@ span#nosotros{
 video#video{
 	margin: auto;
 }
+
+div.lista {
+	text-align: left;
+}
