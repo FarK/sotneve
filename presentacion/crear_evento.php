@@ -139,7 +139,7 @@ function selectAno($campos){
 	}
 
 	for ($i = 0; $i < 10; $i++) {
-		$ano = "2011" + $i;
+		$ano = "2012" + $i;
 		if($ano != $anoAct){
 			$option = sprintf('<option value="%s">%s</option>', $ano, $ano);
 			echo $option;
