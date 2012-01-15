@@ -140,14 +140,14 @@ function creaCheckBox($campos, $campo) {
 				<div class="divf">
 					<label class="etiqueta" for="nombre">Nombre:</label>
 					<div class='cell'>
-					<input type="text" class='info_input' name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
+					<input type="text" class='info_input' id="nombre" name="nombre" onblur="esCampoNoVacio(this.id)"  value = "<?php echo $campos['nombre'];?>"/>
 					</div>
 					<?php      creaCheckBox($campos, $NOMBRE);?>
 				</div>
 				<div class="divf">
 					<label class="etiqueta" for="apellidos">Apellidos:</label>
 					<div class='cell'>
-					<input type="text" name="apellidos" class="info_input" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
+					<input type="text" name="apellidos" class="info_input"  id="apellidos" onblur="esCampoNoVacio(this.id)" value="<?php echo $campos['apellidos'];?>"/>
 					</div>
 					<?php      creaCheckBox($campos, $APELLIDOS);?>
 				</div>
@@ -160,7 +160,7 @@ function creaCheckBox($campos, $campo) {
 				</div>
 				<div class="divf">
 					<label class="etiqueta">Fecha de nacimiento:</label>
-					<div id=fecha>
+					<div id=fechaNac>
 						<?php
 						selectDia($campos);
 						selectMes($campos);
@@ -207,7 +207,7 @@ function creaCheckBox($campos, $campo) {
 				<div class="divf">
 					<label class="etiqueta" for="contrasenaactual">Contrase&ntilde;a Actual:</label>
 					<div class='cell'>
-					<input type="password" class="info_input" name="contrasenaactual" id="contrasena" />
+					<input type="password" class="info_input" name="contrasenaactual" id="contrasenaactual" />
 					</div>
 				</div>
 				<div class="divf">
