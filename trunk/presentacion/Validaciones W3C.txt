@@ -6,8 +6,8 @@ errores.php
 favoritos.php ale Result:	 Passed, 1 warning(s)
 footer.php X
 head.php X
-info_evento.php
-info_usuario.php
+info_evento.php ----Rafa termina
+info_usuario.php-----Rafa termina
 mi_perfil.php	ale cadi Result:	 Passed, 1 warning(s)
 principal.php	rafa Result:	 Passed, 1 warning(s)
 registro.php
