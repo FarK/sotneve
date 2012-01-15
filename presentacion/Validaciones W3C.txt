@@ -4,8 +4,8 @@ busqueda.php
 crear_evento.php
 errores.php
 favoritos.php ale Result:	 Passed, 1 warning(s)
-footer.php X
-head.php X
+footer.php hecho 
+head.php  hecho 
 info_evento.php ----Rafa termina
 info_usuario.php-----Rafa termina
 mi_perfil.php	ale cadi Result:	 Passed, 1 warning(s)
