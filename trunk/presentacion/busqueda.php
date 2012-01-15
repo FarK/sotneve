@@ -89,7 +89,7 @@ foreach ($eventos as $evento) {
 				<tr>
 				<th>Nombre</th>
 				<th>Lugar</th>
-				<th>NºAsistentes/Plazas</th>
+				<th>Asistentes</th>
 				</tr>
 			<?php
 			foreach ($enlaces as $enlace){
