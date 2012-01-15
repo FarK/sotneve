@@ -20,6 +20,11 @@
 	$camposUsuario = $usuarioVisitado->consultarTodosLosCampos();
 	$provincia = $usuarioVisitado -> getProvincia();
 	$provActual = $provincia;
+	
+	$valoracion = $usuarioVisitado->getValoracion();
+	if($valoracion == -1)
+	$valoracion = "Sin datos";
+	
 	//Consultamos los favoritos del usuario
 	$favoritos= $favorito->getFavoritos($_GET['idUsuario']);
 	$esFavorito = $userLog->esFavorito($idUserVisitado);
@@ -165,6 +170,12 @@
 				<span class="l_usuario"> Provincia: </span>
 				<span class="c_usuario"> <?php
 				echo $provincia;
+					?></span>
+			</div>
+			<div class='data_row'>
+				<span class="l_usuario"> Valoraci&oacute;n: </span>
+				<span class="c_usuario"> <?php
+				echo $valoracion;
 					?></span>
 			</div>
 		</div>

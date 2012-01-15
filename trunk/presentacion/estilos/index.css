@@ -45,7 +45,7 @@ img#logop{
 	width: 325px;
 }
 
-fieldset div#espacioBlanco {
+fieldset div.espacioBlanco {
 	display: inline-block;
 	width: 75%;
 }
