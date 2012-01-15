@@ -8,7 +8,7 @@ function esFormularioValido() {
 	var apellidos = document.getElementById("apellidos").value;
 	var contrasena = document.getElementById("contrasena").value;
 	var recontrasena = document.getElementById("recontrasena").value;
-	
+
 	var res="No se ha podido completar el registro:\n"
 	var valido=true;
 	
@@ -63,6 +63,7 @@ function esCampoNoVacio(id){
 	var campo = ctrlCampo.value;
 	if(campo == "") {
 		ctrlCampo.style.borderColor="red";	
+		ctrlCampo.style.borderWidth="1px";
 		ctrlErrores.style.visibility="visible";	
 	}else{
 		ctrlCampo.style.borderColor="#418eb6";
@@ -79,6 +80,7 @@ function esMismaContrasena(){
 	if(contrasena!=recontrasena){
 		ctrlContrasena.style.borderColor="red";
 		ctrlRecontrasena.style.borderColor="red";
+		ctrlRecontrasena.style.borderWidth="1px";
 		ctrlErrores.style.visibility="visible";	
 	}else{
 		ctrlContrasena.style.borderColor="#418eb6";
@@ -95,7 +97,8 @@ function esEmailValido(){
 	
 	if(!patronEmail.test(email)){
 		ctrlErrores.style.visibility="visible";	
-		ctrlEmail.style.borderColor="red";	
+		ctrlEmail.style.borderColor="red";
+		ctrlEmail.style.borderWidth="1px";		
 	}else{
 		ctrlEmail.style.borderColor="#418eb6";
 	}
