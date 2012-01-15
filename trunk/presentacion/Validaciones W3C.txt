@@ -10,4 +10,4 @@ info_evento.php
 info_usuario.php
 mi_perfil.php	ale cadi 1W
 principal.php	rafa 1W
-registro.php
+registro.php	sAtEr 1w
