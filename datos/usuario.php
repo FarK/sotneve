@@ -38,9 +38,6 @@ class Usuario extends Tabla{
 		$this->preparar('getProvincia', "SELECT P.idProvincia, P.nombre FROM provincias P, " . $this->nomTabla . " U WHERE U.idUsuario = :id AND P.idProvincia = U.idProvincia");
 		$this->preparar('existeEmail', "SELECT * FROM " . $this->nomTabla . " WHERE email = :id");
 		$this->preparar('existeAlias', "SELECT * FROM " . $this->nomTabla . " WHERE alias = :id");
-		
-
-		
 	}
 
 	public function getUsuario($id){
@@ -137,13 +134,9 @@ class Usuario extends Tabla{
 		return $this->consultar(sprintf('SELECT idUsuario1, idUsuario2, alias FROM favoritos F, %s U WHERE F.idUsuario1 = %s AND U.idUsuario = F.idUsuario2', $this->nomTabla, $this->pks['idUsuario']));
 	}
 	
-	public function esFavorito($idFav2){
-		$favs = $this->consultarPreparada('getFavoritos', array());
-		foreach($favs as $user){
-			if($user['idUsuario2']==$idFav2)
-				return true;
-		}
-		return false;
+	public function esFavorito($idFav){
+		$res = $this->consultar(sprintf('SELECT * FROM favoritos WHERE idUsuario1 = %s AND idUsuario2 = %s', $this->pks['idUsuario'], $idFav));
+		return empty($res)? false : true;
 	}
 	
 	public function borraFavorito($idUsuario2) {
