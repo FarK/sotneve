@@ -1,5 +1,5 @@
 <?php
-$ruta = split('/', $_SERVER['SCRIPT_NAME']);
+$ruta = preg_split('/\//', $_SERVER['SCRIPT_NAME']);
 $rutaAcerca = '/' . $ruta[1] . '/presentacion/acerca.php';
 ?>
 
