@@ -88,7 +88,7 @@ $conex -> desconectar();
 
 function esValido($_POST, $passBD, $emailBD, $prov, $usuario) {
 	return	Validador::palabras($_POST['nombre'])					&&
-		Validador::palabra($_POST['apellidos'])					&&
+		Validador::palabras($_POST['apellidos'])					&&
 		Validador::email($_POST['email'])					&&
 		Validador::fechaPasada($_POST['dia'], $_POST['mes'], $_POST['ano'])	&&
 		Validador::changePass($_POST['contrasenaactual'],
