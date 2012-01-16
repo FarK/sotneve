@@ -36,20 +36,20 @@ $terminado = $evento -> haTerminado();
 
 if ($terminado) {//ha terminado->boton desactivado
 	$add_form_action = 'javascript:hacerNada()';
-	$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png">Evento finalizado';
+	$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png" />Evento finalizado';
 }else if ($esPropietario) {// boton de lapiz
 	$add_form_action = sprintf('crear_evento.php?idEvento=%s', $idEventoVisitado);
-	$add_image = '<input type="image" id="add" src="recursos/imagenes/editar.png">Editar evento';
+	$add_image = '<input type="image" id="add" src="recursos/imagenes/editar.png" />Editar evento';
 }else if ($estaInscrito) {// boton de desinscribirse
 	$add_form_action = 'javascript:desinscribeEvento(' . $idEventoVisitado . ')';
-	$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png">Desinscribirse';
+	$add_image = '<input type="image" id="add" src="recursos/imagenes/delete.png" />Desinscribirse';
 } else {
 	if ($estaCompleto) {//no inscrito pero completo->boton desactivado
 		$add_form_action = 'javascript:hacerNada()';
-		$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png">Evento completo';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/add_disabled.png" />Evento completo';
 	} else {//no inscrito y no completo -> boton verde
 		$add_form_action = 'javascript:inscribeEvento(' . $idEventoVisitado . ')';
-		$add_image = '<input type="image" id="add" src="recursos/imagenes/add.png">&iexcl;Me apunto!';
+		$add_image = '<input type="image" id="add" src="recursos/imagenes/add.png" />&iexcl;Me apunto!';
 	}
 }
 ?>
@@ -60,30 +60,29 @@ if ($terminado) {//ha terminado->boton desactivado
 	<head>
 		<title>Sotneve - <?php echo $campos['titulo'];?></title>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css">
-		</link>
+		<link rel="stylesheet" type="text/css" href="estilos/info_evento.css" />
 		<script type="text/javascript" src="../logica/scripts/buscarevento.js"></script>
 		<script type="text/javascript" src="../logica/scripts/info_evento.js"></script>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<span><?php
+				<?php
 				include 'head.php';
-					?></span>
+				?>
 			</div>
 			<div id="wrapper">
 				<div class='lista_usuarios'>
-					<p>
-						<strong class="num_usuarios">
 						<div>
+							<strong class="num_usuarios">
 							<span id="num_asistentes"> <?php
 							if ($numeroAsistentes > 0)
 								echo "Asisten &eacute;stas personas:<br/>";
 							else
 								echo "Ninguna persona asiste<br/>";
 								?></span>
-						</div> </strong>
+								</strong>
+						</div> 
 						<div>
 							<span id="asistentes"> <?php
 							foreach ($asistentes as $asist) {
@@ -91,19 +90,17 @@ if ($terminado) {//ha terminado->boton desactivado
 								echo $a;
 							}
 								?></span>
-					</p>
 				</div>
 			</div>
-			<form id="informacion" method="post" action=<?php echo $add_form_action ?>>
+			<form id="informacion" method="post" action='<?php echo $add_form_action ?>'>
 				<div>
 					<span id='me_apunto'> <?php echo $add_image
 						?></span>
 				</div>
 			</form>
 			<span class="h1"><?php echo $campos['titulo'];?></span>
-			<p>
-				<span id='quedan'>Quedan <?php echo $campos['maxPersonas'] - $numeroAsistentes;?>plazas restantes de <?php echo $campos['maxPersonas'];?>participantes</span>
-				<br/><p/>
+				<span id='quedan'>Quedan <?php echo $campos['maxPersonas'] - $numeroAsistentes;?> plazas restantes de <?php echo $campos['maxPersonas'];?> participantes</span>
+				<br/>
 				<div class='info_evento'>
 					<br/>
 					<div class='data_row'>
@@ -129,8 +126,8 @@ if ($terminado) {//ha terminado->boton desactivado
 					</div>
 					<div class='data_row'>
 						<span class="campo_evento"> Descripci&oacute;n: </span>
-						<div id="descr">
-							<span id="descr"> <?php echo $campos['descripcion'];?></span>
+						<div id="descr" class='descr'>
+							<span> <?php echo $campos['descripcion'];?></span>
 						</div>
 					</div>
 				</div>
