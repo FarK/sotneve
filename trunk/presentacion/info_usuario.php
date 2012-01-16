@@ -179,7 +179,7 @@
 			<div class='data_row'>
 				<span class="l_usuario"> Valoraci&oacute;n: </span>
 				<span id='val' class="c_usuario"> <?php
-				echo $valoracion;
+				echo number_format($valoracion, 2, ',', '.');
 					?></span>
 			</div>
 		</div>
