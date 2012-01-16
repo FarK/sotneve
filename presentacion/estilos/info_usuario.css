@@ -2,7 +2,6 @@
 /*** LISTA USUARIOS ***/
 
 div.lista_usuarios {
-	margin: 10px 0 10px 0;
 	border-radius: 7px 7px;
 	float: left;
 	width: 150px;
@@ -15,9 +14,6 @@ strong.num_usuarios {
 }
 /*** INFO USUARIO ***/
 
-.h1 {
-	padding: 20px;
-}
 div.info_usuario {
 	margin-left: 30%;
 }
