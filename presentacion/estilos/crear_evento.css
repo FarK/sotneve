@@ -52,8 +52,8 @@ input#create{
 }
 
 input#create:hover{
-	text-shadow: 0 0 3px SKYBLUE;
-	box-shadow: 0 0 10px SKYBLUE;
+	text-shadow: 0px 0px 3px SKYBLUE;
+	box-shadow: 0px 0px 10px SKYBLUE;
 	cursor: pointer;
 }
 

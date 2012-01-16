@@ -46,8 +46,8 @@ input#registrate {
 }
 
 input#registrate:hover {
-	text-shadow: 0 0 3px SKYBLUE;
-	box-shadow: 0 0 10px #418eb6;
+	text-shadow: 0px 0px 3px SKYBLUE;
+	box-shadow: 0px 0px 10px #418eb6;
 	cursor: pointer;
 }
 
