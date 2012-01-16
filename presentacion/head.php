@@ -47,6 +47,6 @@ function claseEnlace($paginas, $indice){
 			<a <?php claseEnlace($paginas, 'logout'); ?> href="../logica/logout.php">Logout</a>
 
 		</div>
-		<div id="husuario"><span>Hola, <?php echo $nombre;?></span><br/><span>Puntos: <?php echo $hvaloracion;?></span></div>
+		<div id="husuario"><span>Hola, <?php echo $nombre;?></span><br/><span>Puntos: <?php echo number_format($hvaloracion, 2, ',', '.');?></span></div>
 	<?php include ("buscador.php"); ?>
 </div>
