@@ -11,6 +11,33 @@ video#video{
 	margin: auto;
 }
 
-div.lista {
+div.lista, div#videoImg img, div#videoImg video {
+	display: inline-block;
 	text-align: left;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+	margin: 7px;
+	padding: 4px;
+}
+
+div#videoImg img,div#videoImg video {
+	width: 700px;
+	height: 350px;
+}
+
+dt {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+dl dl dt {
+	text-decoration: none;
+}
+
+li {
+	font-weight: bold;
+}
+
+ul ul li {
+	font-weight: normal;
 }
