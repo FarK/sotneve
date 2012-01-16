@@ -126,6 +126,48 @@
 					</li>
 				</ul>
 			</div>
+			<div class="lista">
+				<span class="h2"> Lista de control de trabajo en grupo </span>
+				<ul>
+					<li>Evaluación Basica
+						<ul>
+							<li>Entrega correcta de la práctica </li>
+							<li>Instalación correcta (index.html/php) </li>
+							<li>Ausencia de errores de programación</li>
+							<li>Uso marcado HTML/XHTML estricto. Si, en cada página de presentacion.</li>
+							<li>Uso de CSS en archivos externos. Si.</li>
+							<li>Maquetacion CSS en todas las paginas. Si.</li>
+							<li>Formularios. Si, registro, crear_evento...</li>
+							<li>Validacion en cliente de todos los formularios. Si, usando javascript</li>
+							<li>Validacion en servidor de todos los formularios. Si, en la capa de logica</li>
+							<li>Base de datos (3FN). Si</li>
+							<li>Inserción en BD. Si, al registrar un usuario por ejemplo.</li>
+							<li>Actualizacion en la BD, si al cambiar los datos personales.</li>
+							<li>Borrado en la BD. Si, al eliminar un favorito por ejemplo.</li>
+							<li>Consulta a BD formateando resultados en tabla HTML. Si, en los resultados de la busqueda.</li>
+							<li>Tratamiento de errores de acceso a BD en servidor. Si, haciendo uso del objeto conexion que gestiona dichos errores</li>
+						</ul>
+					</li>
+										<li>Evaluacion Avanzada
+						<ul>
+							<li>Página de descripción de la aplicacion en HTML. Si, esta misma.</li>
+							<li>Uso avanzado de JavaScript. Si.</li>
+							<li>Uso de expresiones regulares en JavaScript o PHP. Si, cuando validamos formularios. ej: registro</li>
+							<li>Facilidad de navegacion. Si</li>
+							<li>Usabilidad de la aplicacion. Si</li>
+							<li>Modularidad del codigo en cliente. ?????????</li>
+							<li>Modularidad del codigo en servidor. Si, muy modular.</li>
+							<li>Complejidad de la base de datos. Si, 7 tablas relacionadas</li>
+							<li>Integridad referencial. ???????</li>
+							<li>Uso de sesion en PHP. Si, para el login, y transmision de variables entre paginas</li>
+							<li>Legibilidad del codigo. Si</li>
+							<li>HTML validado por W3C. Si</li>
+							<li>CSS validado por W3C.Todavia no</li>
+							<li>Otros conocimientos. Si, ajax para añadir favoritos y inscribirse en eventos. HTML5 para el video</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<?php include ('footer.php'); ?>
 	</body>
