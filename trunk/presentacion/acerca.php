@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 	<head>
+		<title>Acerca de...</title>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="estilos/acerca.css" />
 		<script type="text/javascript" src="../logica/scripts/buscar_evento.js"></script>
@@ -17,34 +18,25 @@
 		</div>
 		<div>
 			<p id="nosotros">
-				Esta p&aacute;gina ha sido desarrollada por un grupo de 5 compa&ntilde;eros para la asignatura de ABD.</br>
-				Proyecto de Sotneve de ABD.</br>
+				Esta p&aacute;gina ha sido desarrollada por un grupo de 5 compa&ntilde;eros para la asignatura de ABD.<br/>
 				Este proyecto consiste en una aplicaci&oacute;n web d&oacute;nde los usuarios
- 				registrados podr&aacute;n crear y/o unirse a eventos/grupos de diferentes actividades.</br>
+ 				registrados podr&aacute;n crear y/o unirse a eventos/grupos de diferentes actividades.<br/>
 				
 			</p>
 			<div class="lista">
-			<span>Programadores:</span>
+			<span class="h2">Programadores</span>
 				<ul>
 					<li>Alejandro Molinas Salas</li>
 					<li>Jesus Vacas Bomb&iacute;n</li>
 					<li>Rafael Espillaque Espinosa</li>
 					<li>Carlos Falgueras Garc&iacute;a</li>
-					<li>Antonio Rodriguez Jim&eacute;</li>
+					<li>Antonio Rodriguez Jim&eacute;nez</li>
 				</ul>
 			</div>
 			<div id="videoImg">
 			<img src="recursos/imagenes/esquema_relacional.png" alt="Esquema Relacional"/>
-			<video id="video" controls>
-				<source src="recursos/videos/tu_video.ogv" type="video/ogg" />
-				<source src="recursos/videos/tu_video.mp4" type="video/mp4" />
-				<object width="160" height="90" data="video.flv">
-					<param name="movie" value="tu_video.flv">
-					<embed src="recursos/videos/tu_video.flv" width="160" height="90">
-				</object>
-				<span>
-					Tu navegador no soporta HTML5 ni Flash &iquest;En que era est&aacute;s?
-				</span>
+			<video controls="">
+				<source type="video/webm" src="recursos/videos/tu_video.webm"></source>
 			</video>
 			</div>
 
@@ -81,7 +73,7 @@
 							</dd>
 
 							<dt>Clases hijas de Tabla</dt>
-							<dd>Objetos que agrupan las consultas que se identifican con la tabla en cuesti&oacute;n<dd>
+							<dd>Objetos que agrupan las consultas que se identifican con la tabla en cuesti&oacute;n</dd>
 						</dl>
 					</dd>
 
@@ -102,36 +94,39 @@
 							<dt>Clases de apoyo para AJAX</dt>
 							<dd>Generan el c&oacute;digo que va a reescribir AJAX</dd>
 						</dl>
-					<dd>
+					</dd>
 				</dl>
 			</div>
 			<div class="lista">
-			<span class="h2"> Lista de features</span>
-			<ul>
-				<li>SEGURIDAD</li>
+				<span class="h2"> Lista de features</span>
 				<ul>
-					<li>Validaci&oacute;n en cliente y servidor de todos los formularios</li>
-					<li>Encriptaci&oacute;n de las contrase&ntilde;as de los usuarios en SHA256</li>
-					<li>Solo el usuario propietario puede edirar su evento</li>
-					<li>Solo el usuario en editar lo relacionado con su perfil (favoritos, nombre, contrase&ntilde;a...)</li>
-				</ul>
+					<li>SEGURIDAD
+						<ul>
+							<li>Validaci&oacute;n en cliente y servidor de todos los formularios</li>
+							<li>Encriptaci&oacute;n de las contrase&ntilde;as de los usuarios en SHA256</li>
+							<li>Solo el usuario propietario puede edirar su evento</li>
+							<li>Solo el usuario en editar lo relacionado con su perfil (favoritos, nombre, contrase&ntilde;a...)</li>
+						</ul>
+					</li>
 
-				<li>DISE&Ntilde;O y FUNCIONALIDAD</li>
-				<ul>
-					<li>Maquetaci&oacute;n intensiva y estructurada de todas las p&aacute;ginas en css</li>
-					<li>Cabecera con men&uacute; superior de navegaci&oacute;n y buscador</li>
-					<li>Buscador de eventos con 4 tipos de consultas distintas</li>
-					<li>P&aacute;gina principal con enlaces a tus favoritos, tus eventos y eventos de tu provincia</li>
-					<li>Posibilidad de crear y editar eventos</li>
-					<li>Posibilidad de editar informaci&oacute;n de tu perfil</li>
-					<li>Se puede eligir la publicaci&oacute;n o no de tu email, nombre, sexo, etc...</li>
-					<li>Elimincaci&oacute;n y agragaci&oacute;n de favoritos con AJAX</li>
-					<li>Facilidad de afiliaci&oacute;n y desafiliaci&oacute;n de eventos</li>
-					<li>Se resaltan los eventos completos</li>
-					<li>Se resaltan los campos erroreos en la validaci&oacute;n de los formularios</li>
+					<li>DISE&Ntilde;O y FUNCIONALIDAD
+						<ul>
+							<li>Maquetaci&oacute;n intensiva y estructurada de todas las p&aacute;ginas en css</li>
+							<li>Cabecera con men&uacute; superior de navegaci&oacute;n y buscador</li>
+							<li>Buscador de eventos con 4 tipos de consultas distintas</li>
+							<li>P&aacute;gina principal con enlaces a tus favoritos, tus eventos y eventos de tu provincia</li>
+							<li>Posibilidad de crear y editar eventos</li>
+							<li>Posibilidad de editar informaci&oacute;n de tu perfil</li>
+							<li>Se puede eligir la publicaci&oacute;n o no de tu email, nombre, sexo, etc...</li>
+							<li>Elimincaci&oacute;n y agragaci&oacute;n de favoritos con AJAX</li>
+							<li>Facilidad de afiliaci&oacute;n y desafiliaci&oacute;n de eventos</li>
+							<li>Se resaltan los eventos completos</li>
+							<li>Se resaltan los campos erroreos en la validaci&oacute;n de los formularios</li>
+						</ul>
+					</li>
 				</ul>
-			</ul>
 			</div>
 		</div>
+		<?php include ('footer.php'); ?>
 	</body>
 </html>
