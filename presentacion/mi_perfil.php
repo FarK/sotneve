@@ -4,6 +4,9 @@ include_once ('../datos/conexion.php');
 include_once ('../datos/usuario.php');
 include_once ('../datos/provincia.php');
 
+//Para evitar warning con el timezone
+date_default_timezone_set('Europe/Madrid');
+
 //Creamos la conexion y las clases de consulta
 $conexion = new Conexion();
 $usuario = new Usuario($conexion, $_SESSION['idUsuario']);
