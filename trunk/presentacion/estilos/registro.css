@@ -15,7 +15,7 @@ form#registro {
 	padding: 30px 40px 20px 0px;
 	width: 800px;
 	border-style: dotted;
-	border-radius: 20px 20px;
+/*	border-radius: 20px 20px;*/	
 	border: 2px dotted #418eb6;
 }
 
@@ -52,7 +52,7 @@ form#registro label {
 	color: #eaf3fa;
 	height: 40px;
 	width: 200px;
-	border-radius: 10px 10px;
+/*	border-radius: 10px 10px;*/	
 	position: relative;
 	top: 40px;
 }
