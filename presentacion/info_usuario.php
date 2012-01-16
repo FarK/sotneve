@@ -82,7 +82,8 @@
 				</div>
 			</form>
 		
-			<?$form = sprintf('
+			<?php
+			$form = sprintf('
 				<form method="post" id="rate_form" action="javascript:valoraUsuario(%s)">
 				<div id="rate_user">
 					<input type="image" class="add_image" src="recursos/imagenes/valoracion.png" />
