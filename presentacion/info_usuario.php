@@ -76,7 +76,7 @@
 			</p>
 		</div>
 		<div id="acciones_usuario">
-			<form id="add_form" method="post" action=<?php echo $add_form_action ?>>
+			<form id="add_form" method="post" action='<?php echo $add_form_action ?>'>
 				<div id='add_to_favs'>
 					<?php echo $add_image ?>
 				</div>
@@ -85,7 +85,7 @@
 			<?$form = sprintf('
 				<form method="post" id="rate_form" action="javascript:valoraUsuario(%s)">
 				<div id="rate_user">
-					<input type="image" class="add_image" src="recursos/imagenes/valoracion.png">
+					<input type="image" class="add_image" src="recursos/imagenes/valoracion.png" />
 					<span id="valora" class="texto_accion">&iexcl;Punt&uacute;alo!</span>
 				</div>
 				</form>', $idUserVisitado);
