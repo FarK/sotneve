@@ -63,7 +63,7 @@ function selectProvincias($provincias){
 	echo '<option value="0"></option>';
 
 	foreach ($provincias as $id=>$prov) {
-		$option = sprintf('<option value="%s">%s</option>', $id, htmlentities($prov));
+		$option = sprintf('<option value="%s">%s</option>', $id,$prov);
 		echo $option;
 	}
 

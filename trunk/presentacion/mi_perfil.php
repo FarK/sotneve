@@ -178,13 +178,13 @@ function creaCheckBox($campos, $campo) {
 					<select  class="info_input" name="provincia" id="provincia">
 						<?php
 						//Ponemos la provincia actual como primera opcion del select
-						$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'], htmlentities($provUsuario['nombre']));
+						$option = sprintf('<option value="%s">%s</option>', $provUsuario['idProvincia'],$provUsuario['nombre']);
 						echo $option;
 
 						//Ponemos todas las demás provincias
 						foreach ($provincias as $idProv => $prov) {
 							if ($idProv != $provUsuario['idProvincia']) {//No imprimimos 2 veces la misma provincia
-								$option = sprintf('<option value="%s">%s</option>', $idProv, $prov);
+								$option = sprintf('<option value="%s">%s</option>', $idProv,$prov);
 								echo $option;
 							}
 						}
