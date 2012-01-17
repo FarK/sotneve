@@ -35,7 +35,6 @@
 				<img id="desarrolladores" src="recursos/imagenes/desarrolladores.jpg" alt="Programadores"/>
 			</div>
 
-			<br/>
 
 			<div class="lista">
 				<span class="h2"> Lista de features</span>
@@ -67,7 +66,6 @@
 				</ul>
 			</div>
 
-			<br/>
 
 			<div class="lista">
 				<span class="h2"> Estructura del c&oacute;digo de la aplicaci&oacute;n </span>
@@ -127,7 +125,6 @@
 				</dl>
 			</div>
 
-			<br/>
 
 			<div class="lista">
 				<span class="h2"> Lista de puntos de control conseguidos</span>
@@ -151,7 +148,6 @@
 							<li>Tratamiento de errores de acceso a BD en servidor</li>
 						</ul>
 					</li>
-					<br/>
 					<li>Evaluaci&oacute;n Avanzada
 						<ul>
 							<li>P&aacute;gina de descripci&oacute;n de la aplicaci&oacute;n en HTML</li>
