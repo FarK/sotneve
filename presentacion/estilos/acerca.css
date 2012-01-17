@@ -1,5 +1,9 @@
 @import "general.css";
 
+a#enlaceLogo {
+	box-shadow: 0px 0px 10px WHITE;
+	border-radius: 20px;
+}
 
 span#nosotros{
 	color: red;
@@ -23,6 +27,17 @@ div.lista, div#videoImg img, div#videoImg video {
 div#videoImg img,div#videoImg video {
 	width: 700px;
 	height: 350px;
+}
+
+img#desarrolladores {
+	width: 400px;
+}
+
+ul#programadores {
+	display: block;
+	text-align: center;
+	list-style-type: none;
+	padding: 0px;
 }
 
 dt {
