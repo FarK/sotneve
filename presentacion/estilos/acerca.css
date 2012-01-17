@@ -31,6 +31,7 @@ div#videoImg img,div#videoImg video {
 
 img#desarrolladores {
 	width: 400px;
+	border-radius: 15px;
 }
 
 ul#programadores {
