@@ -42,7 +42,7 @@
 			echo "Hemos tenido un problema, int&eacute;ntelo de nuevo m&aacute;s tarde";
 		}
 		//debug
-		echo $_SESSION['debug'];
+		//echo $_SESSION['debug'];
 		?>
 		</span>
 	</body>

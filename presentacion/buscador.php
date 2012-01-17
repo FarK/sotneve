@@ -20,7 +20,7 @@ $tipo = new Tipo($conexion);
 
 				foreach ($prov as $idp => $p) {
 
-					echo "<option value='" . $idp . "'>" . htmlentities($p) . "</option>";
+					echo "<option value='" . $idp . "'>" .$p . "</option>";
 				}
 				?>
 			</select>

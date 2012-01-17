@@ -77,8 +77,12 @@ abstract class Tabla{
 
 		//Pasamos todas las columnas a un array
 		$ret = array();
-		foreach($preparada as $row)
-			$ret[] = $row;
+		foreach($preparada as $row){
+			$r = array();
+			foreach($row as $id=>$campo)
+				$r[$id] = htmlentities($campo);
+			$ret[] = $r;
+		}
 
 		return $ret;
 	}
@@ -91,8 +95,12 @@ abstract class Tabla{
 		if(!empty($stmt)){
 			//Pasamos todas las columnas a un array
 			$ret = array();
-			foreach($stmt as $row)
-				$ret[] = $row;
+			foreach($stmt as $row){
+				$r = array();
+				foreach($row as $id=>$campo)
+					$r[$id] = htmlentities($campo);
+				$ret[] = $r;
+			}
 
 			return $ret;
 		}

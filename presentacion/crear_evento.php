@@ -38,7 +38,7 @@ function tituloWeb($campos){
 	if(empty($campos))
 		$titulo = '<title>Sotneve - Crear Evento</title>';
 	else
-		$titulo = sprintf('<title>Sotneve - Editar "%s"</title>', $campos['titulo']);
+		$titulo = sprintf('<title>Sotneve - Editar "%s"</title>',$campos['titulo']);
 
 	echo $titulo;
 }
@@ -47,7 +47,7 @@ function tituloEvento($campos){
 	if(empty($campos))
 		$titulo = '<span class="h1" id="ev_titulo">Crear Evento</span>';
 	else
-		$titulo = sprintf('<span class="h1" id="ev_titulo">Editar "%s"</span>', $campos['titulo']);
+		$titulo = sprintf('<span class="h1" id="ev_titulo">Editar "%s"</span>',$campos['titulo']);
 
 	echo $titulo;
 }
@@ -56,7 +56,7 @@ function inputTitulo($campos){
 	if(empty($campos))
 		$input = '<input class="evento" type="text" id="nomevento"  name="nomevento" />';
 	else
-		$input = sprintf('<input class="evento" type="text" id="nomevento"  value="%s" name="nomevento" />', $campos['titulo']);
+		$input = sprintf('<input class="evento" type="text" id="nomevento"  value="%s" name="nomevento" />',$campos['titulo']);
 
 	echo $input;
 }
@@ -207,14 +207,14 @@ function selectProvincia($campos, $provincias){
 	$idProvAct = -1;
 	if(!empty($campos)){
 		$idProvAct = $campos['idProvincia'];
-		$option = sprintf('<option value="%s">%s</option>', $idProvAct, $provincias[$idProvAct]);
+		$option = sprintf('<option value="%s">%s</option>', $idProvAct,$provincias[$idProvAct]);
 		echo $option;
 		echo '<option disabled="true">-----------</option>';
 	}
 
 	foreach ($provincias as $id => $prov) {
 		if($id != $idProvAct){
-			$option = sprintf('<option value="%s">%s</option>', $id, $prov);
+			$option = sprintf('<option value="%s">%s</option>', $id,$prov);
 			echo $option;
 		}
 	}
@@ -226,7 +226,7 @@ function selectTipos($campos, $tipo,  $nomTipo){
 	echo '<select name="tipos" id="ev_tipos">';
 
 	if(!empty($campos)){
-		$option = sprintf('<option value="%s">%s</option>', $campos['idTipo'], $nomTipo);
+		$option = sprintf('<option value="%s">%s</option>', $campos['idTipo'],$nomTipo);
 		echo $option;
 		echo '<option disabled="true">-----------</option>';
 	}
@@ -238,7 +238,7 @@ function selectTipos($campos, $tipo,  $nomTipo){
 
 function inputLugar($campos){
 	if(!empty($campos))
-		$input = sprintf('<input class="evento" type="text" id="lugar" name="lugar" value = "%s"/>', $campos['lugar']);
+		$input = sprintf('<input class="evento" type="text" id="lugar" name="lugar" value = "%s"/>',$campos['lugar']);
 	else
 		$input = '<input class="evento" type="text" id="lugar" name="lugar"/>';
 
@@ -247,7 +247,7 @@ function inputLugar($campos){
 
 function texareaDescripcion($campos){
 	if(!empty($campos))
-		$input = sprintf('<textarea id="descripcion" name="descripcion" rows="100" cols="70"> %s </textarea>', $campos['descripcion']);
+		$input = sprintf('<textarea id="descripcion" name="descripcion" rows="100" cols="70"> %s </textarea>',$campos['descripcion']);
 	else
 		$input = '<textarea id="descripcion" name="descripcion" cols="70" rows="100"></textarea>';
 
@@ -258,7 +258,7 @@ function inputBoton($campos){
 	if(empty($campos))
 		$input = '<input class="enlaceEnmarcado" type="submit" id="create" value="Crear Evento"/>';
 	else
-		$input = sprintf('<input class="enlaceEnmarcado" type="submit" id="create" value=\'Actualizar "%s"\'/>', $campos['titulo']);
+		$input = sprintf('<input class="enlaceEnmarcado" type="submit" id="create" value=\'Actualizar "%s"\'/>',$campos['titulo']);
 
 	echo $input;
 						
