@@ -12,8 +12,9 @@ $result = $usuario->consultarCampos();
 $nombre = $result['nombre'];
 
 $hvaloracion = $usuario->getValoracion();
-if($hvaloracion == -1)
+if($hvaloracion == -1){
 	$hvaloracion = "Sin datos";
+}
 //Ceramos conexión
 $conex->desconectar();
 
