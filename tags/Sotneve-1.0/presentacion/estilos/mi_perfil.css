@@ -1,0 +1,66 @@
+@import "general.css";
+
+form#miPerfilForm {
+	display: inline-block;
+	position: relative;
+	right: 20px;
+}
+
+div.divf{
+	display: table-row;
+}
+
+label.etiqueta, div.cell {
+	display: table-cell;
+}
+
+label.etiqueta{
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+}
+
+input.info_input {
+	width: 220px;
+}
+
+select.fecha {
+	display: inline-block;
+	margin-right: 7px;
+}
+
+select#ano {
+	margin: 0;
+}
+
+select#sexo, select#provincia {
+	width: 97%;
+}
+
+input#registrate {
+	background-color: #418eb6;
+	color: WHITE;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
+	min-width: 200px;
+}
+
+input#registrate:hover {
+	text-shadow: 0px 0px 3px SKYBLUE;
+	box-shadow: 0px 0px 10px #418eb6;
+	cursor: pointer;
+}
+
+#OK, #errores {
+	display: block;
+	color: WHITE;
+	font-weight: bold;
+	font-variant: small-caps;
+	background-color: GREEN;
+	border-radius: 3px;
+	padding: 1px 3px;
+}
+
+#errores{
+	background-color: #B22222;
+}

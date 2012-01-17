@@ -1,0 +1,61 @@
+@import "general.css";
+.h1 {
+	padding: 20px;
+}
+#me_apunto {
+	margin-top: 10px;
+	float: right;
+	font-weight: bold;
+	padding: 4px;
+	border-radius: 5px;
+	background-color: #418eb6;
+	color: WHITE;
+	margin-bottom: 200px;
+}
+div.lista_usuarios {
+	margin: 10px 0;
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+#add {
+	height: 32px;
+	width: 32px;
+	vertical-align: middle;
+	padding-right: 5px;
+}
+strong {
+	font-size: 110%;
+	margin: 1%;
+}
+strong.num_usuarios {
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 105%;
+}
+div.info_evento {
+	margin-left: 30%;
+}
+#quedan {
+	font-size: 120%;
+	font-weight: bold;
+}
+div.data_row {
+	display: table-row;
+	text-align: left;
+}
+span.campo_evento {
+	font-size: 120%;
+	font-weight: bold;
+	display: table-cell;
+	text-align: right;
+	padding: 10px 0;
+}
+span.valor_evento {
+	padding: 0 15px;
+}
+div.descr {
+	padding: 0 15px;
+}

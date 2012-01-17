@@ -1,0 +1,240 @@
+body {
+	background-color: #D0E8F7;
+	margin: auto;
+	width: 900px;
+	font: 76% arial, sans-serif;
+	text-align: center;
+}
+
+div.contenido {
+	width: 900px;
+	margin-top: 15px;
+}
+
+input, textarea {
+	/*height:30px;*/
+	margin-top: 5px;
+	margin-left: 5px;
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+}
+
+select {
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6;
+	color: #418eb6;
+}
+a.enlaceEnmarcado, a.enlaceEnmarcadoInv, a.enlaceEnmarcadoInvlleno {
+	margin: 5px 4px;
+	border-radius: 10px;
+	border-width: 0px;
+	padding: 4px 6px;
+	color: #418eb6;
+	background-color: #D0E8F7;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+}
+a.enlaceEnmarcadoInv {
+	color: #418eb6;
+	background-color: #B9CAFF;
+}
+
+a.enlaceEnmarcadoInvlleno {
+	background-color: #C06060;
+	color: WHITE;
+}
+
+input.boton {
+	font-weight: bold;
+}
+input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover, .enlaceEnmarcadoInvlleno:hover, .enlaceEnmarcadoInv:hover {
+	box-shadow: 0px 0px 5px WHITE;
+	text-shadow: 0 0 3px WHITE;
+	transition: box-shadow 0.5s;
+	transition: text-shadow 0.5s;
+
+	-moz-transition: box-shadow 0.5s; /* Firefox 4 */
+	-webkit-transition: box-shadow 0.5s; /* Safari and Chrome */
+	-o-transition: box-shadow 0.5s; /* Opera */
+	
+	-moz-transition: text-shadow 0.5s; 
+	-webkit-transition: text-shadow 0.5s; 
+	-o-transition: text-shadow 0.5s;
+}
+
+a.enlaceEnmarcadoInv:hover {
+	box-shadow: 0px 0px 3px #B9CAFF;
+	text-shadow: 0 0 3px WHITE;
+}
+
+a.enlaceEnmarcadoInvlleno:hover {
+	box-shadow: 0px 0px 3px #FF4144;
+	text-shadow: 0 0 3px #FF8587;
+}
+
+input:focus, textarea:focus, .boton:focus, select:focus {
+	box-shadow: 0px 0px 5px #FFFFFF;
+	border-width: 1px;
+	border-color: #A1B4BF;
+}
+img#logo {
+	width: 85px;
+	border-top-left-radius: 5px 5px;
+}
+
+legend {
+	display: none;
+}
+div.horizontal {
+	width: 900px;
+	margin: auto;
+}
+label {
+	font: 100% arial, sans-serif;
+}
+span.errorserv {
+	color: red;
+}
+
+span.h1, span.h2 {
+	display: block;
+	color: #418eb6;
+	text-shadow: 0px 0px 2px #FFFFFF;
+	text-align: center
+}
+
+span.h1 {
+	font-size: x-large;	
+}
+
+span.h2 {
+	font-size: large;	
+}
+
+/************/
+/* CABECERA */
+/* **********/
+
+a.boton, a.botonResaltado {
+	margin-top: 5px;
+	margin-left: 5px;
+	border: 0px;
+	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	padding: 6px;
+	color: #418eb6;
+	font-weight: bold;
+	background-color: #D0E8F7;
+	text-decoration: none;
+
+	-moz-transition: padding 0.5s; /* Firefox 4 */
+	-webkit-transition: padding 0.5s; /* Safari and Chrome */
+	-o-transition: padding 0.5s; /* Opera */
+}
+
+a.botonResaltado, .boton:hover {
+	text-decoration: underline;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	-moz-transition: padding 0.5s; /* Firefox 4 */
+	-webkit-transition: padding 0.5s; /* Safari and Chrome */
+	-o-transition: padding 0.5s; /* Opera */
+}
+
+div#hcabecera {
+	width: 900px;
+	height: 85px;
+	border-radius: 10px 10px;
+	background-color: #418EB6;
+	border-radius: 10px 10px;
+}
+
+div#buscador {
+	position: relative;
+	bottom: 85px;
+}
+
+select.selbusc {
+	display: inline-block;
+	width: 130px;
+	height: 18px;
+}
+
+#search_icon {
+	width: 20px;
+	height: 20px;
+	margin: 0 0 -5px 0;
+	padding: 0;
+}
+
+a#enlaceLogo, img#logo {
+	width: 900px;
+	height: 85px;
+	display:block;
+}
+
+div#husuario {
+	color: white;
+	margin: 5px 10px 5px 5px;
+	overflow: hidden;
+	text-align: right;
+	position: relative;
+	bottom: 100px;
+	left: 780px;
+	width: 100px;
+	height: 40px;
+}
+
+div#hbotones {
+	display: inline;
+	position: relative;
+	bottom: 82px;
+}
+
+div.opcion {
+	display: inline-block;
+}
+
+/*******************
+ * ***   PIE   *** *
+ *******************/
+div#pie {
+	clear: left;
+	width: 100%;
+	background: #333;
+	color: #FFF;
+	text-align: left;
+	border-radius: 5px 5px;
+}
+
+.pieCell, .valid {
+	display: table-cell;
+}
+
+div#pie span {
+	margin: 0;
+	//padding: 0 10px;
+	vertical-align: middle;
+	height: 24px;
+}
+
+div#espacioBlanco {
+	width: 70%;
+}
+.valid{
+	padding-top: 5px;
+}
+#acerca {
+	vertical-align: middle;
+	color: #FFF;
+	text-decoration: none;
+}
+

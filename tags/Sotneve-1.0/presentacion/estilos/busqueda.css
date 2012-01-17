@@ -1,0 +1,37 @@
+@import "general.css";
+
+table {
+	display: inline-block;
+}
+
+th {
+	color: #418eb6;
+	font-weight: bold;
+	font-size: 17px;
+	font-variant: small-caps;
+	text-decoration: underline;
+}
+
+td {
+	padding: 8px;
+	color: #418eb6;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.enlace {
+	color: #418EB6;
+	padding: 3px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.enlace:hover {
+	background-color: #B9CAFF;
+	box-shadow: 0px 0px 5px #B9CAFF;
+	border-radius: 10px;
+}
+
+span.lleno {
+	color: #FF4144;
+}

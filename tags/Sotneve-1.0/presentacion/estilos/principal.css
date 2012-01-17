@@ -1,0 +1,42 @@
+@import "general.css";
+
+div#listas{
+	border: 0px;
+	border-bottom: 10px;
+	display: inline-block;
+	width: inherit;
+	min-height: 500px;
+}
+
+div.listaLateral {
+	border-radius: 7px 7px;
+	background-color: #B9CAFF;
+	display: table-cell;
+	position: relative;
+	height: 500px;
+}
+
+div#listaFavoritos {
+	width:150px;
+}
+
+div#listaEventos{
+	width: 225px;
+}
+
+div#listaEventosProvincia {
+	display: table-cell;
+	border-left: 10px;
+	border-right: 10px;
+	width: 540px;
+}
+
+div#listas, div.lista, div#listaEventosProvincia {
+	border-style: solid;
+	border-color: transparent;
+}
+
+span.titulo {
+	font-weight: bold;
+	margin-bottom: 5px;
+}

@@ -1,0 +1,11 @@
+@import "general.css";
+
+
+span#mens{
+	
+	font-size: 25px;
+	color: red;
+	background-color: #418eb6;
+	margin:  auto;
+	border-radius: 10px 10px;
+}

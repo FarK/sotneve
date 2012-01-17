@@ -1,0 +1,198 @@
+body {
+	background-color: #d0e8f7;
+	margin: auto;
+	width: 900px;
+	font: 76% arial, sans-serif;
+	text-align: center;
+}
+div.contenido {
+	width: 900px;
+	margin-top: 15px;
+}
+input, textarea {
+	margin-top: 5px;
+	margin-left: 5px;
+	border-width: 0;
+	border-style: solid;
+	border-radius: 10px;
+	padding: 6px;
+	color: #418eb6;
+}
+select {
+	border-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #418eb6;
+	color: #418eb6;
+}
+a.enlaceEnmarcado, a.enlaceEnmarcadoInv, a.enlaceEnmarcadoInvlleno {
+	margin: 5px 4px;
+	border-radius: 10px;
+	border-width: 0;
+	padding: 4px 6px;
+	color: #418eb6;
+	background-color: #d0e8f7;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+}
+a.enlaceEnmarcadoInv {
+	color: #418eb6;
+	background-color: #b9caff;
+}
+a.enlaceEnmarcadoInvlleno {
+	background-color: #c06060;
+	color: white;
+}
+input.boton {
+	font-weight: bold;
+}
+input:hover, textarea:hover, .boton:hover, .botonResaltado:hover, select:hover, .enlaceEnmarcado:hover, .enlaceEnmarcadoInvlleno:hover, .enlaceEnmarcadoInv:hover {
+	box-shadow: 0 0 5px white;
+	text-shadow: white 0 0 3px;
+}
+a.enlaceEnmarcadoInv:hover {
+	box-shadow: 0 0 3px #b9caff;
+	text-shadow: white 0 0 3px;
+}
+a.enlaceEnmarcadoInvlleno:hover {
+	box-shadow: 0 0 3px #ff4144;
+	text-shadow: #ff8587 0 0 3px;
+}
+input:focus, textarea:focus, .boton:focus, select:focus {
+	box-shadow: 0 0 5px #ffffff;
+	border-width: 1px;
+	border-color: #a1b4bf;
+}
+img#logo {
+	width: 85px;
+	border-top-left-radius: 5px 5px;
+}
+legend {
+	display: none;
+}
+div.horizontal {
+	width: 900px;
+	margin: auto;
+}
+label {
+	font: 100% arial, sans-serif;
+}
+span.errorserv {
+	color: red;
+}
+span.h1, span.h2 {
+	display: block;
+	color: #418eb6;
+	text-shadow: #ffffff 0 0 2px;
+	text-align: center;
+}
+span.h1 {
+	font-size: x-large;
+}
+span.h2 {
+	font-size: large;
+}
+
+/************/
+/* CABECERA */
+/* **********/
+
+a.boton, a.botonResaltado {
+	margin-top: 5px;
+	margin-left: 5px;
+	border: 0;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	padding: 6px;
+	color: #418eb6;
+	font-weight: bold;
+	background-color: #d0e8f7;
+	text-decoration: none;
+}
+a.botonResaltado, .boton:hover {
+	text-decoration: underline;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+div#hcabecera {
+	width: 900px;
+	height: 85px;
+	border-radius: 10px 10px;
+	background-color: #418eb6;
+	border-radius: 10px 10px;
+}
+div#buscador {
+	position: relative;
+	bottom: 85px;
+}
+select.selbusc {
+	display: inline-block;
+	width: 130px;
+	height: 18px;
+}
+#search_icon {
+	width: 20px;
+	height: 20px;
+	margin: 0 0 -5px 0;
+	padding: 0;
+}
+a#enlaceLogo, img#logo {
+	width: 900px;
+	height: 85px;
+	display: block;
+}
+div#husuario {
+	color: white;
+	margin: 5px 10px 5px 5px;
+	overflow: hidden;
+	text-align: right;
+	position: relative;
+	bottom: 100px;
+	left: 780px;
+	width: 100px;
+	height: 40px;
+}
+div#hbotones {
+	display: inline;
+	position: relative;
+	bottom: 82px;
+}
+div.opcion {
+	display: inline-block;
+}
+
+/*******************
+ * ***   PIE   *** *
+ *******************/
+
+div#pie {
+	clear: left;
+	width: 100%;
+	background: #333;
+	color: #fff;
+	text-align: left;
+	border-radius: 5px 5px;
+	vertical-align: middle;
+	height: 40px;
+}
+.pieCell, .valid {
+	display: inline-block;
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-left: 12px;
+	
+}
+div#espacioBlanco {
+	width: 20%;
+}
+#acerca {
+	vertical-align: middle;
+	color: #fff;
+	text-decoration: none;
+	float: right;
+	padding-top: 12px;
+	padding-right: 12px;
+	
+}

@@ -1,0 +1,59 @@
+@import "general.css";
+
+#listafavoritos {
+	width: 420px;
+	margin: 10px auto 10px auto;
+	padding: 20px 30px;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+	min-height: 400px;
+}
+
+/* Título*/
+h1 {
+	margin: 10px 0 20px 0;
+	font-size: 200%;
+	color: #418eb6;
+}
+
+/*Cada elemento de la lista*/
+div.favorito {
+	background-color: #EEF;
+	margin: 10px 0;
+	text-align: left;
+	padding: 5px 0;
+	border-radius: 10px;
+	display: block;
+}
+
+span.espacioBlanco {
+	display: table-cell;
+	width: 100%;
+}
+
+a.favorito {
+	display: table-cell;
+	text-decoration: none;
+	color: #418eb6;
+	padding: 0 0 0 10px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+a.favorito:hover {
+	text-shadow: 0 0 3px SKYBLUE;
+}
+
+form.favorito {
+	display: table-cell;
+}
+
+form.favorito:hover {
+	text-shadow: 0 0 3px SKYBLUE;
+}
+
+.delete {
+	padding: 0px 10px 0px 0px;
+	width: 16px;
+	height: 16px;
+}

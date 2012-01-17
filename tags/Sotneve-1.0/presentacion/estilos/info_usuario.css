@@ -1,0 +1,63 @@
+@import "general.css";
+/*** LISTA USUARIOS ***/
+
+div.lista_usuarios {
+	border-radius: 7px 7px;
+	float: left;
+	width: 150px;
+	background-color: #B9CAFF;
+	min-height: 450px;
+}
+strong.num_usuarios {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+/*** INFO USUARIO ***/
+
+div.info_usuario {
+	margin-left: 30%;
+}
+div.data_row {
+	display: table-row;
+	text-align: left;
+}
+span.l_usuario {
+	font-size: 120%;
+	font-weight: bold;
+	display: table-cell;
+	text-align: right;
+	padding: 10px 0;
+}
+span.c_usuario {
+	margin: 0 15px;
+}
+/*** ACCIONES ***/
+#acciones_usuario {
+	float: right;
+}
+#add_to_favs, #rate_user{
+	background-color: #418EB6;
+	border-radius: 5px;
+	color: WHITE;
+	margin-top: 10px;
+	font-weight: bold;
+	text-align: left;
+	
+}
+.add_image {
+	height: 36px;
+	width: 36px;
+	margin: 0;
+	padding-right: 5px;
+	vertical-align: middle;
+	
+}
+span.texto_accion{
+	padding-top: 16px;
+	float: right;
+	padding-right: 5px;
+	vertical-align: middle;
+	
+}
+
+

@@ -1,0 +1,59 @@
+@import "general.css";
+
+#errores{
+	visibility: hidden;
+	color: red;
+}
+
+.error{
+	display: block;
+	color:red;
+}
+
+form#registro {
+	margin: 50px 50px auto auto;
+	padding: 30px 40px 20px 0px;
+	width: 800px;
+	border-style: dotted;
+	border-radius: 20px 20px;
+	border: 2px dotted #418eb6;
+}
+
+div.row {
+	display: table-row;
+}
+
+form#registro input, select.cellSelect, form#registro label {
+	width: 170px;
+	display: table-cell;
+	margin: 8px 0 8px 0;
+}
+
+form#registro select {
+	background-color: white;
+	color: #418eb6;
+}
+
+select.fecha {
+	display: inline-block;
+	width: auto;
+	margin-right: 7px;
+}
+
+form#registro label {
+	color: #418eb6;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 20px;
+}
+
+#registrate {
+	background-color: #418eb6;
+	color: #eaf3fa;
+	height: 40px;
+	width: 200px;
+	border-radius: 10px 10px;
+	position: relative;
+	top: 40px;
+}
+

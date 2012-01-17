@@ -1,0 +1,51 @@
+@import "general.css";
+
+div.contenido {
+	margin-bottom: 130px;
+}
+
+#registrarse{
+	color: #418eb6;
+	font-style: oblique;
+	text-decoration:none;
+	text-align:right;
+	display: inline-block;
+}
+
+#registrarse:hover {
+	text-decoration:underline;
+}
+
+fieldset {
+	border-width:1px;
+	border-color:#418eb6;
+	border-radius:1em;
+	box-shadow: 0px 0px 20px #FFFFFF;
+	float: right;
+}
+
+legend { display:none; }
+
+span.error {
+	display:none;
+	color:red;
+}
+
+label{ display:none; }
+
+span.errorserv{color:red;}
+
+h1 {
+	color:#418eb6;
+	text-shadow: 0px 0px 2px #FFFFFF;
+	text-align:center
+}
+
+img#logop{
+	width: 325px;
+}
+
+fieldset div.espacioBlanco {
+	display: inline-block;
+	width: 75%;
+}
