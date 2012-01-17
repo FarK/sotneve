@@ -2,6 +2,9 @@
 include_once('../datos/conexion.php');
 include_once('../datos/provincia.php');
 
+//Para evitar warning con el timezone
+date_default_timezone_set('Europe/Madrid');
+
 session_start();
 $conexion = new Conexion();
 $provincia = new Provincia($conexion);
