@@ -44,10 +44,10 @@ function claseEnlace($paginas, $indice) {
 		<span>Hola, <?php echo $nombre;?></span>
 		<br/>
 		<span>Puntos: <?php
-		if (!is_numeric($valoracion)) {
+		if (!is_numeric($hvaloracion)) {
 			echo("n/a");
 		} else {
-			echo number_format($valoracion, 2, '.', ',');
+			echo number_format($hvaloracion, 2, '.', ',');
 		}
 			?></span>
 	</div>

@@ -44,24 +44,24 @@
 						<ul>
 							<li>Validaci&oacute;n en cliente y servidor de todos los formularios</li>
 							<li>Encriptaci&oacute;n de las contrase&ntilde;as de los usuarios en SHA256</li>
-							<li>Solo el usuario propietario puede edirar su evento</li>
-							<li>Solo el usuario en editar lo relacionado con su perfil (favoritos, nombre, contrase&ntilde;a...)</li>
+							<li>S&oacute;lo el usuario propietario puede editar su evento</li>
+							<li>S&oacute;lo el usuario en editar lo relacionado con su perfil (favoritos, nombre, contrase&ntilde;a...)</li>
 						</ul>
 					</li>
 
 					<li>DISE&Ntilde;O y FUNCIONALIDAD
 						<ul>
-							<li>Maquetaci&oacute;n intensiva y estructurada de todas las p&aacute;ginas en css</li>
+							<li>Maquetaci&oacute;n intensiva y estructurada de todas las p&aacute;ginas en CSS3</li>
 							<li>Cabecera con men&uacute; superior de navegaci&oacute;n y buscador</li>
 							<li>Buscador de eventos con 4 tipos de consultas distintas</li>
 							<li>P&aacute;gina principal con enlaces a tus favoritos, tus eventos y eventos de tu provincia</li>
 							<li>Posibilidad de crear y editar eventos</li>
 							<li>Posibilidad de editar informaci&oacute;n de tu perfil</li>
 							<li>Se puede eligir la publicaci&oacute;n o no de tu email, nombre, sexo, etc...</li>
-							<li>Elimincaci&oacute;n y agragaci&oacute;n de favoritos con AJAX</li>
+							<li>Eliminaci&oacute;n y agregaci&oacute;n de favoritos con AJAX</li>
 							<li>Facilidad de afiliaci&oacute;n y desafiliaci&oacute;n de eventos</li>
 							<li>Se resaltan los eventos completos</li>
-							<li>Se resaltan los campos erroreos en la validaci&oacute;n de los formularios</li>
+							<li>Se resaltan los campos err&oacute;neos en la validaci&oacute;n de los formularios</li>
 						</ul>
 					</li>
 				</ul>
@@ -80,13 +80,13 @@
 					<dd>
 						<dl>
 							<dt>P&aacute;ginas de contenido</dt>
-							<dd>Todas las paginas tiene su archivo en la carpeta de presentaci&oacute;, encargado de generar la estructura xhtml</dd>
+							<dd>Todas las paginas tienen su archivo en la carpeta de presentaci&oacute;, encargado de generar la estructura xhtml</dd>
 
 							<dt>Head y footer</dt>
 							<dd>C&oacute;digo php que genera las estructuras xhtml de la cabecera y el pie de p&aacute;gina. Este c&oacute;digo se importa desde las dem&aacute;s clases</dd>
 
 							<dt>Recursos</dt>
-							<dd>Carpeta d&oacute;nde guardamos los recursos multimedia de nuestra aplicaci&oacute;n</dd>
+							<dd>Carpeta donde guardamos los recursos multimedia de nuestra aplicaci&oacute;n</dd>
 						</dl>
 					</dd>
 
@@ -94,7 +94,7 @@
 					<dd>
 						<dl>
 							<dt>Clase Conexi&oacute;n</dt>
-							<dd>Se encarga de gestionar la conexi&oacute;n con la base de datos y las consultas a trav&eacute;s de la calse PDO</dd>
+							<dd>Se encarga de gestionar la conexi&oacute;n con la base de datos y las consultas a trav&eacute;s de la clase PDO</dd>
 							<dt>Clase Tabla</dt>
 							<dd>
 							Se encarga de pasar a un array los statament de PDO.
@@ -110,11 +110,11 @@
 					<dd>
 						<dl>
 							<dt>Formularios</dt>
-							<dd>Todos los formularios tiene su p&aacute;gina en la capa de l&oacute;gica que se encarga
+							<dd>Todos los formularios tienen su p&aacute;gina en la capa de l&oacute;gica que se encarga
 							de validar el formulario en el servidor</dd>
 
 							<dt>TestSesion</dt>
-							<dd>Una peque&ntilde;a porci&oacute;n de c&oacute;digo php que testea si el usuario est&aacute; o no logeado
+							<dd>Una peque&ntilde;a porci&oacute;n de c&oacute;digo php que testea si el usuario est&aacute; o no logueado
 							y redirige al formulario de login en cado de que no lo est&eacute;</dd>
 
 							<dt>Validador</dt>
@@ -132,16 +132,16 @@
 			<div class="lista">
 				<span class="h2"> Lista de puntos de control conseguidos</span>
 				<ul>
-					<li>Evaluación Basica
+					<li>Evaluación B&aacute;sica
 						<ul>
 							<li>Entrega correcta de la pr&aacute;ctica</li>
-							<li>Instalación correcta (index.html/php)</li>
+							<li>Instalaci&oacute;n correcta (index.html/php)</li>
 							<li>Ausencia de errores de programaci&oacute;n</li>
 							<li>Uso marcado HTML/XHTML estricto</li>
 							<li>Uso de CSS en archivos externos</li>
 							<li>Maquetacion CSS en todas las p&aacute;ginas</li>
 							<li>Formularios</li>
-							<li>Validacion en cliente de todos los formularios</li>
+							<li>Validaci&oacute;n en cliente de todos los formularios</li>
 							<li>Validaci&oacute;n en servidor de todos los formularios</li>
 							<li>Base de datos (3FN)</li>
 							<li>Inserci&oacute;n en BD</li>
@@ -151,13 +151,14 @@
 							<li>Tratamiento de errores de acceso a BD en servidor</li>
 						</ul>
 					</li>
-					<li>Evaluacion Avanzada
+					<br/>
+					<li>Evaluaci&oacute;n Avanzada
 						<ul>
-							<li>P&aacute;gina de descripción de la aplicaci&oacute;n en HTML</li>
+							<li>P&aacute;gina de descripci&oacute;n de la aplicaci&oacute;n en HTML</li>
 							<li>Uso avanzado de JavaScript</li>
 							<li>Uso de expresiones regulares en JavaScript o PHP</li>
 							<li>Facilidad de navegaci&oacute;n</li>
-							<li>Usabilidad de la aplicacion</li>
+							<li>Usabilidad de la aplicaci&oacute;n</li>
 							<li>Modularidad del c&oacute;digo en cliente</li>
 							<li>Modularidad del c&oacute;digo en servidor</li>
 							<li>Complejidad de la base de datos</li>
