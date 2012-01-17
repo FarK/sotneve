@@ -10,13 +10,13 @@ $rutaAcerca = '/' . $ruta[1] . '/presentacion/acerca.php';
 	
 	<img
 	class="valid"
-	src="http://www.w3.org/Icons/valid-xhtml10" 
+	src="recursos/imagenes/valid-xhtml10.png" 
 	alt="Valid XHTML 1.0 Strict" 
 	height="31" width="88" />
 
 	<img style="border:0;width:88px;height:31px"
 	class="valid"
-	src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+	src="recursos/imagenes/vcss-blue.gif"
 	alt="¡CSS Válido!" />
 	
 	<a class="pieCell" id="acerca" href="<?php echo $rutaAcerca;?>">Acerca de nosotros</a>
